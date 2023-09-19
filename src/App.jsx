@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Setting from "./Component/SettingPage/Setting";
 import Dashboard from "./Component/Dashboard/Dashboard";
+import HeaderComponent from "./Component/header/header";
+import Sidebar from './Component/Sidebar/sidebar';
 
 const App = () => {
   return (
@@ -12,8 +14,15 @@ const App = () => {
         <Route path={"/"} element={<div>No content here</div>} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
-        <Route path={"/settings"} element={<Setting />} />
-        <Route path={"/dashboard"} element={<Dashboard />} />
+        
+        <Route element={<HeaderComponent />}>
+          <Route path={"/settings"} element={<Setting />} />
+          <Route path={"/dashboard"} element={<Dashboard />} />
+
+        </Route>
+        {/* <Route path={"/header"} element={<HeaderComponent />} />
+        <Route path={"/sidebar"} element={<Sidebar />} /> */}
+
 
       </Routes>
     </BrowserRouter>

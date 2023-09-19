@@ -2,6 +2,7 @@ import { useState } from "react"
 import styles from "./index.module.css"
 import axios from "axios";
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
     const [isLoginForm, setIsLoginForm] = useState(true)
@@ -13,43 +14,44 @@ const Login = () => {
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
+        window.location.href = "/dashboard";
 
-        if (!email || !password) {
-            setLoginError("Invalid Email or Password")
-            return
-        }
-        setShowLoader(true)
-        const credentials = {
-            email: email,
-            password: password
-        }
+        // if (!email || !password) {
+        //     setLoginError("Invalid Email or Password")
+        //     return
+        // }
+        // setShowLoader(true)
+        // const credentials = {
+        //     email: email,
+        //     password: password
+        // }
 
-        axios.post("http://192.168.100.19:3000/api/users/login", credentials,
-        ).then(async (res) => {
-            let response = res?.data?.data
-            console.log(response, "response")
-            localStorage.setItem("token", response?.data)
+        // axios.post("http://192.168.100.19:3000/api/users/login", credentials,
+        // ).then(async (res) => {
+        //     let response = res?.data?.data
+        //     console.log(response, "response")
+        //     localStorage.setItem("token", response?.data)
 
-            setShowLoader(false)
-            window.location.href = "/dashboard";
-        })
-            .catch((err) => {
-                console.log(err)
-                const response = err?.response?.data?.data
+        //     setShowLoader(false)
+        //     window.location.href = "/dashboard";
+        // })
+        //     .catch((err) => {
+        //         console.log(err)
+        //         const response = err?.response?.data?.data
 
-                if (response?.message.includes("Email not found")) {
-                    setLoginError("Invalid Credentials, Please Check email.")
-                } else if (response?.message.includes("Invalid credentials")) {
-                    setLoginError("Invalid Password, Please Check Your Password.")
-                }
-                else if (response?.status !== "verified") {
-                    setLoginError("Email not verified")
-                }
-                else {
-                    setLoginError("An error occurred, Check Credentials");
-                }
-                setShowLoader(false)
-            })
+        //         if (response?.message.includes("Email not found")) {
+        //             setLoginError("Invalid Credentials, Please Check email.")
+        //         } else if (response?.message.includes("Invalid credentials")) {
+        //             setLoginError("Invalid Password, Please Check Your Password.")
+        //         }
+        //         else if (response?.status !== "verified") {
+        //             setLoginError("Email not verified")
+        //         }
+        //         else {
+        //             setLoginError("An error occurred, Check Credentials");
+        //         }
+        //         setShowLoader(false)
+        //     })
     }
 
     //Sign up
@@ -106,11 +108,11 @@ const Login = () => {
                                 <label htmlFor="remember_login">Remember Me</label>
                             </div>
                         </div>
-                        {loginError && (
+                        {/* {loginError && (
                             <p style={{ color: "red", textAlign: "center" }}>
                                 {loginError}
                             </p>
-                        )}
+                        )} */}
                         <button className={styles.btn}>Sign In</button>
                     </div>
                 </form>

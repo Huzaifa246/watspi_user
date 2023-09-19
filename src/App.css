@@ -15,3 +15,9 @@
   --color-white: #FFF;
   --box-shadow-primary: #3aa9ab25;
 }
+
+.trades-open{
+  width: 85% !important;
+  margin-left: auto;
+  margin-top: 0 !important;
+}
