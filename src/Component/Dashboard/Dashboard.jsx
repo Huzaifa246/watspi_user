@@ -10,13 +10,10 @@ function Dashboard() {
     
     return (
         <>
-            <div style={{ marginTop: "6rem" }}>
-
-            </div>
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div className='main-bg-pd-10px'>
-                    <Card>
-                        <div style={{ paddingLeft: "20px" }}>
+                    <Card className='card-border-none'>
+                        <div style={{ padding: "20px" }}>
                             <h4 style={{ fontWeight: "600" }}>Area Spaline Chart</h4>
                         </div>
                         <ChartPage />

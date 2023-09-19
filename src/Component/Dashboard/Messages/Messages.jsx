@@ -2,20 +2,22 @@ import React from 'react'
 import { Card, Button, Table } from 'react-bootstrap';
 import "./messages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faCog, faChartBar, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 function Messages() {
     return (
         <>
             {/* main-card */}
-            <Card className='card-msg-border'>
+            <Card className='card-msg-border' style={{ padding: "20px 30px" }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: "10px 0" }}>
                     <h4 style={{ fontWeight: "600" }}>
                         WhatsApp Numbers
                     </h4>
-                    <Button style={{ backgroundColor: "#44acf6" }}>
-                        Add Number
-                    </Button>
+                    <div>
+                        <Button style={{ backgroundColor: "#44acf6", padding: "3px 8px", border: "none" }}>
+                            Add Number
+                        </Button>
+                    </div>
                 </div>
                 <Card>
                     <div className='main-msg'>
@@ -43,6 +45,22 @@ function Messages() {
                                     </span>
                                     <span>
                                         pending Chats
+                                    </span>
+                                </div>
+                                <div className='main-status-col'>
+                                    <span className='font-style-status'>
+                                        1000
+                                    </span>
+                                    <span>
+                                        Group Members
+                                    </span>
+                                </div>
+                                <div className='main-status-col'>
+                                    <span className='font-style-status'>
+                                        0
+                                    </span>
+                                    <span>
+                                        Archive Chats
                                     </span>
                                 </div>
                                 <div className='main-status-col'>
@@ -79,16 +97,17 @@ function Messages() {
                     </div>
                 </Card>
             </Card>
-            <Card style={{ marginTop: "20px" }}>
+            <Card style={{ marginTop: "20px", padding: "10px" }} className='card-msg-border'>
                 <div className='Main-Msgs'>
                     <h4>
-                        Messages
+                        Messages <FontAwesomeIcon icon={faInfoCircle} className='info-icon' />
                     </h4>
                     <div>
-                        <Button style={{ backgroundColor: "#ffffff", color: 'black', margin: "0 10px" }}>
+                        <FontAwesomeIcon icon={faSearch} className='search-icon' />
+                        <Button className='filter-btn'>
                             Filter
                         </Button>
-                        <Button style={{ backgroundColor: "#44acf6" }}>
+                        <Button style={{ backgroundColor: "#44acf6", padding: "3px 8px", border: "none" }}>
                             Add Number
                         </Button>
                     </div>
@@ -128,7 +147,7 @@ function Messages() {
                                 <td>
                                     xyz
                                 </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between'}}>
+                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     Choose option
                                     <span>
                                         <FontAwesomeIcon icon={faEllipsisV} />
@@ -148,7 +167,7 @@ function Messages() {
                                 <td>
                                     xyz
                                 </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between'}}>
+                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     Choose option
                                     <span>
                                         <FontAwesomeIcon icon={faEllipsisV} />
@@ -168,7 +187,7 @@ function Messages() {
                                 <td>
                                     xyz
                                 </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between'}}>
+                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     Choose option
                                     <span>
                                         <FontAwesomeIcon icon={faEllipsisV} />

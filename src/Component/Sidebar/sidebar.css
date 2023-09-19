@@ -2,11 +2,15 @@
     position: fixed;
     top: 0;
     left: -15%;
-    height: 100vh;
-    width: 15%;
-    background: linear-gradient(to top right, var(--color-secondary), var(--color-primary));
+    height: 97vh;
+    width: 14%;
+    /* background: linear-gradient(to top right, var(--color-secondary), var(--color-primary)); */
     transition: 0.4s;
     z-index: 10;
+    margin: 10px 0 10px 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 2px 1px rgb(238 235 235 / 75%);
+    background-color: white;
   }
   
   #sidebar.active {
@@ -31,8 +35,9 @@
     transition: color 0.3s ease;
   }
   .active-link {
-    background: #3ab19d;
-    border-radius: 5px;
+    background: linear-gradient(69deg, rgba(79,40,195,1) 35%, rgba(206,62,124,1) 100%);
+    border-radius: 15px;
+    padding: 12px;
   }
   .active-link .sidebar-icon {
     -webkit-box-shadow: 0px 0px 5px 1px #989bf2;
@@ -91,8 +96,8 @@
     align-items: center;
     /* padding: 15px; */
     position: fixed;
-    top: 2%;
-    left: 2%;
+    top: 3%;
+    left: 3%;
     z-index: 999;
   }
   
@@ -104,8 +109,9 @@
   }
   
   .its-heading {
-    color: #fff;
+    color: black;
     font-size: 1.5rem;
+    font-weight: bold;
     z-index: 999;
   }
   /* Add this to your existing CSS file */
