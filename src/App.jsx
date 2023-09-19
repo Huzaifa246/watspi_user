@@ -2,7 +2,7 @@ import Login from "./Pages/Login"
 import Signup from "./Pages/Signup"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Setting from "./Component/SettingPage/setting";
+import Setting from "./Component/SettingPage/Setting";
 import Dashboard from "./Component/Dashboard/Dashboard";
 
 const App = () => {
