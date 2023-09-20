@@ -33,6 +33,12 @@ const Sidebar = () => {
                                 Dashboard
                             </span>
                         </Nav.Link>
+                        <Nav.Link href="/instancePage" className={`mb-2 main-sidebar ${window.location.pathname === '/instancePage' ? 'active-link' : ''}`} onClick={toggleSidebar}>
+                            <FontAwesomeIcon icon={faTachometerAlt} className="me-2 sidebar-icon" />
+                            <span className='sidebar-text'>
+                                InstancePage
+                            </span>
+                        </Nav.Link>
                     </ul>
                     <ul className="list-unstyled">
                         <h6 className='heading-style'>OTHERS</h6>
