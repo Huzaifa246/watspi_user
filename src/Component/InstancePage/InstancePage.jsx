@@ -110,7 +110,7 @@ function InstancePage() {
                 <Row>
                     <Col>
                         <Card className='card-box-border'>
-                            <h6 style={{ padding: "10px" }}>
+                            <h6 style={{ padding: "10px", fontWeight: "600" }}>
                                 Settings
                             </h6>
                             <Card className='card-box-border'>
@@ -178,7 +178,7 @@ function InstancePage() {
                 <Row>
                     <Col>
                         <Card className='card-box-border'>
-                            <h6 style={{ padding: "10px" }}>
+                            <h6 style={{ padding: "10px", fontWeight: "600" }}>
                                 Webhooks
                             </h6>
                             <Card className='card-box-border'>
