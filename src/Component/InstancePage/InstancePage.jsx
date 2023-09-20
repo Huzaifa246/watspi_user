@@ -191,10 +191,12 @@ function InstancePage() {
                                             <td>
                                                 <input
                                                     type="text"
+                                                    placeholder='xyz.com'
                                                     className="input_field-Prof"
                                                     style={{
                                                         border: "1px solid #d3d1d1",
-                                                        borderRadius: "5px"
+                                                        borderRadius: "5px",
+                                                        padding: "0 5px"
                                                     }}
                                                 />
                                             </td>
@@ -206,10 +208,12 @@ function InstancePage() {
                                             <td>
                                                 <input
                                                     type="text"
+                                                    placeholder='Enter text'
                                                     className="input_field-Prof"
                                                     style={{
                                                         border: "1px solid #d3d1d1",
-                                                        borderRadius: "5px"
+                                                        borderRadius: "5px",
+                                                        padding: "0 5px"
                                                     }}
                                                 />
                                             </td>
