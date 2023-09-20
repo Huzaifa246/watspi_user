@@ -24,3 +24,6 @@
 body{
   background-color: #f7f8fc !important;
 }
+.card-box-border{
+  --bs-card-border-width: none;
+}

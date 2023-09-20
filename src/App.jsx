@@ -6,6 +6,7 @@ import Setting from "./Component/SettingPage/Setting";
 import Dashboard from "./Component/Dashboard/Dashboard";
 import HeaderComponent from "./Component/header/header";
 import Sidebar from './Component/Sidebar/sidebar';
+import InstancePage from "./Component/InstancePage/InstancePage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route element={<HeaderComponent />}>
           <Route path={"/settings"} element={<Setting />} />
           <Route path={"/dashboard"} element={<Dashboard />} />
+          <Route path={"/instancePage"} element={<InstancePage />} />
 
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />

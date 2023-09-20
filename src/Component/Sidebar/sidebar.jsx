@@ -26,13 +26,17 @@ const Sidebar = () => {
             <nav id="sidebar" className={!isSidebarOpen ? "active" : ""}>
                 <div className="p-4" style={{ marginTop: "50px" }}>
                     <ul className="list-unstyled">
+                        <h6 className='heading-style'>MAIN MENU</h6>
                         <Nav.Link href="/dashboard" className={`mb-2 main-sidebar ${window.location.pathname === '/dashboard' ? 'active-link' : ''}`} onClick={toggleSidebar}>
                             <FontAwesomeIcon icon={faTachometerAlt} className="me-2 sidebar-icon" />
                             <span className='sidebar-text'>
                                 Dashboard
                             </span>
                         </Nav.Link>
-                        <Nav.Link href="/settings" className={`mb-2 main-sidebar ${window.location.pathname === '/dashboard' ? 'active-link' : ''}`} onClick={toggleSidebar}>
+                    </ul>
+                    <ul className="list-unstyled">
+                        <h6 className='heading-style'>OTHERS</h6>
+                        <Nav.Link href="/settings" className={`mb-2 main-sidebar ${window.location.pathname === '/settings' ? 'active-link' : ''}`} onClick={toggleSidebar}>
                             <FontAwesomeIcon icon={faCog} className="me-2 sidebar-icon" />
                             <span className='sidebar-text'>
                                 Setting
