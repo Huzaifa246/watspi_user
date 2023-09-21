@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from "react-redux";
-import { Card, Col, Row, Table } from 'react-bootstrap';
+import { Card, Col, Row, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faUser, faCog, faBell, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'; // Import the copy icon
 import "./Instance.css"
@@ -37,7 +37,7 @@ function InstancePage() {
                 <div style={{ marginTop: "6rem" }}></div>
                 <Row>
                     <Col>
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px",width: "99.5%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99.5%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleBasic}>
@@ -50,7 +50,7 @@ function InstancePage() {
                                         />
                                     </div>
                                     {isBasicOpen && (
-                                        <Card style={{ padding: "15px 0"}}>
+                                        <Card style={{ padding: "15px 0" }}>
                                             <Table striped className='main-table'>
                                                 <tbody>
                                                     <tr>
@@ -62,7 +62,7 @@ function InstancePage() {
                                                         </td>
                                                         <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                             <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#686868" }} />
+                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -75,7 +75,7 @@ function InstancePage() {
                                                         </td>
                                                         <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                             <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#686868" }} />
+                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -88,7 +88,7 @@ function InstancePage() {
                                                         </td>
                                                         <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                             <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#686868" }} />
+                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -101,7 +101,7 @@ function InstancePage() {
                                                         </td>
                                                         <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
                                                             <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#686868" }} />
+                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -112,7 +112,7 @@ function InstancePage() {
                                                         <td>
                                                             Panther d1
                                                         </td>
-                                                        <td>    
+                                                        <td>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -120,9 +120,11 @@ function InstancePage() {
                                                             Status
                                                         </td>
                                                         <td>
-                                                            Authorized
+                                                            <span className='authorized-badge'>
+                                                                Authorized
+                                                            </span>
                                                         </td>
-                                                        <td>    
+                                                        <td>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -132,7 +134,7 @@ function InstancePage() {
                                                         <td>
                                                             0987654321
                                                         </td>
-                                                        <td>    
+                                                        <td>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -146,17 +148,17 @@ function InstancePage() {
                         </Row>
                         {/* Settings */}
 
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px",width: "99.5%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99.5%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleSettings}>
-                                        <h6 style={{ padding: "10px",paddingTop: "20px", fontWeight: "600" }}>
+                                        <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
                                             Settings
                                         </h6>
                                         <FontAwesomeIcon
                                             icon={isSettingsOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
                                             className='arrow-icon'
-                                            
+
                                         />
                                     </div>
                                     {isSettingsOpen && (
@@ -193,10 +195,15 @@ function InstancePage() {
                                                             <input
                                                                 type="text"
                                                                 className="input_field-Prof"
+                                                                value={0}
                                                                 style={{
                                                                     borderTopRightRadius: "0",
-                                                                    borderTopLeftRadius: "0",
-                                                                    border: "1px solid #d3d1d1"
+                                                                    borderBottomRightRadius: "0",
+                                                                    borderTopLeftRadius: "5px",
+                                                                    borderBottomLeftRadius: "5px",
+                                                                    border: "1px solid #d3d1d1",
+                                                                    padding: "0 10px",
+                                                                    color: "red"
                                                                 }}
                                                             />
                                                             <button className='msec-btn'>
@@ -228,7 +235,7 @@ function InstancePage() {
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleWebhooks}>
-                                        <h6 style={{ padding: "10px",paddingTop: "20px", fontWeight: "600" }}>
+                                        <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
                                             Webhooks
                                         </h6>
                                         <FontAwesomeIcon
@@ -306,6 +313,14 @@ function InstancePage() {
                                                     </tr>
                                                 </tbody>
                                             </Table>
+                                            <div>
+                                                <Button className='save-btn'>
+                                                    Save Changes
+                                                </Button>
+                                                <Button className='cancel-btn'>
+                                                    Cancel
+                                                </Button>
+                                            </div>
                                         </Card>
                                     )}
                                 </Card>
