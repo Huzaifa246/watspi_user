@@ -42,7 +42,7 @@ p {
 }
 .acc-form-main {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .acc-form-input {
@@ -84,4 +84,8 @@ p {
 }
 .col-style:hover .color-grey{
   color: #3ab19d
+}
+.Update-btn{
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  border: none;
 }

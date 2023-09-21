@@ -9,26 +9,26 @@ function InstancePage() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
 
 
-    const [isBasicOpen, setIsBasicOpen] = useState(false);
-    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-    const [isWebhooksOpen, setIsWebhooksOpen] = useState(false);
+    const [isBasicOpen, setIsBasicOpen] = useState(true);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(true);
+    const [isWebhooksOpen, setIsWebhooksOpen] = useState(true);
 
     const toggleBasic = () => {
         setIsBasicOpen(!isBasicOpen);
-        setIsSettingsOpen(false);
-        setIsWebhooksOpen(false);
+        // setIsSettingsOpen(false);
+        // setIsWebhooksOpen(false);
     };
     const toggleSettings = () => {
         setIsSettingsOpen(!isSettingsOpen);
-        setIsBasicOpen(false);
-        setIsWebhooksOpen(false); // Close Webhooks content if open
+        // setIsBasicOpen(false);
+        // setIsWebhooksOpen(false);
     };
 
     // Function to toggle the visibility of Webhooks content
     const toggleWebhooks = () => {
         setIsWebhooksOpen(!isWebhooksOpen);
-        setIsBasicOpen(false);
-        setIsSettingsOpen(false); // Close Settings content if open
+        // setIsBasicOpen(false);
+        // setIsSettingsOpen(false);
     };
 
     return (
@@ -37,7 +37,7 @@ function InstancePage() {
                 <div style={{ marginTop: "6rem" }}></div>
                 <Row>
                     <Col>
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99.5%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleBasic}>
@@ -148,7 +148,7 @@ function InstancePage() {
                         </Row>
                         {/* Settings */}
 
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99.5%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleSettings}>
@@ -231,7 +231,7 @@ function InstancePage() {
                         </Row>
                         {/* Webhooks */}
 
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99.5%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleWebhooks}>

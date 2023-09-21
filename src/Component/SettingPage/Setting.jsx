@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./setting.css";
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faChevronDown, faLock, faBell, faCreditCard, faListAlt } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from "react-redux";
@@ -36,7 +36,7 @@ function Setting() {
       <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
         <div style={{ marginTop: "6rem" }}></div>
         <div className='main-setting'>
-          <div style={{padding: "25px", backgroundColor: "#f6f7fb"}}>
+          <div style={{ padding: "25px", backgroundColor: "#f6f7fb" }}>
             <h1 className='sett-pad-20px color-grey'>
               General Settings
             </h1>
@@ -49,14 +49,14 @@ function Setting() {
                         <FontAwesomeIcon icon={faCog} style={{
                           fontSize: "3vh"
                         }}
-                        className='color-icon-grey' 
+                          className='color-icon-grey'
                         />
                       </div>
                       <div>
                         <h6 style={{
                           fontSize: "2.5vh", fontWeight: "600", color: "#666767"
                         }}
-                        className='color-h6-grey'
+                          className='color-h6-grey'
                         >
                           Account
                         </h6>
@@ -65,7 +65,7 @@ function Setting() {
                         </p>
                       </div>
                       <div className='down-icon'>
-                        {isCardOpen && <FontAwesomeIcon icon={faChevronDown}/>}
+                        {isCardOpen && <FontAwesomeIcon icon={faChevronDown} />}
                       </div>
                     </div>
                     {isCardOpen && (
@@ -104,6 +104,11 @@ function Setting() {
                                 </Col>
                               </Row>
                             </div>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                              <Button className='Update-btn'>
+                                Save Changes
+                              </Button>
+                            </div>
                           </form>
                         </div>
                       </div>
@@ -120,7 +125,7 @@ function Setting() {
                     <h6 style={{
                       fontSize: "2.5vh", fontWeight: "600"
                     }}
-                    className='color-h6-grey'
+                      className='color-h6-grey'
                     >
                       Password
                     </h6>
@@ -132,17 +137,57 @@ function Setting() {
                     {isPassOpen && <FontAwesomeIcon icon={faChevronDown} />}
                   </div>
                 </div>
+                {isPassOpen && (
+                  <div className='below-container'>
+                    <div className='card-below-body'>
+                      <form>
+                        <Row>
+                          <Col xs={12} md={12} lg={12}>
+                            <div className='acc-form-input'>
+                              <label> Current Password </label>
+                              <input type="password" placeholder="Name..." className='input-field-setting'
+                                style={{ width: "49%" }}
+                              />
+                            </div>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <div className='acc-form-main'>
+                            <Col xs={12} md={6} lg={6}>
+                              <div className='acc-form-input'>
+                                <label> New Password </label>
+                                <input type="password" placeholder="Karachi" className='input-field-setting' />
+                              </div>
+                            </Col>
+
+                            <Col xs={12} md={6} lg={6}>
+                              <div className='acc-form-input'>
+                                <label> Confirm Password </label>
+                                <input type="password" placeholder="Pakistan" className='input-field-setting' />
+                              </div>
+                            </Col>
+                          </div>
+                        </Row>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                          <Button className='Update-btn'>
+                            Update Password
+                          </Button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                )}
               </Card>
               <Card className={`mr-tb-10px col-style card-box-border ${isNotifyOpen ? 'card-open' : ''}`}>
                 <div className='main-sett-style' onClick={toggleNotify}>
                   <div className='frst-div'>
-                    <FontAwesomeIcon icon={faBell} style={{ fontSize: "3vh" }} className='color-icon-grey'/>
+                    <FontAwesomeIcon icon={faBell} style={{ fontSize: "3vh" }} className='color-icon-grey' />
                   </div>
                   <div>
                     <h6 style={{
                       fontSize: "2.5vh", fontWeight: "600"
                     }}
-                    className='color-h6-grey'
+                      className='color-h6-grey'
                     >
                       Notification
                     </h6>
@@ -158,13 +203,13 @@ function Setting() {
               <Card className={`mr-tb-10px col-style card-box-border ${isPayOpen ? 'card-open' : ''}`}>
                 <div className='main-sett-style' onClick={togglePayCard}>
                   <div className='frst-div'>
-                    <FontAwesomeIcon icon={faCreditCard} style={{ fontSize: "3vh" }} className='color-icon-grey'/>
+                    <FontAwesomeIcon icon={faCreditCard} style={{ fontSize: "3vh" }} className='color-icon-grey' />
                   </div>
                   <div>
                     <h6 style={{
                       fontSize: "2.5vh", fontWeight: "600"
                     }}
-                    className='color-h6-grey'
+                      className='color-h6-grey'
                     >
                       Payment Cards & Billings
                     </h6>
@@ -180,13 +225,13 @@ function Setting() {
               <Card className={`mr-tb-10px col-style card-box-border ${isSubscibeOpen ? 'card-open' : ''}`}>
                 <div className='main-sett-style' onClick={toggleSubscibe}>
                   <div className='frst-div'>
-                    <FontAwesomeIcon icon={faListAlt} style={{ fontSize: "3vh" }} className='color-icon-grey'/>
+                    <FontAwesomeIcon icon={faListAlt} style={{ fontSize: "3vh" }} className='color-icon-grey' />
                   </div>
                   <div>
                     <h6 style={{
                       fontSize: "2.5vh", fontWeight: "600"
                     }}
-                    className='color-h6-grey'
+                      className='color-h6-grey'
                     >
                       Subscriptions
                     </h6>
