@@ -1,9 +1,9 @@
 .fa-thin.fa-copy::before {
   content: "\f0c5";
 }
-.border-shadow-style{
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(8,21,66,.05);
+.border-shadow-style {
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(8, 21, 66, 0.05);
 }
 .custom-switch .form-check-input:checked + .custom-control-label::before {
   background-color: #28a745; /* Bootstrap "success" color */
@@ -32,28 +32,58 @@
   gap: 0.4rem;
   padding: 0.5rem 1rem;
 }
-.li-main:hover{
+.li-main:hover {
   background-color: #ced4da;
   border-radius: 10px;
 }
-.card-drop-style{
+.card-drop-style {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.authorized-badge{
+.authorized-badge {
   color: #5baa5b !important;
   background-color: #ebffe1 !important;
   padding: 5px;
   border-radius: 15px;
 }
-.save-btn{
+.save-btn {
   background-color: #4dae4f;
   border: none;
 }
-.cancel-btn{
+.cancel-btn {
   color: #e87072;
   border: 1px solid #e87072;
   background: transparent;
   margin-left: 10px;
+}
+
+.input-instance {
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: 0.5s;
+  background-color: #e9ecef;
+}
+.input-instance:focus{
+  background-color: rgba(255, 255, 255, 0.068);
+}
+.left-input-copy{
+  color: rgb(165, 165, 165);
+  position: absolute;
+  padding-top: 15px;
+  left: 42%;
+}
+.right-input-copy{
+  color: rgb(165, 165, 165);
+  position: absolute;
+  right: 20px;
+  padding-top: 15px;
+}
+.instance-form-input{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
 }

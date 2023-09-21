@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from "react-redux";
 import { Card, Col, Row, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faUser, faCog, faBell, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'; // Import the copy icon
+import { faCopy, faUser, faCog, faBell, faChevronDown, faChevronUp, faPencil, faCheck } from '@fortawesome/free-solid-svg-icons'; // Import the copy icon
 import "./Instance.css"
 
 function InstancePage() {
@@ -12,23 +12,30 @@ function InstancePage() {
     const [isBasicOpen, setIsBasicOpen] = useState(true);
     const [isSettingsOpen, setIsSettingsOpen] = useState(true);
     const [isWebhooksOpen, setIsWebhooksOpen] = useState(true);
+    const [isInputEnabled, setInputEnabled] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+
+    const handleEnableInput = () => {
+        setInputEnabled(true);
+    };
+
+    const handleSaveInput = () => {
+        // You can add your logic to save the input value here
+        // For example, you can send it to an API or update your state.
+        console.log('Input Value:', inputValue);
+        setInputEnabled(false);
+    };
 
     const toggleBasic = () => {
         setIsBasicOpen(!isBasicOpen);
-        // setIsSettingsOpen(false);
-        // setIsWebhooksOpen(false);
     };
     const toggleSettings = () => {
         setIsSettingsOpen(!isSettingsOpen);
-        // setIsBasicOpen(false);
-        // setIsWebhooksOpen(false);
     };
 
     // Function to toggle the visibility of Webhooks content
     const toggleWebhooks = () => {
         setIsWebhooksOpen(!isWebhooksOpen);
-        // setIsBasicOpen(false);
-        // setIsSettingsOpen(false);
     };
 
     return (
@@ -50,8 +57,87 @@ function InstancePage() {
                                         />
                                     </div>
                                     {isBasicOpen && (
-                                        <Card style={{ padding: "15px 0" }}>
-                                            <Table striped className='main-table'>
+                                        <Card className='card-box-border' style={{ padding: "15px 0" }}>
+                                            <form>
+                                                <Row>
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <div className='instance-form-input'>
+                                                            <label> Name </label>
+                                                            <span>
+                                                                <input
+                                                                    type="text"
+                                                                    placeholder="Name..."
+                                                                    className={`input-instance ${isInputEnabled ? '' : 'disabled'}`}
+                                                                    value={inputValue}
+                                                                    onChange={(e) => setInputValue(e.target.value)}
+                                                                    disabled={!isInputEnabled}
+                                                                />
+                                                                {!isInputEnabled && (
+                                                                    <FontAwesomeIcon
+                                                                        icon={faPencil}
+                                                                        className="left-input-copy"
+                                                                        onClick={handleEnableInput}
+                                                                    />
+                                                                )}
+                                                                {isInputEnabled && (
+                                                                    <FontAwesomeIcon
+                                                                        icon={faCheck}
+                                                                        className="left-input-copy"
+                                                                        onClick={handleSaveInput}
+                                                                        style={{color: "#3ab19d"}}
+                                                                    />
+                                                                )}
+                                                            </span>
+                                                        </div>
+                                                    </Col>
+
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <div className='instance-form-input'>
+                                                            <label> Phone </label>
+                                                            <input type="tel" placeholder="+90123456" className='input-instance' />
+                                                        </div>
+                                                    </Col>
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <div className='instance-form-input'>
+                                                            <label> API URL </label>
+                                                            <span>
+                                                                <input type="text" placeholder="Name..." className='input-instance' />
+                                                                <FontAwesomeIcon icon={faCopy} className="left-input-copy" />
+                                                            </span>
+                                                        </div>
+                                                    </Col>
+
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <div className='instance-form-input'>
+                                                            <label> Media URL </label>
+                                                            <span>
+                                                                <input type="text" placeholder="+90123456" className='input-instance' />
+                                                                <FontAwesomeIcon icon={faCopy} className="right-input-copy" />
+                                                            </span>
+                                                        </div>
+                                                    </Col>
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <div className='instance-form-input'>
+                                                            <label> Instance ID </label>
+                                                            <span>
+                                                                <input type="text" placeholder="Instance ID" className='input-instance' />
+                                                                <FontAwesomeIcon icon={faCopy} className="left-input-copy" />
+                                                            </span>
+                                                        </div>
+                                                    </Col>
+
+                                                    <Col xs={6} md={6} lg={6}>
+                                                        <div className='instance-form-input'>
+                                                            <label> Instance Token </label>
+                                                            <span>
+                                                                <input type="text" placeholder="0987654321" className='input-instance' />
+                                                                <FontAwesomeIcon icon={faCopy} className="right-input-copy" />
+                                                            </span>
+                                                        </div>
+                                                    </Col>
+                                                </Row>
+                                            </form>
+                                            {/* <Table striped className='main-table'>
                                                 <tbody>
                                                     <tr>
                                                         <td>
@@ -138,7 +224,7 @@ function InstancePage() {
                                                         </td>
                                                     </tr>
                                                 </tbody>
-                                            </Table>
+                                            </Table> */}
                                         </Card>
                                     )}
                                 </Card>

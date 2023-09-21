@@ -116,134 +116,177 @@ function Setting() {
                   </Card>
                 </Col>
               </Row>
-              <Card className={`mr-tb-10px col-style card-box-border ${isPassOpen ? 'card-open' : ''}`}>
-                <div className='main-sett-style' onClick={togglePass}>
-                  <div className='frst-div'>
-                    <FontAwesomeIcon icon={faLock} style={{ fontSize: "3vh" }} className='color-icon-grey' />
-                  </div>
-                  <div>
-                    <h6 style={{
-                      fontSize: "2.5vh", fontWeight: "600"
-                    }}
-                      className='color-h6-grey'
-                    >
-                      Password
-                    </h6>
-                    <p className='color-grey'>
-                      Change Your Access Password
-                    </p>
-                  </div>
-                  <div className='down-icon'>
-                    {isPassOpen && <FontAwesomeIcon icon={faChevronDown} />}
-                  </div>
-                </div>
-                {isPassOpen && (
-                  <div className='below-container'>
-                    <div className='card-below-body'>
-                      <form>
-                        <Row>
-                          <Col xs={12} md={12} lg={12}>
-                            <div className='acc-form-input'>
-                              <label> Current Password </label>
-                              <input type="password" placeholder="Name..." className='input-field-setting'
-                                style={{ width: "49%" }}
-                              />
-                            </div>
-                          </Col>
-                        </Row>
-                        <Row>
-                          <div className='acc-form-main'>
-                            <Col xs={12} md={6} lg={6}>
-                              <div className='acc-form-input'>
-                                <label> New Password </label>
-                                <input type="password" placeholder="Karachi" className='input-field-setting' />
-                              </div>
-                            </Col>
-
-                            <Col xs={12} md={6} lg={6}>
-                              <div className='acc-form-input'>
-                                <label> Confirm Password </label>
-                                <input type="password" placeholder="Pakistan" className='input-field-setting' />
-                              </div>
-                            </Col>
-                          </div>
-                        </Row>
-                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                          <Button className='Update-btn'>
-                            Update Password
-                          </Button>
-                        </div>
-                      </form>
+              <Row>
+                <Col md={12} lg={12}>
+                  <Card className={`mr-tb-10px col-style card-box-border ${isPassOpen ? 'card-open' : ''}`}>
+                    <div className='main-sett-style' onClick={togglePass}>
+                      <div className='frst-div'>
+                        <FontAwesomeIcon icon={faLock} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                      </div>
+                      <div>
+                        <h6 style={{
+                          fontSize: "2.5vh", fontWeight: "600"
+                        }}
+                          className='color-h6-grey'
+                        >
+                          Password
+                        </h6>
+                        <p className='color-grey'>
+                          Change Your Access Password
+                        </p>
+                      </div>
+                      <div className='down-icon'>
+                        {isPassOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </Card>
-              <Card className={`mr-tb-10px col-style card-box-border ${isNotifyOpen ? 'card-open' : ''}`}>
-                <div className='main-sett-style' onClick={toggleNotify}>
-                  <div className='frst-div'>
-                    <FontAwesomeIcon icon={faBell} style={{ fontSize: "3vh" }} className='color-icon-grey' />
-                  </div>
-                  <div>
-                    <h6 style={{
-                      fontSize: "2.5vh", fontWeight: "600"
-                    }}
-                      className='color-h6-grey'
-                    >
-                      Notification
-                    </h6>
-                    <p>
-                      Manage Your Notification of account
-                    </p>
-                  </div>
-                  <div className='down-icon'>
-                    {isNotifyOpen && <FontAwesomeIcon icon={faChevronDown} />}
-                  </div>
-                </div>
-              </Card>
-              <Card className={`mr-tb-10px col-style card-box-border ${isPayOpen ? 'card-open' : ''}`}>
-                <div className='main-sett-style' onClick={togglePayCard}>
-                  <div className='frst-div'>
-                    <FontAwesomeIcon icon={faCreditCard} style={{ fontSize: "3vh" }} className='color-icon-grey' />
-                  </div>
-                  <div>
-                    <h6 style={{
-                      fontSize: "2.5vh", fontWeight: "600"
-                    }}
-                      className='color-h6-grey'
-                    >
-                      Payment Cards & Billings
-                    </h6>
-                    <p className='color-grey'>
-                      Manage Your Payment cards and check your account
-                    </p>
-                  </div>
-                  <div className='down-icon'>
-                    {isPayOpen && <FontAwesomeIcon icon={faChevronDown} />}
-                  </div>
-                </div>
-              </Card>
-              <Card className={`mr-tb-10px col-style card-box-border ${isSubscibeOpen ? 'card-open' : ''}`}>
-                <div className='main-sett-style' onClick={toggleSubscibe}>
-                  <div className='frst-div'>
-                    <FontAwesomeIcon icon={faListAlt} style={{ fontSize: "3vh" }} className='color-icon-grey' />
-                  </div>
-                  <div>
-                    <h6 style={{
-                      fontSize: "2.5vh", fontWeight: "600"
-                    }}
-                      className='color-h6-grey'
-                    >
-                      Subscriptions
-                    </h6>
-                    <p className='color-grey'>
-                      Manage Your Monthly account subsriptions
-                    </p>
-                  </div>
-                  <div className='down-icon'>
-                    {isSubscibeOpen && <FontAwesomeIcon icon={faChevronDown} />}
-                  </div>
-                </div>
-              </Card>
+                    {isPassOpen && (
+                      <div className='below-container'>
+                        <div className='card-below-body'>
+                          <form>
+                            <Row>
+                              <Col xs={12} md={12} lg={12}>
+                                <div className='acc-form-input'>
+                                  <label> Current Password </label>
+                                  <input type="password" placeholder="Name..." className='input-field-setting'
+                                    style={{ width: "49%" }}
+                                  />
+                                </div>
+                              </Col>
+                            </Row>
+                            <Row>
+                              <div className='acc-form-main'>
+                                <Col xs={12} md={6} lg={6}>
+                                  <div className='acc-form-input'>
+                                    <label> New Password </label>
+                                    <input type="password" placeholder="Karachi" className='input-field-setting' />
+                                  </div>
+                                </Col>
+
+                                <Col xs={12} md={6} lg={6}>
+                                  <div className='acc-form-input'>
+                                    <label> Confirm Password </label>
+                                    <input type="password" placeholder="Pakistan" className='input-field-setting' />
+                                  </div>
+                                </Col>
+                              </div>
+                            </Row>
+                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                              <Button className='Update-btn'>
+                                Update Password
+                              </Button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12} lg={12}>
+                  <Card className={`mr-tb-10px col-style card-box-border ${isNotifyOpen ? 'card-open' : ''}`}>
+                    <div className='main-sett-style' onClick={toggleNotify}>
+                      <div className='frst-div'>
+                        <FontAwesomeIcon icon={faBell} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                      </div>
+                      <div>
+                        <h6 style={{
+                          fontSize: "2.5vh", fontWeight: "600"
+                        }}
+                          className='color-h6-grey'
+                        >
+                          Notification
+                        </h6>
+                        <p>
+                          Manage Your Notification of account
+                        </p>
+                      </div>
+                      <div className='down-icon'>
+                        {isNotifyOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                      </div>
+                    </div>
+                  </Card>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={12} lg={12}>
+                  <Card className={`mr-tb-10px col-style card-box-border ${isPayOpen ? 'card-open' : ''}`}>
+                    <div className='main-sett-style' onClick={togglePayCard}>
+                      <div className='frst-div'>
+                        <FontAwesomeIcon icon={faCreditCard} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                      </div>
+                      <div>
+                        <h6 style={{
+                          fontSize: "2.5vh", fontWeight: "600"
+                        }}
+                          className='color-h6-grey'
+                        >
+                          Payment Cards & Billings
+                        </h6>
+                        <p className='color-grey'>
+                          Manage Your Payment cards and check your account
+                        </p>
+                      </div>
+                      <div className='down-icon'>
+                        {isPayOpen &&
+                          <div>
+                            <Button className='invoice-btn'>
+                              Invoices
+                            </Button>
+                            <Button className='Add-new-btn'>
+                              Add new Card
+                            </Button>
+                          </div>
+                        }
+                      </div>
+                    </div>
+                    <div>
+                      {isPayOpen && (
+                        <div style={{ padding: "10px" }}>
+                          <form id='form-file-upload'>
+                            <label id="label-file-upload" for="input-file-upload">
+                              <div>
+                                <h6>Add Card Payment</h6>
+                                <p style={{ padding: "10px 0" }}>You have no payments cards yet. Click on the button below to add the first one.</p>
+                                <Button className='Add-new-btn'>
+                                  Add new Card
+                                </Button>
+                              </div>
+                            </label>
+                          </form>
+                        </div>
+                      )}
+                    </div>
+                  </Card>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={12} lg={12}>
+                  <Card className={`mr-tb-10px col-style card-box-border ${isSubscibeOpen ? 'card-open' : ''}`}>
+                    <div className='main-sett-style' onClick={toggleSubscibe}>
+                      <div className='frst-div'>
+                        <FontAwesomeIcon icon={faListAlt} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                      </div>
+                      <div>
+                        <h6 style={{
+                          fontSize: "2.5vh", fontWeight: "600"
+                        }}
+                          className='color-h6-grey'
+                        >
+                          Subscriptions
+                        </h6>
+                        <p className='color-grey'>
+                          Manage Your Monthly account subsriptions
+                        </p>
+                      </div>
+                      <div className='down-icon'>
+                        {isSubscibeOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                      </div>
+                    </div>
+                  </Card>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>

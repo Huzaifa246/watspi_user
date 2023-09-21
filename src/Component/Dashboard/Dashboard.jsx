@@ -7,12 +7,13 @@ import { useSelector } from "react-redux";
 
 function Dashboard() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
-    
+
     return (
         <>
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
+                <div style={{ marginTop: "6rem" }}></div>
                 <div className='main-bg-pd-10px'>
-                    <Card className='card-border-none'>
+                    <Card className='card-border-none br-10'>
                         <div style={{ padding: "20px" }}>
                             <h4 style={{ fontWeight: "600" }}>Area Spaline Chart</h4>
                         </div>

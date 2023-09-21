@@ -8,3 +8,6 @@
 .card-border-none{
     --bs-card-border-width: 0.5px grey;
 }
+.br-10{
+    border-radius: 10px !important;
+}

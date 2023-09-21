@@ -26,7 +26,7 @@ function ChartPage() {
             labels: {
                 low: 0,
                 offsetX: 0,
-                show: true,
+                show: false,
             },
             axisBorder: {
                 low: 0,
@@ -38,7 +38,7 @@ function ChartPage() {
             },
         },
         yaxis: {
-            show: true,
+            show: false,
         },
         grid: {
             show: false,
@@ -70,7 +70,9 @@ function ChartPage() {
     return (
         <>
             <Card className='Chart-card-style'>
-                <Chart options={options} series={series} type="area" height={270} />
+                <Chart options={options} series={series} type="area" height={270} width={"105%"} style={{
+                    transform: "translateX(-2.5%) translateY(44px)",
+                }} />
             </Card>
         </>
     )

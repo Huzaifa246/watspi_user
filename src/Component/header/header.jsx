@@ -44,7 +44,7 @@ const HeaderComponent = () => {
         <>
             <Navbar bg="light" expand="lg" className={`fixed-top main-Nav ${!isSidebarOpen ? 'sidebar-open' : ''}`}>
 
-                <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" style={{ backgroundColor: 'white' }}>
+                <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
                     <Nav className="ml-auto profile-info">
                         <div className="language-dropdown">
                             <Select

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Nav, Button } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faCog } from '@fortawesome/free-solid-svg-icons';
 import './sidebar.css';
 import { useSelector, useDispatch } from "react-redux";
 import { setSideBarState } from '../../store/sideBarSlice';
-
-
+import img1 from "../../../images/watspilogo.png"
 const Sidebar = () => {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
     const dispatch = useDispatch();
@@ -19,12 +18,12 @@ const Sidebar = () => {
         <>
             {!isSidebarOpen && (
                 <div className="its-heading-logo">
-                    {/* <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="ITS Logo" className="its-logo" /> */}
-                    <h1 className="its-heading">WatsApi</h1>
+                    <img src={img1} alt="ITS Logo" className="its-logo" />
+                    {/* <h1 className="its-heading">WatsApi</h1> */}
                 </div>
             )}
             <nav id="sidebar" className={!isSidebarOpen ? "active" : ""}>
-                <div className="p-4" style={{ marginTop: "50px" }}>
+                <div className="p-4" style={{ marginTop: "6vh" }}>
                     <ul className="list-unstyled">
                         <h6 className='heading-style'>MAIN MENU</h6>
                         <Nav.Link href="/dashboard" className={`mb-2 main-sidebar ${window.location.pathname === '/dashboard' ? 'active-link' : ''}`} onClick={toggleSidebar}>

@@ -36,11 +36,6 @@
   transition: color 0.3s ease;
 }
 .active-link {
-  /* background: linear-gradient(
-    69deg,
-    rgba(79, 40, 195, 1) 35%,
-    rgba(206, 62, 124, 1) 100%
-  ); */
   background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
   border-radius: 14px;
   padding: 10px;
@@ -133,10 +128,12 @@
 }
 
 .its-logo {
-  width: 35px;
-  height: 35px;
+  width: 120px;
+  height: 40px;
   margin-right: 10px;
   z-index: 999;
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  border-radius: 5px;
 }
 
 .its-heading {

@@ -2,19 +2,20 @@ import React from 'react'
 import { Card, Button, Table } from 'react-bootstrap';
 import "./messages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle, faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 function Messages() {
     return (
         <>
             {/* main-card */}
-            <Card className='card-msg-border' style={{ padding: "20px 30px" }}>
+            <Card className='card-msg-border' style={{ padding: "20px 30px", borderRadius: "10px" }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', padding: "10px 0" }}>
                     <h4 style={{ fontWeight: "600" }}>
-                        WhatsApp Numbers
+                        WhatsApp Instances
                     </h4>
                     <div>
-                        <Button style={{ backgroundColor: "#44acf6", padding: "3px 8px", border: "none" }}>
+                        <Button className='msgbtn-color'>
                             Add Number
                         </Button>
                     </div>
@@ -27,15 +28,16 @@ function Messages() {
                                     className='image-style'
                                 />
                                 <div className='Profile-flex'>
-                                    <span style={{ fontWeight: "600" }}>
-                                        Jenny USA
-                                    </span>
-                                    <span>
-                                        +098765432
-                                    </span>
-                                    <span className='connected-badge'>
+                                    <div style={{ fontWeight: "600" }}>
+                                        <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#23ad4f", paddingRight: "2px" }} />
+                                        Jennysglow USA
+                                    </div>
+                                    <div>
+                                        +098765432198
+                                    </div>
+                                    <div className='connected-badge'>
                                         Connected
-                                    </span>
+                                    </div>
                                 </div>
                             </div>
                             <div className='main-status'>
@@ -43,7 +45,7 @@ function Messages() {
                                     <span className='font-style-status'>
                                         2
                                     </span>
-                                    <span>
+                                    <span className='cl-light-grey'>
                                         pending Chats
                                     </span>
                                 </div>
@@ -51,7 +53,7 @@ function Messages() {
                                     <span className='font-style-status'>
                                         1000
                                     </span>
-                                    <span>
+                                    <span className='cl-light-grey'>
                                         Group Members
                                     </span>
                                 </div>
@@ -59,7 +61,7 @@ function Messages() {
                                     <span className='font-style-status'>
                                         0
                                     </span>
-                                    <span>
+                                    <span className='cl-light-grey'>
                                         Archive Chats
                                     </span>
                                 </div>
@@ -67,7 +69,7 @@ function Messages() {
                                     <span className='font-style-status'>
                                         999
                                     </span>
-                                    <span>
+                                    <span className='cl-light-grey'>
                                         Groups
                                     </span>
                                 </div>
@@ -75,7 +77,7 @@ function Messages() {
                                     <span className='font-style-status'>
                                         100
                                     </span>
-                                    <span>
+                                    <span className='cl-light-grey'>
                                         Contacts
                                     </span>
                                 </div>
@@ -83,21 +85,21 @@ function Messages() {
                                     <span className='font-style-status'>
                                         10
                                     </span>
-                                    <span>
+                                    <span className='cl-light-grey'>
                                         Active Chats
                                     </span>
                                 </div>
                             </div>
                             <div className='icon-style-flex'>
-                                <FontAwesomeIcon icon={faEnvelope} className='pd-lr-10' /> {/* Message icon */}
-                                <FontAwesomeIcon icon={faCog} className='pd-lr-10' /> {/* Settings icon */}
-                                <FontAwesomeIcon icon={faChartBar} className='pd-lr-10' />
+                                <FontAwesomeIcon icon={faEnvelope} className='pd-lr-10 svg-style' />
+                                <FontAwesomeIcon icon={faCog} className='pd-lr-10 svg-style' />
+                                <FontAwesomeIcon icon={faChartBar} className='pd-lr-10 svg-style' />
                             </div>
                         </div>
                     </div>
                 </Card>
             </Card>
-            <Card style={{ marginTop: "20px", padding: "10px" }} className='card-msg-border'>
+            <Card style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }} className='card-msg-border'>
                 <div className='Main-Msgs'>
                     <h4>
                         Messages <FontAwesomeIcon icon={faInfoCircle} className='info-icon' />
@@ -107,7 +109,7 @@ function Messages() {
                         <Button className='filter-btn'>
                             Filter
                         </Button>
-                        <Button style={{ backgroundColor: "#44acf6", padding: "3px 8px", border: "none" }}>
+                        <Button className='msgbtn-color'>
                             Add Number
                         </Button>
                     </div>
@@ -116,16 +118,16 @@ function Messages() {
                     <Table striped className='main-table'>
                         <thead className='table-heading-style'>
                             <tr>
-                                <th>
+                                <th style={{ width: "15%" }}>
                                     Whatsapp
                                 </th>
-                                <th>
+                                <th style={{ width: "15%" }}>
                                     Target
                                 </th>
-                                <th>
+                                <th style={{ width: "15%" }}>
                                     Status
                                 </th>
-                                <th>
+                                <th style={{ width: "10%" }}>
                                     Author
                                 </th>
                                 <th>
@@ -139,13 +141,15 @@ function Messages() {
                                     Jenny USA
                                 </td>
                                 <td>
+                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
                                     +09876543
                                 </td>
                                 <td>
-                                    Hour Ago
+                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                    2 Hour Ago
                                 </td>
                                 <td>
-                                    xyz
+                                    xyzxyz
                                 </td>
                                 <td style={{ display: 'flex', justifyContent: 'space-between' }}>
                                     Choose option
@@ -159,16 +163,18 @@ function Messages() {
                                     Jenny USA
                                 </td>
                                 <td>
+                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
                                     +09876543
                                 </td>
                                 <td>
-                                    Hour Ago
+                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                    an Hour Ago
                                 </td>
                                 <td>
-                                    xyz
+                                    xyzxyz
                                 </td>
                                 <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    Choose option
+                                    Choose option messages messages
                                     <span>
                                         <FontAwesomeIcon icon={faEllipsisV} />
                                     </span>
@@ -179,16 +185,18 @@ function Messages() {
                                     Jenny USA
                                 </td>
                                 <td>
+                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
                                     +09876543
                                 </td>
                                 <td>
-                                    Hour Ago
+                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                    6 Hour Ago
                                 </td>
                                 <td>
-                                    xyz
+                                    xyzxyz
                                 </td>
                                 <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    Choose option
+                                    Choose option Lorem ipsum dolor sit amet.
                                     <span>
                                         <FontAwesomeIcon icon={faEllipsisV} />
                                     </span>
