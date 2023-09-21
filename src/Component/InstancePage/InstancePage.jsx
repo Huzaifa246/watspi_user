@@ -36,46 +36,21 @@ function InstancePage() {
             <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div style={{ marginTop: "6rem" }}></div>
                 <Row>
-                    <Col className="col-4">
-                        <Card className='card-box-border'>
-                            <ul className='ul-main'>
-                                <li className='li-main' onClick={toggleBasic}>
-                                    <span>
-                                        <FontAwesomeIcon icon={faUser} />
-                                    </span>
-                                    Basic Info
-                                </li>
-                                <li className='li-main' onClick={toggleSettings}>
-                                    <span>
-                                        <FontAwesomeIcon icon={faCog} />
-                                    </span>
-                                    Setting
-                                </li>
-                                <li className='li-main' onClick={toggleWebhooks}>
-                                    <span>
-                                        <FontAwesomeIcon icon={faBell} />
-                                    </span>
-                                    Webhooks
-                                </li>
-                            </ul>
-                        </Card>
-                    </Col>
-                    <Col className="col-8">
-                        <Row style={{ marginBottom: "20px" }}>
+                    <Col>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px",width: "99.5%" }}>
                             <Col>
-                                <Card className='card-box-border'>
-                                    <div className='card-drop-style'>
+                                <Card className='card-box-border border-shadow-style'>
+                                    <div className='card-drop-style' onClick={toggleBasic}>
                                         <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
                                             Basic Info
                                         </h6>
                                         <FontAwesomeIcon
                                             icon={isBasicOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
                                             className='arrow-icon'
-                                            onClick={toggleBasic}
                                         />
                                     </div>
                                     {isBasicOpen && (
-                                        <Card>
+                                        <Card style={{ padding: "15px 0"}}>
                                             <Table striped className='main-table'>
                                                 <tbody>
                                                     <tr>
@@ -137,6 +112,8 @@ function InstancePage() {
                                                         <td>
                                                             Panther d1
                                                         </td>
+                                                        <td>    
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
@@ -145,6 +122,8 @@ function InstancePage() {
                                                         <td>
                                                             Authorized
                                                         </td>
+                                                        <td>    
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
@@ -152,6 +131,8 @@ function InstancePage() {
                                                         </td>
                                                         <td>
                                                             0987654321
+                                                        </td>
+                                                        <td>    
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -165,17 +146,17 @@ function InstancePage() {
                         </Row>
                         {/* Settings */}
 
-                        <Row style={{ marginBottom: "20px" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px",width: "99.5%" }}>
                             <Col>
-                                <Card className='card-box-border'>
-                                    <div className='card-drop-style'>
-                                        <h6 style={{ padding: "10px", fontWeight: "600" }}>
+                                <Card className='card-box-border border-shadow-style'>
+                                    <div className='card-drop-style' onClick={toggleSettings}>
+                                        <h6 style={{ padding: "10px",paddingTop: "20px", fontWeight: "600" }}>
                                             Settings
                                         </h6>
                                         <FontAwesomeIcon
                                             icon={isSettingsOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
                                             className='arrow-icon'
-                                            onClick={toggleSettings}
+                                            
                                         />
                                     </div>
                                     {isSettingsOpen && (
@@ -243,17 +224,16 @@ function InstancePage() {
                         </Row>
                         {/* Webhooks */}
 
-                        <Row style={{ marginBottom: "20px" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99.5%" }}>
                             <Col>
-                                <Card className='card-box-border'>
-                                    <div className='card-drop-style'>
-                                        <h6 style={{ padding: "10px", fontWeight: "600" }}>
+                                <Card className='card-box-border border-shadow-style'>
+                                    <div className='card-drop-style' onClick={toggleWebhooks}>
+                                        <h6 style={{ padding: "10px",paddingTop: "20px", fontWeight: "600" }}>
                                             Webhooks
                                         </h6>
                                         <FontAwesomeIcon
                                             icon={isWebhooksOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
                                             className='arrow-icon'
-                                            onClick={toggleWebhooks}
                                         />
                                     </div>
                                     {isWebhooksOpen && (

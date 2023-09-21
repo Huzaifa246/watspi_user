@@ -17,7 +17,7 @@
   left: 0;
 }
 .sidebar-icon {
-  background: #5c61f2;
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
   padding: 3px;
   margin-right: 10px;
   border-radius: 5px;
@@ -31,17 +31,17 @@
 }
 .sidebar-text {
   color: #fff;
-  letter-spacing: 0.7px;
   text-transform: capitalize;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 .active-link {
-  background: linear-gradient(
+  /* background: linear-gradient(
     69deg,
     rgba(79, 40, 195, 1) 35%,
     rgba(206, 62, 124, 1) 100%
-  );
+  ); */
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
   border-radius: 14px;
   padding: 10px;
 }
@@ -57,11 +57,17 @@
 
 /* Add styles for inactive links */
 .main-sidebar .sidebar-text {
-  color: #5c61f2;
+  /* color: #5c61f2; */
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text; /* This property is used for text color inside the gradient */
+  color: transparent;
 }
 
 .main-sidebar .sidebar-text:hover {
-  color: #5c61f2;
+  /* color: #5c61f2; */
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+  -webkit-background-clip: text; /* This property is used for text color inside the gradient */
+  color: transparent;
 }
 /* Add styles for active links */
 .main-sidebar.active-link .sidebar-text {
@@ -170,12 +176,13 @@
 }
 
 .heading-style {
-  background: linear-gradient(
+  /* background: linear-gradient(
     277.06deg,
     rgb(230, 64, 103) 9.52%,
     rgb(89, 38, 240) 62.22%,
     rgb(72, 40, 160) 119.38%
-  );
+  ); */
+  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
   -webkit-background-clip: text; /* This property is used for text color inside the gradient */
   color: transparent; /* Set text color to transparent */
   width: fit-content;

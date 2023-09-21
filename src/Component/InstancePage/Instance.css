@@ -1,6 +1,10 @@
 .fa-thin.fa-copy::before {
   content: "\f0c5";
 }
+.border-shadow-style{
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(8,21,66,.05);
+}
 .custom-switch .form-check-input:checked + .custom-control-label::before {
   background-color: #28a745; /* Bootstrap "success" color */
   border-color: #28a745; /* Bootstrap "success" color */
