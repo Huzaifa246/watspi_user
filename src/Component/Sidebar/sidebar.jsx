@@ -38,6 +38,12 @@ const Sidebar = () => {
                                 InstancePage
                             </span>
                         </Nav.Link>
+                        <Nav.Link href="/broadCast" className={`mb-2 main-sidebar ${window.location.pathname === '/broadCast' ? 'active-link' : ''}`} onClick={toggleSidebar}>
+                            <FontAwesomeIcon icon={faTachometerAlt} className="me-2 sidebar-icon" />
+                            <span className='sidebar-text'>
+                                BroadCast
+                            </span>
+                        </Nav.Link>
                     </ul>
                     <ul className="list-unstyled">
                         <h6 className='heading-style'>OTHERS</h6>

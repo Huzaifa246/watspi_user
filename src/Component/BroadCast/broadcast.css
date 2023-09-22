@@ -1,0 +1,74 @@
+.Drop-btnstyle {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  width: 100%;
+  border: 1px solid #3ab19d;
+  letter-spacing: 5px;
+  font-size: 2vh;
+  margin-top: 22px;
+  padding: 10px 0;
+}
+.form-check .form-check-input {
+    margin-left: 0.5em;
+}
+.form-check-input:checked {
+    background-color: #3ab19d;
+    border-color: #3ab19d;
+}
+.dropdown-menu {
+  min-width: 100%;
+}
+
+.text-area-main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.text-upload{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px 16px;
+    border-radius: 2px;
+    border: 1px solid var(--gray-500, #ADB5BD);
+    cursor: pointer;
+}
+#text-upload:focus{
+    border: none;
+}
+.card-stylebdcast{
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    min-width: 30%;
+    margin: 0 10px;
+}
+.message-templates-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap; 
+    max-width: 100%;
+    padding: 10px 0;
+  }
+  
+  .message-templates-container::-webkit-scrollbar {
+    height: 5px; /* Set the scrollbar width */
+  }
+  
+  /* Customize the scrollbar track */
+  .message-templates-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Set the track color */
+  }
+  
+  /* Customize the scrollbar thumb (the draggable part) */
+  .message-templates-container::-webkit-scrollbar-thumb {
+    background: #3ab19d; /* Set the thumb color */
+    border-radius: 50px;
+  }

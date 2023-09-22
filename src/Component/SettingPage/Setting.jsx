@@ -284,6 +284,23 @@ function Setting() {
                         {isSubscibeOpen && <FontAwesomeIcon icon={faChevronDown} />}
                       </div>
                     </div>
+                    <div>
+                      {isSubscibeOpen && (
+                        <div style={{ padding: "10px" }}>
+                          <form id='form-file-upload'>
+                            <label id="label-file-upload" for="input-file-upload">
+                              <div>
+                                <h6>Add Card Payment For Subscription</h6>
+                                <p style={{ padding: "10px 0" }}>You have no payments cards yet. Click on the button below to add the first one.</p>
+                                <Button className='Add-new-btn'>
+                                  Add new Card
+                                </Button>
+                              </div>
+                            </label>
+                          </form>
+                        </div>
+                      )}
+                    </div>
                   </Card>
                 </Col>
               </Row>

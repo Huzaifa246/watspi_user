@@ -7,6 +7,7 @@ import Dashboard from "./Component/Dashboard/Dashboard";
 import HeaderComponent from "./Component/header/header";
 import Sidebar from './Component/Sidebar/sidebar';
 import InstancePage from "./Component/InstancePage/InstancePage";
+import BroadCast from './Component/BroadCast/broadCast';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path={"/settings"} element={<Setting />} />
           <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/instancePage"} element={<InstancePage />} />
+          <Route path={"/broadCast"} element={<BroadCast />} />
 
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />

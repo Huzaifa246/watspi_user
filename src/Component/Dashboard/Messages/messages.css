@@ -28,7 +28,7 @@
   color: white;
   padding: 0px 6px;
   border-radius: 15px;
-  max-width: 96px;
+  max-width: 100px;
 }
 .main-status {
   display: flex;
@@ -63,7 +63,7 @@
   justify-content: space-between;
   padding: 10px;
 }
-.tr{
+.tr {
   background-color: white;
 }
 .th {
@@ -77,32 +77,58 @@
   border: none;
   -webkit-box-shadow: 0px 0px 1px 1px rgb(226 224 224 / 75%);
 }
-.filter-btn:hover{
-  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+.filter-btn:hover {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
   color: white;
 }
 
-.search-icon{
+.search-icon {
   color: #adb0b4;
 }
-.info-icon{
+.info-icon {
   color: #4780d3;
   padding: 0 5px;
   height: 2.5vh;
 }
-.table-striped>tbody>tr:nth-of-type(odd)>* {
+.table-striped > tbody > tr:nth-of-type(odd) > * {
   --bs-table-bg-type: rgb(255 218 218 / 5%);
 }
-.cl-light-grey{
+.cl-light-grey {
   color: #a9a4a1;
   font-size: 1.5vh;
 }
-.msgbtn-color{
-  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+.msgbtn-color {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
   padding: 3px 8px;
   border: none;
 }
-.svg-style:hover{
-  background: linear-gradient(to right, var(--color-secondary), var(--color-primary));
+.svg-style:hover {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
   color: white;
+}
+@media screen and (max-width: 1200px) {
+  .Main-Profile-flex {
+    flex-direction: column; /* Change flex direction for smaller screens */
+  }
+  .cl-light-grey {
+    font-size: 1vh;
+  }
+  .main-status-col {
+    padding: 0 10px;
+  }
+  .font-style-status {
+    font-size: 1rem;
+  }
 }
