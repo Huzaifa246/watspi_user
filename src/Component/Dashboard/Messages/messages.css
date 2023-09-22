@@ -28,7 +28,8 @@
   color: white;
   padding: 0px 6px;
   border-radius: 15px;
-  max-width: 100px;
+  max-width: 120px;
+  text-align: center;
 }
 .main-status {
   display: flex;
