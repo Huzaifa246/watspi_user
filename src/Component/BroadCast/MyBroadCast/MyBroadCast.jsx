@@ -85,7 +85,7 @@ function MyBroadCast() {
                     <Table striped className='main-table'>
                         <thead>
                             <tr>
-                                <th style={{ width: '10%' }}>S.No</th>
+                                <th>S.No</th>
                                 <th>FirstName</th>
                                 <th>LastName</th>
                                 <th style={{ display: 'flex', justifyContent: 'center' }}>Phone</th>
