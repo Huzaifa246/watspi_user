@@ -71,3 +71,6 @@
     font-weight: 600;
     letter-spacing: 0.6px;
 }
+.Tb-modal-pd-rem .table>:not(caption)>*>*{
+    padding: 0rem !important;
+}

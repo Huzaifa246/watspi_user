@@ -82,7 +82,7 @@ function MyBroadCast() {
                     <Modal.Title>Contact List</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: "0", width: "100%" }}>
-                    <Table style={{ padding: "0", width: "100%" }}>
+                    <Table className='Tb-modal-pd-rem'>
                         <thead>
                             <tr>
                                 <th>S.No</th>
