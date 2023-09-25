@@ -9,7 +9,6 @@
   letter-spacing: 5px;
   font-size: 2vh;
   margin-top: 22px;
-  padding: 10px 0;
 }
 .form-check .form-check-input {
     margin-left: 0.5em;
@@ -47,8 +46,8 @@
     padding: 10px;
     border: 1px solid grey;
     border-radius: 5px;
-    min-width: 30%;
-    margin: 0 10px;
+    min-width: 31%;
+    margin-right: 10px;
 }
 .message-templates-container {
     display: flex;

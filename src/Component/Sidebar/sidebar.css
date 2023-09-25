@@ -60,7 +60,6 @@
 
 /* Add styles for inactive links */
 .main-sidebar .sidebar-text {
-  /* color: #5c61f2; */
   background: linear-gradient(
     to right,
     var(--color-secondary),
@@ -68,10 +67,11 @@
   );
   -webkit-background-clip: text; /* This property is used for text color inside the gradient */
   color: transparent;
+  display: flex;
+
 }
 
 .main-sidebar .sidebar-text:hover {
-  /* color: #5c61f2; */
   background: linear-gradient(
     to right,
     var(--color-secondary),
@@ -79,6 +79,7 @@
   );
   -webkit-background-clip: text; /* This property is used for text color inside the gradient */
   color: transparent;
+  display: flex;
 }
 /* Add styles for active links */
 .main-sidebar.active-link .sidebar-text {
@@ -187,8 +188,8 @@
 }
 
 @media (min-width: 950px) and (max-width: 1250px) {
-  .sidebar-toggle.active {
-    left: 11%;
+  .sidebar-toggle .active {
+    left: 14%;
   }
 }
 
@@ -206,4 +207,14 @@
   font-size: 0.8rem;
   white-space: nowrap;
   opacity: 1;
+}
+
+.submenuItem {
+  color: #3aa9ab;
+}
+.submenuItem:hover {
+  color: #3aa9ab;
+}
+.submenuItem.active-link{
+  color: white;
 }

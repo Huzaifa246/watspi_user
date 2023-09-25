@@ -234,7 +234,7 @@ function BroadCast() {
                                                                 className='input-instance'
                                                                 value={template?.textMessage}
                                                                 onChange={(e) => handleTemplateChange(e, index)}
-                                                                style={{ border: 'none', backgroundColor: 'white', resize: 'none' }}
+                                                                style={{ border: 'none', backgroundColor: 'white', resize: 'none', height: "10vh" }}
                                                             />
                                                             <Button
                                                                 className='Add-new-btn'

@@ -8,6 +8,7 @@ import HeaderComponent from "./Component/header/header";
 import Sidebar from './Component/Sidebar/sidebar';
 import InstancePage from "./Component/InstancePage/InstancePage";
 import BroadCast from './Component/BroadCast/broadCast';
+import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/instancePage"} element={<InstancePage />} />
           <Route path={"/broadCast"} element={<BroadCast />} />
+          <Route path={"/mybroadCast"} element={<MyBroadCast />} />
 
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />
