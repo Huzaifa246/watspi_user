@@ -86,8 +86,8 @@ function MyBroadCast() {
                         <thead>
                             <tr>
                                 <th style={{ width: '10%' }}>S.No</th>
-                                <th style={{ paddingLeft: '10px' }}>FirstName</th>
-                                <th style={{ paddingLeft: '10px' }}>LastName</th>
+                                <th>FirstName</th>
+                                <th>LastName</th>
                                 <th style={{ display: 'flex', justifyContent: 'center' }}>Phone</th>
                                 <th>
                                     <button className='btn-contact-style'
@@ -231,7 +231,7 @@ function MyBroadCast() {
                                     <th style={{ width: "20%" }}>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "16%" }}>
+                                    <th style={{ width: "19%" }}>
                                         TechOn Ventures
                                     </th>
                                     <th>
@@ -252,7 +252,7 @@ function MyBroadCast() {
                                     <th style={{ width: "20%" }}>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "16%" }}>
+                                    <th style={{ width: "19%" }}>
                                         TechOn Ventures
                                     </th>
                                     <th>
@@ -273,7 +273,7 @@ function MyBroadCast() {
                                     <th style={{ width: "20%" }}>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "16%" }}>
+                                    <th style={{ width: "19%" }}>
                                         TechOn Ventures
                                     </th>
                                     <th>
@@ -294,7 +294,7 @@ function MyBroadCast() {
                                     <th style={{ width: "20%" }}>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "16%" }}>
+                                    <th style={{ width: "19%" }}>
                                         TechOn Ventures
                                     </th>
                                     <th>
@@ -315,7 +315,7 @@ function MyBroadCast() {
                                     <th style={{ width: "20%" }}>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "16%" }}>
+                                    <th style={{ width: "19%" }}>
                                         TechOn Ventures
                                     </th>
                                     <th>
@@ -336,7 +336,7 @@ function MyBroadCast() {
                                     <th style={{ width: "20%" }}>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "16%" }}>
+                                    <th style={{ width: "19%" }}>
                                         TechOn Ventures
                                     </th>
                                     <th>
