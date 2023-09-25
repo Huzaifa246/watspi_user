@@ -71,7 +71,8 @@
     font-weight: 600;
     letter-spacing: 0.6px;
 }
-.Tb-modal-pd-rem .table>:not(caption)>*>*{
+/*  .table>:not(caption)>*>* */
+.Tb-modal-pd-rem{
     padding: 0rem !important;
 }
 .modal-content{
