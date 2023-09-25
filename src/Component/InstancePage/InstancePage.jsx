@@ -42,9 +42,7 @@ function InstancePage() {
         <>
             <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div style={{ marginTop: "6rem" }}></div>
-                <Row>
-                    <Col>
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "98%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleBasic}>
@@ -234,7 +232,7 @@ function InstancePage() {
                         </Row>
                         {/* Settings */}
 
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "98%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleSettings}>
@@ -317,7 +315,7 @@ function InstancePage() {
                         </Row>
                         {/* Webhooks */}
 
-                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "99%" }}>
+                        <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "98%" }}>
                             <Col>
                                 <Card className='card-box-border border-shadow-style'>
                                     <div className='card-drop-style' onClick={toggleWebhooks}>
@@ -412,8 +410,6 @@ function InstancePage() {
                                 </Card>
                             </Col>
                         </Row>
-                    </Col>
-                </Row>
             </div >
         </>
     )
