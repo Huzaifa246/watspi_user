@@ -82,13 +82,13 @@ function MyBroadCast() {
                     <Modal.Title>Contact List</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: "0", width: "100%" }}>
-                    <Table striped className='main-table'>
+                    <Table style={{ padding: "0", width: "100%" }}>
                         <thead>
                             <tr>
                                 <th>S.No</th>
                                 <th>FirstName</th>
                                 <th>LastName</th>
-                                <th style={{ display: 'flex', justifyContent: 'center' }}>Phone</th>
+                                <th>Phone</th>
                                 <th>
                                     <button className='btn-contact-style'
                                         onClick={openMessagesModal}
