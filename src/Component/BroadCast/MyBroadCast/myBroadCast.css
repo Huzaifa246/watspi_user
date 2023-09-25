@@ -74,3 +74,6 @@
 .Tb-modal-pd-rem .table>:not(caption)>*>*{
     padding: 0rem !important;
 }
+.modal-content{
+    width: auto;
+}

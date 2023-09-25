@@ -13,6 +13,7 @@
     padding: 5px;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
   /* .user-icon:hover{
     background-color: #3ab19d;
@@ -51,9 +52,10 @@
   }
   
   .dropdown-menu {
-    min-width: 120px;
+    min-width: 120px !important;
     text-align: center;
     border-radius: 8px;
+    cursor: pointer;
   }
   
   .dropdown-item {
