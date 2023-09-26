@@ -5,11 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Setting from "./Component/SettingPage/Setting";
 import Dashboard from "./Component/Dashboard/Dashboard";
 import HeaderComponent from "./Component/header/header";
-import Sidebar from './Component/Sidebar/sidebar';
 import InstancePage from "./Component/InstancePage/InstancePage";
 import BroadCast from './Component/BroadCast/broadCast';
 import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
-import MyContact from "./Component/MyContactpAGE/myContact";
+import MyContact from "./Component/MyContactPage/MyContact";
 
 
 
