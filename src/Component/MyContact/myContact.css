@@ -1,0 +1,14 @@
+.My-form-input{
+    display: flex;
+    padding: 10px;
+    justify-content: flex-end;
+}
+.myexecl-btn{
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: 0.5s;
+    background: linear-gradient( to right, var(--color-secondary), var(--color-primary) );
+    color: white;
+}

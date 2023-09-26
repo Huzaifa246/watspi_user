@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faCog, faUsers, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faCog, faUsers, faAngleUp, faAngleDown, faAddressBook } from '@fortawesome/free-solid-svg-icons';
 import './sidebar.css';
 import { useSelector, useDispatch } from "react-redux";
 import { setSideBarState } from '../../store/sideBarSlice';
@@ -31,15 +31,15 @@ const Sidebar = () => {
                 <div className="p-4" style={{ marginTop: "6vh" }}>
                     <ul className="list-unstyled">
                         <h6 className='heading-style'>MAIN MENU</h6>
-                        <Nav.Link href="/dashboard" className={`mb-2 main-sidebar ${window.location.pathname === '/dashboard' ? 'active-link' : ''}`} 
-                        onClick={toggleSidebar}>
+                        <Nav.Link href="/dashboard" className={`mb-2 main-sidebar ${window.location.pathname === '/dashboard' ? 'active-link' : ''}`}
+                            onClick={toggleSidebar}>
                             <FontAwesomeIcon icon={faTachometerAlt} className="me-2 sidebar-icon" />
                             <span className='sidebar-text'>
                                 Dashboard
                             </span>
                         </Nav.Link>
                         <Nav.Link href="/instancePage" className={`mb-2 main-sidebar ${window.location.pathname === '/instancePage' ? 'active-link' : ''}`}
-                         onClick={toggleSidebar} >
+                            onClick={toggleSidebar} >
                             <FontAwesomeIcon icon={faTachometerAlt} className="me-2 sidebar-icon" />
                             <span className='sidebar-text'>
                                 InstancePage
@@ -64,6 +64,14 @@ const Sidebar = () => {
                                 My BroadCast
                             </Nav.Link>
                         </Nav>
+                        <Nav.Link href="/myContact" className={`mb-2 main-sidebar ${window.location.pathname === '/myContact' ? 'active-link' : ''}`}
+                            onClick={toggleSidebar} >
+                            <FontAwesomeIcon icon={faAddressBook} className="me-2 sidebar-icon" />
+                            <span className='sidebar-text'>
+                                My Contact
+                            </span>
+                        </Nav.Link>
+
                     </ul>
                     <ul className="list-unstyled">
                         <h6 className='heading-style'>OTHERS</h6>
