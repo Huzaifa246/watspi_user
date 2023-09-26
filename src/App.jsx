@@ -9,7 +9,8 @@ import Sidebar from './Component/Sidebar/sidebar';
 import InstancePage from "./Component/InstancePage/InstancePage";
 import BroadCast from './Component/BroadCast/broadCast';
 import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
-import MyContact from "./Component/MyContact/myContact";
+import MyContact from "./Component/MyContactPage/MyContact";
+
 
 const App = () => {
   return (

@@ -1,13 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Col, Row, Dropdown, Button, Table } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faPencil,
-    faCheck,
-    faPaperclip,
-    faPlus,
-} from '@fortawesome/free-solid-svg-icons';
 import './myContact.css';
 import * as XLSX from 'xlsx';
 
