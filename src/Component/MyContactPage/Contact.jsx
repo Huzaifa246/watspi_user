@@ -6,8 +6,6 @@ import * as XLSX from 'xlsx';
 import { FaSearch } from 'react-icons/fa';
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
-// import Slider from 'react-rangeslider'
-// import 'react-rangeslider/lib/index.css'
 
 function MyContact() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
