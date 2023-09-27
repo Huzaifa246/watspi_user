@@ -1,14 +1,122 @@
-.My-form-input{
-    display: flex;
-    padding: 10px;
-    justify-content: flex-end;
+.My-form-input {
+  display: flex;
+  justify-content: space-between;
 }
-.myexecl-btn{
+.myexecl-btn {
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: 0.5s;
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  box-shadow: rgba(89, 38, 240, 0.17) 0px 11.9007px 8.65504px;
+  color: white;
+}
+.my-Context-style {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0.146323204px 25px 67px rgba(0, 0, 0, 0.07);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
+.selected-btn {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  box-shadow: rgba(89, 38, 240, 0.17) 0px 11.9007px 8.65504px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  min-width: 120px;
+  padding: 7px;
+  position: relative;
+  transition: 0.25s;
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+.range-values {
+  display: flex;
+  justify-content: space-around;
+}
+.unselected-dropdown {
+  background: rgb(248, 248, 248);
+  box-shadow: none;
+  color: rgb(132, 132, 132);
+  border: none;
+  min-width: 120px;
+  padding: 7px;
+  border-radius: 12px;
+}
+.unselected-dropdown:hover {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  border-radius: 12px;
+  position: relative;
+  transition: 0.25s;
+}
+/* Add these styles to your CSS file */
+.search-container {
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4.3275208473px 35.7020454407px 0 rgba(0,0,0,.06);
+    display: flex;
+    padding: 0px 13px;
+    margin-right: 10px;
+}
+
+.search-icon {
+    color: #999;
+    margin-right: 8px;
+}
+.input-search{
+    border: none;
+    padding: 12px 15px;
+}
+.input-search:focus{
+    border: none !important;
+    outline: none;
+}
+.style-myContactCard{
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0.146323204px 25px 67px rgba(0,0,0,.07);
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    min-width: 1000px;
+    padding: 16px 19px;
     width: 100%;
-    border: 1px solid #eee;
-    padding: 10px 14px;
-    border-radius: 8px;
-    transition: 0.5s;
-    background: linear-gradient( to right, var(--color-secondary), var(--color-primary) );
-    color: white;
+}
+.tbody-style-card{
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.04);
+    border-top: 1px solid rgba(0,0,0,.04);
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,.04);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+#range-slider-gradient {
+  height: 24px;
+  border-radius: 12px;
 }
