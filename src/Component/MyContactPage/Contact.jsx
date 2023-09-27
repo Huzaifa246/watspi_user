@@ -88,14 +88,22 @@ function MyContact() {
     };
 
     const handleFilterAgeChange = (newValues) => {
+        console.log('New Age Values:', newValues); // Log the newValues
         // Filter data based on age range
         const filteredData = excelData?.filter((row) => {
-            const age = parseInt(row[3]); // Assuming age is at index 3 in your data
-            return age >= newValues[0] && age <= newValues[1];
+            const age = parseInt(row[3]); // Age is at index 3 in your data
+            if (!isNaN(age)) {
+                return age >= newValues[0] && age <= newValues[1];
+            }
+            return false; // Exclude rows with invalid age values
         });
-
+    
+        console.log('Filtered Data:', filteredData); // Log the filteredData
         setFilteredData(filteredData);
     };
+    
+    
+    
     
 
 
@@ -159,9 +167,13 @@ function MyContact() {
                                                                 id="range-slider-gradient"
                                                                 className="margin-lg"
                                                                 onChange={(newValues) => {
+                                                                    console.log('RangeSlider onChange:', newValues);
                                                                     setRangeValues(newValues);
                                                                     handleFilterAgeChange(newValues);
                                                                 }}
+                                                                // onClick={() => {
+                                                                //     console.log('Slider Clicked'); // Add this line
+                                                                // }}
                                                             />
 
 {/*                                                             <div className='range-values'>

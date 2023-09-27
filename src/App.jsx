@@ -9,6 +9,8 @@ import InstancePage from "./Component/InstancePage/InstancePage";
 import BroadCast from './Component/BroadCast/broadCast';
 import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
 import MyContact from "./Component/MyContactPage/Contact";
+import Groups from "./Component/GroupsComp/Groups";
+import CreateGroup from "./Component/GroupsComp/CreateGroup";
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path={"/broadCast"} element={<BroadCast />} />
           <Route path={"/mybroadCast"} element={<MyBroadCast />} />
           <Route path={"/myContact"} element={<MyContact />} /> 
+          <Route path={"/groups"} element={<Groups />} /> 
+          <Route path={"/creategroup"} element={<CreateGroup />} /> 
 
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />

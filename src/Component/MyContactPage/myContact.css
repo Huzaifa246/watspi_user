@@ -100,7 +100,7 @@
     justify-content: space-between;
     margin-bottom: 1rem;
     min-width: 1000px;
-    padding: 16px 19px;
+    padding: 16px 10px;
     width: 100%;
 }
 .tbody-style-card{
@@ -125,4 +125,6 @@
 }
 .range-slider .range-slider__thumb {
   background: linear-gradient( to right, var(--color-secondary), var(--color-primary) ) !important;
+  width: 17px;
+  height: 17px;
 }

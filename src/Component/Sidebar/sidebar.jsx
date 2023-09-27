@@ -71,6 +71,13 @@ const Sidebar = () => {
                                 My Contact
                             </span>
                         </Nav.Link>
+                        <Nav.Link href="/groups" className={`mb-2 main-sidebar ${window.location.pathname === '/groups' ? 'active-link' : ''}`}
+                            onClick={toggleSidebar} >
+                            <FontAwesomeIcon icon={faUsers} className="me-2 sidebar-icon" />
+                            <span className='sidebar-text'>
+                                Groups
+                            </span>
+                        </Nav.Link>
 
                     </ul>
                     <ul className="list-unstyled">
