@@ -1,13 +1,13 @@
 .Drop-btnstyle {
-  background: linear-gradient(
-    to right,
-    var(--color-secondary),
-    var(--color-primary)
-  );
+  background-color: #e9ecef;
+  color: black;
   width: 100%;
   border: none;
   letter-spacing: 5px;
   padding: 10px 14px;
+}
+.Drop-btnstyle:hover{
+  background-color: #3ab19d;
 }
 .form-check .form-check-input {
     margin-left: 0.5em;
