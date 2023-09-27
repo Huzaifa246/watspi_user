@@ -117,6 +117,12 @@
     border-radius: 2px;
 }
 #range-slider-gradient {
-  height: 24px;
-  border-radius: 12px;
+  height: 10px;
+}
+
+.range-slider .range-slider__range {
+  background: transparent !important;
+}
+.range-slider .range-slider__thumb {
+  background: linear-gradient( to right, var(--color-secondary), var(--color-primary) ) !important;
 }

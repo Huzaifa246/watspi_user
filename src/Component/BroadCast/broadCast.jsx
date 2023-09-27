@@ -172,12 +172,13 @@ function BroadCast() {
 
                                         <Col xs={4} md={4} lg={4}>
                                             <div className='instance-form-input'>
+                                                <label> Select Instance </label>
                                                 <Dropdown>
                                                     <Dropdown.Toggle variant='primary' id='dropdown-basic' className='Drop-btnstyle'>
                                                         Select Instance
                                                     </Dropdown.Toggle>
 
-                                                    <Dropdown.Menu>
+                                                    <Dropdown.Menu style={{ width: "100%" }}>
                                                         {instanceOptions.map((option, index) => (
                                                             <div key={index} className='form-check'>
                                                                 <input
@@ -205,6 +206,7 @@ function BroadCast() {
                                                         accept='.xls, .xlsx'
                                                         onChange={handleFileSelect}
                                                         className='input-instance'
+                                                        style={{ padding: "8px 14px" }}
                                                     />
                                                 </span>
                                             </div>
@@ -289,10 +291,10 @@ function BroadCast() {
                                 <tbody>
                                     {excelData?.map((row, index) => (
                                         <tr key={index}>
+                                            <td>{index + 1}</td>
                                             <td>{row[0]}</td> {/* FirstName */}
                                             <td>{row[1]}</td> {/* LastName */}
-                                            <td>{row[2]}</td> {/* Phone */}
-                                            <td style={{ display: 'flex', justifyContent: 'center' }}>{row[3]}</td>
+                                            <td style={{ display: 'flex', justifyContent: 'center' }}>{row[6]}</td> {/* Phone */}
                                         </tr>
                                     ))}
                                 </tbody>

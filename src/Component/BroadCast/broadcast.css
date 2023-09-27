@@ -5,10 +5,9 @@
     var(--color-primary)
   );
   width: 100%;
-  border: 1px solid #3ab19d;
+  border: none;
   letter-spacing: 5px;
-  font-size: 2vh;
-  margin-top: 22px;
+  padding: 10px 14px;
 }
 .form-check .form-check-input {
     margin-left: 0.5em;
@@ -16,9 +15,6 @@
 .form-check-input:checked {
     background-color: #3ab19d;
     border-color: #3ab19d;
-}
-.dropdown-menu {
-  min-width: 100%;
 }
 
 .text-area-main{

@@ -96,6 +96,7 @@ function MyContact() {
 
         setFilteredData(filteredData);
     };
+    
 
 
     const handleFilterGenderChange = (selectedGender) => {
@@ -163,10 +164,9 @@ function MyContact() {
                                                                 }}
                                                             />
 
-                                                            <div className='range-values'>
+{/*                                                             <div className='range-values'>
                                                                 <span>{rangeValues[0]}</span> - <span>{rangeValues[1]}</span>
-                                                            </div>
-
+                                                            </div> */}
 
                                                         </Dropdown.Menu>
                                                     </Dropdown>
@@ -244,50 +244,52 @@ function MyContact() {
                 </Row>
                 <Row style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                     <Col>
-                        {/* {filteredData?.length === 0 ? (
+                        {filteredData?.length === 0 ? (
                             <>
                                 <p style={{ textAlign: 'center', fontWeight: 'bold' }}>No Data Found!!!</p>
                             </>
-                        ) : ( */}
-                        <Card className='card-box-border border-shadow-style style-myContactCard'>
-                            <Table style={{ marginBottom: "0" }}>
-                                <thead>
-                                    <tr style={{ color: "#888" }}>
-                                        <th style={{ width: "5%" }}>S.No</th>
-                                        <th style={{ width: "15%", textAlign: 'center' }}>Date & Time</th>
-                                        <th style={{ width: "10%", paddingLeft: '10px' }}>FirstName</th>
-                                        <th style={{ width: "10%", paddingLeft: '10px' }}>LastName</th>
-                                        <th style={{ width: "10%", paddingLeft: '10px' }}>Email</th>
-                                        <th style={{ width: "5%", paddingLeft: '10px' }}>Age</th>
-                                        <th style={{ width: "10%", paddingLeft: '10px' }}>Gender</th>
-                                        <th style={{ width: "10%", paddingLeft: '10px' }}>Country</th>
-                                        <th style={{ width: "10%", paddingLeft: '10px' }}>Phone</th>
-                                        <th style={{ width: "15%", paddingLeft: '10px' }}>Description</th>
-                                    </tr>
-                                </thead>
-                            </Table>
-                        </Card>
-                        {filteredData?.map((row, index) => (
-                            <Card className='card-box-border border-shadow-style tbody-style-card'>
-                                <Table style={{ marginBottom: "0" }}>
-                                    <tbody>
-                                        <tr key={index}>
-                                            <td style={{ width: "4%", textAlign: 'center' }}>{index + 1}</td>
-                                            <td style={{ width: "15%", textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
-                                            <td style={{ width: "10%", textAlign: 'center' }}>{row[0]}</td>
-                                            <td style={{ width: "10%", textAlign: 'center' }}>{row[1]}</td>
-                                            <td style={{ width: "10%" }}>{row[2]}</td>
-                                            <td style={{ width: "5%" }}>{row[3]}</td>
-                                            <td style={{ width: "10%" }}>{row[4]}</td>
-                                            <td style={{ width: "10%" }}>{row[5]}</td>
-                                            <td style={{ width: "10%" }}>{row[6]}</td>
-                                            <td style={{ width: "15%" }}>{row[7]}</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                            </Card>
-                        ))}
-                        {/* )} */}
+                        ) : (
+                            <>
+                                <Card className='card-box-border border-shadow-style style-myContactCard'>
+                                    <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                        <thead>
+                                            <tr style={{ color: "#888" }}>
+                                                <th style={{ width: "5%" }}>S.No</th>
+                                                <th style={{ width: "15%", textAlign: 'center' }}>Date & Time</th>
+                                                <th style={{ width: "10%", paddingLeft: '10px' }}>FirstName</th>
+                                                <th style={{ width: "10%", paddingLeft: '10px' }}>LastName</th>
+                                                <th style={{ width: "10%", paddingLeft: '10px' }}>Email</th>
+                                                <th style={{ width: "5%", paddingLeft: '10px' }}>Age</th>
+                                                <th style={{ width: "10%", paddingLeft: '10px' }}>Gender</th>
+                                                <th style={{ width: "10%", paddingLeft: '10px' }}>Country</th>
+                                                <th style={{ width: "10%", paddingLeft: '10px' }}>Phone</th>
+                                                <th style={{ width: "15%", paddingLeft: '10px' }}>Description</th>
+                                            </tr>
+                                        </thead>
+                                    </Table>
+                                </Card>
+                                {filteredData?.map((row, index) => (
+                                    <Card className='card-box-border border-shadow-style tbody-style-card'>
+                                        <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                            <tbody>
+                                                <tr key={index}>
+                                                    <td style={{ width: "4%", textAlign: 'center' }}>{index + 1}</td>
+                                                    <td style={{ width: "15%", textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
+                                                    <td style={{ width: "10%", textAlign: 'center' }}>{row[0]}</td>
+                                                    <td style={{ width: "10%", textAlign: 'center' }}>{row[1]}</td>
+                                                    <td style={{ width: "12%" }}>{row[2]}</td>
+                                                    <td style={{ width: "5%" }}>{row[3]}</td>
+                                                    <td style={{ width: "10%" }}>{row[4]}</td>
+                                                    <td style={{ width: "10%" }}>{row[5]}</td>
+                                                    <td style={{ width: "10%" }}>{row[6]}</td>
+                                                    <td style={{ width: "15%" }}>{row[7]}</td>
+                                                </tr>
+                                            </tbody>
+                                        </Table>
+                                    </Card>
+                                ))}
+                            </>
+                        )}
                     </Col>
                 </Row >
             </div >
