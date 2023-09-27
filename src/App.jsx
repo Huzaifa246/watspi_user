@@ -10,8 +10,6 @@ import BroadCast from './Component/BroadCast/broadCast';
 import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
 import MyContact from "./Component/MyContactPage/Contact";
 
-
-
 const App = () => {
   return (
     <BrowserRouter>
