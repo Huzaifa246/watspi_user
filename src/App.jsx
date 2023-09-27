@@ -8,7 +8,7 @@ import HeaderComponent from "./Component/header/header";
 import InstancePage from "./Component/InstancePage/InstancePage";
 import BroadCast from './Component/BroadCast/broadCast';
 import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
-import MyContact from "./Component/MyContactPage/MyContact";
+import MyContact from "./Component/MyContactPage/Contact";
 
 
 
