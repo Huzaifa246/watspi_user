@@ -98,6 +98,8 @@ p {
   background: transparent;
   border: 1px solid #3ab19d;
   color: black;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 .Add-new-btn {
   background: linear-gradient(
@@ -106,8 +108,7 @@ p {
     var(--color-primary)
   );
   border: 1px solid #3ab19d;
-  margin-left: 5px;
-  font-size: 2vh;
+  font-size: 1.5vh;
 }
 
 #form-file-upload {
@@ -127,4 +128,26 @@ p {
   border: 1px solid var(--gray-500, #ADB5BD);
   background: var(--gray-100, #F8F9FA);
   cursor: pointer;
+}
+@media screen and (max-width: 820px) {
+  .main-setting {
+    padding: 0;
+  }
+  .sett-pad-20px {
+    padding: 0;
+  }
+  .invoice-Addnew-main{
+    display: flex;
+    flex-direction: column;
+  }
+  .cur-pass{
+    width: 100% !important;
+  }
+  .set-main{
+    padding: 0 !important;
+  }
+  .row>* {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
 }

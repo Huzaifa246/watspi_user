@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
   margin: 0px;
@@ -6,24 +6,29 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 :root {
   --color-primary: #3aa9ab;
   --color-secondary: #3ab19d;
-  --color-white: #FFF;
+  --color-white: #fff;
   --box-shadow-primary: #3aa9ab25;
 }
 
-.trades-open{
+.trades-open {
   width: 85% !important;
   margin-left: auto;
   margin-top: 0 !important;
 }
-body{
+body {
   background-color: #f7f8fc !important;
 }
-.card-box-border{
+.card-box-border {
   --bs-card-border-width: none;
+}
+@media screen and (max-width: 820px) {
+  .mob-row {
+    margin-left: 0 !important;
+  }
 }

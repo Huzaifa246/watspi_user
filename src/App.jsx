@@ -19,16 +19,19 @@ const App = () => {
         {/* <Route path={"/"} element={<div>No content here</div>} /> */}
         <Route path={"/"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
+
+        <Route path={"/settings"} element={<Setting />} />
+        <Route path={"/groups"} element={<Groups />} />
+        <Route path={"/creategroup"} element={<CreateGroup />} />
+        <Route path={"/myContact"} element={<MyContact />} />
         
         <Route element={<HeaderComponent />}>
-          <Route path={"/settings"} element={<Setting />} />
+
           <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/instancePage"} element={<InstancePage />} />
           <Route path={"/broadCast"} element={<BroadCast />} />
           <Route path={"/mybroadCast"} element={<MyBroadCast />} />
-          <Route path={"/myContact"} element={<MyContact />} /> 
-          <Route path={"/groups"} element={<Groups />} /> 
-          <Route path={"/creategroup"} element={<CreateGroup />} /> 
+         
 
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />

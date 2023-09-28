@@ -33,10 +33,10 @@ function Setting() {
   };
   return (
     <>
-      <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
+      {/* <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}> */}
         <div style={{ marginTop: "6rem" }}></div>
         <div className='main-setting'>
-          <div style={{ padding: "25px", backgroundColor: "#f6f7fb" }}>
+          <div className='set-main' style={{ padding: "25px", backgroundColor: "#f6f7fb" }}>
             <h1 className='sett-pad-20px color-grey'>
               General Settings
             </h1>
@@ -147,7 +147,7 @@ function Setting() {
                               <Col xs={12} md={12} lg={12}>
                                 <div className='acc-form-input'>
                                   <label> Current Password </label>
-                                  <input type="password" placeholder="Name..." className='input-field-setting'
+                                  <input type="password" placeholder="Name..." className='input-field-setting cur-pass'
                                     style={{ width: "49%" }}
                                   />
                                 </div>
@@ -230,7 +230,7 @@ function Setting() {
                       </div>
                       <div className='down-icon'>
                         {isPayOpen &&
-                          <div>
+                          <div className='invoice-Addnew-main'>
                             <Button className='invoice-btn'>
                               Invoices
                             </Button>
@@ -307,7 +307,7 @@ function Setting() {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </>
   )
 }
