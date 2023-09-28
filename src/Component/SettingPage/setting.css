@@ -108,7 +108,6 @@ p {
     var(--color-primary)
   );
   border: 1px solid #3ab19d;
-  font-size: 1.5vh;
 }
 
 #form-file-upload {
@@ -149,5 +148,11 @@ p {
   .row>* {
     padding-right: 0px;
     padding-left: 0px;
+  }
+  .invoice-btn{
+    width: 100%;
+  }
+  .Add-new-btn{
+    width: 100%;
   }
 }

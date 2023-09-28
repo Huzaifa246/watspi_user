@@ -175,6 +175,13 @@
     justify-content: space-around;
     flex-wrap: wrap;
   }
+  .th-font-style{
+    font-size: 1.1vh;
+    font-weight: 500;
+  }
+  .tbody-font-style{
+    font-size: 1.1vh;
+  }
 }
 @media screen and (max-width: 520px) {
   .Contact-flex-style {

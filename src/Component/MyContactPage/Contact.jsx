@@ -266,11 +266,11 @@ function MyContact() {
                                 <Card className='card-box-border border-shadow-style style-myContactCard' >
                                     <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
                                         <thead>
-                                            <tr style={{ color: "#888" }}>
+                                            <tr style={{ color: "#888" }} className='th-font-style'>
                                                 <th style={{ width: "5%" }}>No</th>
                                                 <th style={{ width: "15%", textAlign: 'center' }}>Date & Time</th>
-                                                <th>FirstName</th>
-                                                <th>LastName</th>
+                                                <th>Name</th>
+                                                {/* <th>LastName</th> */}
                                                 <th>Email</th>
                                                 <th>Age</th>
                                                 <th>Gender</th>
@@ -283,13 +283,13 @@ function MyContact() {
                                 </Card>
                                 {filteredData?.map((row, index) => (
                                     <Card className='card-box-border border-shadow-style tbody-style-card'>
-                                        <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                            <tbody>
+                                        <Table style={{ marginBottom: "0", tableLayout: "s" }}>
+                                            <tbody className='tbody-font-style'>
                                                 <tr key={index}>
                                                     <td style={{ width: "4%", textAlign: 'center' }}>{index + 1}</td>
                                                     <td style={{ width: "15%", textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
                                                     <td style={{ textAlign: 'center' }}>{row[0]}</td>
-                                                    <td style={{ textAlign: 'center' }}>{row[1]}</td>
+                                                    {/* <td style={{ textAlign: 'center' }}>{row[1]}</td> */}
                                                     <td style={{ width: "12%" }}>{row[2]}</td>
                                                     <td style={{ width: "5%" }}>{row[3]}</td>
                                                     <td>{row[4]}</td>

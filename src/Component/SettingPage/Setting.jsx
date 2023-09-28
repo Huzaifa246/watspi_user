@@ -218,7 +218,7 @@ function Setting() {
                       </div>
                       <div>
                         <h6 style={{
-                          fontSize: "2.5vh", fontWeight: "600"
+                          fontSize: "2.2vh", fontWeight: "600"
                         }}
                           className='color-h6-grey'
                         >
@@ -270,7 +270,7 @@ function Setting() {
                       </div>
                       <div>
                         <h6 style={{
-                          fontSize: "2.5vh", fontWeight: "600"
+                          fontSize: "2.2vh", fontWeight: "600"
                         }}
                           className='color-h6-grey'
                         >
