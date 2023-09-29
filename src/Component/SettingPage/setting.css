@@ -179,4 +179,7 @@ p {
   .btn-style-end{
     padding-right: 10px;
   }
+  .col-style{
+    margin-left: 10px;
+  }
 }
