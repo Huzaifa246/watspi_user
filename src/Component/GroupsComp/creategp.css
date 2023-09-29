@@ -18,16 +18,13 @@
     padding: 10px;
   }
   .tr-create-gp {
-    font-size: 1.5vh;
+    font-size: 1.4vh;
   }
   .th-checkbox {
     width: 8%;
   }
   .tr-font-style {
-    font-size: 1.4vh;
-  }
-  .row > * {
-    padding-right: 0px;
+    font-size: 1.3vh;
   }
   .instance-form-input {
     display: flex;
@@ -38,9 +35,21 @@
     display: block;
   }
   .card-box-border {
-    padding: 10px 0px;
+    padding: 10px;
   }
-  .Save-CG-btn{
+  .Save-CG-btn {
     margin: 10px 0;
+  }
+  .row > * {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+}
+@media screen and (max-width: 420px) {
+  .tr-create-gp {
+    font-size: 1.3vh;
+  }
+  .tr-font-style {
+    font-size: 1.2vh;
   }
 }
