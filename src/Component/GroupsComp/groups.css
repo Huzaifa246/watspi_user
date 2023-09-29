@@ -110,7 +110,7 @@
 
 @media screen and (max-width: 360px) {
   .search-groups {
-    padding: 10px;
+    padding: 5px;
   }
   .sr-flex {
     display: block;

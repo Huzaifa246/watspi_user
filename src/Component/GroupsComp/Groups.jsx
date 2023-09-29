@@ -25,8 +25,7 @@ function Groups() {
                                     <Row>
                                         <Col>
                                             <div className='My-form-input'>
-                                                <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-
+                                                <div>
                                                 </div>
                                                 <div className='sr-flex'>
                                                     <div className="search-groups">
