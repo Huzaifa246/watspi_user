@@ -53,7 +53,7 @@ function Groups() {
                     </Card>
                 </Col>
             </Row>
-            <Row  className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "99%" }}>
+            <Row className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "99%" }}>
                 <Col>
                     <Card className='card-box-border border-shadow-style style-myContactCard'>
                         <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
@@ -62,7 +62,7 @@ function Groups() {
                                     <th className='td-Sno'>No</th>
                                     <th>Date</th>
                                     <th>Name</th>
-                                    <th>No of Contacts</th>
+                                    <th>Contacts</th>
                                     <th style={{ width: "30%" }}>Description</th>
                                 </tr>
                             </thead>

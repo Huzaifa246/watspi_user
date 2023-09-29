@@ -41,7 +41,7 @@ function Setting() {
               General Settings
             </h1>
             <div className='sett-pad-20px'>
-              <Row>
+              <Row style={{ width: "99%" }}>
                 <Col md={12} lg={12}>
                   <Card className={`mr-tb-10px col-style card-box-border ${isCardOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleCard}>
@@ -112,7 +112,7 @@ function Setting() {
                   </Card>
                 </Col>
               </Row>
-              <Row>
+              <Row style={{ width: "99%" }}>
                 <Col md={12} lg={12}>
                   <Card className={`mr-tb-10px col-style card-box-border ${isPassOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={togglePass}>
@@ -178,7 +178,7 @@ function Setting() {
                   </Card>
                 </Col>
               </Row>
-              <Row>
+              <Row style={{ width: "99%" }}>
                 <Col md={12} lg={12}>
                   <Card className={`mr-tb-10px col-style card-box-border ${isNotifyOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleNotify}>
@@ -205,7 +205,7 @@ function Setting() {
                 </Col>
               </Row>
 
-              <Row>
+              <Row style={{ width: "99%" }}>
                 <Col md={12} lg={12}>
                   <Card className={`mr-tb-10px col-style card-box-border ${isPayOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={togglePayCard}>
@@ -257,7 +257,7 @@ function Setting() {
                   </Card>
                 </Col>
               </Row>
-              <Row>
+              <Row style={{ width: "99%" }}>
                 <Col md={12} lg={12}>
                   <Card className={`mr-tb-10px col-style card-box-border ${isSubscibeOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleSubscibe}>
