@@ -182,4 +182,10 @@ p {
   .mr-tb-10px {
     margin: 10px 0 10px 10px;
   }
+  .below-container {
+    padding-left: 20px;
+  }
+  .card-below-body {
+    padding: 1.5rem 0.5rem;
+  }
 }
