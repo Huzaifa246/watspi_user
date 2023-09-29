@@ -140,7 +140,7 @@ p {
 }
 @media screen and (max-width: 820px) {
   .main-setting {
-    padding: 0 5px;
+    padding: 0 0 0 5px;
   }
   .sett-pad-20px {
     padding: 0;
@@ -178,5 +178,8 @@ p {
   }
   .btn-style-end{
     padding-right: 10px;
+  }
+  .mr-tb-10px {
+    margin: 10px 0 10px 10px;
   }
 }
