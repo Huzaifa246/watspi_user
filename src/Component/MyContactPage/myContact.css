@@ -156,12 +156,11 @@
   }
   .unselected-dropdown {
     min-width: 70px;
+    padding: 4px;
   }
   .selected-btn {
     min-width: 70px;
-  }
-  .myexecl-btn {
-    padding: 4px 6px;
+    padding: 4px;
   }
   .unselected-dropdown {
     min-width: 70px;
