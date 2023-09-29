@@ -100,7 +100,7 @@
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 360px) {
   .search-groups {
     padding: 10px;
   }
