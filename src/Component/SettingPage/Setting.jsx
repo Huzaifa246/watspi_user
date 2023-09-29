@@ -100,7 +100,7 @@ function Setting() {
                                 </Col>
                               </Row>
                             </div>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <div className='btn-style-end'>
                               <Button className='Update-btn'>
                                 Save Changes
                               </Button>
@@ -166,7 +166,7 @@ function Setting() {
                                 </Col>
                               </div>
                             </Row>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <div className='btn-style-end'>
                               <Button className='Update-btn'>
                                 Update Password
                               </Button>

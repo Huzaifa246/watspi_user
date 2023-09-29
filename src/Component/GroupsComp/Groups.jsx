@@ -39,7 +39,7 @@ function Groups() {
                                                 <a href="/creategroup">
                                                     <button
                                                         type='button'
-                                                        className='myexecl-btn'
+                                                        className='grps-btn'
                                                     >
                                                         Create Group
                                                     </button>
