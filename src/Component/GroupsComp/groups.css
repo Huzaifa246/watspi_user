@@ -92,11 +92,19 @@
   .grps-btn {
     font-size: 1.5vh;
   }
-  .mr-10{
+  .mr-10 {
     margin: 0 5px;
   }
-  .style-myContactCard{
+  .style-myContactCard {
     padding: 10px 5px !important;
+  }
+  .sr-flex {
+    display: flex;
+    width: 95%;
+  }
+  .grps-btn {
+    font-size: 1.3vh;
+    padding: 8px;
   }
 }
 
