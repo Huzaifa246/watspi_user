@@ -128,8 +128,8 @@
     var(--color-secondary),
     var(--color-primary)
   ) !important;
-  width: 17px;
-  height: 17px;
+  width: 17px !important;
+  height: 17px !important;
 }
 .Contact-flex-style {
   display: flex;
@@ -139,9 +139,13 @@
 .search-flex-main {
   display: flex;
 }
-.Not-Found-style{
+.Not-Found-style {
   text-align: center;
   font-weight: bold;
+}
+.country-flag{
+  height: 1.5vh;
+  padding-right: 5px;
 }
 @media screen and (max-width: 820px) {
   .width-100 {
@@ -199,13 +203,23 @@
     padding: 6px;
     font-size: 1.5vh;
   }
-  .Not-Found-style{
+  .Not-Found-style {
     font-size: 1.6vh;
   }
+  .country-flag{
+    height: 1.2vh;
+    padding-right: 5px;
+  }
+  .menu-Country{
+    min-width: 80px !important;
+    text-align: center;
+    font-size: 1.4vh;
+  }
 }
+/* 520 */
 @media screen and (max-width: 520px) {
   .Contact-flex-style {
-    gap: 0 !important;
+    gap: 0 0.3rem !important;
   }
   .card-box-border {
     padding: 0px;
@@ -216,6 +230,21 @@
   .search-container {
     font-size: 1.6vh;
   }
+  .menuAge {
+    font-size: 1.3vh;
+    height: 3.5vh;
+  }
+  .range-slider .range-slider__thumb {
+    width: 2vh !important;
+    height: 2vh !important;
+  }
+  #range-slider-gradient {
+    height: 1vh;
+  }
+  .menu-Gender {
+    font-size: 1.5vh;
+    min-width: 60px !important;
+  }
 }
 @media screen and (max-width: 400px) {
   .mycontact-btn {
@@ -223,5 +252,8 @@
   }
   .search-container {
     font-size: 1.5vh;
+  }
+  .menu-Country{
+    font-size: 1.2vh;
   }
 }

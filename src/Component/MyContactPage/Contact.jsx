@@ -158,7 +158,7 @@ function MyContact() {
                                                     >
                                                         Age
                                                     </Dropdown.Toggle>
-                                                    <Dropdown.Menu>
+                                                    <Dropdown.Menu className='menuAge'>
                                                         <RangeSlider
                                                             min={0}
                                                             max={100}
@@ -189,7 +189,7 @@ function MyContact() {
                                                     >
                                                         Gender
                                                     </Dropdown.Toggle>
-                                                    <Dropdown.Menu>
+                                                    <Dropdown.Menu  className='menu-Gender'>
                                                         <Dropdown.Item value="Male"
                                                             onClick={() => handleFilterGenderChange("Male")}
                                                         >Male</Dropdown.Item>
@@ -208,12 +208,12 @@ function MyContact() {
                                                     >
                                                         Country
                                                     </Dropdown.Toggle>
-                                                    <Dropdown.Menu>
+                                                    <Dropdown.Menu className='menu-Country'>
                                                         {defaultCountries.map((country, index) => (
                                                             <Dropdown.Item key={index} value={index}
                                                                 onClick={() => handleFilterCountryChange(index)}
                                                             >
-                                                                <img src={country.flagUrl} className="country-flag" style={{ height: "1.5vh", paddingRight: "5px" }} />
+                                                                <img src={country.flagUrl} className="country-flag" />
                                                                 {country.name}
                                                             </Dropdown.Item>
                                                         ))}
