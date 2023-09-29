@@ -51,10 +51,18 @@
   margin-bottom: 10px;
   border-radius: 2px;
 }
+.gps-form-input{
+  display: flex;
+  justify-content: flex-end;
+}
 @media screen and (max-width: 820px) {
   .search-groups {
     padding: 0px;
     margin-right: 0px;
+  }
+  .gps-form-input{
+    display: flex;
+    justify-content: center;
   }
   .Grps-style {
     align-items: center;

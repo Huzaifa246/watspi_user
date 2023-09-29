@@ -24,9 +24,7 @@ function Groups() {
                                 <form>
                                     <Row>
                                         <Col>
-                                            <div className='My-form-input'>
-                                                <div>
-                                                </div>
+                                            <div className='gps-form-input'>
                                                 <div className='sr-flex'>
                                                     <div className="search-groups">
                                                         <FaSearch className="search-icon" />
