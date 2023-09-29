@@ -46,16 +46,12 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isCardOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleCard}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faCog} style={{
-                          fontSize: "3vh"
-                        }}
-                          className='color-icon-grey'
+                        <FontAwesomeIcon icon={faCog}
+                          className='color-icon-grey sett-icon'
                         />
                       </div>
                       <div>
-                        <h6 style={{
-                          fontSize: "2.5vh", fontWeight: "600", color: "#666767"
-                        }}
+                        <h6
                           className='color-h6-grey'
                         >
                           Account
@@ -121,12 +117,12 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isPassOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={togglePass}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faLock} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                        <FontAwesomeIcon icon={faLock}
+                         className='color-icon-grey sett-icon'
+                        />
                       </div>
                       <div>
-                        <h6 style={{
-                          fontSize: "2.5vh", fontWeight: "600"
-                        }}
+                        <h6
                           className='color-h6-grey'
                         >
                           Password
@@ -187,12 +183,12 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isNotifyOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleNotify}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faBell} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                        <FontAwesomeIcon icon={faBell}
+                         className='color-icon-grey sett-icon'
+                        />
                       </div>
                       <div>
-                        <h6 style={{
-                          fontSize: "2.5vh", fontWeight: "600"
-                        }}
+                        <h6
                           className='color-h6-grey'
                         >
                           Notification
@@ -214,12 +210,12 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isPayOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={togglePayCard}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faCreditCard} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                        <FontAwesomeIcon icon={faCreditCard} 
+                         className='color-icon-grey sett-icon'
+                        />
                       </div>
                       <div>
-                        <h6 style={{
-                          fontSize: "2.2vh", fontWeight: "600"
-                        }}
+                        <h6
                           className='color-h6-grey'
                         >
                           Payment Cards & Billings
@@ -266,12 +262,12 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isSubscibeOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleSubscibe}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faListAlt} style={{ fontSize: "3vh" }} className='color-icon-grey' />
+                        <FontAwesomeIcon icon={faListAlt} 
+                         className='color-icon-grey sett-icon'
+                        />
                       </div>
                       <div>
-                        <h6 style={{
-                          fontSize: "2.2vh", fontWeight: "600"
-                        }}
+                        <h6
                           className='color-h6-grey'
                         >
                           Subscriptions
