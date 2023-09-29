@@ -59,6 +59,7 @@
   .search-groups {
     padding: 0px;
     margin-right: 0px;
+    font-size: 1.5vh;
   }
   .gps-form-input{
     display: flex;
@@ -119,6 +120,7 @@
 @media screen and (max-width: 360px) {
   .search-groups {
     padding: 5px;
+    font-size: 1.3vh;
   }
   .sr-flex {
     display: block;
