@@ -220,7 +220,7 @@ function MyContact() {
                                                     </Dropdown.Menu>
                                                 </Dropdown>
                                             </div>
-                                            <div style={{ display: 'flex' }}>
+                                            <div className='search-flex-main'>
                                                 <div className="search-container">
                                                     <FaSearch className="search-icon" />
                                                     <input
@@ -234,7 +234,7 @@ function MyContact() {
                                                 <button
                                                     type='button'
                                                     onClick={handleFileSelect}
-                                                    className='myexecl-btn'
+                                                    className='myexecl-btn mycontact-btn'
                                                 >
                                                     Add Excel File
                                                 </button>
