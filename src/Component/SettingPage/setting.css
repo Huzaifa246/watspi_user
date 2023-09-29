@@ -140,10 +140,13 @@ p {
 }
 @media screen and (max-width: 820px) {
   .main-setting {
-    padding: 0 0 0 10px;
+    padding: 0 5px;
   }
   .sett-pad-20px {
     padding: 0;
+  }
+  .acc-form-input {
+    padding: 10px 5px;
   }
   .invoice-Addnew-main {
     display: flex;
