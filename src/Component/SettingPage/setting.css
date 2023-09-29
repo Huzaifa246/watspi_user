@@ -181,5 +181,6 @@ p {
   }
   .col-style{
     margin-left: 10px;
+    width: 98% !important;
   }
 }
