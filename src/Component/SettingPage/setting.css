@@ -11,6 +11,7 @@
 .main-sett-style {
   display: flex;
   cursor: pointer;
+  padding-right: 5px;
 }
 .frst-div {
   display: flex;
@@ -170,9 +171,6 @@ p {
   .color-h6-grey {
     font-weight: 500;
     font-size: 2.2vh;
-  }
-  .row {
-    --bs-gutter-x: 0;
   }
   .main-sett-style {
     padding-right: 10px;
