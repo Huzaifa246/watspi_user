@@ -138,7 +138,7 @@ function MyContact() {
                         </h1>
                     </div>
                     <Card className='card-box-border my-Context-style' >
-                        <Card className='card-box-border'>
+                        <Card className='card-box-border '>
                             <form>
                                 <Row>
                                     <Col>
@@ -259,7 +259,7 @@ function MyContact() {
                     <Col>
                         {filteredData?.length === 0 ? (
                             <>
-                                <p style={{ textAlign: 'center', fontWeight: 'bold' }}>No Data Found!!!</p>
+                                <p className='Not-Found-style'>No Data Found!!!</p>
                             </>
                         ) : (
                             <>
