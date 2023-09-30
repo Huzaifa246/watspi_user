@@ -279,16 +279,16 @@ function BroadCast() {
                             <h4>
                                 Contact List
                             </h4>
-                            <Table striped className='main-table'>
-                                <thead>
+                            <Table striped className='main-table'  style={{ tableLayout: "fixed" }}>
+                                <thead className='bdCast-head-font'>
                                     <tr>
-                                        <th style={{ width: '10%' }}>S.No</th>
+                                        <th style={{ width: '10%' }}>No</th>
                                         <th style={{ paddingLeft: '10px' }}>FirstName</th>
                                         <th style={{ paddingLeft: '10px' }}>LastName</th>
                                         <th style={{ display: 'flex', justifyContent: 'center' }}>Phone</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className='bdCast-body-font'>
                                     {excelData?.map((row, index) => (
                                         <tr key={index}>
                                             <td>{index + 1}</td>
