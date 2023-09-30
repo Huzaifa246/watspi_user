@@ -128,7 +128,7 @@ function BroadCast() {
         <>
             {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div style={{ marginTop: '6rem' }}></div> */}
-                <Row style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
+                <Row className='row-bd-width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                     <Col>
                         <Card className='card-box-border border-shadow-style'>
                             <div className='card-drop-style'>
@@ -139,14 +139,14 @@ function BroadCast() {
                             <Card className='card-box-border' style={{ padding: '15px 0' }}>
                                 <form>
                                     <Row>
-                                        <Col xs={4} md={4} lg={4}>
+                                        <Col xs={12} md={4} lg={4}>
                                             <div className='instance-form-input'>
                                                 <label> Name </label>
                                                 <span>
                                                     <input
                                                         type='text'
                                                         placeholder='Name...'
-                                                        className={`input-instance ${isInputEnabled ? '' : 'disabled'}`}
+                                                        className={`brdCast-input ${isInputEnabled ? '' : 'disabled'}`}
                                                         value={inputValue}
                                                         onChange={(e) => setInputValue(e.target.value)}
                                                         disabled={!isInputEnabled}
@@ -154,14 +154,14 @@ function BroadCast() {
                                                     {!isInputEnabled && (
                                                         <FontAwesomeIcon
                                                             icon={faPencil}
-                                                            className='left-input-copy'
+                                                            className='broadCast-edit'
                                                             onClick={handleEnableInput}
                                                         />
                                                     )}
                                                     {isInputEnabled && (
                                                         <FontAwesomeIcon
                                                             icon={faCheck}
-                                                            className='left-input-copy'
+                                                            className='broadCast-edit'
                                                             onClick={handleSaveInput}
                                                             style={{ color: '#3ab19d' }}
                                                         />
@@ -170,7 +170,7 @@ function BroadCast() {
                                             </div>
                                         </Col>
 
-                                        <Col xs={4} md={4} lg={4}>
+                                        <Col xs={12} md={4} lg={4}>
                                             <div className='instance-form-input'>
                                                 <label> Select Instance </label>
                                                 <Dropdown>
@@ -197,7 +197,7 @@ function BroadCast() {
                                                 </Dropdown>
                                             </div>
                                         </Col>
-                                        <Col xs={4} md={4} lg={4}>
+                                        <Col xs={12} md={4} lg={4}>
                                             <div className='instance-form-input'>
                                                 <label> Upload Excel File </label>
                                                 <span>
@@ -205,7 +205,7 @@ function BroadCast() {
                                                         type='file'
                                                         accept='.xls, .xlsx'
                                                         onChange={handleFileSelect}
-                                                        className='input-instance'
+                                                        className='brdCast-input'
                                                         style={{ padding: "8px 14px" }}
                                                     />
                                                 </span>
@@ -217,7 +217,7 @@ function BroadCast() {
                         </Card>
                     </Col>
                 </Row>
-                <Row style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
+                <Row className='row-bd-width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                     <Col>
                         <Card className='card-box-border border-shadow-style'>
                             <Col xs={12} md={12} lg={12}>
@@ -233,13 +233,13 @@ function BroadCast() {
                                                             <textarea
                                                                 type='text'
                                                                 placeholder='Enter your message...'
-                                                                className='input-instance'
+                                                                className='brdCast-input msg-temp-style'
                                                                 value={template?.textMessage}
                                                                 onChange={(e) => handleTemplateChange(e, index)}
                                                                 style={{ border: 'none', backgroundColor: 'white', resize: 'none', height: "10vh" }}
                                                             />
                                                             <Button
-                                                                className='Add-new-btn'
+                                                                className='Add-new-btn mob-btn'
                                                                 onClick={() => attachmentInputs[index].click()} // Trigger file input click
                                                             >
                                                                 <FontAwesomeIcon icon={faPaperclip} />
@@ -273,7 +273,7 @@ function BroadCast() {
                         </Card>
                     </Col>
                 </Row>
-                <Row style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
+                <Row className='row-bd-width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                     <Col>
                         <Card className='card-box-border border-shadow-style' style={{ padding: '15px' }}>
                             <h4>
