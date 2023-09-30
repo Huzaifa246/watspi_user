@@ -70,7 +70,7 @@ function ChartPage() {
     return (
         <>
             <Card className='Chart-card-style'>
-                <Chart options={options} series={series} type="area" height={270} width={"105%"} style={{
+                <Chart options={options} series={series} type="area" height={270} width={"104%"} style={{
                     transform: "translateX(-2.5%) translateY(44px)",
                 }} />
             </Card>

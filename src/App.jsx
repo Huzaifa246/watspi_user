@@ -24,14 +24,16 @@ const App = () => {
         <Route path={"/groups"} element={<Groups />} />
         <Route path={"/creategroup"} element={<CreateGroup />} />
         <Route path={"/myContact"} element={<MyContact />} />
-        
+        <Route path={"/instancePage"} element={<InstancePage />} />
+        <Route path={"/mybroadCast"} element={<MyBroadCast />} />
+
         <Route element={<HeaderComponent />}>
 
           <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/instancePage"} element={<InstancePage />} />
           <Route path={"/broadCast"} element={<BroadCast />} />
           <Route path={"/mybroadCast"} element={<MyBroadCast />} />
-         
+
 
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />
