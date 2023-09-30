@@ -126,8 +126,8 @@ function BroadCast() {
     console.log(excelData, 'asad');
     return (
         <>
-            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
-                <div style={{ marginTop: '6rem' }}></div>
+            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
+                <div style={{ marginTop: '6rem' }}></div> */}
                 <Row style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                     <Col>
                         <Card className='card-box-border border-shadow-style'>
@@ -302,7 +302,7 @@ function BroadCast() {
                         </Card>
                     </Col>
                 </Row>
-            </div>
+            {/* </div> */}
         </>
     );
 }

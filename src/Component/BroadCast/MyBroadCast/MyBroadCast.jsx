@@ -189,171 +189,171 @@ function MyBroadCast() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
-                <div style={{ marginTop: '6rem' }}></div>
-                <Row style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
-                    <Col>
-                        <div className='card-drop-style'>
-                            <h2 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
-                                My BroadCast
-                            </h2>
-                        </div>
-                        <Card className='card-box-border myborder-shadow-style'>
-                            <Table className='Table-head'>
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Date&Time
-                                        </th>
-                                        <th>
-                                            Name
-                                        </th>
-                                        <th>
-                                            <button className='btn-contact-style'
-                                                onClick={openModal}
-                                            >
-                                                Contacts
-                                            </button>
-                                        </th>
-                                        <th>
-                                            Instances
-                                        </th>
-                                        <th style={{ textAlign: "center" }}>
-                                            Status
-                                        </th>
-                                    </tr>
-                                </thead>
-                            </Table>
-                        </Card>
-                        <Card div className='card-box-border myborder-list-style'>
-                            <Table className='Table-head'>
-                                <tbody>
-                                    <th style={{ width: "20%" }}>
-                                        00-09-2023 23:37:33
-                                    </th>
-                                    <th style={{ width: "19%" }}>
-                                        TechOn Ventures
+            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}> */}
+            {/* <div style={{ marginTop: '6rem' }}></div> */}
+            <Row className='myBroadCast-main'>
+                <Col>
+                    <div className='card-drop-style'>
+                        <h2 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
+                            My BroadCast
+                        </h2>
+                    </div>
+                    <Card className='card-box-border myborder-shadow-style'>
+                        <Table className='Table-head' style={{ tableLayout: "fixed" }}>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Date&Time
                                     </th>
                                     <th>
-                                        +92345678901
+                                        Name
                                     </th>
                                     <th>
-                                        Instance 1, Instance 2
+                                        <button className='btn-contact-style'
+                                            onClick={openModal}
+                                        >
+                                            Contacts
+                                        </button>
                                     </th>
                                     <th>
-                                        <span className="badge badge-secondary badge-style">Active</span>
+                                        Instances
                                     </th>
-                                </tbody>
-                            </Table>
-                        </Card>
-                        <Card div className='card-box-border myborder-list-style'>
-                            <Table className='Table-head'>
-                                <tbody>
-                                    <th style={{ width: "20%" }}>
-                                        00-09-2023 23:37:33
+                                    <th style={{ textAlign: "center" }}>
+                                        Status
                                     </th>
-                                    <th style={{ width: "19%" }}>
-                                        TechOn Ventures
-                                    </th>
-                                    <th>
-                                        +92345678901
-                                    </th>
-                                    <th>
-                                        Instance 1, Instance 2
-                                    </th>
-                                    <th>
-                                        <span className="badge badge-secondary badge-style">Active</span>
-                                    </th>
-                                </tbody>
-                            </Table>
-                        </Card>
-                        <Card div className='card-box-border myborder-list-style'>
-                            <Table className='Table-head'>
-                                <tbody>
-                                    <th style={{ width: "20%" }}>
-                                        00-09-2023 23:37:33
-                                    </th>
-                                    <th style={{ width: "19%" }}>
-                                        TechOn Ventures
-                                    </th>
-                                    <th>
-                                        +92345678901
-                                    </th>
-                                    <th>
-                                        Instance 1, Instance 2
-                                    </th>
-                                    <th>
-                                        <span className="badge badge-secondary badge-style">Active</span>
-                                    </th>
-                                </tbody>
-                            </Table>
-                        </Card>
-                        <Card div className='card-box-border myborder-list-style'>
-                            <Table className='Table-head'>
-                                <tbody>
-                                    <th style={{ width: "20%" }}>
-                                        00-09-2023 23:37:33
-                                    </th>
-                                    <th style={{ width: "19%" }}>
-                                        TechOn Ventures
-                                    </th>
-                                    <th>
-                                        +92345678901
-                                    </th>
-                                    <th>
-                                        Instance 1, Instance 2
-                                    </th>
-                                    <th>
-                                        <span className="badge badge-secondary badge-style">Active</span>
-                                    </th>
-                                </tbody>
-                            </Table>
-                        </Card>
-                        <Card div className='card-box-border myborder-list-style'>
-                            <Table className='Table-head'>
-                                <tbody>
-                                    <th style={{ width: "20%" }}>
-                                        00-09-2023 23:37:33
-                                    </th>
-                                    <th style={{ width: "19%" }}>
-                                        TechOn Ventures
-                                    </th>
-                                    <th>
-                                        +92345678901
-                                    </th>
-                                    <th>
-                                        Instance 1, Instance 2
-                                    </th>
-                                    <th>
-                                        <span className="badge badge-secondary badge-style">Active</span>
-                                    </th>
-                                </tbody>
-                            </Table>
-                        </Card>
-                        <Card div className='card-box-border myborder-list-style'>
-                            <Table className='Table-head'>
-                                <tbody>
-                                    <th style={{ width: "20%" }}>
-                                        00-09-2023 23:37:33
-                                    </th>
-                                    <th style={{ width: "19%" }}>
-                                        TechOn Ventures
-                                    </th>
-                                    <th>
-                                        +92345678901
-                                    </th>
-                                    <th>
-                                        Instance 1, Instance 2
-                                    </th>
-                                    <th>
-                                        <span className="badge badge-secondary badge-style">Active</span>
-                                    </th>
-                                </tbody>
-                            </Table>
-                        </Card>
-                    </Col>
-                </Row>
-            </div>
+                                </tr>
+                            </thead>
+                        </Table>
+                    </Card>
+                    <Card div className='card-box-border myborder-list-style'>
+                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                            <tbody>
+                                <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    00-09-2023 23:37:33
+                                </th>
+                                <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    TechOn Ventures
+                                </th>
+                                <th className='ft-weight-500'>
+                                    +92345678901
+                                </th>
+                                <th className='ft-weight-500'>
+                                    Instance 1, Instance 2
+                                </th>
+                                <th className='ft-weight-500'>
+                                    <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                </th>
+                            </tbody>
+                        </Table>
+                    </Card>
+                    <Card div className='card-box-border myborder-list-style'>
+                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                            <tbody>
+                                <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    00-09-2023 23:37:33
+                                </th>
+                                <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    TechOn Ventures
+                                </th>
+                                <th className='ft-weight-500'>
+                                    +92345678901
+                                </th>
+                                <th className='ft-weight-500'>
+                                    Instance 1, Instance 2
+                                </th>
+                                <th className='ft-weight-500'>
+                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                </th>
+                            </tbody>
+                        </Table>
+                    </Card>
+                    <Card div className='card-box-border myborder-list-style'>
+                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                            <tbody>
+                                <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    00-09-2023 23:37:33
+                                </th>
+                                <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    TechOn Ventures
+                                </th>
+                                <th className='ft-weight-500'>
+                                    +92345678901
+                                </th>
+                                <th className='ft-weight-500'>
+                                    Instance 1, Instance 2
+                                </th>
+                                <th className='ft-weight-500'>
+                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                </th>
+                            </tbody>
+                        </Table>
+                    </Card>
+                    <Card div className='card-box-border myborder-list-style'>
+                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                            <tbody>
+                                <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    00-09-2023 23:37:33
+                                </th>
+                                <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    TechOn Ventures
+                                </th>
+                                <th className='ft-weight-500'>
+                                    +92345678901
+                                </th>
+                                <th className='ft-weight-500'>
+                                    Instance 1, Instance 2
+                                </th>
+                                <th className='ft-weight-500'>
+                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                </th>
+                            </tbody>
+                        </Table>
+                    </Card>
+                    <Card div className='card-box-border myborder-list-style'>
+                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                            <tbody>
+                                <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    00-09-2023 23:37:33
+                                </th>
+                                <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    TechOn Ventures
+                                </th>
+                                <th className='ft-weight-500'>
+                                    +92345678901
+                                </th>
+                                <th className='ft-weight-500'>
+                                    Instance 1, Instance 2
+                                </th>
+                                <th className='ft-weight-500'>
+                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                </th>
+                            </tbody>
+                        </Table>
+                    </Card>
+                    <Card div className='card-box-border myborder-list-style'>
+                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                            <tbody>
+                                <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    00-09-2023 23:37:33
+                                </th>
+                                <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    TechOn Ventures
+                                </th>
+                                <th className='ft-weight-500'>
+                                    +92345678901
+                                </th>
+                                <th className='ft-weight-500'>
+                                    Instance 1, Instance 2
+                                </th>
+                                <th className='ft-weight-500'>
+                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                </th>
+                            </tbody>
+                        </Table>
+                    </Card>
+                </Col>
+            </Row>
+            {/* </div> */}
         </>
     )
 }
