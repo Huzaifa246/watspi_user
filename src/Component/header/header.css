@@ -104,7 +104,7 @@
   }
   
   .navbar-toggler {
-    background-color: black;
+    background-color: white;
   }
   
   .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -115,4 +115,13 @@
     top: 75px;
     visibility: inherit;
     left: auto;
+  }
+
+  @media screen and (max-width: 820px) {
+    .profile-info{
+      flex-direction: row;
+    }
+    .sidebar-open{
+      width: 100%;
+    }
   }

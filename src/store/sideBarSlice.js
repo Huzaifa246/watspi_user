@@ -3,14 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const sideBarSlice = createSlice({
     name: "sideBar",
     initialState: { 
-        sideBarState: {} 
+        sideBarState: false // Assuming the initial state is a boolean
     },
     reducers: {
-        setsideBarState: (state, action) => {
+        setSideBarState: (state, action) => { // Correct the action name
             state.sideBarState = action.payload;
         }
-    }
+    },
 });
 
 export const { setSideBarState } = sideBarSlice.actions;
-export const sideBarReducer =  sideBarSlice.reducer;
+export const sideBarReducer = sideBarSlice.reducer;

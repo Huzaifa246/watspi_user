@@ -4,12 +4,20 @@ import { Card } from 'react-bootstrap';
 import "./dashboard.css";
 import Messages from './Messages/Messages';
 import { useSelector } from "react-redux";
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Navbar, Nav } from 'react-bootstrap';
 
-function Dashboard() {
+function Dashboard({ toggleSidebar }) {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
 
     return (
         <>
+            {window.innerWidth <= 820 && (
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}>
+                    <FontAwesomeIcon icon={faBars} />
+                </Navbar.Toggle>
+            )}
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div style={{ marginTop: "6rem" }}></div>
                 <div className='main-bg-pd-10px'>

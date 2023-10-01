@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar/sidebar';
@@ -13,7 +13,7 @@ import CountryFlag from 'react-country-flag';
 export const defaultImageUrl = 'https://www.pngall.com/wp-content/uploads/5/Profile-Male-PNG.png';
 
 const HeaderComponent = () => {
-
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const languages = [
         { id: 1, name: 'English', flag: 'us' },
         { id: 2, name: 'Spanish', flag: 'es' },
@@ -22,17 +22,18 @@ const HeaderComponent = () => {
         { id: 5, name: 'Italian', flag: 'it' },
     ];
 
-    const isSidebarOpen = useSelector((state) => state.sideBarStore.stateSideBar);
+    const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
+    // const toggleSidebar = () => {
+    //     dispatch(setSideBarState(!isSidebarOpen));
+    // };
     const toggleSidebar = () => {
-        // setIsSidebarOpen(!isSidebarOpen);
         dispatch(setSideBarState(!isSidebarOpen));
     };
-
     const toggleUserDropdown = () => {
         setIsUserDropdownOpen(!isUserDropdownOpen);
     };
@@ -40,10 +41,32 @@ const HeaderComponent = () => {
         setSelectedLanguage(language);
     };
 
+    useEffect(() => {
+        // Update windowWidth when the window is resized
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        console.log("Component rerendered. isSidebarOpen:", isSidebarOpen);
+    }, [isSidebarOpen]);
     return (
         <>
-            <Navbar bg="light" expand="lg" className={`fixed-top main-Nav ${!isSidebarOpen ? 'sidebar-open' : ''}`}>
-
+            {windowWidth <= 820 && (
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}>
+                    <FontAwesomeIcon icon={faBars} />
+                </Navbar.Toggle>
+            )}
+            <Navbar bg="light" expand="lg" className={`fixed-top main-Nav ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
                     <Nav className="ml-auto profile-info">
                         <div className="language-dropdown">
@@ -92,9 +115,8 @@ const HeaderComponent = () => {
                         </div>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar} />
             </Navbar>
-            <Sidebar />
+            {isSidebarOpen && windowWidth <= 820 ? <Sidebar /> : <Sidebar />}
             <Outlet />
         </>
     );

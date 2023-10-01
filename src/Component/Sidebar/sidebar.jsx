@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSideBarState } from '../../store/sideBarSlice';
 import img1 from "../../../images/watspilogo.png"
 const Sidebar = () => {
-    const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
+    const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);
     const dispatch = useDispatch();
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false); // New state
 
@@ -28,7 +28,7 @@ const Sidebar = () => {
                 </div>
             )}
             <nav id="sidebar" className={!isSidebarOpen ? "active" : ""}>
-                <div className="p-4" style={{ marginTop: "6vh" }}>
+                <div className="p-4 mr-top">
                     <ul className="list-unstyled">
                         <h6 className='heading-style'>MAIN MENU</h6>
                         <Nav.Link href="/dashboard" className={`mb-2 main-sidebar ${window.location.pathname === '/dashboard' ? 'active-link' : ''}`}
