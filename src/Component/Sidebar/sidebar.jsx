@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faCog, faUsers, faAngleUp, faAngleDown, faAddressBook } from '@fortawesome/free-solid-svg-icons';
+import { faTachometerAlt, faCog, faUsers, faCross, faAddressBook } from '@fortawesome/free-solid-svg-icons';
 import './sidebar.css';
 import { useSelector, useDispatch } from "react-redux";
 import { setSideBarState } from '../../store/sideBarSlice';
@@ -19,12 +19,19 @@ const Sidebar = () => {
         dispatch(setSideBarState(isSidebarOpen));
     };
 
+    // const isMobileView = window.innerWidth <= 820;
+
     return (
         <>
             {!isSidebarOpen && (
                 <div className="its-heading-logo">
                     <img src={img1} alt="ITS Logo" className="its-logo" />
                     {/* <h1 className="its-heading">WatsApi</h1> */}
+                    {/* {isMobileView && (
+                        <div className="cross-button" onClick={toggleSidebar}>
+                            <FontAwesomeIcon icon={isSidebarOpen ? faCross : ''} />
+                        </div>
+                    )} */}
                 </div>
             )}
             <nav id="sidebar" className={!isSidebarOpen ? "active" : ""}>

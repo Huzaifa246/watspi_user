@@ -104,7 +104,7 @@ function Messages() {
                     </Card>
                 </Col>
             </Row>
-            <Card style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }} className='card-msg-border'>
+            <Card className="Messages-dash" style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }} className='card-msg-border'>
                 <div className='Main-Msgs'>
                     <h4>
                         Messages <FontAwesomeIcon icon={faInfoCircle} className='info-icon' />

@@ -133,3 +133,8 @@
     font-size: 1rem;
   }
 }
+@media screen and (max-width: 820px) {
+  .Messages-dash{
+    font-size: 1.5vh;
+  }
+}
