@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Card, Col, Row, Dropdown, Button, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -21,14 +21,24 @@ function BroadCast() {
     const [isInputEnabled, setInputEnabled] = useState(false);
     const [inputValue, setInputValue] = useState('');
 
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [textMessage, setTextMessage] = useState('');
-
     const [templates, setTemplates] = useState([
         { textMessage: '' },
         { textMessage: '' },
         { textMessage: '' },
     ]);
+
+    // Check if the current screen width is less than or equal to 820 pixels
+    const isMobileView = window.innerWidth <= 820;
+
+    // Use useEffect to update the templates with the default message when in mobile view
+    useEffect(() => {
+        if (isMobileView) {
+            setTemplates([{ textMessage: '' }]);
+        } else {
+            // Reset templates to an empty array when not in mobile view
+            setTemplates([{ textMessage: '' }, { textMessage: '' }, { textMessage: '' }]);
+        }
+    }, [isMobileView]);
 
     const attachmentInputs = useRef(Array(templates.length).fill(null));
     const [attachmentFiles, setAttachmentFiles] = useState(Array(templates.length).fill(null));
@@ -225,7 +235,7 @@ function BroadCast() {
                                     <h5> Message Templates</h5>
                                     <div className='message-templates-container'>
                                         {/* To add a new template */}
-                                        {templates.map((template, index) => (
+                                        {templates?.map((template, index) => (
                                             <div className='card-stylebdcast' key={index}>
                                                 <form id={`form-file-upload-${index}`}>
                                                     <label id={`text-upload-${index}`} htmlFor={`input-file-upload-${index}`} style={{ width: '100%' }}>

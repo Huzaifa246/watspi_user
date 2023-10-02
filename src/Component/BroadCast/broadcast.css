@@ -110,6 +110,9 @@
   .bdCast-head-font{
     font-size: 1.8vh;
   }
+  .card-stylebdcast {
+    min-width: 85%;
+  }
 }
 @media screen and (max-width: 340px) {
   .broadCast-edit {
