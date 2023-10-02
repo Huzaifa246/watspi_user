@@ -111,7 +111,7 @@ function Messages() {
             </Row>
             <Card className="Messages-dash card-msg-border" style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }}>
                 <div className='Main-Msgs'>
-                    <h4>
+                    <h4 className='msg-info'>
                         Messages <FontAwesomeIcon icon={faInfoCircle} className='info-icon' />
                     </h4>
                     <div>
@@ -146,6 +146,28 @@ function Messages() {
                             </tr>
                         </thead>
                         <tbody>
+                            <tr className='msg-body-dash'>
+                                <td>
+                                    Jenny USA
+                                </td>
+                                <td>
+                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                    +09876543
+                                </td>
+                                <td>
+                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                    2 Hour Ago
+                                </td>
+                                <td>
+                                    xyzxyz
+                                </td>
+                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    Choose option
+                                    <span>
+                                        <FontAwesomeIcon icon={faEllipsisV} />
+                                    </span>
+                                </td>
+                            </tr>
                             <tr className='msg-body-dash'>
                                 <td>
                                     Jenny USA
