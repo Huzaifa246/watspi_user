@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
 import './header.css';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar/sidebar';
@@ -28,9 +28,10 @@ const HeaderComponent = () => {
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
+    const [isSidebarOpenState, setIsSidebarOpenState] = useState(false);
     const toggleSidebar = () => {
-        // setIsSidebarOpen(!isSidebarOpen);
-        dispatch(setSideBarState(!isSidebarOpen));
+        setIsSidebarOpenState(!isSidebarOpenState);
+        dispatch(setSideBarState(!isSidebarOpenState));
     };
 
     const toggleUserDropdown = () => {
@@ -40,8 +41,26 @@ const HeaderComponent = () => {
         setSelectedLanguage(language);
     };
 
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 820);
+
+    // Listen to window resize events to update isMobileView
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobileView(window.innerWidth <= 820);
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
         <>
+            {isMobileView && (
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}>
+                    <FontAwesomeIcon icon={faBars} />
+                </Navbar.Toggle>
+            )}
             <Navbar bg="light" expand="lg" className={`fixed-top main-Nav ${!isSidebarOpen ? 'sidebar-open' : ''}`}>
 
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
@@ -92,9 +111,9 @@ const HeaderComponent = () => {
                         </div>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar} />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}/>
             </Navbar>
-            <Sidebar />
+            {isSidebarOpen && windowWidth <= 820 ? <Sidebar onClick={toggleSidebar} /> : <Sidebar />}
             <Outlet />
         </>
     );

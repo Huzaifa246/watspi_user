@@ -8,9 +8,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Navbar, Nav } from 'react-bootstrap';
 
-function Dashboard({ toggleSidebar }) {
+function Dashboard() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
 
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
     return (
         <>
             {window.innerWidth <= 820 && (
