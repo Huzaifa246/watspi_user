@@ -163,7 +163,7 @@ function Messages() {
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr className='msg-body-dash'>
                                 <td>
                                     Jenny USA
                                 </td>
@@ -185,7 +185,7 @@ function Messages() {
                                     </span>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr className='msg-body-dash'>
                                 <td>
                                     Jenny USA
                                 </td>
