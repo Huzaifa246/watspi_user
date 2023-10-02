@@ -40,7 +40,7 @@ function InstancePage() {
 
     return (
         <>
-            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}> */}
+            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
             <div style={{ marginTop: "6rem" }}></div>
             <Row style={{ marginBottom: "20px", marginLeft: "10px", width: "98%" }}>
                 <Col sm={12} md={6} lg={6}>
@@ -398,7 +398,7 @@ function InstancePage() {
                     </Card>
                 </Col>
             </Row>
-            {/* </div > */}
+            </div >
         </>
     )
 }

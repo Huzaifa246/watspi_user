@@ -34,7 +34,7 @@ function CreateGroup() {
 
     return (
         <>
-            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}> */}
+            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
             <div style={{ marginTop: '6rem' }}></div>
             <Row className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "98.5%" }}>
                 <Col>
@@ -149,7 +149,7 @@ function CreateGroup() {
                     </Card>
                 </Col>
             </Row>
-            {/* </div> */}
+            </div>
         </>
     )
 }

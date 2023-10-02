@@ -128,185 +128,185 @@ function MyContact() {
     console.log(excelData, 'asad');
     return (
         <>
-            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
-                <div style={{ marginTop: '6rem' }}></div> */}
-            <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
-                <Col>
-                    <div className='card-drop-style'>
-                        <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
-                            My Contacts
-                        </h1>
-                    </div>
-                    <Card className='card-box-border my-Context-style' >
-                        <Card className='card-box-border '>
-                            <form>
-                                <Row>
-                                    <Col>
-                                        <div className='My-form-input'>
-                                            <div className='Contact-flex-style'>
-                                                <button
-                                                    type='button'
-                                                    className={filteredData === excelData ? 'selected-btn' : 'unselected-dropdown'}
-                                                    onClick={handleFilterAllClick}
-                                                >
-                                                    All
-                                                </button>
-                                                <Dropdown>
-                                                    <Dropdown.Toggle
-                                                        className={filteredData === 'Age' ? 'selected-btn' : 'unselected-dropdown'}
-                                                        id="filterDropdown"
+            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
+                <div style={{ marginTop: '6rem' }}></div>
+                <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
+                    <Col>
+                        <div className='card-drop-style'>
+                            <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
+                                My Contacts
+                            </h1>
+                        </div>
+                        <Card className='card-box-border my-Context-style' >
+                            <Card className='card-box-border '>
+                                <form>
+                                    <Row>
+                                        <Col>
+                                            <div className='My-form-input'>
+                                                <div className='Contact-flex-style'>
+                                                    <button
+                                                        type='button'
+                                                        className={filteredData === excelData ? 'selected-btn' : 'unselected-dropdown'}
+                                                        onClick={handleFilterAllClick}
                                                     >
-                                                        Age
-                                                    </Dropdown.Toggle>
-                                                    <Dropdown.Menu className='menuAge'>
-                                                        <RangeSlider
-                                                            min={0}
-                                                            max={100}
-                                                            step={1}
-                                                            rangeValues={rangeValues}
-                                                            id="range-slider-gradient"
-                                                            className="margin-lg"
-                                                            onChange={(newValues) => {
-                                                                console.log('RangeSlider onChange:', newValues);
-                                                                setRangeValues(newValues);
-                                                                handleFilterAgeChange(newValues);
-                                                            }}
-                                                        // onClick={() => {
-                                                        //     console.log('Slider Clicked'); // Add this line
-                                                        // }}
-                                                        />
+                                                        All
+                                                    </button>
+                                                    <Dropdown>
+                                                        <Dropdown.Toggle
+                                                            className={filteredData === 'Age' ? 'selected-btn' : 'unselected-dropdown'}
+                                                            id="filterDropdown"
+                                                        >
+                                                            Age
+                                                        </Dropdown.Toggle>
+                                                        <Dropdown.Menu className='menuAge'>
+                                                            <RangeSlider
+                                                                min={0}
+                                                                max={100}
+                                                                step={1}
+                                                                rangeValues={rangeValues}
+                                                                id="range-slider-gradient"
+                                                                className="margin-lg"
+                                                                onChange={(newValues) => {
+                                                                    console.log('RangeSlider onChange:', newValues);
+                                                                    setRangeValues(newValues);
+                                                                    handleFilterAgeChange(newValues);
+                                                                }}
+                                                            // onClick={() => {
+                                                            //     console.log('Slider Clicked'); // Add this line
+                                                            // }}
+                                                            />
 
-                                                        {/*                                                             <div className='range-values'>
+                                                            {/*                                                             <div className='range-values'>
                                                                 <span>{rangeValues[0]}</span> - <span>{rangeValues[1]}</span>
                                                             </div> */}
 
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
-                                                <Dropdown>
-                                                    <Dropdown.Toggle
-                                                        className={filteredData === 'Gender' ? 'selected-btn' : 'unselected-dropdown'}
-                                                        id="filterDropdown"
+                                                        </Dropdown.Menu>
+                                                    </Dropdown>
+                                                    <Dropdown>
+                                                        <Dropdown.Toggle
+                                                            className={filteredData === 'Gender' ? 'selected-btn' : 'unselected-dropdown'}
+                                                            id="filterDropdown"
+                                                        >
+                                                            Gender
+                                                        </Dropdown.Toggle>
+                                                        <Dropdown.Menu className='menu-Gender'>
+                                                            <Dropdown.Item value="Male"
+                                                                onClick={() => handleFilterGenderChange("Male")}
+                                                            >Male</Dropdown.Item>
+                                                            <Dropdown.Item value="Female"
+                                                                onClick={() => handleFilterGenderChange("Female")}
+                                                            >Female</Dropdown.Item>
+                                                            <Dropdown.Item value="Others"
+                                                                onClick={() => handleFilterGenderChange("Others")}
+                                                            >Others</Dropdown.Item>
+                                                        </Dropdown.Menu>
+                                                    </Dropdown>
+                                                    <Dropdown>
+                                                        <Dropdown.Toggle
+                                                            className={filteredData === 'Country' ? 'selected-btn' : 'unselected-dropdown'}
+                                                            id="filterDropdown"
+                                                        >
+                                                            Country
+                                                        </Dropdown.Toggle>
+                                                        <Dropdown.Menu className='menu-Country'>
+                                                            {defaultCountries.map((country, index) => (
+                                                                <Dropdown.Item key={index} value={index}
+                                                                    onClick={() => handleFilterCountryChange(index)}
+                                                                >
+                                                                    <img src={country.flagUrl} className="country-flag" />
+                                                                    {country.name}
+                                                                </Dropdown.Item>
+                                                            ))}
+                                                        </Dropdown.Menu>
+                                                    </Dropdown>
+                                                </div>
+                                                <div className='search-flex-main'>
+                                                    <div className="search-container">
+                                                        <FaSearch className="search-icon" />
+                                                        <input
+                                                            type="text"
+                                                            placeholder="Search..."
+                                                            value={searchQuery}
+                                                            onChange={handleSearchInputChange}
+                                                            className='input-search'
+                                                        />
+                                                    </div>
+                                                    <button
+                                                        type='button'
+                                                        onClick={handleFileSelect}
+                                                        className='myexecl-btn mycontact-btn'
                                                     >
-                                                        Gender
-                                                    </Dropdown.Toggle>
-                                                    <Dropdown.Menu  className='menu-Gender'>
-                                                        <Dropdown.Item value="Male"
-                                                            onClick={() => handleFilterGenderChange("Male")}
-                                                        >Male</Dropdown.Item>
-                                                        <Dropdown.Item value="Female"
-                                                            onClick={() => handleFilterGenderChange("Female")}
-                                                        >Female</Dropdown.Item>
-                                                        <Dropdown.Item value="Others"
-                                                            onClick={() => handleFilterGenderChange("Others")}
-                                                        >Others</Dropdown.Item>
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
-                                                <Dropdown>
-                                                    <Dropdown.Toggle
-                                                        className={filteredData === 'Country' ? 'selected-btn' : 'unselected-dropdown'}
-                                                        id="filterDropdown"
-                                                    >
-                                                        Country
-                                                    </Dropdown.Toggle>
-                                                    <Dropdown.Menu className='menu-Country'>
-                                                        {defaultCountries.map((country, index) => (
-                                                            <Dropdown.Item key={index} value={index}
-                                                                onClick={() => handleFilterCountryChange(index)}
-                                                            >
-                                                                <img src={country.flagUrl} className="country-flag" />
-                                                                {country.name}
-                                                            </Dropdown.Item>
-                                                        ))}
-                                                    </Dropdown.Menu>
-                                                </Dropdown>
-                                            </div>
-                                            <div className='search-flex-main'>
-                                                <div className="search-container">
-                                                    <FaSearch className="search-icon" />
+                                                        Add Excel File
+                                                    </button>
                                                     <input
-                                                        type="text"
-                                                        placeholder="Search..."
-                                                        value={searchQuery}
-                                                        onChange={handleSearchInputChange}
-                                                        className='input-search'
+                                                        ref={fileInputRef}
+                                                        type='file'
+                                                        accept='.xls, .xlsx'
+                                                        onChange={handleFileInputChange}
+                                                        style={{ display: 'none' }} // Hide the input
                                                     />
                                                 </div>
-                                                <button
-                                                    type='button'
-                                                    onClick={handleFileSelect}
-                                                    className='myexecl-btn mycontact-btn'
-                                                >
-                                                    Add Excel File
-                                                </button>
-                                                <input
-                                                    ref={fileInputRef}
-                                                    type='file'
-                                                    accept='.xls, .xlsx'
-                                                    onChange={handleFileInputChange}
-                                                    style={{ display: 'none' }} // Hide the input
-                                                />
                                             </div>
-                                        </div>
-                                    </Col>
-                                </Row>
-                            </form>
+                                        </Col>
+                                    </Row>
+                                </form>
+                            </Card>
                         </Card>
-                    </Card>
-                </Col>
-            </Row>
-            <div>
-                <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
-                    <Col>
-                        {filteredData?.length === 0 ? (
-                            <>
-                                <p className='Not-Found-style'>No Data Found!!!</p>
-                            </>
-                        ) : (
-                            <>
-                                <Card className='card-box-border border-shadow-style style-myContactCard' >
-                                    <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                        <thead>
-                                            <tr style={{ color: "#888" }} className='th-font-style'>
-                                                <th style={{ width: "5%" }}>No</th>
-                                                <th style={{ width: "15%", textAlign: 'center' }}>Date & Time</th>
-                                                <th>Name</th>
-                                                {/* <th>LastName</th> */}
-                                                <th>Email</th>
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                                <th>Country</th>
-                                                <th>Phone</th>
-                                                <th style={{ width: "15%" }}>Description</th>
-                                            </tr>
-                                        </thead>
-                                    </Table>
-                                </Card>
-                                {filteredData?.map((row, index) => (
-                                    <Card className='card-box-border border-shadow-style tbody-style-card'>
-                                        <Table style={{ marginBottom: "0", tableLayout: "s" }}>
-                                            <tbody className='tbody-font-style'>
-                                                <tr key={index}>
-                                                    <td style={{ width: "4%", textAlign: 'center' }}>{index + 1}</td>
-                                                    <td style={{ width: "15%", textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
-                                                    <td style={{ textAlign: 'center' }}>{row[0]}</td>
-                                                    {/* <td style={{ textAlign: 'center' }}>{row[1]}</td> */}
-                                                    <td style={{ width: "12%" }}>{row[2]}</td>
-                                                    <td style={{ width: "5%" }}>{row[3]}</td>
-                                                    <td>{row[4]}</td>
-                                                    <td>{row[5]}</td>
-                                                    <td>{row[6]}</td>
-                                                    <td style={{ width: "15%" }}>{row[7]}</td>
+                    </Col>
+                </Row>
+                <div>
+                    <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
+                        <Col>
+                            {filteredData?.length === 0 ? (
+                                <>
+                                    <p className='Not-Found-style'>No Data Found!!!</p>
+                                </>
+                            ) : (
+                                <>
+                                    <Card className='card-box-border border-shadow-style style-myContactCard' >
+                                        <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                            <thead>
+                                                <tr style={{ color: "#888" }} className='th-font-style'>
+                                                    <th style={{ width: "5%" }}>No</th>
+                                                    <th style={{ width: "15%", textAlign: 'center' }}>Date & Time</th>
+                                                    <th>Name</th>
+                                                    {/* <th>LastName</th> */}
+                                                    <th>Email</th>
+                                                    <th>Age</th>
+                                                    <th>Gender</th>
+                                                    <th>Country</th>
+                                                    <th>Phone</th>
+                                                    <th style={{ width: "15%" }}>Description</th>
                                                 </tr>
-                                            </tbody>
+                                            </thead>
                                         </Table>
                                     </Card>
-                                ))}
-                            </>
-                        )}
-                    </Col>
-                </Row >
-            </div>
-            {/* </div > */}
+                                    {filteredData?.map((row, index) => (
+                                        <Card className='card-box-border border-shadow-style tbody-style-card'>
+                                            <Table style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                                <tbody className='tbody-font-style'>
+                                                    <tr key={index}>
+                                                        <td style={{ width: "4%", textAlign: 'center' }}>{index + 1}</td>
+                                                        <td style={{ width: "15%", textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
+                                                        <td style={{ textAlign: 'center' }}>{row[0]}</td>
+                                                        {/* <td style={{ textAlign: 'center' }}>{row[1]}</td> */}
+                                                        <td style={{ width: "12%" }}>{row[2]}</td>
+                                                        <td style={{ width: "5%" }}>{row[3]}</td>
+                                                        <td>{row[4]}</td>
+                                                        <td>{row[5]}</td>
+                                                        <td>{row[6]}</td>
+                                                        <td style={{ width: "15%" }}>{row[7]}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </Table>
+                                        </Card>
+                                    ))}
+                                </>
+                            )}
+                        </Col>
+                    </Row >
+                </div>
+            </div >
         </>
     );
 }

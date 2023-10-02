@@ -9,7 +9,7 @@ function Groups() {
 
     return (
         <>
-            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}> */}
+            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
             <div style={{ marginTop: '6rem' }}></div>
             <div className='mr-10'>
                 <Row className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "99%" }}>
@@ -99,7 +99,7 @@ function Groups() {
                     </Col>
                 </Row>
             </div>
-            {/* </div> */}
+            </div>
         </>
     )
 }

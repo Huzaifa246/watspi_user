@@ -189,8 +189,8 @@ function MyBroadCast() {
                     </Button>
                 </Modal.Footer>
             </Modal>
-            {/* <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}> */}
-            {/* <div style={{ marginTop: '6rem' }}></div> */}
+            <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
+            <div style={{ marginTop: '6rem' }}></div>
             <Row className='myBroadCast-main'>
                 <Col>
                     <div className='card-drop-style'>
@@ -353,7 +353,7 @@ function MyBroadCast() {
                     </Card>
                 </Col>
             </Row>
-            {/* </div> */}
+            </div>
         </>
     )
 }

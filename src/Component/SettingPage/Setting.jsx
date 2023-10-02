@@ -33,7 +33,7 @@ function Setting() {
   };
   return (
     <>
-      {/* <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}> */}
+      <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
         <div style={{ marginTop: "6rem" }}></div>
         <div className='main-setting'>
           <div className='set-main' style={{ padding: "25px", backgroundColor: "#f6f7fb" }}>
@@ -303,7 +303,7 @@ function Setting() {
             </div>
           </div>
         </div>
-      {/* </div> */}
+      </div>
     </>
   )
 }

@@ -30,8 +30,7 @@ const App = () => {
           <Route path={"/instancePage"} element={<InstancePage />} />
           <Route path={"/mybroadCast"} element={<MyBroadCast />} />
           <Route path={"/broadCast"} element={<BroadCast />} />
-          <Route path={"/mybroadCast"} element={<MyBroadCast />} />
-          
+
         </Route>
         {/* <Route path={"/header"} element={<HeaderComponent />} />
         <Route path={"/sidebar"} element={<Sidebar />} /> */}
