@@ -9,8 +9,8 @@ import img1 from "../../../images/watspilogo.png"
 const Sidebar = () => {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);
     const dispatch = useDispatch();
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false); // New state
-
+    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+    
     const handleToggleSubMenu = () => {
         setIsSubMenuOpen(!isSubMenuOpen);
     };

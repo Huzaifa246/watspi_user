@@ -233,15 +233,15 @@
     border-bottom-right-radius: 0px !important;
   }
   #sidebar {
-    display: none; /* Hide the sidebar by default on small screens */
-  }
-
-  #sidebar.active {
     left: 0;
     height: 97vh;
     z-index: 10000;
     display: block;
     width: 300px;
+  }
+
+  #sidebar.active {
+   display: none;
   }
   /* .its-heading-logo{
       left: 7%;

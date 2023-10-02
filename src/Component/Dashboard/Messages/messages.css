@@ -119,8 +119,49 @@
   );
   color: white;
 }
-.connected-mob-badge{
+.connected-mob-badge {
   display: none;
+}
+/* Add these styles for scrollable header and body on X-axis */
+.table-wrap {
+  width: 100%;
+  max-height: 400px; /* Adjust the max height as needed */
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.main-table {
+  width: auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.table-heading-style {
+  display: flex;
+}
+
+.table-heading-style th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.scrollable-header {
+  max-width: 100%; /* Ensure the header takes the full width */
+  overflow: hidden;
+}
+
+.scrollable-body {
+  max-height: 350px; /* Adjust this value as needed */
+  overflow-y: auto;
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap; /* Prevent text wrapping in cells */
+}
+td,
+th {
+  min-width: 150px;
 }
 @media screen and (max-width: 1200px) {
   .Main-Profile-flex {
@@ -176,16 +217,71 @@
     padding: 5px;
     margin: 0 1px;
   }
-  .msgs-icons-mob{
+  .msgs-icons-mob {
     font-size: 1.5vh;
   }
-  .info-icon{
+  .info-icon {
     height: 2vh;
   }
-  .msg-info{
+  .msg-info {
     height: 2vh;
   }
   .filter-btn {
     margin: 0 4px;
+  }
+  /* Add these styles for scrollable header and body on X-axis */
+  .table-wrap {
+    width: 100%;
+    max-height: 400px; /* Adjust the max height as needed */
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+  }
+
+  .main-table {
+    min-width: 100%;
+    table-layout: fixed;
+  }
+  .table-heading-style {
+    position: sticky;
+    top: 0;
+  }
+  .scroll-style {
+    overflow-y: auto;
+  }
+  .table-th {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    --tw-text-opacity: 1;
+    color: rgb(71 85 105 / var(--tw-text-opacity));
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  .scrollable-header {
+    max-width: 100%; /* Ensure the header takes the full width */
+    overflow: hidden;
+  }
+
+  .scrollable-body {
+    max-height: 350px; /* Adjust this value as needed */
+    overflow-y: auto;
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap; /* Prevent text wrapping in cells */
+  }
+  .table > :not(caption) > * > * {
+    padding: 0.15rem 0.5rem;
+  }
+  td,
+  th {
+    padding: 5px;
+    min-width: 100px;
   }
 }

@@ -124,118 +124,167 @@ function Messages() {
                         </Button>
                     </div>
                 </div>
-                <div  style={{ overflowX: "auto", overflowY: "auto", maxHeight: "400px" }}>
-                    <Table striped className='main-table'>
-                        <thead className='table-heading-style'>
-                            <tr className='msg-head-dash'>
-                                <th style={{ width: "15%" }}>
-                                    Whatsapp
-                                </th>
-                                <th style={{ width: "15%" }}>
-                                    Target
-                                </th>
-                                <th style={{ width: "15%" }}>
-                                    Status
-                                </th>
-                                <th style={{ width: "10%" }}>
-                                    Author
-                                </th>
-                                <th>
-                                    Message
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className='msg-body-dash'>
-                                <td>
-                                    Jenny USA
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                    +09876543
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                    2 Hour Ago
-                                </td>
-                                <td>
-                                    xyzxyz
-                                </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    Choose option
-                                    <span>
-                                        <FontAwesomeIcon icon={faEllipsisV} />
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr className='msg-body-dash'>
-                                <td>
-                                    Jenny USA
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                    +09876543
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                    2 Hour Ago
-                                </td>
-                                <td>
-                                    xyzxyz
-                                </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    Choose option
-                                    <span>
-                                        <FontAwesomeIcon icon={faEllipsisV} />
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr className='msg-body-dash'>
-                                <td>
-                                    Jenny USA
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                    +09876543
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                    an Hour Ago
-                                </td>
-                                <td>
-                                    xyzxyz
-                                </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    Choose option messages messages
-                                    <span>
-                                        <FontAwesomeIcon icon={faEllipsisV} />
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr className='msg-body-dash'>
-                                <td>
-                                    Jenny USA
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                    +09876543
-                                </td>
-                                <td>
-                                    <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                    6 Hour Ago
-                                </td>
-                                <td>
-                                    xyzxyz
-                                </td>
-                                <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    Choose option Lorem ipsum dolor sit amet.
-                                    <span>
-                                        <FontAwesomeIcon icon={faEllipsisV} />
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table>
+                <div className="table-wrap">
+                    <div className='scroll-style'>
+                        <Table striped className='main-table'>
+                            <thead className='table-heading-style'>
+                                <tr className='msg-head-dash scrollable-header'>
+                                    <th className='table-th'>
+                                        Whatsapp
+                                    </th>
+                                    <th className='table-th'>
+                                        Target
+                                    </th>
+                                    <th className='table-th'>
+                                        Status
+                                    </th>
+                                    <th className='table-th'>
+                                        Author
+                                    </th>
+                                    <th className='table-th'>
+                                        Message
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody className='scrollable-body'>
+                                {/* Your table rows go here */}
+                                <tr className='msg-body-dash'>
+                                    <td>
+                                        Jenny USA
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        +09876543
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        2 Hour Ago
+                                    </td>
+                                    <td>
+                                        xyzxyz
+                                    </td>
+                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        Choose option
+                                        <span>
+                                            <FontAwesomeIcon icon={faEllipsisV} />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr className='msg-body-dash'>
+                                    <td>
+                                        Jenny USA
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        +09876543
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        2 Hour Ago
+                                    </td>
+                                    <td>
+                                        xyzxyz
+                                    </td>
+                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        Choose option
+                                        <span>
+                                            <FontAwesomeIcon icon={faEllipsisV} />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr className='msg-body-dash'>
+                                    <td>
+                                        Jenny USA
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        +09876543
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        2 Hour Ago
+                                    </td>
+                                    <td>
+                                        xyzxyz
+                                    </td>
+                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        Choose option
+                                        <span>
+                                            <FontAwesomeIcon icon={faEllipsisV} />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr className='msg-body-dash'>
+                                    <td>
+                                        Jenny USA
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        +09876543
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        2 Hour Ago
+                                    </td>
+                                    <td>
+                                        xyzxyz
+                                    </td>
+                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        Choose option
+                                        <span>
+                                            <FontAwesomeIcon icon={faEllipsisV} />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr className='msg-body-dash'>
+                                    <td>
+                                        Jenny USA
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        +09876543
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        an Hour Ago
+                                    </td>
+                                    <td>
+                                        xyzxyz
+                                    </td>
+                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        Choose option messages messages
+                                        <span>
+                                            <FontAwesomeIcon icon={faEllipsisV} />
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr className='msg-body-dash'>
+                                    <td>
+                                        Jenny USA
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        +09876543
+                                    </td>
+                                    <td>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        6 Hour Ago
+                                    </td>
+                                    <td>
+                                        xyzxyz
+                                    </td>
+                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        Choose option Lorem ipsum dolor sit amet.
+                                        Choose option Lorem ipsum dolor sit amet.
+                                        Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.
+                                        <span>
+                                            <FontAwesomeIcon icon={faEllipsisV} />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
             </Card>
         </>
