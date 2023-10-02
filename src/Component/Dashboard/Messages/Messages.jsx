@@ -104,7 +104,7 @@ function Messages() {
                     </Card>
                 </Col>
             </Row>
-            <Card className="Messages-dash" style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }} className='card-msg-border'>
+            <Card className="Messages-dash card-msg-border" style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }}>
                 <div className='Main-Msgs'>
                     <h4>
                         Messages <FontAwesomeIcon icon={faInfoCircle} className='info-icon' />
@@ -122,7 +122,7 @@ function Messages() {
                 <div>
                     <Table striped className='main-table'>
                         <thead className='table-heading-style'>
-                            <tr>
+                            <tr className='msg-head-dash'>
                                 <th style={{ width: "15%" }}>
                                     Whatsapp
                                 </th>
@@ -141,7 +141,7 @@ function Messages() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr className='msg-body-dash'>
                                 <td>
                                     Jenny USA
                                 </td>

@@ -137,4 +137,11 @@
   .Messages-dash{
     font-size: 1.5vh;
   }
+  .msg-head-dash{
+    font-size: 1.2vh !important;
+  }
+  .msg-body-dash{
+    font-size: 1vh !important;
+  }
+  
 }
