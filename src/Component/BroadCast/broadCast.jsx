@@ -289,7 +289,7 @@ function BroadCast() {
                             <h4>
                                 Contact List
                             </h4>
-                            <Table striped className='main-table'  style={{ tableLayout: "fixed" }}>
+                            <Table style={{ tableLayout: "fixed" }}>
                                 <thead className='bdCast-head-font'>
                                     <tr>
                                         <th style={{ width: '10%' }}>No</th>
