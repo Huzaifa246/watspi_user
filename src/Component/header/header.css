@@ -126,8 +126,11 @@
   }
   .navbar-toggler {
     height: 6vh;
-    border: none;
+    border: 1px solid white;
     border-top-left-radius: 0px !important;
     border-bottom-left-radius: 0px !important;
+  }
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    right: auto;
   }
 }
