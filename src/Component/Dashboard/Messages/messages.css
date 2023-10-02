@@ -202,6 +202,7 @@ th {
     justify-content: space-evenly;
     flex-direction: column;
     gap: 0.5rem;
+    padding-top: 10px;
   }
   .connected-mob-badge {
     background-color: #74ba2d;
