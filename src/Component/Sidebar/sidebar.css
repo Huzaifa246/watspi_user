@@ -243,10 +243,10 @@
     display: block;
     width: 300px;
   }
-  .its-heading-logo{
+  /* .its-heading-logo{
       left: 7%;
       z-index: 99999;
-  }
+  } */
 }
 
 @media screen and (max-width: 400px) {
