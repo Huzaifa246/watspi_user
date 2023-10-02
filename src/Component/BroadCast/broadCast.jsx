@@ -276,9 +276,9 @@ function BroadCast() {
                                     </div>
                                 </div>
                             </Col>
-                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                <Button className='Add-new-btn'>Send Now</Button>
-                                <Button className='Add-new-btn'>Schedule</Button>
+                            <div className='msg-btns-style'>
+                                <Button className='Add-new-btn Sd-Sch-font'>Send Now</Button>
+                                <Button className='Add-new-btn Sd-Sch-font'>Schedule</Button>
                             </div>
                         </Card>
                     </Col>

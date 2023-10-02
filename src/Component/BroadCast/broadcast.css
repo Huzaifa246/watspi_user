@@ -87,6 +87,10 @@
 .bdCast-head-font{
   font-size: 2.5vh;
 }
+.msg-btns-style{
+  display: flex;
+  justify-content: flex-end
+}
 @media screen and (max-width: 820px) {
   .broadCast-edit {
     color: rgb(165, 165, 165);
@@ -99,19 +103,30 @@
     width: 100% !important;
   }
   .mob-btn {
-    font-size: 1.5vh;
+    font-size: 1.5vh !important;
+    width: auto;
   }
   .msg-temp-style {
     padding: 0px;
   }
   .bdCast-body-font{
-    font-size: 1.5vh;
+    font-size: 1.3vh;
   }
   .bdCast-head-font{
-    font-size: 1.8vh;
+    font-size: 1.5vh;
   }
   .card-stylebdcast {
     min-width: 85%;
+  }
+  .msg-btns-style{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 10px;
+  }
+  .Sd-Sch-font{
+    font-size: 1.5vh;
+    width: auto;
   }
 }
 @media screen and (max-width: 340px) {

@@ -19,7 +19,13 @@ const Sidebar = () => {
         dispatch(setSideBarState(isSidebarOpen));
     };
 
-    // const isMobileView = window.innerWidth <= 820;
+    // Add a function to handle link clicks in mobile view
+    const handleLinkClick = (path) => {
+        if (window.innerWidth <= 820) {
+            toggleSidebar(); // Close the sidebar
+        }
+        history.push(path); // Navigate to the specified path
+    };
 
     return (
         <>

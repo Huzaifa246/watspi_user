@@ -119,9 +119,12 @@
   );
   color: white;
 }
+.connected-mob-badge{
+  display: none;
+}
 @media screen and (max-width: 1200px) {
   .Main-Profile-flex {
-    flex-direction: column; /* Change flex direction for smaller screens */
+    flex-direction: row; /* Change flex direction for smaller screens */
   }
   .cl-light-grey {
     font-size: 1vh;
@@ -134,14 +137,45 @@
   }
 }
 @media screen and (max-width: 820px) {
-  .Messages-dash{
+  .Messages-dash {
     font-size: 1.5vh;
   }
-  .msg-head-dash{
+  .msg-head-dash {
     font-size: 1.2vh !important;
   }
-  .msg-body-dash{
+  .msg-body-dash {
     font-size: 1.1vh !important;
   }
-  
+  .main-status {
+    display: none;
+  }
+  .image-style {
+    height: 40px;
+    width: 40px;
+  }
+  .connected-badge {
+    display: none;
+  }
+  .icon-style-flex {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+  .connected-mob-badge {
+    background-color: #74ba2d;
+    color: white;
+    padding: 0px 6px;
+    border-radius: 10px;
+    max-width: 100px;
+    text-align: center;
+    font-size: 1.5vh;
+    display: block !important;
+  }
+  .pd-lr-10 {
+    padding: 5px;
+    margin: 0 1px;
+  }
+  .msgs-icons-mob{
+    font-size: 1.5vh;
+  }
 }

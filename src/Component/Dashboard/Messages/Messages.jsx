@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Table, Row, Col} from 'react-bootstrap';
+import { Card, Button, Table, Row, Col } from 'react-bootstrap';
 import "./messages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle, faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -94,9 +94,14 @@ function Messages() {
                                         </div>
                                     </div>
                                     <div className='icon-style-flex'>
-                                        <FontAwesomeIcon icon={faEnvelope} className='pd-lr-10 svg-style' />
-                                        <FontAwesomeIcon icon={faCog} className='pd-lr-10 svg-style' />
-                                        <FontAwesomeIcon icon={faChartBar} className='pd-lr-10 svg-style' />
+                                        <div className='connected-mob-badge'>
+                                            Connected
+                                        </div>
+                                        <div className='msgs-icons-mob'>
+                                            <FontAwesomeIcon icon={faEnvelope} className='pd-lr-10 svg-style' />
+                                            <FontAwesomeIcon icon={faCog} className='pd-lr-10 svg-style' />
+                                            <FontAwesomeIcon icon={faChartBar} className='pd-lr-10 svg-style' />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +124,7 @@ function Messages() {
                         </Button>
                     </div>
                 </div>
-                <div>
+                <div  style={{ overflowX: "auto", overflowY: "auto", maxHeight: "400px" }}>
                     <Table striped className='main-table'>
                         <thead className='table-heading-style'>
                             <tr className='msg-head-dash'>

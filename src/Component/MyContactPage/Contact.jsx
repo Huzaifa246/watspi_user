@@ -8,7 +8,7 @@ import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
 function MyContact() {
-    const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
+    const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);
 
     const [excelData, setExcelData] = useState([]);
     const [uploadTime, setUploadTime] = useState(null); // Store the upload time
