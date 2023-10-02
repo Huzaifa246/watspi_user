@@ -108,7 +108,16 @@
   display: flex;
   justify-content: center;
 }
+.row-instance {
+  margin-left: 10px;
+  margin-bottom: 20px;
+  width: 98%;
+}
 @media screen and (max-width: 820px) {
+  .row-instance {
+    margin-left: 0;
+    width: 100%;
+  }
   .IFP-msec {
     width: 60%;
     border: 1px solid #e9ecef !important;
@@ -135,7 +144,8 @@
     font-size: 1.5vh;
   }
   .left-input-copy {
-    left: 37%;
+    right: 20px !important;
+    left: auto;
   }
   .input-instance {
     font-size: 1.5vh;
