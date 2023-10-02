@@ -127,5 +127,7 @@
   .navbar-toggler {
     height: 6vh;
     border: none;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
   }
 }

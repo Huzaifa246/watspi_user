@@ -229,6 +229,8 @@
   }
   .navbar-collapse {
     flex-basis: auto;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
   }
   #sidebar {
     display: none; /* Hide the sidebar by default on small screens */
