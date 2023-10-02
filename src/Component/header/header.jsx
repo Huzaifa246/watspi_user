@@ -32,7 +32,7 @@ const HeaderComponent = () => {
     const [isSidebarOpenState, setIsSidebarOpenState] = useState(isMobileView ? false : true);
     const toggleSidebar = () => {
         setIsSidebarOpenState(!isSidebarOpenState);
-        dispatch(setSideBarState(isSidebarOpenState));
+        dispatch(setSideBarState(!isSidebarOpenState));
     };
 
     const toggleUserDropdown = () => {

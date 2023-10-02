@@ -46,7 +46,7 @@ function BroadCast() {
     const handleAttachmentSelect = (e, index) => {
         const file = e.target.files[0];
         if (file) {
-            const allowedFileTypes = ['.pdf', '.doc', '.docx']; // Specify the allowed file types
+            const allowedFileTypes = ['.pdf', '.doc', '.docx', '.mp3', '.wav', '.mp4', '.jpg', '.jpeg', '.png', '.svg']; // Specify the allowed file types
             const fileExtension = file.name.split('.').pop(); // Get the file extension
 
             if (allowedFileTypes.includes('.' + fileExtension.toLowerCase())) {
@@ -257,7 +257,7 @@ function BroadCast() {
                                                             <span>{template.attachmentFileName}</span> {/* Display file name */}
                                                             <input
                                                                 type='file'
-                                                                accept='.pdf, .doc, .docx' // Specify the allowed file types here
+                                                                accept='.pdf, .doc, .docx, .mp3, .wav, .mp4, .jpg, .jpeg, .png, .svg'  // Specify the allowed file types here
                                                                 onChange={(e) => handleAttachmentSelect(e, index)}
                                                                 style={{ display: 'none' }} // Hide the input element
                                                                 ref={(input) => (attachmentInputs[index] = input)}

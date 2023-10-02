@@ -40,7 +40,7 @@ function MyBroadCast() {
     const handleAttachmentSelect = (e, index) => {
         const file = e.target.files[0];
         if (file) {
-            const allowedFileTypes = ['.pdf', '.doc', '.docx']; // Specify the allowed file types
+            const allowedFileTypes = ['.pdf', '.doc', '.docx', '.mp3', '.wav', '.mp4', '.jpg', '.jpeg', '.png', '.svg']; // Specify the allowed file types
             const fileExtension = file.name.split('.').pop(); // Get the file extension
 
             if (allowedFileTypes.includes('.' + fileExtension.toLowerCase())) {
@@ -154,7 +154,7 @@ function MyBroadCast() {
                                             <div>
                                                 <span className='file-styleMybd'>{template.attachmentFileName}</span>   {/* Display file name */}
                                                 <Button
-                                                    className='Add-new-btn'
+                                                    className='Add-new-btn mybtn-file'
                                                     onClick={() => attachmentInputs[index].click()} // Trigger file input click
                                                 >
                                                     <FontAwesomeIcon icon={faPaperclip} />
@@ -162,7 +162,7 @@ function MyBroadCast() {
 
                                                 <input
                                                     type='file'
-                                                    accept='.pdf, .doc, .docx' // Specify the allowed file types here
+                                                    accept='.pdf, .doc, .docx, .mp3, .wav, .mp4, .jpg, .jpeg, .png, .svg'  // Specify the allowed file types here
                                                     onChange={(e) => handleAttachmentSelect(e, index)}
                                                     style={{ display: 'none' }} // Hide the input element
                                                     ref={(input) => (attachmentInputs[index] = input)}
@@ -190,169 +190,169 @@ function MyBroadCast() {
                 </Modal.Footer>
             </Modal>
             <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
-            <div style={{ marginTop: '6rem' }}></div>
-            <Row className='myBroadCast-main'>
-                <Col>
-                    <div className='card-drop-style'>
-                        <h2 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
-                            My BroadCast
-                        </h2>
-                    </div>
-                    <Card className='card-box-border myborder-shadow-style'>
-                        <Table className='Table-head' style={{ tableLayout: "fixed" }}>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Date&Time
+                <div style={{ marginTop: '6rem' }}></div>
+                <Row className='myBroadCast-main'>
+                    <Col>
+                        <div className='card-drop-style'>
+                            <h2 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
+                                My BroadCast
+                            </h2>
+                        </div>
+                        <Card className='card-box-border myborder-shadow-style'>
+                            <Table className='Table-head' style={{ tableLayout: "fixed" }}>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Date&Time
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            <button className='btn-contact-style'
+                                                onClick={openModal}
+                                            >
+                                                Contacts
+                                            </button>
+                                        </th>
+                                        <th>
+                                            Instances
+                                        </th>
+                                        <th style={{ textAlign: "center" }}>
+                                            Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </Table>
+                        </Card>
+                        <Card div className='card-box-border myborder-list-style'>
+                            <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                                <tbody>
+                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                        00-09-2023 23:37:33
                                     </th>
-                                    <th>
-                                        Name
+                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                        TechOn Ventures
                                     </th>
-                                    <th>
-                                        <button className='btn-contact-style'
-                                            onClick={openModal}
-                                        >
-                                            Contacts
-                                        </button>
+                                    <th className='ft-weight-500'>
+                                        +92345678901
                                     </th>
-                                    <th>
-                                        Instances
+                                    <th className='ft-weight-500'>
+                                        Instance 1, Instance 2
                                     </th>
-                                    <th style={{ textAlign: "center" }}>
-                                        Status
+                                    <th className='ft-weight-500'>
+                                        <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
-                                </tr>
-                            </thead>
-                        </Table>
-                    </Card>
-                    <Card div className='card-box-border myborder-list-style'>
-                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
-                            <tbody>
-                                <th style={{ width: "20%" }} className='ft-weight-500'>
-                                    00-09-2023 23:37:33
-                                </th>
-                                <th style={{ width: "19%" }} className='ft-weight-500'>
-                                    TechOn Ventures
-                                </th>
-                                <th className='ft-weight-500'>
-                                    +92345678901
-                                </th>
-                                <th className='ft-weight-500'>
-                                    Instance 1, Instance 2
-                                </th>
-                                <th className='ft-weight-500'>
-                                    <span className="badge badge-secondary badge-style mob-display-act">Active</span>
-                                </th>
-                            </tbody>
-                        </Table>
-                    </Card>
-                    <Card div className='card-box-border myborder-list-style'>
-                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
-                            <tbody>
-                                <th style={{ width: "20%" }} className='ft-weight-500'>
-                                    00-09-2023 23:37:33
-                                </th>
-                                <th style={{ width: "19%" }} className='ft-weight-500'>
-                                    TechOn Ventures
-                                </th>
-                                <th className='ft-weight-500'>
-                                    +92345678901
-                                </th>
-                                <th className='ft-weight-500'>
-                                    Instance 1, Instance 2
-                                </th>
-                                <th className='ft-weight-500'>
-                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
-                                </th>
-                            </tbody>
-                        </Table>
-                    </Card>
-                    <Card div className='card-box-border myborder-list-style'>
-                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
-                            <tbody>
-                                <th style={{ width: "20%" }} className='ft-weight-500'>
-                                    00-09-2023 23:37:33
-                                </th>
-                                <th style={{ width: "19%" }} className='ft-weight-500'>
-                                    TechOn Ventures
-                                </th>
-                                <th className='ft-weight-500'>
-                                    +92345678901
-                                </th>
-                                <th className='ft-weight-500'>
-                                    Instance 1, Instance 2
-                                </th>
-                                <th className='ft-weight-500'>
-                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
-                                </th>
-                            </tbody>
-                        </Table>
-                    </Card>
-                    <Card div className='card-box-border myborder-list-style'>
-                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
-                            <tbody>
-                                <th style={{ width: "20%" }} className='ft-weight-500'>
-                                    00-09-2023 23:37:33
-                                </th>
-                                <th style={{ width: "19%" }} className='ft-weight-500'>
-                                    TechOn Ventures
-                                </th>
-                                <th className='ft-weight-500'>
-                                    +92345678901
-                                </th>
-                                <th className='ft-weight-500'>
-                                    Instance 1, Instance 2
-                                </th>
-                                <th className='ft-weight-500'>
-                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
-                                </th>
-                            </tbody>
-                        </Table>
-                    </Card>
-                    <Card div className='card-box-border myborder-list-style'>
-                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
-                            <tbody>
-                                <th style={{ width: "20%" }} className='ft-weight-500'>
-                                    00-09-2023 23:37:33
-                                </th>
-                                <th style={{ width: "19%" }} className='ft-weight-500'>
-                                    TechOn Ventures
-                                </th>
-                                <th className='ft-weight-500'>
-                                    +92345678901
-                                </th>
-                                <th className='ft-weight-500'>
-                                    Instance 1, Instance 2
-                                </th>
-                                <th className='ft-weight-500'>
-                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
-                                </th>
-                            </tbody>
-                        </Table>
-                    </Card>
-                    <Card div className='card-box-border myborder-list-style'>
-                        <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
-                            <tbody>
-                                <th style={{ width: "20%" }} className='ft-weight-500'>
-                                    00-09-2023 23:37:33
-                                </th>
-                                <th style={{ width: "19%" }} className='ft-weight-500'>
-                                    TechOn Ventures
-                                </th>
-                                <th className='ft-weight-500'>
-                                    +92345678901
-                                </th>
-                                <th className='ft-weight-500'>
-                                    Instance 1, Instance 2
-                                </th>
-                                <th className='ft-weight-500'>
-                                <span className="badge badge-secondary badge-style mob-display-act">Active</span>
-                                </th>
-                            </tbody>
-                        </Table>
-                    </Card>
-                </Col>
-            </Row>
+                                </tbody>
+                            </Table>
+                        </Card>
+                        <Card div className='card-box-border myborder-list-style'>
+                            <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                                <tbody>
+                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                        00-09-2023 23:37:33
+                                    </th>
+                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                        TechOn Ventures
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        +92345678901
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        Instance 1, Instance 2
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                    </th>
+                                </tbody>
+                            </Table>
+                        </Card>
+                        <Card div className='card-box-border myborder-list-style'>
+                            <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                                <tbody>
+                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                        00-09-2023 23:37:33
+                                    </th>
+                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                        TechOn Ventures
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        +92345678901
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        Instance 1, Instance 2
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                    </th>
+                                </tbody>
+                            </Table>
+                        </Card>
+                        <Card div className='card-box-border myborder-list-style'>
+                            <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                                <tbody>
+                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                        00-09-2023 23:37:33
+                                    </th>
+                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                        TechOn Ventures
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        +92345678901
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        Instance 1, Instance 2
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                    </th>
+                                </tbody>
+                            </Table>
+                        </Card>
+                        <Card div className='card-box-border myborder-list-style'>
+                            <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                                <tbody>
+                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                        00-09-2023 23:37:33
+                                    </th>
+                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                        TechOn Ventures
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        +92345678901
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        Instance 1, Instance 2
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                    </th>
+                                </tbody>
+                            </Table>
+                        </Card>
+                        <Card div className='card-box-border myborder-list-style'>
+                            <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
+                                <tbody>
+                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                        00-09-2023 23:37:33
+                                    </th>
+                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                        TechOn Ventures
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        +92345678901
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        Instance 1, Instance 2
+                                    </th>
+                                    <th className='ft-weight-500'>
+                                        <span className="badge badge-secondary badge-style mob-display-act">Active</span>
+                                    </th>
+                                </tbody>
+                            </Table>
+                        </Card>
+                    </Col>
+                </Row>
             </div>
         </>
     )
