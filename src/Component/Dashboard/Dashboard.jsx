@@ -10,10 +10,6 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 function Dashboard() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
-
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
     return (
         <>
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>

@@ -28,7 +28,8 @@ const HeaderComponent = () => {
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
-    const [isSidebarOpenState, setIsSidebarOpenState] = useState(false);
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 820);
+    const [isSidebarOpenState, setIsSidebarOpenState] = useState(isMobileView ? false : true);
     const toggleSidebar = () => {
         setIsSidebarOpenState(!isSidebarOpenState);
         dispatch(setSideBarState(!isSidebarOpenState));
@@ -40,8 +41,6 @@ const HeaderComponent = () => {
     const handleLanguageChange = (language) => {
         setSelectedLanguage(language);
     };
-
-    const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 820);
 
     // Listen to window resize events to update isMobileView
     useEffect(() => {
@@ -62,7 +61,6 @@ const HeaderComponent = () => {
                 </Navbar.Toggle>
             )}
             <Navbar bg="light" expand="lg" className={`fixed-top main-Nav ${!isSidebarOpen ? 'sidebar-open' : ''}`}>
-
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
                     <Nav className="ml-auto profile-info">
                         <div className="language-dropdown">
