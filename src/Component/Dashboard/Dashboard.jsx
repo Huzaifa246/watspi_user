@@ -16,11 +16,6 @@ function Dashboard() {
     };
     return (
         <>
-            {window.innerWidth <= 820 && (
-                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}>
-                    <FontAwesomeIcon icon={faBars} />
-                </Navbar.Toggle>
-            )}
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div style={{ marginTop: "6rem" }}></div>
                 <div className='main-bg-pd-10px'>

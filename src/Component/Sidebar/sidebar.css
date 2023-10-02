@@ -68,7 +68,6 @@
   -webkit-background-clip: text; /* This property is used for text color inside the gradient */
   color: transparent;
   display: flex;
-
 }
 
 .main-sidebar .sidebar-text:hover {
@@ -215,14 +214,14 @@
 .submenuItem:hover {
   color: #3aa9ab;
 }
-.submenuItem.active-link{
+.submenuItem.active-link {
   color: white;
 }
-.mr-top{
+.mr-top {
   margin-top: 6vh !important;
 }
 @media screen and (max-width: 820px) {
-  .mr-top{
+  .mr-top {
     margin-top: 0 !important;
   }
   .collapse:not(.show) {
@@ -241,5 +240,11 @@
     z-index: 10000;
     display: block;
     width: 300px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #sidebar.active {
+    width: 50%;
   }
 }
