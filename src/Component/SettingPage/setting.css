@@ -147,6 +147,10 @@ p {
   }
   .acc-form-input {
     padding: 10px 5px;
+    font-size: 1.5vh;
+  }
+  .Update-btn {
+    font-size: 2vh;
   }
   .invoice-Addnew-main {
     display: flex;
@@ -165,9 +169,11 @@ p {
   }
   .invoice-btn {
     width: 100%;
+    font-size: 2vh;
   }
   .Add-new-btn {
     width: 100%;
+    font-size: 2vh;
   }
   .sett-icon {
     font-size: 2.5vh;
