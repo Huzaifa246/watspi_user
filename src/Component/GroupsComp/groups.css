@@ -55,6 +55,9 @@
   display: flex;
   justify-content: flex-end;
 }
+.creategrp-mob-display{
+  display: none;
+}
 @media screen and (max-width: 820px) {
   .search-groups {
     padding: 0px;
@@ -73,6 +76,8 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
+    padding: 10px 0 !important;
+    border-radius: 10px;
   }
   .grp-input-search {
     padding: 0px;
@@ -101,19 +106,29 @@
   .grps-btn {
     font-size: 1.5vh;
   }
-  .mr-10 {
-    margin: 0 5px;
-  }
   .style-myContactCard {
     padding: 10px 5px !important;
+    border-radius: 10px;
   }
   .sr-flex {
     display: flex;
-    width: 95%;
+    width: 100%;
+  }
+  .search-icon {
+    font-size: 1.5vh;
   }
   .grps-btn {
     font-size: 1.3vh;
     padding: 8px;
+  }
+  .width-100{
+    width: 100% !important;
+  }
+  .creategrp-mob-hide{
+    display: none;
+  }
+  .creategrp-mob-display{
+    display: flex;
   }
 }
 

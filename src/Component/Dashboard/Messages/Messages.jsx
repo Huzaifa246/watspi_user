@@ -1,14 +1,66 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Card, Button, Table, Row, Col } from 'react-bootstrap';
 import "./messages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle, faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 function Messages() {
-    const createTooltip = (text) => {
-        return text.length > 50 ? text : null;
+
+    // const [selectedMessage, setSelectedMessage] = useState(null);
+
+    // const createTooltip = (text, id) => {
+    //     return text.length > 50 ? (
+    //         <>
+    //             <span
+    //                 data-tip={text}
+    //                 data-for={id}
+    //             >
+    //                 Hover to view
+    //             </span>
+    //             <ReactTooltip id={id} place="top" type="dark" effect="solid" multiline={true} />
+    //         </>
+    //     ) : null;
+    // };
+
+    const defaultMessages = [
+        {
+            sender: 'Jenny USA',
+            phoneNumber: '+09876543',
+            timestamp: '2 Hour Ago',
+            author: 'xyzxyz',
+            text: 'Choose option 1',
+        },
+        {
+            sender: 'Jenny USA',
+            phoneNumber: '+09876543',
+            timestamp: '2 Hour Ago',
+            author: 'xyzxyz',
+            text: 'Choose option 2 Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.',
+        },
+        {
+            sender: 'Asad USA',
+            phoneNumber: '+09876543',
+            timestamp: '2 Hour Ago',
+            author: 'xyzxyz',
+            text: 'Choose option 2 Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.',
+        },
+        {
+            sender: 'Jenny USA',
+            phoneNumber: '+09876543',
+            timestamp: '2 Hour Ago',
+            author: 'xyzxyz',
+            text: 'Choose option 3',
+        },
+    ];
+
+    const handleSelectMessage = (message) => {
+        setSelectedMessage(message);
     };
+
+
     return (
         <>
             {/* main-card */}
@@ -151,142 +203,34 @@ function Messages() {
                             </thead>
                             <tbody className='scrollable-body'>
                                 {/* Your table rows go here */}
-                                <tr className='msg-body-dash'>
-                                    <td>
-                                        Jenny USA
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                        +09876543
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                        2 Hour Ago
-                                    </td>
-                                    <td>
-                                        xyzxyz
-                                    </td>
-                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        Choose option
-                                        <span>
-                                            <FontAwesomeIcon icon={faEllipsisV} />
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr className='msg-body-dash'>
-                                    <td>
-                                        Jenny USA
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                        +09876543
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                        2 Hour Ago
-                                    </td>
-                                    <td>
-                                        xyzxyz
-                                    </td>
-                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        Choose option
-                                        <span>
-                                            <FontAwesomeIcon icon={faEllipsisV} />
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr className='msg-body-dash'>
-                                    <td>
-                                        Jenny USA
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                        +09876543
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                        2 Hour Ago
-                                    </td>
-                                    <td>
-                                        xyzxyz
-                                    </td>
-                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        Choose option
-                                        <span>
-                                            <FontAwesomeIcon icon={faEllipsisV} />
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr className='msg-body-dash'>
-                                    <td>
-                                        Jenny USA
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                        +09876543
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                        2 Hour Ago
-                                    </td>
-                                    <td>
-                                        xyzxyz
-                                    </td>
-                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        Choose option
-                                        <span>
-                                            <FontAwesomeIcon icon={faEllipsisV} />
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr className='msg-body-dash'>
-                                    <td>
-                                        Jenny USA
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                        +09876543
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                        an Hour Ago
-                                    </td>
-                                    <td>
-                                        xyzxyz
-                                    </td>
-                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <span title={createTooltip("Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.")}>
-                                            Choose option Lorem ipsum dolor sit amet.
-                                        </span>
-                                        <span>
-                                            <FontAwesomeIcon icon={faEllipsisV} />
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr className='msg-body-dash'>
-                                    <td>
-                                        Jenny USA
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
-                                        +09876543
-                                    </td>
-                                    <td>
-                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
-                                        6 Hour Ago
-                                    </td>
-                                    <td>
-                                        xyzxyz
-                                    </td>
-                                    <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        <span title={createTooltip("Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.")}>
-                                            Choose option Lorem ipsum dolor sit amet.
-                                        </span>
-                                        <span>
-                                            <FontAwesomeIcon icon={faEllipsisV} />
-                                        </span>
-                                    </td>
-                                </tr>
+                                {defaultMessages.map((message, index) => (
+                                    <tr className='msg-body-dash' key={index}>
+                                        <td>
+                                            {message.sender}
+                                        </td>
+                                        <td>
+                                            <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                            {message.phoneNumber}
+                                        </td>
+                                        <td>
+                                            <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                            {message.timestamp}
+                                        </td>
+                                        <td>
+                                            {message.author}
+                                        </td>
+                                        <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                            {/* {createTooltip(message.text, `tooltip${index}`)} */}
+                                            {message?.text}
+                                            <span>
+                                                <FontAwesomeIcon
+                                                    icon={faEllipsisV}
+                                                    onClick={() => handleSelectMessage(message)}
+                                                />
+                                            </span>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                     </div>

@@ -129,13 +129,29 @@ function MyContact() {
     return (
         <>
             <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
-                <div style={{ marginTop: '6rem' }}></div>
+                <div className='width-305' style={{ marginTop: '6rem' }}></div>
                 <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                     <Col>
                         <div className='card-drop-style'>
                             <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600' }}>
                                 My Contacts
                             </h1>
+                            <span className='hide-ex-main-btn'>
+                                <button
+                                    type='button'
+                                    onClick={handleFileSelect}
+                                    className='myexecl-btn mycontact-btn'
+                                >
+                                    Add Excel File
+                                </button>
+                                <input
+                                    ref={fileInputRef}
+                                    type='file'
+                                    accept='.xls, .xlsx'
+                                    onChange={handleFileInputChange}
+                                    style={{ display: 'none' }} // Hide the input
+                                />
+                            </span>
                         </div>
                         <Card className='card-box-border my-Context-style' >
                             <Card className='card-box-border '>
@@ -231,6 +247,7 @@ function MyContact() {
                                                             className='input-search'
                                                         />
                                                     </div>
+                                                    <span className='hide-ex-btn'>
                                                     <button
                                                         type='button'
                                                         onClick={handleFileSelect}
@@ -245,6 +262,7 @@ function MyContact() {
                                                         onChange={handleFileInputChange}
                                                         style={{ display: 'none' }} // Hide the input
                                                     />
+                                                    </span>
                                                 </div>
                                             </div>
                                         </Col>

@@ -129,10 +129,10 @@
   }
   .td-fl-center {
     display: flex;
-    justify-content: center;
-  }
+    justify-content: flex-end;
+}
   .td-left-ftsize {
-    font-size: 1.4vh;
+    font-size: 1.3vh;
   }
   .web-input {
     width: 100%;
@@ -143,11 +143,34 @@
     background-color: #e9ecef;
     font-size: 1.5vh;
   }
-  .left-input-copy {
+  .left-copy-mob{
     right: 20px !important;
     left: auto;
   }
+  .left-copy-wb-mob{
+    right: 30px !important;
+    left: auto;
+  }
+  .right-wb-mob{
+    right: 30px !important;
+    left: auto;
+  }
   .input-instance {
+    font-size: 1.5vh;
+  }
+  .instance-form-input {
+    margin-bottom: 10px;
+  }
+  .msec-btn {
+    padding: 10px 2px;
+  }
+  .IFP-msec {
+    width: 30%;
+  }
+  .width-70per{
+    width: 70% !important;
+  }
+  .label-webhook{
     font-size: 1.5vh;
   }
 }

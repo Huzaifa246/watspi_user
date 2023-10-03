@@ -73,14 +73,14 @@ function InstancePage() {
                                                         {!isInputEnabled && (
                                                             <FontAwesomeIcon
                                                                 icon={faPencil}
-                                                                className="left-input-copy"
+                                                                className="left-input-copy left-copy-mob"
                                                                 onClick={handleEnableInput}
                                                             />
                                                         )}
                                                         {isInputEnabled && (
                                                             <FontAwesomeIcon
                                                                 icon={faCheck}
-                                                                className="left-input-copy"
+                                                                className="left-input-copy left-copy-mob"
                                                                 onClick={handleSaveInput}
                                                                 style={{ color: "#3ab19d" }}
                                                             />
@@ -100,7 +100,7 @@ function InstancePage() {
                                                     <label> API URL </label>
                                                     <span>
                                                         <input type="text" placeholder="Name..." className='input-instance' />
-                                                        <FontAwesomeIcon icon={faCopy} className="left-input-copy" />
+                                                        <FontAwesomeIcon icon={faCopy} className="left-input-copy left-copy-mob" />
                                                     </span>
                                                 </div>
                                             </Col>
@@ -119,7 +119,7 @@ function InstancePage() {
                                                     <label> Instance ID </label>
                                                     <span>
                                                         <input type="text" placeholder="Instance ID" className='input-instance' />
-                                                        <FontAwesomeIcon icon={faCopy} className="left-input-copy" />
+                                                        <FontAwesomeIcon icon={faCopy} className="left-input-copy left-copy-mob" />
                                                     </span>
                                                 </div>
                                             </Col>
@@ -135,94 +135,6 @@ function InstancePage() {
                                             </Col>
                                         </Row>
                                     </form>
-                                    {/* <Table striped className='main-table'>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            API URL
-                                                        </td>
-                                                        <td>
-                                                            afomedia.com
-                                                        </td>
-                                                        <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                                            <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Media URL
-                                                        </td>
-                                                        <td>
-                                                            media.com
-                                                        </td>
-                                                        <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                                            <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            IdInstance
-                                                        </td>
-                                                        <td>
-                                                            0987654321
-                                                        </td>
-                                                        <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                                            <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            ApiTokenInstance
-                                                        </td>
-                                                        <td>
-                                                            098765432123456789
-                                                        </td>
-                                                        <td style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                                                            <span>
-                                                                <FontAwesomeIcon icon={faCopy} className="fa-thin fa-copy" style={{ color: "#a5a5a5" }} />
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Name
-                                                        </td>
-                                                        <td>
-                                                            Panther d1
-                                                        </td>
-                                                        <td>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Status
-                                                        </td>
-                                                        <td>
-                                                            <span className='authorized-badge'>
-                                                                Authorized
-                                                            </span>
-                                                        </td>
-                                                        <td>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Phone
-                                                        </td>
-                                                        <td>
-                                                            0987654321
-                                                        </td>
-                                                        <td>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </Table> */}
                                 </Card>
                             )}
                         </Card>
@@ -250,7 +162,7 @@ function InstancePage() {
                                     <Table striped className='main-table'>
                                         <tbody>
                                             <tr>
-                                                <td style={{ width: "50%" }} className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per" style={{ width: "50%" }}>
                                                     Making Incoming messages read
                                                 </td>
                                                 <td className='td-fl-center'>
@@ -261,7 +173,7 @@ function InstancePage() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per">
                                                     Making Incoming messages read
                                                 </td>
                                                 <td className='td-fl-center'>
@@ -272,7 +184,7 @@ function InstancePage() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per">
                                                     Making sending delay from the queue
                                                 </td>
                                                 <td className='td-fl-center'>
@@ -289,12 +201,12 @@ function InstancePage() {
                                                         }}
                                                     />
                                                     <button className='msec-btn'>
-                                                        msec
+                                                        ms
                                                     </button>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per">
                                                     Keep online status
                                                 </td>
                                                 <td className='td-fl-center'>
@@ -327,34 +239,30 @@ function InstancePage() {
                             </div>
                             {isWebhooksOpen && (
                                 <Card className='card-box-border'>
+                                    <Row>
+                                        <Col xs={12} md={6} lg={6}>
+                                            <div className='instance-form-input'>
+                                                <label className='label-webhook'> Webhook URL </label>
+                                                <span>
+                                                    <input type="text" placeholder="Webhook URL..." className='input-instance' />
+                                                    <FontAwesomeIcon icon={faCopy} className="left-input-copy left-copy-wb-mob" />
+                                                </span>
+                                            </div>
+                                        </Col>
+                                        <Col xs={12} md={6} lg={6}>
+                                            <div className='instance-form-input'>
+                                                <label className='label-webhook'> WebHook Auth Header </label>
+                                                <span>
+                                                    <input type="text" placeholder="WebHook Auth Header..." className='input-instance' />
+                                                    <FontAwesomeIcon icon={faCopy} className="right-input-copy right-wb-mob" />
+                                                </span>
+                                            </div>
+                                        </Col>
+                                    </Row>
                                     <Table striped className='main-table'>
                                         <tbody>
                                             <tr>
-                                                <td style={{ width: "50%" }} className='td-left-ftsize'>
-                                                    Webhook URL
-                                                </td>
-                                                <td className='td-fl-center'>
-                                                    <input
-                                                        type="text"
-                                                        placeholder='xyz.com'
-                                                        className="input_field-Prof web-input"
-                                                    />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className='td-left-ftsize'>
-                                                    Webhook Authorization Header
-                                                </td>
-                                                <td className='td-fl-center'>
-                                                    <input
-                                                        type="text"
-                                                        placeholder='Enter text'
-                                                        className="input_field-Prof web-input"
-                                                    />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per">
                                                     Recieved webhooks on Incoming messages
                                                 </td>
                                                 <td className='td-fl-center'>
@@ -364,7 +272,7 @@ function InstancePage() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per">
                                                     Recieved webhooks on from sent status
                                                 </td>
                                                 <td className='td-fl-center'>
@@ -374,7 +282,7 @@ function InstancePage() {
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td className='td-left-ftsize'>
+                                                <td className="td-left-ftsize width-70per">
                                                     Recieved webhooks on from sent status
                                                 </td>
                                                 <td className='td-fl-center'>

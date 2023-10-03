@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBars } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +25,7 @@ const HeaderComponent = () => {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.stateSideBar);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
 
@@ -55,11 +56,11 @@ const HeaderComponent = () => {
     }, []);
     return (
         <>
-            {isMobileView && (
+            {/* {isMobileView && (
                 <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}>
                     <FontAwesomeIcon icon={faBars} />
                 </Navbar.Toggle>
-            )}
+            )} */}
             <Navbar bg="light" expand="lg" className={`fixed-top main-Nav ${!isSidebarOpen ? 'sidebar-open' : ''}`}>
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" style={{ backgroundColor: 'white', borderRadius: "10px" }}>
                     <Nav className="ml-auto profile-info">
@@ -109,7 +110,17 @@ const HeaderComponent = () => {
                         </div>
                     </Nav>
                 </Navbar.Collapse>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}/>
+                {isMobileView && (
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleSidebar}>
+                        {isSidebarOpenState ? (
+                            <span style={{ color: 'black' }}>╳</span>
+                        ) : !isSidebarOpenState ? (
+                            <>
+                                <FontAwesomeIcon style={{ color: 'black' }} icon={faBars} />
+                            </>
+                        ) : null}
+                    </Navbar.Toggle>
+                )}
             </Navbar>
             {isSidebarOpen && windowWidth <= 820 ? <Sidebar onClick={toggleSidebar} /> : <Sidebar />}
             <Outlet />
