@@ -6,6 +6,9 @@ import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle, faU
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 function Messages() {
+    const createTooltip = (text) => {
+        return text.length > 50 ? text : null;
+    };
     return (
         <>
             {/* main-card */}
@@ -252,7 +255,9 @@ function Messages() {
                                         xyzxyz
                                     </td>
                                     <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        Choose option messages messages
+                                        <span title={createTooltip("Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.")}>
+                                            Choose option Lorem ipsum dolor sit amet.
+                                        </span>
                                         <span>
                                             <FontAwesomeIcon icon={faEllipsisV} />
                                         </span>
@@ -274,9 +279,9 @@ function Messages() {
                                         xyzxyz
                                     </td>
                                     <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                        Choose option Lorem ipsum dolor sit amet.
-                                        Choose option Lorem ipsum dolor sit amet.
-                                        Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.
+                                        <span title={createTooltip("Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.")}>
+                                            Choose option Lorem ipsum dolor sit amet.
+                                        </span>
                                         <span>
                                             <FontAwesomeIcon icon={faEllipsisV} />
                                         </span>
