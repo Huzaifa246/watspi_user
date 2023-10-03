@@ -12,52 +12,74 @@ const Login = () => {
     const [showLoader, setShowLoader] = useState(false);
     const [loginError, setLoginError] = useState("")
 
+    const [isSignedUp, setIsSignedUp] = useState(false);
+    const [otpValue, setOtpValue] = useState("");
+    const [timer, setTimer] = useState(60);
+    const [wrongEmailCode, setWrongEmailCode] = useState(false);
+    const [passwordResetPage, setPasswordResetPage] = useState(false);
+
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        window.location.href = "/dashboard";
+        // window.location.href = "/dashboard";
 
-        // if (!email || !password) {
-        //     setLoginError("Invalid Email or Password")
-        //     return
-        // }
-        // setShowLoader(true)
-        // const credentials = {
-        //     email: email,
-        //     password: password
-        // }
+        if (!email || !password) {
+            setLoginError("Invalid Email or Password")
+            return
+        }
+        setShowLoader(true)
+        const credentials = {
+            email: email,
+            password: password
+        }
 
-        // axios.post("http://192.168.100.19:3000/api/users/login", credentials,
-        // ).then(async (res) => {
-        //     let response = res?.data?.data
-        //     console.log(response, "response")
-        //     localStorage.setItem("token", response?.data)
+        axios.post("http://192.168.100.1:3000/api/users/login", credentials,
+        ).then(async (res) => {
+            let response = res?.data?.data
+            console.log(response, "response")
+            localStorage.setItem("token", response?.data)
 
-        //     setShowLoader(false)
-        //     window.location.href = "/dashboard";
-        // })
-        //     .catch((err) => {
-        //         console.log(err)
-        //         const response = err?.response?.data?.data
+            setShowLoader(false)
+            window.location.href = "/dashboard";
+        })
+            .catch((err) => {
+                console.log(err)
+                const response = err?.response?.data?.data
 
-        //         if (response?.message.includes("Email not found")) {
-        //             setLoginError("Invalid Credentials, Please Check email.")
-        //         } else if (response?.message.includes("Invalid credentials")) {
-        //             setLoginError("Invalid Password, Please Check Your Password.")
-        //         }
-        //         else if (response?.status !== "verified") {
-        //             setLoginError("Email not verified")
-        //         }
-        //         else {
-        //             setLoginError("An error occurred, Check Credentials");
-        //         }
-        //         setShowLoader(false)
-        //     })
+                if (response?.message.includes("Email not found")) {
+                    setLoginError("Invalid Credentials, Please Check email.")
+                } else if (response?.message.includes("Invalid credentials")) {
+                    setLoginError("Invalid Password, Please Check Your Password.")
+                }
+                else if (response?.status !== "verified") {
+                    setLoginError("Email not verified")
+                }
+                else {
+                    setLoginError("An error occurred, Check Credentials");
+                }
+                setShowLoader(false)
+            })
     }
 
     //Sign up
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
+
+    const handleSignUpSubmit = (e) => {
+        e.preventDefault();
+
+        // setIsSignedUp(true);
+        window.location.href = "/otpForm"
+        // Start the OTP timer (countdown from 60 seconds)
+        // const otpTimer = setInterval(() => {
+        //     if (timer > 0) {
+        //         setTimer(timer - 1);
+        //     } else {
+        //         clearInterval(otpTimer); // Stop the timer when it reaches 0
+        //         // Optionally, you can handle what happens when the timer reaches 0 here
+        //     }
+        // }, 1000);
+    }
 
     return (
         <div className={styles.body}>
@@ -120,6 +142,7 @@ const Login = () => {
                     </div>
                 </form>
 
+                {/* SIGNUP FORM */}
                 <form className={`${styles.signup_form} ${styles.form}`} style={{
                     left: !isLoginForm ? 40 : "-220px",
                     scale: !isLoginForm ? 1 : .5,
@@ -130,7 +153,7 @@ const Login = () => {
                     <div>
                         <h2>Create A Watspi Account!</h2>
                         <div className={styles.input_container}>
-                            <input type="email" id="name_signup" placeholder="Enter your full name" />
+                            <input type="text" id="name_signup" placeholder="Enter your full name" />
                         </div>
                         <div className={styles.input_container}>
                             <input type="email" id="email_signup" placeholder="Enter your email"
@@ -158,7 +181,9 @@ const Login = () => {
                                 {loginError}
                             </p>
                         )} */}
-                        <button className={styles.btn}>Sign Up</button>
+                        <a href="/otpForm">
+                            <button className={styles.btn}>Sign Up</button>
+                        </a>
                         <div>
                             <p>Already have an account? <span onClick={() => setIsLoginForm(true)}> Sign In</span></p>
                         </div>
