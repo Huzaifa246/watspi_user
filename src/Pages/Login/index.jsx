@@ -114,6 +114,9 @@ const Login = () => {
                             </p>
                         )} */}
                         <button className={styles.btn}>Sign In</button>
+                        <div>
+                            <p>Don't have an account? <span onClick={() => setIsLoginForm(false)}> Sign Up</span></p>
+                        </div>
                     </div>
                 </form>
 
@@ -156,6 +159,9 @@ const Login = () => {
                             </p>
                         )} */}
                         <button className={styles.btn}>Sign Up</button>
+                        <div>
+                            <p>Already have an account? <span onClick={() => setIsLoginForm(true)}> Sign In</span></p>
+                        </div>
                     </div>
                 </form>
 
