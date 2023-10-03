@@ -1,30 +1,18 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Card, Button, Table, Row, Col } from 'react-bootstrap';
 import "./messages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCog, faChartBar, faEllipsisV, faSearch, faInfoCircle, faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { Tooltip } from 'react-tooltip'
-import 'react-tooltip/dist/react-tooltip.css'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function Messages() {
-
-    // const [selectedMessage, setSelectedMessage] = useState(null);
-
-    // const createTooltip = (text, id) => {
-    //     return text.length > 50 ? (
-    //         <>
-    //             <span
-    //                 data-tip={text}
-    //                 data-for={id}
-    //             >
-    //                 Hover to view
-    //             </span>
-    //             <ReactTooltip id={id} place="top" type="dark" effect="solid" multiline={true} />
-    //         </>
-    //     ) : null;
-    // };
-
+    function truncateText(text, maxLength) {
+        if (text.length <= maxLength) {
+            return text;
+        }
+        return text.slice(0, maxLength) + '...';
+    }
     const defaultMessages = [
         {
             sender: 'Jenny USA',
@@ -221,7 +209,14 @@ function Messages() {
                                         </td>
                                         <td style={{ display: 'flex', justifyContent: 'space-between' }}>
                                             {/* {createTooltip(message.text, `tooltip${index}`)} */}
-                                            {message?.text}
+                                            <OverlayTrigger
+                                                placement="top"
+                                                overlay={<Tooltip id={`tooltip${index}`}>{message.text}</Tooltip>}
+                                            >
+                                                <span data-tip={message.text} data-for={`tooltip${index}`}>
+                                                    {truncateText(message.text, 50)}
+                                                </span>
+                                            </OverlayTrigger>
                                             <span>
                                                 <FontAwesomeIcon
                                                     icon={faEllipsisV}
