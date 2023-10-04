@@ -10,6 +10,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 
 function Dashboard() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
+    console.log(localStorage.getItem("token"))
     return (
         <>
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>

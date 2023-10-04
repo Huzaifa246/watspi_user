@@ -13,7 +13,7 @@ function InstancePage() {
     const [isSettingsOpen, setIsSettingsOpen] = useState(true);
     const [isWebhooksOpen, setIsWebhooksOpen] = useState(true);
     const [isInputEnabled, setInputEnabled] = useState(false);
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState('Smith');
 
     const handleEnableInput = () => {
         setInputEnabled(true);
@@ -145,7 +145,7 @@ function InstancePage() {
                 {/* Settings */}
 
                 <Row className='row-instance'>
-                    <Col>
+                    <Col sm={12} md={6} lg={6}>
                         <Card className='card-box-border border-shadow-style'>
                             <div className='card-drop-style' onClick={toggleSettings}>
                                 <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
@@ -167,14 +167,13 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked />
                                                     </div>
-
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td className="td-left-ftsize width-70per">
-                                                    Making Incoming messages read
+                                                    Making Incoming messages read on replay
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
@@ -185,7 +184,7 @@ function InstancePage() {
                                             </tr>
                                             <tr>
                                                 <td className="td-left-ftsize width-70per">
-                                                    Making sending delay from the queue
+                                                    SendMessages delay
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <input
@@ -222,11 +221,8 @@ function InstancePage() {
                             )}
                         </Card>
                     </Col>
-                </Row>
-                {/* Webhooks */}
-
-                <Row className='row-instance'>
-                    <Col>
+                    {/* Webhooks */}
+                    <Col sm={12} md={6} lg={6}>
                         <Card className='card-box-border border-shadow-style'>
                             <div className='card-drop-style' onClick={toggleWebhooks}>
                                 <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
@@ -240,21 +236,21 @@ function InstancePage() {
                             {isWebhooksOpen && (
                                 <Card className='card-box-border'>
                                     <Row>
-                                        <Col xs={12} md={6} lg={6}>
-                                            <div className='instance-form-input'>
+                                        <Col xs={12} md={12} lg={12}>
+                                            <div className='instance-form-input' style={{ padding: "5px 0" }}>
                                                 <label className='label-webhook'> Webhook URL </label>
                                                 <span>
                                                     <input type="text" placeholder="Webhook URL..." className='input-instance' />
-                                                    <FontAwesomeIcon icon={faCopy} className="left-input-copy left-copy-wb-mob" />
+                                                    <FontAwesomeIcon icon={faCopy} className="right-input-copy left-copy-wb-mob" style={{ right: "30px" }} />
                                                 </span>
                                             </div>
                                         </Col>
-                                        <Col xs={12} md={6} lg={6}>
-                                            <div className='instance-form-input'>
-                                                <label className='label-webhook'> WebHook Auth Header </label>
+                                        <Col xs={12} md={12} lg={12}>
+                                            <div className='instance-form-input' style={{ padding: "5px 0" }}>
+                                                <label className='label-webhook'>Webhook Url Token </label>
                                                 <span>
-                                                    <input type="text" placeholder="WebHook Auth Header..." className='input-instance' />
-                                                    <FontAwesomeIcon icon={faCopy} className="right-input-copy right-wb-mob" />
+                                                    <input type="text" placeholder="Webhook Url Token..." className='input-instance' />
+                                                    <FontAwesomeIcon icon={faCopy} className="right-input-copy right-wb-mob" style={{ right: "30px" }} />
                                                 </span>
                                             </div>
                                         </Col>
@@ -267,13 +263,33 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" defaultChecked/>
                                                     </div>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td className="td-left-ftsize width-70per">
-                                                    Recieved webhooks on from sent status
+                                                    Outgoing API Message Webhook
+                                                </td>
+                                                <td className='td-fl-center'>
+                                                    <div className="form-check form-switch custom-switch">
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="td-left-ftsize width-70per">
+                                                    Outgoing Webhook
+                                                </td>
+                                                <td className='td-fl-center'>
+                                                    <div className="form-check form-switch custom-switch">
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="td-left-ftsize width-70per">
+                                                    Device Webhook
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
@@ -283,7 +299,17 @@ function InstancePage() {
                                             </tr>
                                             <tr>
                                                 <td className="td-left-ftsize width-70per">
-                                                    Recieved webhooks on from sent status
+                                                    State Webhook
+                                                </td>
+                                                <td className='td-fl-center'>
+                                                    <div className="form-check form-switch custom-switch">
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="td-left-ftsize width-70per">
+                                                    Outgoing Webhook
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">

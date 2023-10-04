@@ -61,7 +61,7 @@ function Messages() {
                             </h4>
                             <div>
                                 <Button className='msgbtn-color'>
-                                    Add Number
+                                    Add Instances
                                 </Button>
                             </div>
                         </div>

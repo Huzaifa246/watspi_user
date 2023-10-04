@@ -11,7 +11,7 @@ import MyBroadCast from "./Component/BroadCast/MyBroadCast/MyBroadCast";
 import MyContact from "./Component/MyContactPage/Contact";
 import Groups from "./Component/GroupsComp/Groups";
 import CreateGroup from "./Component/GroupsComp/CreateGroup";
-import otpForm from './Pages/OtpForm/otpForm';
+import OtpForm from "./Pages/OtpForm/otpForm";
 
 const App = () => {
   return (
@@ -20,7 +20,7 @@ const App = () => {
         {/* <Route path={"/"} element={<div>No content here</div>} /> */}
         <Route path={"/"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
-        <Route path={"/otpForm"} element={<otpForm />} />
+        <Route path={"/otpForm"} element={<OtpForm />} />
 
         <Route element={<HeaderComponent />}>
 

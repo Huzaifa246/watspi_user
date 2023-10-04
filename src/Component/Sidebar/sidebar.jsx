@@ -58,6 +58,13 @@ const Sidebar = () => {
                                 InstancePage
                             </span>
                         </Nav.Link>
+                        <Nav.Link href="/instancePage" className={`mb-2 main-sidebar ${window.location.pathname === '/instancePage' ? 'active-link' : ''}`}
+                            onClick={toggleSidebar} >
+                            <FontAwesomeIcon icon={faUsers} className="me-2 sidebar-icon" />
+                            <span className='sidebar-text'>
+                                Instances
+                            </span>
+                        </Nav.Link>
 
                         <Nav.Link
                             className={`mb-2 main-sidebar`}
