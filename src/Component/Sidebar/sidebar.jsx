@@ -51,13 +51,13 @@ const Sidebar = () => {
                                 Dashboard
                             </span>
                         </Nav.Link>
-                        <Nav.Link href="/instancePage" className={`mb-2 main-sidebar ${window.location.pathname === '/instancePage' ? 'active-link' : ''}`}
+                        {/* <Nav.Link href="/instancePage" className={`mb-2 main-sidebar ${window.location.pathname === '/instancePage' ? 'active-link' : ''}`}
                             onClick={toggleSidebar} >
                             <FontAwesomeIcon icon={faTachometerAlt} className="me-2 sidebar-icon" />
                             <span className='sidebar-text'>
                                 InstancePage
                             </span>
-                        </Nav.Link>
+                        </Nav.Link> */}
                         <Nav.Link href="/instances" className={`mb-2 main-sidebar ${window.location.pathname === '/instances' ? 'active-link' : ''}`}
                             onClick={toggleSidebar} >
                             <FontAwesomeIcon icon={faUsers} className="me-2 sidebar-icon" />

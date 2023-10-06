@@ -214,7 +214,7 @@ function Messages() {
                                                 overlay={<Tooltip id={`tooltip${index}`}>{message.text}</Tooltip>}
                                             >
                                                 <span data-tip={message.text} data-for={`tooltip${index}`}>
-                                                    {truncateText(message.text, 50)}
+                                                    {truncateText(message.text, 100)}
                                                 </span>
                                             </OverlayTrigger>
                                             <span>

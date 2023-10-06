@@ -1,146 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from "react-redux";
 import { Card, Col, Row, Table, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faChevronDown, faChevronUp, faPencil, faCheck } from '@fortawesome/free-solid-svg-icons'; // Import the copy icon
+import { faCopy, faUser, faCog, faBell, faChevronDown, faChevronUp, faPencil, faCheck } from '@fortawesome/free-solid-svg-icons'; // Import the copy icon
 import "./Instance.css"
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from "react-redux";
-import { setSelectedInstanceId } from '../../store/intanceSettingSlice';
-import { useParams } from 'react-router-dom';
-import GetIndiInstance from '../../helpers/GetApis/GetIndiInstance';
-import UpdateInstanceApi from '../../helpers/PostApis/UpdateIndiIntance';
-
 
 function InstancePage() {
-    const { id } = useParams();
-    console.log(id, "ss")
-    const dispatch = useDispatch();
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
-    const selectedInstanceId = useSelector((state) => state.userSetting.selectedInstanceId);
-    console.log(selectedInstanceId, "as")
+
 
     const [isBasicOpen, setIsBasicOpen] = useState(true);
     const [isSettingsOpen, setIsSettingsOpen] = useState(true);
     const [isWebhooksOpen, setIsWebhooksOpen] = useState(true);
-    const [isInputEnabled, setInputEnabled] = useState('');
+    const [isInputEnabled, setInputEnabled] = useState(false);
     const [inputValue, setInputValue] = useState('Smith');
-    const [updateInstance, setUpdateInstance] = useState('');
-
-    const [markIncomingMessagesReaded, setMarkIncomingMessagesReaded] = useState('');
-    const [markIncomingMessagesReadedOnReply, setMarkIncomingMessagesReadedOnReply] = useState('');
-    const [keepOnlineStatus, setKeepOnlineStatus] = useState('');
-
-    const [phoneValue, setPhoneValue] = useState('');
-    const [webhookUrl, setWebhookUrl] = useState('https://mysite.com/webhook/green-api/');
-    const [webhookUrlToken, setWebhookUrlToken] = useState('');
-    const [receivedWebhooksOnIncomingMessages, setReceivedWebhooksOnIncomingMessages] = useState('');
-    const [outgoingAPIMessageWebhook, setOutgoingAPIMessageWebhook] = useState(true);
-    const [outgoingWebhook, setOutgoingWebhook] = useState('');
-    const [deviceWebhook, setDeviceWebhook] = useState('');
-    const [stateWebhook, setStateWebhook] = useState('');
-    const [outgoingMessageWebhook, setOutgoingMessageWebhook] = useState('');
-    const [incomingWebhook, setIncomingWebhook] = useState('');
-    const [delaySendMessagesMilliseconds, setDelaySendMessagesMilliseconds] = useState(1000);
-
-    const [indiInstanceData, setIndiInstanceData] = useState(null);
 
     const handleEnableInput = () => {
         setInputEnabled(true);
     };
-    const handleDisableInput = () => {
+
+    const handleSaveInput = () => {
+        // You can add your logic to save the input value here
+        // For example, you can send it to an API or update your state.
+        console.log('Input Value:', inputValue);
         setInputEnabled(false);
     };
-    const handleUpdateInput = () => {
-        const data = {
-            webhookId: id,
-            webhookUrl,
-            delaySendMessagesMilliseconds,
-            markIncomingMessagesReaded,
-            markIncomingMessagesReadedOnReply,
-            keepOnlineStatus,
-            outgoingAPIMessageWebhook,
-            outgoingWebhook,
-            outgoingMessageWebhook,
-            incomingWebhook,
-            deviceWebhook,
-            stateWebhook,
-            InstancesName: inputValue,
-            InstancesPhone: phoneValue,
-        };
 
-        UpdateInstanceApi(data)
-            .then((response) => {
-                console.log(response)
-                setUpdateInstance(response?.data)
-                console.log(response.data)
-                console.log("API response:", response?.data);
-                toast.success('Instance Updated successfully', {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                });
-                window.location.reload()
-            })
-            .catch((error) => {
-                console.error("API error:", error);
-            });
-    };
-
-    //-----TOGGLING ALL CONTAINERS!!!
     const toggleBasic = () => {
         setIsBasicOpen(!isBasicOpen);
     };
     const toggleSettings = () => {
         setIsSettingsOpen(!isSettingsOpen);
     };
+
+    // Function to toggle the visibility of Webhooks content
     const toggleWebhooks = () => {
         setIsWebhooksOpen(!isWebhooksOpen);
     };
-    //-----TOGGLING ALL CONTAINERS ENDS!!!
 
-    useEffect(() => {
-        fetchIndividualInstanceData(id);
-    }, [id]);
-    const fetchIndividualInstanceData = async (id) => {
-        try {
-            const userDetails = await GetIndiInstance(id);
-            if (userDetails && userDetails.message) {
-                const data = userDetails.message;
-                setIndiInstanceData(data);
-
-                // Populate form fields with fetched data
-                setInputValue(data.InstancesName || '');
-                setPhoneValue(data.InstancesPhone || ''); // Populate Phone field
-                setKeepOnlineStatus(data.keepOnlineStatus || '')
-                setStateWebhook(data.stateWebhook || '')
-                setDeviceWebhook(data.deviceWebhook || '')
-                setIncomingWebhook(data.incomingWebhook || '')
-                setOutgoingAPIMessageWebhook(data.outgoingMessageWebhook || '')
-                setOutgoingWebhook(data.outgoingWebhook || '')
-                setOutgoingMessageWebhook(data.outgoingMessageWebhook || '')
-                setMarkIncomingMessagesReaded(data.markIncomingMessagesReaded || '')
-                setMarkIncomingMessagesReadedOnReply(data.markIncomingMessagesReadedOnReply || '')
-                setDelaySendMessagesMilliseconds(data.delaySendMessagesMilliseconds || '')
-                setWebhookUrl(data.webhookUrl || '')
-                setWebhookUrlToken(data.webhookUrlToken || '')
-
-            } else {
-                console.error('No valid data found in the response:', userDetails);
-            }
-        } catch (error) {
-            console.error('Error fetching individual instance data:', error);
-        }
-    };
-
-    console.log(indiInstanceData, "asd")
     return (
         <>
-            <ToastContainer />
             <div className={`${!isSidebarOpen ? 'trades-open' : ''}`}>
                 <div style={{ marginTop: "6rem" }}></div>
                 <Row className='row-instance'>
@@ -182,7 +81,7 @@ function InstancePage() {
                                                             <FontAwesomeIcon
                                                                 icon={faCheck}
                                                                 className="left-input-copy left-copy-mob"
-                                                                onClick={handleDisableInput}
+                                                                onClick={handleSaveInput}
                                                                 style={{ color: "#3ab19d" }}
                                                             />
                                                         )}
@@ -193,19 +92,14 @@ function InstancePage() {
                                             <Col xs={12} md={6} lg={6}>
                                                 <div className='instance-form-input'>
                                                     <label> Phone </label>
-                                                    <input type="tel" placeholder="+90123456" className='input-instance'
-                                                        value={phoneValue}
-                                                        onChange={(e) => setPhoneValue(e.target.value)}
-                                                    />
+                                                    <input type="tel" placeholder="+90123456" className='input-instance' />
                                                 </div>
                                             </Col>
                                             <Col xs={12} md={6} lg={6}>
                                                 <div className='instance-form-input'>
                                                     <label> API URL </label>
                                                     <span>
-                                                        <input type="text" placeholder="Name..." className='input-instance'
-                                                        // defaultValue="www.afomedia.com"
-                                                        />
+                                                        <input type="text" placeholder="Name..." className='input-instance' />
                                                         <FontAwesomeIcon icon={faCopy} className="left-input-copy left-copy-mob" />
                                                     </span>
                                                 </div>
@@ -215,9 +109,7 @@ function InstancePage() {
                                                 <div className='instance-form-input'>
                                                     <label> Media URL </label>
                                                     <span>
-                                                        <input type="text" placeholder="URL" className='input-instance'
-                                                            defaultValue="www.afomedia.com"
-                                                        />
+                                                        <input type="text" placeholder="+90123456" className='input-instance' />
                                                         <FontAwesomeIcon icon={faCopy} className="right-input-copy" />
                                                     </span>
                                                 </div>
@@ -226,9 +118,7 @@ function InstancePage() {
                                                 <div className='instance-form-input'>
                                                     <label> Instance ID </label>
                                                     <span>
-                                                        <input type="text" placeholder="Instance ID" className='input-instance'
-                                                        // defaultValue="123456789"
-                                                        />
+                                                        <input type="text" placeholder="Instance ID" className='input-instance' />
                                                         <FontAwesomeIcon icon={faCopy} className="left-input-copy left-copy-mob" />
                                                     </span>
                                                 </div>
@@ -238,9 +128,7 @@ function InstancePage() {
                                                 <div className='instance-form-input'>
                                                     <label> Instance Token </label>
                                                     <span>
-                                                        <input type="text" placeholder="token" className='input-instance'
-                                                        // defaultValue="qwertyqwerty"
-                                                        />
+                                                        <input type="text" placeholder="0987654321" className='input-instance' />
                                                         <FontAwesomeIcon icon={faCopy} className="right-input-copy" />
                                                     </span>
                                                 </div>
@@ -279,10 +167,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                                                             checked={markIncomingMessagesReaded}
-                                                             onChange={() => setMarkIncomingMessagesReaded(!markIncomingMessagesReaded)}
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -292,10 +177,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                                                            checked={markIncomingMessagesReadedOnReply}
-                                                            onChange={() => setMarkIncomingMessagesReadedOnReply(!markIncomingMessagesReadedOnReply)}
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                                                     </div>
 
                                                 </td>
@@ -308,8 +190,7 @@ function InstancePage() {
                                                     <input
                                                         type="text"
                                                         className="input_field-Prof IFP-msec"
-                                                        value={delaySendMessagesMilliseconds}
-                                                        onChange={(e) => setDelaySendMessagesMilliseconds(e.target.value)}
+                                                        value={0}
                                                         style={{
                                                             borderTopRightRadius: "0",
                                                             borderBottomRightRadius: "0",
@@ -329,10 +210,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                                                             checked={keepOnlineStatus}
-                                                             onChange={() => setKeepOnlineStatus(!keepOnlineStatus)}
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                                                     </div>
 
                                                 </td>
@@ -362,10 +240,7 @@ function InstancePage() {
                                             <div className='instance-form-input' style={{ padding: "5px 0" }}>
                                                 <label className='label-webhook'> Webhook URL </label>
                                                 <span>
-                                                    <input type="text" placeholder="Webhook URL..." className='input-instance'
-                                                        value={webhookUrl}
-                                                        onChange={(e) => setWebhookUrl(e.target.value)}
-                                                    />
+                                                    <input type="text" placeholder="Webhook URL..." className='input-instance' />
                                                     <FontAwesomeIcon icon={faCopy} className="right-input-copy left-copy-wb-mob" style={{ right: "30px" }} />
                                                 </span>
                                             </div>
@@ -374,10 +249,7 @@ function InstancePage() {
                                             <div className='instance-form-input' style={{ padding: "5px 0" }}>
                                                 <label className='label-webhook'>Webhook Url Token </label>
                                                 <span>
-                                                    <input type="text" placeholder="Webhook Url Token..." className='input-instance'
-                                                    // value={webhookUrlToken}
-                                                    // onChange={(e) => setWebhookUrlToken(e.target.value)}
-                                                    />
+                                                    <input type="text" placeholder="Webhook Url Token..." className='input-instance' />
                                                     <FontAwesomeIcon icon={faCopy} className="right-input-copy right-wb-mob" style={{ right: "30px" }} />
                                                 </span>
                                             </div>
@@ -391,14 +263,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" defaultChecked
-                                                            checked={receivedWebhooksOnIncomingMessages}
-                                                            onChange={() =>
-                                                                setReceivedWebhooksOnIncomingMessages(
-                                                                    !receivedWebhooksOnIncomingMessages
-                                                                )
-                                                            }
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" defaultChecked/>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -408,12 +273,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked
-                                                            checked={outgoingAPIMessageWebhook}
-                                                            onChange={() =>
-                                                                setOutgoingAPIMessageWebhook(!outgoingAPIMessageWebhook)
-                                                            }
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -423,10 +283,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked
-                                                            checked={outgoingWebhook}
-                                                            onChange={() => setOutgoingWebhook(!outgoingWebhook)}
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" defaultChecked />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -436,10 +293,7 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                                                            checked={deviceWebhook}
-                                                            onChange={() => setDeviceWebhook(!deviceWebhook)}
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -449,20 +303,28 @@ function InstancePage() {
                                                 </td>
                                                 <td className='td-fl-center'>
                                                     <div className="form-check form-switch custom-switch">
-                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                                                            checked={stateWebhook}
-                                                            onChange={() => setStateWebhook(!stateWebhook)}
-                                                        />
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td className="td-left-ftsize width-70per">
+                                                    Outgoing Webhook
+                                                </td>
+                                                <td className='td-fl-center'>
+                                                    <div className="form-check form-switch custom-switch">
+                                                        <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
                                                     </div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </Table>
                                     <div>
-                                        <Button className='save-btn'
-                                            onClick={handleUpdateInput}
-                                        >
+                                        <Button className='save-btn'>
                                             Save Changes
+                                        </Button>
+                                        <Button className='cancel-btn'>
+                                            Cancel
                                         </Button>
                                     </div>
                                 </Card>

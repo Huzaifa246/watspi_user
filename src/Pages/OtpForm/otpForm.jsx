@@ -12,7 +12,7 @@ function OtpForm() {
     const [isTimerRunning, setIsTimerRunning] = useState(true);
     const isOtpComplete = otpValue?.length === 6;
 
-    // http://localhost:3000/api/users/verification
+    // ${import.meta.env.VITE_APP_API}/api/users/verification
 
     useEffect(() => {
         let interval;

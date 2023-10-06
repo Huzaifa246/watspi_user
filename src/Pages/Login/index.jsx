@@ -62,7 +62,7 @@ const Login = () => {
             otp: otpValue
         };
 
-        axios.post("http://192.168.100.19:3000/api/users/verification", requestBody,
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/verification`, requestBody,
         ).then(async (response) => {
             console.log(response);
             console.log('OTP verification successful:', response.data);
@@ -116,7 +116,7 @@ const Login = () => {
             password: password
         }
 
-        axios.post("http://192.168.100.19:3000/api/users/login", credentials,
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/login`, credentials,
         ).then(async (res) => {
             let response = res?.data;
             console.log(response, "response")
@@ -181,7 +181,7 @@ const Login = () => {
             return;
         }
 
-        axios.post("http://192.168.100.19:3000/api/users/signUp", userData)
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/signUp`, userData)
             .then((res) => {
                 let response = res?.data;
                 console.log(response, "response");
