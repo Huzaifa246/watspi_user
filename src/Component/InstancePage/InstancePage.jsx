@@ -53,19 +53,20 @@ function InstancePage() {
         setInputEnabled(false);
     };
     const handleUpdateInput = () => {
+        
         const data = {
             webhookId: id,
             webhookUrl,
             delaySendMessagesMilliseconds,
-            markIncomingMessagesReaded,
-            markIncomingMessagesReadedOnReply,
-            keepOnlineStatus,
-            outgoingAPIMessageWebhook,
-            outgoingWebhook,
-            outgoingMessageWebhook,
-            incomingWebhook,
-            deviceWebhook,
-            stateWebhook,
+            markIncomingMessagesReaded : markIncomingMessagesReaded === "" ? JSON.stringify(false) : JSON.stringify(markIncomingMessagesReaded),
+            markIncomingMessagesReadedOnReply : markIncomingMessagesReadedOnReply === "" ? JSON.stringify(false) : JSON.stringify(markIncomingMessagesReadedOnReply),
+            keepOnlineStatus: keepOnlineStatus === "" ? JSON.stringify(false) : JSON.stringify(keepOnlineStatus),
+            outgoingAPIMessageWebhook: outgoingAPIMessageWebhook === "" ? JSON.stringify(false) : JSON.stringify(outgoingAPIMessageWebhook),
+            outgoingWebhook: outgoingWebhook === "" ? JSON.stringify(false) : JSON.stringify(outgoingWebhook),
+            outgoingMessageWebhook: outgoingMessageWebhook === "" ? JSON.stringify(false) : JSON.stringify(outgoingMessageWebhook),
+            incomingWebhook: incomingWebhook === "" ? JSON.stringify(false) : JSON.stringify(incomingWebhook),
+            deviceWebhook: deviceWebhook === "" ? JSON.stringify(false) : JSON.stringify(deviceWebhook),
+            stateWebhook: stateWebhook === "" ? JSON.stringify(false) : JSON.stringify(stateWebhook),
             InstancesName: inputValue,
             InstancesPhone: phoneValue,
         };
@@ -84,7 +85,7 @@ function InstancePage() {
                     pauseOnHover: true,
                     draggable: true,
                 });
-                window.location.reload()
+                // window.location.reload()
             })
             .catch((error) => {
                 console.error("API error:", error);
