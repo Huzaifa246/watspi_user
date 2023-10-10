@@ -41,6 +41,12 @@
   .display-mob-none{
     display: none !important;
   }
+  .password-toggle-icon {
+    position: absolute !important;
+    right: 28% !important;
+    transform: translateY(40%) !important;
+    cursor: pointer;
+  }
   
   @media screen and (max-width: 800px) {
     .password-toggle-icon {
@@ -83,12 +89,12 @@
 }
 @media screen and (min-width: 400px) and (max-width: 479px) {
   .password-toggle-icon {
-    right: 27% !important;
+    right: 23.5% !important;
   }
 }
 @media screen and (min-width: 330px) and (max-width: 399px) {
   .password-toggle-icon {
-    right: 21.5% !important;
+    right: 20.5% !important;
   }
 }
 @media screen and (min-width: 260px) and (max-width: 329px) {
