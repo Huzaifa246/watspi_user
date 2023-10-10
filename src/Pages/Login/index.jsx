@@ -343,7 +343,7 @@ const Login = () => {
                                 </div>
                             </div>
                             <button className={styles.btn}>Sign In</button>
-                            <div>
+                            <div className="display-mob-none">
                                 <p>Don't have an account? <span onClick={() => setIsLoginForm(false)}> Sign Up</span></p>
                             </div>
                         </div>
@@ -386,7 +386,7 @@ const Login = () => {
                                     value={password} onChange={e => setPassword(e.target.value)}
                                 />
                                 <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-                                    {showPassword ? <FiEyeOff /> : <FiEye />}
+                                    {showPassword ? <FiEyeOff className="password-eye-icon"/> : <FiEye className="password-eye-icon"/>}
                                 </span>
                             </div>
                             <div className={styles.input_container}>
@@ -398,7 +398,7 @@ const Login = () => {
                             {/* <a href="/otpForm"> */}
                             <button className={styles.btn}>Sign Up</button>
                             {/* </a> */}
-                            <div>
+                            <div className="display-mob-none">
                                 <p>Already have an account? <span onClick={() => setIsLoginForm(true)}> Sign In</span></p>
                             </div>
                             {signUpError && (
