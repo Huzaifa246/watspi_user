@@ -218,12 +218,18 @@
   }
   .form {
     top: 33%;
-    height: 60vh;
+    height: 65vh;
     margin: 0 5%;
     border-radius: 20px !important;
   }
   .content {
+    top: 40% !important;
     width: 100% !important;
+    height: 60%;
+    padding: 7rem 3rem 3rem 3rem !important;
+  }
+  .content h3 {
+    color: #3ab19d !important;
   }
 }
 @media screen and (max-width: 300px) {
