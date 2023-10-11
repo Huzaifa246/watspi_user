@@ -91,7 +91,7 @@ function MyContact() {
         console.log('New Age Values:', newValues); // Log the newValues
         // Filter data based on age range
         const filteredData = excelData?.filter((row) => {
-            const age = parseInt(row[3]); // Age is at index 3 in your data
+            const age = parseInt(row[3]); // Age is at index 3 according to excel file
             if (!isNaN(age)) {
                 return age >= newValues[0] && age <= newValues[1];
             }
@@ -102,24 +102,20 @@ function MyContact() {
         setFilteredData(filteredData);
     };
 
-
-
-
-
-
+    //FILTER BY GENDER
     const handleFilterGenderChange = (selectedGender) => {
         // Filter data based on selected gender
         const filteredData = excelData.filter((row) => {
-            return row[4] === selectedGender; // Assuming gender is at index 4 in your data
+            return row[4] === selectedGender; // gender is at index 4 according to excel file
         });
 
         setFilteredData(filteredData);
     };
-
+    //FILTER BY COUNTRY
     const handleFilterCountryChange = (selectedCountry) => {
         // Filter data based on selected country
         const filteredData = excelData.filter((row) => {
-            return row[5] === defaultCountries[selectedCountry].name; // Assuming country is at index 5 in your data
+            return row[5] === defaultCountries[selectedCountry].name; // Country is at index 5 according to excel file
         });
 
         setFilteredData(filteredData);

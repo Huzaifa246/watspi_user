@@ -52,7 +52,7 @@ function Instances() {
         fetchData();
     }, []);
 
-    //INDI Instance
+    //INDI Instance VIEW
     const fetchIndividualInstanceData = async (instanceId) => {
         try {
             const userDetails = await GetIndiInstance(instanceId);

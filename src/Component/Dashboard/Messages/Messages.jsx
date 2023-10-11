@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, Button, Table, Row, Col } from 'react-bootstrap';
 import "./messages.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,12 +7,38 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function Messages() {
+    //TEXT LENGTH ACCORDING to SCREEN
+    const [textLength, setTextLength] = useState(100);
+    useEffect(() => {
+        function handleWindowResize() {
+            const windowWidth = window.innerWidth;
+
+            if (windowWidth > 1600) {
+                setTextLength(150);
+            } else if (windowWidth < 1600 && windowWidth > 1000) {
+                setTextLength(100);
+            } else if (windowWidth > 999) {
+                setTextLength(50);
+            }
+            else if (windowWidth > 400) {
+                setTextLength(20);
+            }
+        }
+        handleWindowResize();
+        window.addEventListener('resize', handleWindowResize);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
     function truncateText(text, maxLength) {
         if (text.length <= maxLength) {
             return text;
         }
         return text.slice(0, maxLength) + '...';
     }
+    //----ENDS TEXT LENGTH
     const defaultMessages = [
         {
             sender: 'Jenny USA',
@@ -152,6 +178,7 @@ function Messages() {
                     </Card>
                 </Col>
             </Row>
+            
             <Card className="Messages-dash card-msg-border" style={{ marginTop: "30px", padding: "10px", borderRadius: "10px" }}>
                 <div className='Main-Msgs'>
                     <h4 className='msg-info'>
@@ -211,10 +238,10 @@ function Messages() {
                                             {/* {createTooltip(message.text, `tooltip${index}`)} */}
                                             <OverlayTrigger
                                                 placement="top"
-                                                overlay={<Tooltip id={`tooltip${index}`}>{message.text}</Tooltip>}
+                                                overlay={<Tooltip id={`tooltip${index}`}>{message?.text}</Tooltip>}
                                             >
                                                 <span data-tip={message.text} data-for={`tooltip${index}`}>
-                                                    {truncateText(message.text, 100)}
+                                                    {truncateText(message.text, textLength)}
                                                 </span>
                                             </OverlayTrigger>
                                             <span>

@@ -15,6 +15,7 @@ function Setting() {
   const [isPayOpen, setIsPayOpen] = useState(false);
   const [isSubscibeOpen, setIsSubscibeOpen] = useState(false);
 
+  // TOGGLES
   const toggleSubscibe = () => {
     setIsSubscibeOpen(!isSubscibeOpen);
   };

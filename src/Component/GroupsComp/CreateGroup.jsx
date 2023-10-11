@@ -14,7 +14,7 @@ function CreateGroup() {
         setSelectAll(!selectAll); // Toggle the "Select All" state
     };
     const handleCheckboxChange = () => {
-        // You can implement logic here if needed when individual checkboxes change
+        // For Individual checkbox, in Futher
     };
 
     // Function to handle changes in the input fields
@@ -29,7 +29,7 @@ function CreateGroup() {
         }
     };
 
-    // Check if all required fields are filled
+    // Check if all required fields are filled if not (HIDE BTN)
     const isSaveButtonVisible = name === '' && description === '';
 
     return (

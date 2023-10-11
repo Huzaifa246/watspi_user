@@ -228,19 +228,19 @@ function MyBroadCast() {
                         <Card div className='card-box-border myborder-list-style'>
                             <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
                                 <tbody>
-                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    <th style={{ width: "20%" }} className='ft-weight-300'>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    <th style={{ width: "19%" }} className='ft-weight-300'>
                                         TechOn Ventures
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         +92345678901
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500 txt-center'>
+                                    <th className='ft-weight-300 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -249,19 +249,19 @@ function MyBroadCast() {
                         <Card div className='card-box-border myborder-list-style'>
                             <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
                                 <tbody>
-                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    <th style={{ width: "20%" }} className='ft-weight-300'>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    <th style={{ width: "19%" }} className='ft-weight-300'>
                                         TechOn Ventures
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         +92345678901
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500 txt-center'>
+                                    <th className='ft-weight-300 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -270,19 +270,19 @@ function MyBroadCast() {
                         <Card div className='card-box-border myborder-list-style'>
                             <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
                                 <tbody>
-                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    <th style={{ width: "20%" }} className='ft-weight-300'>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    <th style={{ width: "19%" }} className='ft-weight-300'>
                                         TechOn Ventures
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         +92345678901
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500 txt-center'>
+                                    <th className='ft-weight-300 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -291,19 +291,19 @@ function MyBroadCast() {
                         <Card div className='card-box-border myborder-list-style'>
                             <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
                                 <tbody>
-                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    <th style={{ width: "20%" }} className='ft-weight-300'>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    <th style={{ width: "19%" }} className='ft-weight-300'>
                                         TechOn Ventures
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         +92345678901
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500 txt-center'>
+                                    <th className='ft-weight-300 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -312,19 +312,19 @@ function MyBroadCast() {
                         <Card div className='card-box-border myborder-list-style'>
                             <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
                                 <tbody>
-                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    <th style={{ width: "20%" }} className='ft-weight-300'>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    <th style={{ width: "19%" }} className='ft-weight-300'>
                                         TechOn Ventures
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         +92345678901
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500 txt-center'>
+                                    <th className='ft-weight-300 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -333,19 +333,19 @@ function MyBroadCast() {
                         <Card div className='card-box-border myborder-list-style'>
                             <Table className='Table-head tbody-table' style={{ tableLayout: "fixed" }}>
                                 <tbody>
-                                    <th style={{ width: "20%" }} className='ft-weight-500'>
+                                    <th style={{ width: "20%" }} className='ft-weight-300'>
                                         00-09-2023 23:37:33
                                     </th>
-                                    <th style={{ width: "19%" }} className='ft-weight-500'>
+                                    <th style={{ width: "19%" }} className='ft-weight-300'>
                                         TechOn Ventures
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         +92345678901
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-300'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500 txt-center'>
+                                    <th className='ft-weight-300 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>

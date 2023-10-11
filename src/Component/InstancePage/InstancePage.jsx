@@ -46,12 +46,15 @@ function InstancePage() {
 
     const [indiInstanceData, setIndiInstanceData] = useState(null);
 
+    //----------ENABLE & DISABLE TEXT INPUT FIELD
     const handleEnableInput = () => {
         setInputEnabled(true);
     };
     const handleDisableInput = () => {
         setInputEnabled(false);
     };
+
+    //-------UPDATE INSTANCE API
     const handleUpdateInput = () => {
         
         const data = {
