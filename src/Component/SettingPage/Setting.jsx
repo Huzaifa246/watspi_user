@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./setting.css";
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog, faChevronDown, faLock, faBell, faCreditCard, faListAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faChevronDown, faUnlock, faBell, faFileInvoiceDollar, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from "react-redux";
 
 function Setting() {
@@ -37,9 +37,9 @@ function Setting() {
         <div style={{ marginTop: "6rem" }}></div>
         <div className='main-setting'>
           <div className='set-main' style={{ padding: "25px", backgroundColor: "#f6f7fb" }}>
-            <h1 className='sett-pad-20px color-grey'>
+            <h2 className='sett-pad-20px color-grey'>
               General Settings
-            </h1>
+            </h2>
             <div className='sett-pad-20px'>
               <Row>
                 <Col md={12} lg={12}>
@@ -68,16 +68,15 @@ function Setting() {
                       <div className='below-container'>
                         <div className='card-below-body'>
                           <form>
-                            <div className='acc-form-main'>
                               <Row>
-                                <Col xs={12} md={6} lg={12}>
+                                <Col xs={12} md={12} lg={6}>
                                   <div className='acc-form-input'>
                                     <label> Name </label>
                                     <input type="text" placeholder="Name..." className='input-field-setting' />
                                   </div>
                                 </Col>
 
-                                <Col xs={12} md={6} lg={12}>
+                                <Col xs={12} md={12} lg={6}>
                                   <div className='acc-form-input'>
                                     <label> Email </label>
                                     <input type="email" placeholder="xyz@gmail.com" className='input-field-setting' />
@@ -85,21 +84,20 @@ function Setting() {
                                 </Col>
                               </Row>
                               <Row>
-                                <Col xs={12} md={6} lg={12}>
+                                <Col xs={12} md={12} lg={6}>
                                   <div className='acc-form-input'>
                                     <label> City </label>
                                     <input type="text" placeholder="Karachi" className='input-field-setting' />
                                   </div>
                                 </Col>
 
-                                <Col xs={12} md={6} lg={12}>
+                                <Col xs={12} md={12} lg={6}>
                                   <div className='acc-form-input'>
                                     <label> Country </label>
                                     <input type="email" placeholder="Pakistan" className='input-field-setting' />
                                   </div>
                                 </Col>
                               </Row>
-                            </div>
                             <div className='btn-style-end'>
                               <Button className='Update-btn'>
                                 Save Changes
@@ -117,7 +115,7 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isPassOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={togglePass}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faLock}
+                        <FontAwesomeIcon icon={faUnlock}
                          className='color-icon-grey sett-icon'
                         />
                       </div>
@@ -210,7 +208,7 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isPayOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={togglePayCard}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faCreditCard} 
+                        <FontAwesomeIcon icon={faFileInvoiceDollar} 
                          className='color-icon-grey sett-icon'
                         />
                       </div>
@@ -262,7 +260,7 @@ function Setting() {
                   <Card className={`mr-tb-10px col-style card-box-border ${isSubscibeOpen ? 'card-open' : ''}`}>
                     <div className='main-sett-style' onClick={toggleSubscibe}>
                       <div className='frst-div'>
-                        <FontAwesomeIcon icon={faListAlt} 
+                        <FontAwesomeIcon icon={faMobileAlt} 
                          className='color-icon-grey sett-icon'
                         />
                       </div>
