@@ -86,6 +86,9 @@
   margin-left: 10px;
   width: 99%;
 }
+.txt-center{
+  text-align: center;
+}
 @media screen and (max-width: 820px) {
   .myBroadCast-main{
     margin-bottom: 20px;

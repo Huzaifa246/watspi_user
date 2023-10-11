@@ -308,8 +308,9 @@ const Login = () => {
                         opacity: !isLoginForm ? 1 : 0,
                         pointerEvents: !isLoginForm ? "initial" : "none",
                     }}>
-                        <h2>Logo</h2>
-                        <h2>Hello There!</h2>
+                        <button className="mob-btn-signin" onClick={() => setIsLoginForm(true)}>Sign In</button>
+                        <h2 className="mob-none">Logo</h2>
+                        <h2 className="mob-none">Hello There!</h2>
                         <h3>Signup to Watspi And Random Text.</h3>
                         <div className={styles.content_bottom}>
                             <p>Already have an account?</p>

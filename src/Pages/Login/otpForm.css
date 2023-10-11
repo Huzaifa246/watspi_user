@@ -47,7 +47,9 @@
     transform: translateY(40%) !important;
     cursor: pointer;
   }
-  
+  .mob-btn-signin{
+    display: none !important;
+  }
   @media screen and (max-width: 800px) {
     .password-toggle-icon {
       position: absolute !important;
@@ -58,12 +60,32 @@
     .bottom-style-trans{
       bottom: 0px !important;
       right: 0 !important;
+      top: 0 !important;
       transition: 1000s ease-out;
+      padding: 0rem 3rem 3rem 3rem !important;
     }
     .top-style-trans{
-      top: 0px !important;
+      /* top: 0px !important; */
       left: 0 !important;
       transition: 1000s ease-out;
+    }
+    .mob-none{
+      display: none !important;
+    }
+    .mob-btn-signin{
+      padding: 0.5rem 1rem;
+      outline: none;
+      border: none;
+      background: linear-gradient(
+        to right,
+        var(--color-secondary),
+        var(--color-primary)
+      );
+      color: var(--color-white);
+      border-radius: 5px;
+      cursor: pointer;
+      border: 1px solid var(--color-white);
+      display: flex !important;
     }
   }
   

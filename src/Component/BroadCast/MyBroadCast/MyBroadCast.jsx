@@ -240,7 +240,7 @@ function MyBroadCast() {
                                     <th className='ft-weight-500'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-500 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -261,7 +261,7 @@ function MyBroadCast() {
                                     <th className='ft-weight-500'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-500 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -282,7 +282,7 @@ function MyBroadCast() {
                                     <th className='ft-weight-500'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-500 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -303,7 +303,7 @@ function MyBroadCast() {
                                     <th className='ft-weight-500'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-500 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -324,7 +324,7 @@ function MyBroadCast() {
                                     <th className='ft-weight-500'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-500 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
@@ -345,7 +345,7 @@ function MyBroadCast() {
                                     <th className='ft-weight-500'>
                                         Instance 1, Instance 2
                                     </th>
-                                    <th className='ft-weight-500'>
+                                    <th className='ft-weight-500 txt-center'>
                                         <span className="badge badge-secondary badge-style mob-display-act">Active</span>
                                     </th>
                                 </tbody>
