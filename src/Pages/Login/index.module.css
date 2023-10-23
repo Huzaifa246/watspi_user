@@ -226,7 +226,7 @@
     height: 65vh;
     margin: 0 5%;
     border-radius: 20px !important;
-    transition: 500ms ease-out;
+    transition: 1500ms ease-out;
   }
   .content {
     width: 100% !important;
