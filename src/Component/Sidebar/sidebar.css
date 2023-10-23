@@ -248,6 +248,11 @@
       z-index: 99999;
   } */
 }
+@media screen and (max-width: 360px) {
+  #sidebar {
+    width: 60% !important;
+  }
+}
 
 @media screen and (max-width: 400px) {
   #sidebar.active {
