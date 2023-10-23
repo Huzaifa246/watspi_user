@@ -2,7 +2,7 @@ import axios from 'axios';
 async function CreateInstanceApi(data) {
     try {
         console.log('Request Data:', data);
-        const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/users/Instance_Creation`, data);
+        const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/users/createInstance`, data);
 
         console.log(response, "res")
         return response;

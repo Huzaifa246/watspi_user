@@ -26,7 +26,7 @@ const App = () => {
     if (token) {
       axios
         .get(
-          `${import.meta.env.VITE_APP_API}//api/users/auth/${token}`
+          `${import.meta.env.VITE_APP_API}/api/users/auth/${token}`
         )
         .then((response) => {
           if (token) {

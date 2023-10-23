@@ -28,6 +28,8 @@ const Login = () => {
     const [otpError, setOtpError] = useState(false);
 
     const [otpValue, setOtpValue] = useState("");
+    const [signupEmail, setSignupEmail] = useState('');
+
     const [timer, setTimer] = useState(60);
     const [isTimerRunning, setIsTimerRunning] = useState(true);
     const isOtpComplete = otpValue?.length === 6;
@@ -59,7 +61,8 @@ const Login = () => {
     //OTP API
     const verifyOtp = () => {
         const requestBody = {
-            otp: otpValue
+            otp: otpValue,
+            email: signupEmail,
         };
 
         axios.post(`${import.meta.env.VITE_APP_API}/api/users/verification`, requestBody,
@@ -115,9 +118,9 @@ const Login = () => {
             email: email,
             password: password
         }
+        console.log(credentials)
 
-        axios.post(`${import.meta.env.VITE_APP_API}/api/users/login`, credentials,
-        ).then(async (res) => {
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/login`, credentials).then(async (res) => {
             let response = res?.data;
             console.log(response, "response")
             localStorage.setItem("token", response?.token)
@@ -186,10 +189,10 @@ const Login = () => {
                 let response = res?.data;
                 console.log(response, "response");
                 localStorage.setItem("token", response?.token);
+                setSignupEmail(response?.result?.email);
                 setShowLoader(false);
                 // window.location.href = "/otpForm";
                 // navigate("otpForm");
-
                 setShowOtpModal(true);
             })
             .catch((err) => {

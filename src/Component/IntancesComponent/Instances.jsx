@@ -37,12 +37,13 @@ function Instances() {
     const [outgoingMessageWebhook, setOutgoingMessageWebhook] = useState(true);
     const [incomingWebhook, setIncomingWebhook] = useState(true);
     const [delaySendMessagesMilliseconds, setDelaySendMessagesMilliseconds] = useState(1000);
+    const [enableMessagesHistory, setEnableMessagesHistory] = useState(false);
 
     //ALL instances
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await GetALLInstances('651e9cb2f717671e388db0c7');
+                const data = await GetALLInstances('65312017301280fe40ebdb5e');
                 setInstancesData(data?.message);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -71,7 +72,7 @@ function Instances() {
         try {
             await DelIndiInstance(instanceId);
             // Remove the deleted instance from the state
-            setInstancesData((prevData) => prevData.filter((instance) => instance?._id !== instanceId));
+            setInstancesData((prevData) => prevData?.filter((instance) => instance?._id !== instanceId));
             setShowDelModal(false);
             toast.success('Instance deleted successfully', {
                 position: 'top-center',
@@ -109,9 +110,10 @@ function Instances() {
             stateWebhook: JSON.stringify(stateWebhook),
             outgoingMessageWebhook: JSON.stringify(outgoingMessageWebhook),
             incomingWebhook: JSON.stringify(incomingWebhook),
-            userId: "651e9cb2f717671e388db0c7",
+            userId: "65312017301280fe40ebdb5e",
             InstancesName: randomName,
             InstancesPhone: +92345678910,
+            enableMessagesHistory:  JSON.stringify(enableMessagesHistory)
         };
 
         CreateInstanceApi(data)
