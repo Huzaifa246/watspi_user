@@ -304,7 +304,7 @@ const Login = () => {
                     right: isLoginForm ? 0 : "calc(100% - 450px)"
                 }} /> */}
 
-                    <div className={`${styles.content} ${isLoginForm ? "bottom-style-trans" : "top-style-trans"}`}  style={{
+                    <div className={`${styles.content} ${!isLoginForm ? "bottom-style-trans" : "top-style-trans"}`}  style={{
                         right: !isLoginForm ? 0 : "-220px",
                         scale: !isLoginForm ? 1 : .5,
                         transformOrigin: "right center",

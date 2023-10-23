@@ -200,7 +200,7 @@
     border-radius: 0px !important;
   }
   .signup_form {
-    transform-origin: top center !important;
+    transform-origin: bottom center !important;
     height: 100%;
     left: 0px !important;
     align-items: center;
@@ -229,7 +229,6 @@
     transition: 500ms ease-out;
   }
   .content {
-    top: 38%;
     width: 100% !important;
     height: 60%;
     padding: 0rem 3rem 3rem 3rem !important;
