@@ -20,6 +20,11 @@ function Instances() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
     const selectedInstanceId = useSelector((state) => state.userSetting.selectedInstanceId);
     console.log(selectedInstanceId, "as")
+
+    const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
+    console.log(userDetails)
+    const userId = userDetails?._id;
+
     const [instancesData, setInstancesData] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [showDelModal, setShowDelModal] = useState(false);
@@ -43,7 +48,7 @@ function Instances() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await GetALLInstances('65312017301280fe40ebdb5e');
+                const data = await GetALLInstances(userId);
                 setInstancesData(data?.message);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -51,7 +56,7 @@ function Instances() {
         };
 
         fetchData();
-    }, []);
+    }, [userId]);
 
     //INDI Instance VIEW
     const fetchIndividualInstanceData = async (instanceId) => {
@@ -110,7 +115,7 @@ function Instances() {
             stateWebhook: JSON.stringify(stateWebhook),
             outgoingMessageWebhook: JSON.stringify(outgoingMessageWebhook),
             incomingWebhook: JSON.stringify(incomingWebhook),
-            userId: "65312017301280fe40ebdb5e",
+            userId: userId,
             InstancesName: randomName,
             InstancesPhone: +92345678910,
             enableMessagesHistory:  JSON.stringify(enableMessagesHistory)
@@ -130,7 +135,7 @@ function Instances() {
                 });
                 setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 3000);
             })
             .catch((error) => {
                 console.error("API error:", error);

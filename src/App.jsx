@@ -26,11 +26,11 @@ const App = () => {
     if (token) {
       axios
         .get(
-          `${import.meta.env.VITE_APP_API}/api/users/auth/${token}`
+          `${import.meta.env.VITE_APP_API}/api/users/currentUser/${token}`
         )
         .then((response) => {
           if (token) {
-            dispatch(setUserDetails(decryptData(response?.data)));
+            dispatch(setUserDetails((response?.data)));
             console.log(token, "tt")
             console.log(response)
           }

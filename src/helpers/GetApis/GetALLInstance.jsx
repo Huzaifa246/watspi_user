@@ -1,7 +1,7 @@
 import axios from 'axios';
 async function GetALLInstances(userId) {
   try {
-    let url = `${import.meta.env.VITE_APP_API}/api/users/getinstance/65312017301280fe40ebdb5e`;
+    let url = `${import.meta.env.VITE_APP_API}/api/users/getinstance/${userId}`;
     console.log(url);
 
     const response = await axios.get(url);

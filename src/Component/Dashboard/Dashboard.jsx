@@ -11,10 +11,8 @@ import { Navbar, Nav } from 'react-bootstrap';
 function Dashboard() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
     console.log(localStorage.getItem("token"))
-    const userDetails = useSelector((state) => state.userInfoStore.userDetails);
+    const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
     console.log(userDetails)
-    const userId = userDetails?.data?._id;
-    console.log(userId);
     return (
         <>
             <div className={`main-table-class ${!isSidebarOpen ? 'trades-open' : ''}`}>

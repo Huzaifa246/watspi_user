@@ -14,6 +14,9 @@ export const defaultImageUrl = 'https://www.pngall.com/wp-content/uploads/5/Prof
 
 const HeaderComponent = () => {
 
+    const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
+    const userName = userDetails?.name;
+
     const languages = [
         { id: 1, name: 'English', flag: 'us' },
         { id: 2, name: 'Spanish', flag: 'es' },
@@ -89,7 +92,7 @@ const HeaderComponent = () => {
                                 className='user-icon'
                             />
                             <span>
-                                Huzaifa
+                                {userName}
                             </span>
                             {isUserDropdownOpen && (
                                 <div className="dropdown-menu show-on-hover">
