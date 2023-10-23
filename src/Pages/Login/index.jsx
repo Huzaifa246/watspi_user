@@ -321,7 +321,7 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <form className={`${styles.login_form} ${styles.form}`} style={{
+                    <form className={`${styles.login_form} ${styles.form} bottom-style-trans`} style={{
                         right: isLoginForm ? 40 : "-220px",
                         scale: isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
@@ -356,7 +356,7 @@ const Login = () => {
                     </form>
 
                     {/* SIGNUP FORM */}
-                    <form className={`${styles.signup_form} ${styles.form}`} style={{
+                    <form className={`${styles.signup_form} ${styles.form} bottom-style-trans`} style={{
                         left: !isLoginForm ? 40 : "-220px",
                         scale: !isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
