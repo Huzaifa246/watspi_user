@@ -304,7 +304,7 @@ const Login = () => {
                     right: isLoginForm ? 0 : "calc(100% - 450px)"
                 }} /> */}
 
-                    <div className={`${styles.content} bottom-style-trans`}  style={{
+                    <div className={`${styles.content} ${isLoginForm ? "bottom-style-trans" : "top-style-trans"}`}  style={{
                         right: !isLoginForm ? 0 : "-220px",
                         scale: !isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
@@ -321,7 +321,7 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <form className={`${styles.login_form} ${styles.form} bottom-style-trans`} style={{
+                    <form className={`${styles.login_form} ${styles.form} ${isLoginForm ? "bottom-style-trans" : "top-style-trans"}`} style={{
                         right: isLoginForm ? 40 : "-220px",
                         scale: isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
@@ -356,7 +356,7 @@ const Login = () => {
                     </form>
 
                     {/* SIGNUP FORM */}
-                    <form className={`${styles.signup_form} ${styles.form} bottom-style-trans`} style={{
+                    <form className={`${styles.signup_form} ${styles.form} ${isLoginForm ? "top-style-trans": "bottom-style-trans"}`} style={{
                         left: !isLoginForm ? 40 : "-220px",
                         scale: !isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
@@ -407,7 +407,7 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <div className={`${styles.content} top-style-trans`} style={{
+                    <div className={`${styles.content}  ${isLoginForm ? "top-style-trans": "bottom-style-trans"}`} style={{
                         left: isLoginForm ? 0 : "-220px",
                         scale: isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
