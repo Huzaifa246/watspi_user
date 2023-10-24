@@ -17,7 +17,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -29,7 +29,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -77,7 +77,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ function DashboardInstances() {
                             style={{ cursor: 'pointer' }}
                         />
                         <div className="Dash-card-instance-container">
-                            <h6>John Doe</h6>
+                            <h6 className='h6-font-size'>John Doe</h6>
                             <p>Text</p>
                         </div>
                     </div>
