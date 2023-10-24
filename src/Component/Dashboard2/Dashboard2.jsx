@@ -4,12 +4,14 @@ import Sidebar2 from './Sidebar/Sidebar2';
 import DashBoardComponent from './DashComponent/DashBoardComponent';
 import MainInstance from './MainInstanceComp/MainInstance';
 import bgImg from "../../../images/bg-img.jpg";
+import bgImg1 from "../../../images/bg-img1.jpg";
+
 
 function Dashboard2() {
     return (
         <>
             <div style={{
-                backgroundImage: `url(${bgImg})`,
+                backgroundImage: `url(${bgImg1})`,
                 width: "100%",
                 height: "100vh",
                 overflow: 'hidden',
