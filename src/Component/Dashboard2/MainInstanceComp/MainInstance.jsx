@@ -128,11 +128,11 @@ function MainInstance() {
             <tbody className='scrollable-body'>
               {defaultMessages.map((message, index) => (
                 <tr className='msg-body-dash' key={index} style={{ verticalAlign: "baseline" }}>
-                  <td>
+                  <td style={{ textAlign: "start" }}>
                     <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
                       style={{ cursor: 'pointer' }}
                     />
-                    <span>
+                    <span style={{ paddingLeft: "10px" }}>
                       Huzaifa
                     </span>
                   </td>
@@ -146,7 +146,7 @@ function MainInstance() {
                         {truncateText(message.text, textLength)}
                       </span>
                     </OverlayTrigger>
-                    <span>
+                    <span style={{ marginLeft: "10px" }}>
                       <FontAwesomeIcon
                         icon={faEllipsisV}
                         onClick={() => handleSelectMessage(message)}

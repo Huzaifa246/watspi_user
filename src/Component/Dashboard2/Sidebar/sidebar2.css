@@ -15,6 +15,9 @@
     text-align: center;
     border: 2px solid #f5f1ff;
     margin: 0 0 0 auto; /* This centers the card horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
   .Svg-Container{
     padding: 10px 6px;
