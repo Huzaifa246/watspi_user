@@ -1,29 +1,32 @@
 .Sidebar-Container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* or any desired height for your container */
-  }
-  
-  .Sidebar-Comp-card {
-    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
-    height: 50vh;
-    border-radius: 30px;
-    backdrop-filter: blur(14px);
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    text-align: center;
-    border: 2px solid #f5f1ff;
-    margin: 0 0 0 auto; /* This centers the card horizontally */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  .Svg-Container{
-    padding: 10px 6px;
-  }
-  .Svg-Container:hover {
-    background-color: #3aa9ab;
-    border-radius: 20px;
-    padding: 10px 6px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* or any desired height for your container */
+}
+
+.Sidebar-Comp-card {
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+  height: 50vh;
+  border-radius: 30px;
+  backdrop-filter: blur(300px);
+  background-color: rgb(255 255 255 / 0.1);
+  padding: 10px;
+  text-align: center;
+  border: 2px solid #f5f1ff;
+  margin: 0 0 0 auto; /* This centers the card horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.Svg-Container {
+  padding: 10px 6px;
+}
+.Svg-Container:hover {
+  background-color: #3aa9ab;
+  border-radius: 20px;
+  padding: 10px 6px;
+}
+.svg-white path {
+  fill: white;
+}

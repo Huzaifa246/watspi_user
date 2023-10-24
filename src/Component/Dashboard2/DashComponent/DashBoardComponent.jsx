@@ -17,7 +17,7 @@ const DashBoardComponent = () => {
           </h3>
         </div>
         <div>
-          <FontAwesomeIcon icon={faBell} style={{ fontSize: "2.5vh" }} />
+          <FontAwesomeIcon icon={faBell} style={{ fontSize: "2.5vh", color: "rgb(255 252 252 / 100%)" }} />
         </div>
       </div>
       <ChartPageTwo />

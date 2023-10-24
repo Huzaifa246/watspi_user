@@ -3,19 +3,20 @@ import { Row, Col } from 'react-bootstrap';
 import Sidebar2 from './Sidebar/Sidebar2';
 import DashBoardComponent from './DashComponent/DashBoardComponent';
 import MainInstance from './MainInstanceComp/MainInstance';
+import bgImg from "../../../images/bg-img.jpg";
 
 function Dashboard2() {
     return (
         <>
             <div style={{
-                backgroundImage: `url("https://plus.unsplash.com/premium_photo-1673306778968-5aab577a7365?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
-                objectFit: 'cover',
-                height: "100vh",
+                backgroundImage: `url(${bgImg})`,
                 width: "100%",
+                height: "100vh",
                 overflow: 'hidden',
-                backgroundRepeat: 'no-repeat'
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover'
             }}>
-                <Row style={{padding: "3vh"}}>
+                <Row style={{padding: "3vh 4.5vh 3vh 0"}}>
                     <Col lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>
