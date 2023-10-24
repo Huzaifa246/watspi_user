@@ -4,7 +4,7 @@
   box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
   height: 95vh;
   border-radius: 20px;
-  backdrop-filter: blur(300px);
+  backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.2);
   padding: 10px 40px;
   text-align: center;
