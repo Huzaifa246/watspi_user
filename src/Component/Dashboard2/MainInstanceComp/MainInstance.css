@@ -1,0 +1,64 @@
+.Dashboard-Comp-card {
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+  height: 93vh;
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px 40px;
+  text-align: center;
+  border: 2px solid #f5f1ff;
+}
+.Profile-img-radius {
+  height: 6vh;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.Profile-display {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.Pro-badge {
+  background-color: yellow;
+  color: black; /* Set text color as needed */
+  padding: 0px 15px; /* Adjust padding to your preference */
+  border-radius: 7px; /* Adjust border radius as needed */
+  font-weight: 600; /* You can make the text bold */
+}
+.Add-new-Dash-btn {
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  padding: 1vh 2vh;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  box-shadow: 0 0 15px #3ab19d; /* Adjust the color and size as needed */
+  transition: box-shadow 0.3s ease; /* Add a transition for a smooth effect */
+}
+
+.Add-new-Dash-btn:hover {
+  box-shadow: 0 0 25px #3ab19d; /* Adjust the color and size as needed */
+}
+
+.images-section {
+  padding: 1rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.images-card-section {
+  height: 13vh;
+  width: 50%;
+  padding: 0.5rem;
+  border-radius: 20px;
+}
+.Contact-display {
+  display: flex;
+  justify-content: space-between;
+}

@@ -17,6 +17,7 @@ import Instances from './Component/IntancesComponent/Instances';
 import { setUserDetails } from "./store/userSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import Dashboard2 from "./Component/Dashboard2/Dashboard2";
 
 
 const App = () => {
@@ -53,6 +54,8 @@ const App = () => {
         <Route path={"/"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
         <Route path={"/otpForm"} element={<OtpForm />} />
+        <Route path={"/dashboard2"} element={<Dashboard2 />} />
+        
 
         <Route element={<HeaderComponent />}>
 
