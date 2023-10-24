@@ -16,13 +16,13 @@ function Dashboard2() {
                 backgroundRepeat: 'no-repeat'
             }}>
                 <Row style={{padding: "3vh"}}>
-                    <Col lg="2" xl="2" xxl="2">
+                    <Col lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>
-                    <Col md="6" lg="6" xl="6" xxl="6">
+                    <Col md="7" lg="7" xl="7" xxl="7">
                         <DashBoardComponent />
                     </Col>
-                    <Col md="6" lg="4" xl="4" xxl="4">
+                    <Col md="4" lg="4" xl="4" xxl="4">
                         <MainInstance />
                     </Col>
                 </Row>
