@@ -36,7 +36,7 @@
   border-bottom-right-radius: 10px;
 }
 .images-card-style {
-  height: 14vh;
+  height: auto;
   width: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
