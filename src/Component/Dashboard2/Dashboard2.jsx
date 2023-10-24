@@ -15,7 +15,7 @@ function Dashboard2() {
                 overflow: 'hidden',
                 backgroundRepeat: 'no-repeat'
             }}>
-                <Row style={{padding: "4vh 3vh"}}>
+                <Row style={{padding: "3vh"}}>
                     <Col lg="2" xl="2" xxl="2">
                         <Sidebar2 />
                     </Col>
