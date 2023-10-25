@@ -10,3 +10,9 @@
   text-align: center;
   border: 2px solid #f5f1ff;
 }
+.Dashboard-display{
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0 0 0;
+}

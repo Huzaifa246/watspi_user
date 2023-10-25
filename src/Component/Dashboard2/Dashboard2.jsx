@@ -6,7 +6,6 @@ import MainInstance from './MainInstanceComp/MainInstance';
 import bgImg from "../../../images/bg-img.jpg";
 import bgImg1 from "../../../images/bg-img1.jpg";
 
-
 function Dashboard2() {
     return (
         <>
@@ -19,13 +18,13 @@ function Dashboard2() {
                 backgroundSize: 'cover'
             }}>
                 <Row style={{padding: "3vh 4.5vh 3vh 0"}}>
-                    <Col lg="1" xl="1" xxl="1">
+                    <Col sm="1" lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>
-                    <Col md="7" lg="7" xl="7" xxl="7">
+                    <Col sm="12" md="7" lg="7" xl="7" xxl="7">
                         <DashBoardComponent />
                     </Col>
-                    <Col md="4" lg="4" xl="4" xxl="4">
+                    <Col sm="12" md="4" lg="4" xl="4" xxl="4">
                         <MainInstance />
                     </Col>
                 </Row>

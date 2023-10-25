@@ -159,6 +159,13 @@
   overflow-x: scroll;
   white-space: nowrap; /* Prevent text wrapping in cells */
 }
+.scrollable-body::-webkit-scrollbar {
+  height: 1px; /* Set the width of the scrollbar */
+}
+
+.scrollable-body::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set the color of the scrollbar thumb */
+}
 td,
 th {
   min-width: 150px;

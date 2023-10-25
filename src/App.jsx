@@ -18,7 +18,8 @@ import { setUserDetails } from "./store/userSlice";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import Dashboard2 from "./Component/Dashboard2/Dashboard2";
-
+import Sidebar2 from "./Component/Dashboard2/Sidebar/Sidebar2";
+import Instances2 from './Component/IntancesComponent/instances2';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,7 @@ const App = () => {
       axios
         .get(
           `${import.meta.env.VITE_APP_API}/api/users/currentUser/${token}`
-        )
-        .then((response) => {
+        ).then((response) => {
           if (token) {
             dispatch(setUserDetails((response?.data)));
             console.log(token, "tt")
@@ -54,8 +54,11 @@ const App = () => {
         <Route path={"/"} element={<Login />} />
         <Route path={"/signup"} element={<Signup />} />
         <Route path={"/otpForm"} element={<OtpForm />} />
-        <Route path={"/dashboard2"} element={<Dashboard2 />} />
-        
+
+        {/* <Route element={<Sidebar2 />}> */}
+          <Route path="/dashboard2" element={<Dashboard2 />} />
+          <Route path="/Instances2" element={<Instances2 />} />
+        {/* </Route> */}
 
         <Route element={<HeaderComponent />}>
 
@@ -68,11 +71,7 @@ const App = () => {
           <Route path={"/mybroadCast"} element={<MyBroadCast />} />
           <Route path={"/broadCast"} element={<BroadCast />} />
           <Route path={"/instances"} element={<Instances />} />
-
         </Route>
-        {/* <Route path={"/header"} element={<HeaderComponent />} />
-        <Route path={"/sidebar"} element={<Sidebar />} /> */}
-
 
       </Routes>
     </BrowserRouter>

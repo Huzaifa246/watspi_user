@@ -1,64 +1,83 @@
 import React, { useState, useEffect } from 'react'
 import defaultImg from "../../../../images/default-img.png"
 import "./MainInstance.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import CreateInstanceApi from '../../../helpers/PostApis/CreateInstance';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from "react-redux";
+
 function MainInstance() {
-  //TEXT LENGTH ACCORDING to SCREEN
-  const [textLength, setTextLength] = useState(100);
-  useEffect(() => {
-    function handleWindowResize() {
-      const windowWidth = window.innerWidth;
+  const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
+  const userId = userDetails?._id;
 
-      if (windowWidth > 1600) {
-        setTextLength(150);
-      } else if (windowWidth < 1600 && windowWidth > 1000) {
-        setTextLength(70);
-      } else if (windowWidth > 999) {
-        setTextLength(33);
-      }
-      else if (windowWidth > 400) {
-        setTextLength(20);
-      }
-    }
-    handleWindowResize();
-    window.addEventListener('resize', handleWindowResize);
+  //Create Instance
+  const [createInstance, setCreateInstance] = useState('');
+  const [markIncomingMessagesReaded, setMarkIncomingMessagesReaded] = useState(false);
+  const [markIncomingMessagesReadedOnReply, setMarkIncomingMessagesReadedOnReply] = useState(false);
+  const [keepOnlineStatus, setKeepOnlineStatus] = useState(true);
+  const [webhookUrl, setWebhookUrl] = useState('https://mysite.com/webhook/green-api/');
+  const [outgoingAPIMessageWebhook, setOutgoingAPIMessageWebhook] = useState(true);
+  const [outgoingWebhook, setOutgoingWebhook] = useState(true);
+  const [deviceWebhook, setDeviceWebhook] = useState(true);
+  const [stateWebhook, setStateWebhook] = useState(true);
+  const [outgoingMessageWebhook, setOutgoingMessageWebhook] = useState(true);
+  const [incomingWebhook, setIncomingWebhook] = useState(true);
+  const [delaySendMessagesMilliseconds, setDelaySendMessagesMilliseconds] = useState(1000);
+  const [enableMessagesHistory, setEnableMessagesHistory] = useState(false);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
+  const handleSaveInput = () => {
+    const randomNames = ["Ali", "Smith", "Johnson", "Brown", "Taylor", "Williams", "Huzaifa", "Saad", "Emma", "Liam",
+      "Olivia", "Noah", "Ava", "Isabella", "Sophia", "Mia", "Charlotte", "Amelia", "Harper"];
+
+    const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
+    const data = {
+      webhookUrl,
+      delaySendMessagesMilliseconds,
+      markIncomingMessagesReaded: JSON.stringify(markIncomingMessagesReaded),
+      markIncomingMessagesReadedOnReply: JSON.stringify(markIncomingMessagesReadedOnReply),
+      keepOnlineStatus: JSON.stringify(keepOnlineStatus),
+      outgoingAPIMessageWebhook: JSON.stringify(outgoingAPIMessageWebhook),
+      outgoingWebhook: JSON.stringify(outgoingWebhook),
+      deviceWebhook: JSON.stringify(deviceWebhook),
+      stateWebhook: JSON.stringify(stateWebhook),
+      outgoingMessageWebhook: JSON.stringify(outgoingMessageWebhook),
+      incomingWebhook: JSON.stringify(incomingWebhook),
+      userId: userId,
+      InstancesName: randomName,
+      InstancesPhone: +92345678910,
+      enableMessagesHistory: JSON.stringify(enableMessagesHistory)
     };
-  }, []);
-  function truncateText(text, maxLength) {
-    if (text.length <= maxLength) {
-      return text;
-    }
-    return text.slice(0, maxLength) + '...';
-  }
-  const defaultMessages = [
-    {
-      text: 'Choose option 1',
-    },
-    {
-      text: 'Choose option 2 Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.',
-    },
-    {
-      text: 'Choose option 2 Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.',
-    },
-    {
-      text: 'Choose option 3',
-    },
-  ];
+
+    CreateInstanceApi(data)
+      .then((response) => {
+        setCreateInstance(response?.data)
+        console.log("API response:", response?.data);
+        toast.success('Instance Created successfully', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("API error:", error);
+      });
+  };
   return (
     <>
+      <ToastContainer />
       <div className="Dashboard-Comp-card">
         <div className='Profile-display'>
           <span>
             <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
               style={{ cursor: 'pointer' }}
             />
-            <span style={{ marginLeft: '5px' }}>
+            <span style={{ marginLeft: '5px', color: "white" }}>
               Huzaifa
             </span>
           </span>
@@ -67,7 +86,9 @@ function MainInstance() {
           </div>
         </div>
         <div>
-          <button className='Add-new-Dash-btn'>
+          <button className='Add-new-Dash-btn'
+            onClick={handleSaveInput}
+          >
             Add new Instance
           </button>
         </div>
@@ -96,7 +117,7 @@ function MainInstance() {
         </div>
 
         <div>
-          <h6 style={{ textAlign: 'start', marginLeft: "5px" }}>
+          <h6 style={{ textAlign: 'start', color: 'white' }}>
             Contacts
           </h6>
           <div className='Contact-display'>
@@ -115,47 +136,6 @@ function MainInstance() {
             <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
               style={{ cursor: 'pointer' }}
             />
-          </div>
-        </div>
-        {/* Messages */}
-        <div>
-          <h6 style={{ textAlign: 'start', margin: "10px 0 10px 5px" }}>
-            Messages
-          </h6>
-        </div>
-        <div className="table-wrap">
-          <div className='scroll-style'>
-            <tbody className='scrollable-body'>
-              {defaultMessages.map((message, index) => (
-                <tr className='msg-body-dash' key={index} style={{ verticalAlign: "baseline" }}>
-                  <td style={{ textAlign: "start" }}>
-                    <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
-                      style={{ cursor: 'pointer' }}
-                    />
-                    <span style={{ paddingLeft: "10px" }}>
-                      Huzaifa
-                    </span>
-                  </td>
-                  <td style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    {/* {createTooltip(message.text, `tooltip${index}`)} */}
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={<Tooltip id={`tooltip${index}`}>{message?.text}</Tooltip>}
-                    >
-                      <span data-tip={message.text} data-for={`tooltip${index}`}>
-                        {truncateText(message.text, textLength)}
-                      </span>
-                    </OverlayTrigger>
-                    <span style={{ marginLeft: "10px" }}>
-                      <FontAwesomeIcon
-                        icon={faEllipsisV}
-                        onClick={() => handleSelectMessage(message)}
-                      />
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
           </div>
         </div>
       </div>
