@@ -68,8 +68,8 @@ function ChartPageTwo() {
     ]);
     return (
         <>
-            <Chart options={options} series={series} type="area" height={140} width={"101%"} style={{
-                transform: "translateX(-1%) translateY(0px)",
+            <Chart options={options} series={series} type="area" height={150} width={"103%"} style={{
+                transform: "translateX(-1%) translateY(10px)",
             }} />
         </>
     )

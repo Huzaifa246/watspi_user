@@ -3,7 +3,7 @@ import "./DashboardInstances.css"
 import { useSelector } from "react-redux";
 import GetALLInstances from './../../../helpers/GetApis/GetALLInstance';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, faUser, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import defaultImg from "../../../../images/default-img.png";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -46,12 +46,18 @@ function DashboardInstances() {
     }
     const defaultMessages = [
         {
+            phoneNumber: '+09876543',
+            timestamp: '2 Hour',
             text: 'Choose option 1',
         },
         {
+            phoneNumber: '+09876543',
+            timestamp: '3 Hour',
             text: 'Choose option 2 Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.',
         },
         {
+            phoneNumber: '+09876543',
+            timestamp: '1 Hour',
             text: 'Choose option 2 Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet. Choose option Lorem ipsum dolor sit amet.Choose option Lorem ipsum dolor sit amet.',
         },
     ];
@@ -78,9 +84,9 @@ function DashboardInstances() {
                         Instances
                     </h4>
                     <a href="/instances2" style={{ textDecoration: "none" }}>
-                        <h5 style={{ textAlign: 'start', color: "white", paddingRight: "10px" }}>
+                        <h6 style={{ textAlign: 'start', color: "white", paddingRight: "10px" }}>
                             View All
-                        </h5>
+                        </h6>
                     </a>
                 </div>
                 {/* <div className='Main-card-Dash'>
@@ -110,7 +116,7 @@ function DashboardInstances() {
                     ))}
                 </div> */}
                 <Swiper
-                    spaceBetween={8}
+                    spaceBetween={10}
                     slidesPerView={5}
                 >
                     {instancesData?.map((instance, index) => (
@@ -151,13 +157,21 @@ function DashboardInstances() {
                         <tbody className='scrollable-body'>
                             {defaultMessages.map((message, index) => (
                                 <tr className='msg-body-dash' key={index} style={{ verticalAlign: "baseline" }}>
-                                    <td style={{ textAlign: "start" }}>
+                                    <td style={{ textAlign: "start", minWidth: "200px" }}>
                                         <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
                                             style={{ cursor: 'pointer' }}
                                         />
                                         <span style={{ paddingLeft: "10px" }}>
                                             Huzaifa
                                         </span>
+                                    </td>
+                                    <td style={{ minWidth: "150px" }}>
+                                        <FontAwesomeIcon icon={faUser} style={{ paddingRight: "5px" }} />
+                                        {message.phoneNumber}
+                                    </td>
+                                    <td style={{ minWidth: "150px" }}>
+                                        <FontAwesomeIcon icon={faCheck} style={{ paddingRight: "5px", color: "#a8a9a7" }} />
+                                        {message.timestamp}
                                     </td>
                                     <td style={{ display: 'flex', justifyContent: 'space-between' }}>
                                         {/* {createTooltip(message.text, `tooltip${index}`)} */}

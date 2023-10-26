@@ -217,11 +217,11 @@ function Instances2() {
                                                 All Instances
                                             </h4>
                                             <div style={{ display: 'flex' }}>
-                                                <Dropdown>
-                                                    <Dropdown.Toggle variant="light" id="cardCountDropdown">
+                                                <Dropdown style={{ paddingRight: "10px" }}>
+                                                    <Dropdown.Toggle variant="light" id="cardCountDropdown" className="transparent-background-dropdown" style={{ color: "white" }}>
                                                         Show {selectedCardCount} Cards
                                                     </Dropdown.Toggle>
-                                                    <Dropdown.Menu>
+                                                    <Dropdown.Menu className="transparent-background-dropdown" style={{ color: "white" }}>
                                                         <Dropdown.Item onClick={() => setSelectedCardCount(10)}>10 Cards</Dropdown.Item>
                                                         <Dropdown.Item onClick={() => setSelectedCardCount(20)}>20 Cards</Dropdown.Item>
                                                         <Dropdown.Item onClick={() => setSelectedCardCount(50)}>50 Cards</Dropdown.Item>
@@ -242,6 +242,7 @@ function Instances2() {
                                                         dispatch(setSelectedInstanceId(instance?._id));
                                                         console.log('Dispatched setSelectedInstanceId with ID:', instance?._id);
                                                     }}
+                                                    style={{ textDecoration: "none" }}
                                                 >
                                                     <div className="All-single-card">
                                                         {instance?.keepOnlineStatus ? (

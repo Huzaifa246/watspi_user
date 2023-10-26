@@ -1,0 +1,52 @@
+.backdrop-filter {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+#label-file-upload2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 16px;
+  border-radius: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.color-icon-white {
+  color: white;
+}
+.color-h6-white {
+  color: white;
+  font-size: 2.2vh;
+  font-weight: 500;
+}
+.color-white {
+    color: white;
+    font-size: 2vh;
+}
+
+.input-field-setting2 {
+    border: 1px solid white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.5s;
+    background-color: transparent;
+  }
+  .input-field-setting2:focus {
+    border: 1px solid white;
+    outline: none;
+  }
+  .scroll-setting2{
+    overflow-y: scroll;
+    max-height: 30rem;
+  }
+  .scroll-setting2::-webkit-scrollbar {
+    height: 1px; /* Set the width of the scrollbar */
+  }
+  
+  .scroll-setting2::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set the color of the scrollbar thumb */
+  }

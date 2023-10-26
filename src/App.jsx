@@ -22,6 +22,7 @@ import Sidebar2 from "./Component/Dashboard2/Sidebar/Sidebar2";
 import Instances2 from './Component/IntancesComponent/instances2';
 import { decryption } from "./helpers/encryptionDecryption";
 import InstancePage2 from "./Component/InstancePage/InstancePage2";
+import Setting2 from "./Component/SettingPage/Setting2";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -66,6 +67,7 @@ const App = () => {
           <Route path="/dashboard2" element={<Dashboard2 />} />
           <Route path="/Instances2" element={<Instances2 />} />
           <Route path="/instancePage2/:id" element={<InstancePage2 />} />
+          <Route path={"/settings2"} element={<Setting2 />} />
         {/* </Route> */}
 
         <Route element={<HeaderComponent />}>

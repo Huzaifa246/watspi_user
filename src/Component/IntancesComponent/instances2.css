@@ -3,6 +3,7 @@
     width: 100%;
     flex-wrap: wrap;
     box-sizing: border-box;
+    justify-content: space-between;
 }
 .All-single-card {
     display: flex;
@@ -11,8 +12,7 @@
     transition: 0.3s;
     width: 25vw;
     border-radius: 20px;
-    margin-right: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
 }
 
 .live-all-badge {

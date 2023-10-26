@@ -118,7 +118,7 @@ function Instances() {
             userId: userId,
             InstancesName: randomName,
             InstancesPhone: +92345678910,
-            enableMessagesHistory:  JSON.stringify(enableMessagesHistory)
+            enableMessagesHistory: JSON.stringify(enableMessagesHistory)
         };
 
         CreateInstanceApi(data)
@@ -314,11 +314,11 @@ function Instances() {
                                                         />
                                                     </Link>
                                                     <FontAwesomeIcon icon={faChartBar} className='pd-lr-10 svg-style'
-                                                        // onClick={() => {
-                                                        //     dispatch(setSelectedInstanceId(instance?._id));
-                                                        //     fetchIndividualInstanceData(instance?._id);
-                                                        //     setShowModal(true)
-                                                        // }}
+                                                    // onClick={() => {
+                                                    //     dispatch(setSelectedInstanceId(instance?._id));
+                                                    //     fetchIndividualInstanceData(instance?._id);
+                                                    //     setShowModal(true)
+                                                    // }}
                                                     />
                                                 </div>
                                             </div>
