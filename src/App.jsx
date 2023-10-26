@@ -20,6 +20,8 @@ import axios from "axios";
 import Dashboard2 from "./Component/Dashboard2/Dashboard2";
 import Sidebar2 from "./Component/Dashboard2/Sidebar/Sidebar2";
 import Instances2 from './Component/IntancesComponent/instances2';
+import { decryption } from "./helpers/encryptionDecryption";
+import InstancePage2 from "./Component/InstancePage/InstancePage2";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,9 +32,14 @@ const App = () => {
         .get(
           `${import.meta.env.VITE_APP_API}/api/users/currentUser/${token}`
         ).then((response) => {
+          console.log(response)
+          console.log(token)
           if (token) {
-            dispatch(setUserDetails((response?.data)));
-            console.log(token, "tt")
+            const decrypted = decryption(response?.data?.data)
+            console.log(decrypted, "decrypted")
+            dispatch(setUserDetails(decrypted));
+            const a = decryption(response?.data?.data)
+            console.log(a, "asd")
             console.log(response)
           }
           else {
@@ -58,6 +65,7 @@ const App = () => {
         {/* <Route element={<Sidebar2 />}> */}
           <Route path="/dashboard2" element={<Dashboard2 />} />
           <Route path="/Instances2" element={<Instances2 />} />
+          <Route path="/instancePage2/:id" element={<InstancePage2 />} />
         {/* </Route> */}
 
         <Route element={<HeaderComponent />}>

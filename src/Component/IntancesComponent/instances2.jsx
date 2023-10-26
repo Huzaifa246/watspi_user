@@ -12,6 +12,7 @@ import { setSelectedInstanceId } from '../../store/intanceSettingSlice';
 import bgImg1 from "../../../images/bg-img1.jpg";
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
 import "./instances2.css"
+import { Link } from 'react-router-dom';
 
 function Instances2() {
     const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function Instances2() {
     const [instancesData, setInstancesData] = useState([]); // Default to an empty array
     const [selectedCardCount, setSelectedCardCount] = useState(10); // Default to 10 cards
     const [filteredInstances, setFilteredInstances] = useState([]); // Initially empty
-     // Initially empty
+    // Initially empty
 
     //ALL instances
     useEffect(() => {
@@ -235,30 +236,38 @@ function Instances2() {
                                         </div>
                                         <div className='All-Instance-Card'>
                                             {filteredInstances?.map(instance => (
-                                                <div className="All-single-card">
-                                                    {instance?.keepOnlineStatus ? (
-                                                        <>
-                                                            <div className="live-all-badge">Live</div>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <div className='red-badge'>
-                                                                Inactive
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                    <img src={"https://plus.unsplash.com/premium_photo-1661698763470-55da05629e50?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
-                                                        alt="Profile-Image"
-                                                        className='images-allcard-style'
-                                                        style={{ cursor: 'pointer' }}
-                                                    />
-                                                    <div className="AllI-Rightcard-container">
-                                                        <div className="instance-id">{instance?.idInstance}</div>
-                                                        <h6 className='h6-font-size'>{instance?.InstancesName}</h6>
-                                                        <p>{instance?.InstancesPhone}</p>
-                                                        <p>10 Days Left</p>
+                                                <Link
+                                                    to={`/instancePage2/${instance?._id}`}
+                                                    onClick={() => {
+                                                        dispatch(setSelectedInstanceId(instance?._id));
+                                                        console.log('Dispatched setSelectedInstanceId with ID:', instance?._id);
+                                                    }}
+                                                >
+                                                    <div className="All-single-card">
+                                                        {instance?.keepOnlineStatus ? (
+                                                            <>
+                                                                <div className="live-all-badge">Live</div>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <div className='red-badge'>
+                                                                    Inactive
+                                                                </div>
+                                                            </>
+                                                        )}
+                                                        <img src={"https://plus.unsplash.com/premium_photo-1661698763470-55da05629e50?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
+                                                            alt="Profile-Image"
+                                                            className='images-allcard-style'
+                                                            style={{ cursor: 'pointer' }}
+                                                        />
+                                                        <div className="AllI-Rightcard-container">
+                                                            <div className="instance-id">{instance?.idInstance}</div>
+                                                            <h6 className='h6-font-size'>{instance?.InstancesName}</h6>
+                                                            <p>{instance?.InstancesPhone}</p>
+                                                            <p>10 Days Left</p>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </Link>
                                             ))}
                                         </div>
                                     </Col>

@@ -1,0 +1,30 @@
+.input-instance-new {
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: 0.5s;
+    background-color: #e9ecef;
+}
+.left-input-new-copy {
+    color: rgb(165, 165, 165);
+    position: absolute;
+    padding-top: 10px;
+    left: 42%;
+}
+.right-input-new-copy {
+    color: rgb(165, 165, 165);
+    position: absolute;
+    right: 10%;
+    padding-top: 10px;
+}
+.label-txt-start{
+    text-align: start;
+}
+.td-fl-end {
+    display: flex;
+    justify-content: flex-end;
+}
+td, th {
+    min-width: 300px;
+}

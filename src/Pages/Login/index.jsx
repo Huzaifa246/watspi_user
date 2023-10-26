@@ -9,6 +9,7 @@ import Loader from './../Loader/index';
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { decryption, encryption } from "../../helpers/encryptionDecryption";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -64,17 +65,20 @@ const Login = () => {
             otp: otpValue,
             email: signupEmail,
         };
+        const encrypted = encryption(requestBody)
+        console.log(encrypted, "encrypted data Req Otp")
 
-        axios.post(`${import.meta.env.VITE_APP_API}/api/users/verification`, requestBody,
-        ).then(async (response) => {
-            console.log(response);
-            console.log('OTP verification successful:', response.data);
-            if (response?.data === "OTP verified successfully") {
-                toast.success('OTP verified successfully!');
-                // Close the modal on successful OTP verification
-                setShowOtpModal(false);
-            }
-        })
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/verification`,
+            { data: encrypted })
+            .then(async (response) => {
+                console.log(response);
+                console.log('OTP verification successful:', response.data);
+                if (decryption(response?.data) === "OTP verified successfully") {
+                    toast.success('OTP verified successfully!');
+                    // Close the modal on successful OTP verification
+                    setShowOtpModal(false);
+                }
+            })
             .catch((error) => {
                 console.error('OTP verification failed:', error);
                 toast.error('OTP verification failed. Please try again.');
@@ -118,27 +122,32 @@ const Login = () => {
             email: email,
             password: password
         }
-        console.log(credentials)
+        const encrypted = encryption(credentials)
+        console.log(encrypted, "encrypted data")
 
-        axios.post(`${import.meta.env.VITE_APP_API}/api/users/login`, credentials).then(async (res) => {
-            let response = res?.data;
-            console.log(response, "response")
-            localStorage.setItem("token", response?.token)
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/login`,
+            { data: encrypted }
+        ).then(async (res) => {
+            console.log(res, "asd")
+            // let response = await decryption(res?.data)
+            // console.log(response, "response")
+            localStorage.setItem("token", res?.data?.token)
             setShowLoader(false)
             window.location.href = "/dashboard";
 
         })
             .catch((err) => {
                 console.log(err)
-                console.log(err.response.data)
-                const response = err?.response?.data
+                console.log(decryption(err))
+                const response = decryption(err?.response?.data?.data)
+                console.log(response)
 
-                if (err?.response?.data === "User not registered") {
+                if (response?.response?.data === "User not registered") {
                     setLoginError("Invalid Credentials, Please Check email.")
-                } else if (err?.response?.data === "Incorrect password") {
+                } else if (response?.response?.data === "Incorrect password") {
                     setLoginError("Invalid Password, Please Check Your Password.")
                 }
-                else if (err?.response?.data !== "verified") {
+                else if (response?.response?.data !== "verified") {
                     setLoginError("Email not verified")
                 }
                 else {
@@ -183,13 +192,18 @@ const Login = () => {
             setSignUpError("Password doesn't match")
             return;
         }
+        const encrypted = encryption(userData)
+        console.log(encrypted, "encrypted data")
 
-        axios.post(`${import.meta.env.VITE_APP_API}/api/users/signUp`, userData)
+        axios.post(`${import.meta.env.VITE_APP_API}/api/users/signUp`,
+            { data: encrypted })
             .then((res) => {
-                let response = res?.data;
-                console.log(response, "response");
-                localStorage.setItem("token", response?.token);
-                setSignupEmail(response?.result?.email);
+                // let response = res?.data;
+                // console.log(response, "response");
+                // localStorage.setItem("token", response?.token);
+                localStorage.setItem("token", res?.data?.token)
+                setSignupEmail(res?.result?.email);
+                // setSignupEmail(response?.result?.email);
                 setShowLoader(false);
                 // window.location.href = "/otpForm";
                 // navigate("otpForm");
@@ -304,7 +318,7 @@ const Login = () => {
                     right: isLoginForm ? 0 : "calc(100% - 450px)"
                 }} /> */}
 
-                    <div className={`${styles.content} ${!isLoginForm ? "bottom-style-trans" : "top-style-trans"}`}  style={{
+                    <div className={`${styles.content} ${!isLoginForm ? "bottom-style-trans" : "top-style-trans"}`} style={{
                         right: !isLoginForm ? 0 : "-220px",
                         scale: !isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
@@ -356,7 +370,7 @@ const Login = () => {
                     </form>
 
                     {/* SIGNUP FORM */}
-                    <form className={`${styles.signup_form} ${styles.form} ${isLoginForm ? "top-style-trans": "bottom-style-trans"}`} style={{
+                    <form className={`${styles.signup_form} ${styles.form} ${isLoginForm ? "top-style-trans" : "bottom-style-trans"}`} style={{
                         left: !isLoginForm ? 40 : "-220px",
                         scale: !isLoginForm ? 1 : .5,
                         transformOrigin: "right center",
@@ -387,7 +401,7 @@ const Login = () => {
                                     value={password} onChange={e => setPassword(e.target.value)}
                                 />
                                 <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
-                                    {showPassword ? <FiEyeOff className="password-eye-icon"/> : <FiEye className="password-eye-icon"/>}
+                                    {showPassword ? <FiEyeOff className="password-eye-icon" /> : <FiEye className="password-eye-icon" />}
                                 </span>
                             </div>
                             <div className={styles.input_container}>
@@ -407,7 +421,7 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <div className={`${styles.content}  ${isLoginForm ? "top-style-trans": "bottom-style-trans"}`} style={{
+                    <div className={`${styles.content}  ${isLoginForm ? "top-style-trans" : "bottom-style-trans"}`} style={{
                         left: isLoginForm ? 0 : "-220px",
                         scale: isLoginForm ? 1 : .5,
                         transformOrigin: "right center",

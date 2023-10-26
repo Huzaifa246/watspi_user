@@ -9,6 +9,14 @@
   padding: 10px 40px;
   text-align: center;
   border: 2px solid #f5f1ff;
+  overflow-y: scroll;
+}
+.Dashboard-Comp-card::-webkit-scrollbar {
+  height: 1px; /* Set the width of the scrollbar */
+}
+
+.Dashboard-Comp-card::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set the color of the scrollbar thumb */
 }
 .Dashboard-display{
   align-items: center;
