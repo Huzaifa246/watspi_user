@@ -133,7 +133,7 @@ const Login = () => {
             // console.log(response, "response")
             localStorage.setItem("token", res?.data?.token)
             setShowLoader(false)
-            window.location.href = "/dashboard";
+            window.location.href = "/dashboard2";
 
         })
             .catch((err) => {

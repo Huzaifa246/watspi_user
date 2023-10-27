@@ -1,3 +1,19 @@
+.Dashboard-Comp-card_instancePage{
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+    height: 95vh;
+    border-radius: 20px;
+    padding: 10px 32px 10px 40px;
+    text-align: center;
+}
+.backdropfilter_InstancePage{
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    margin: 5px 0;
+    border: 2px solid #f5f1ff;
+}
 .input-instance-new {
     width: 100%;
     border: 1px solid #eee;

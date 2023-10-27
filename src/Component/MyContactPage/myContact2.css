@@ -1,0 +1,47 @@
+.Backdrop-myContact2{
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #f5f1ff;
+    border-radius: 20px;
+}
+.search-container2 {
+    align-items: center;
+    /* background: #fff; */
+    border-radius: 12px;
+    box-shadow: 0 4.3275208473px 35.7020454407px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    padding: 0px 13px;
+    margin-right: 10px;
+}
+.inputsearch-2{
+    background-color: transparent;
+}
+.myexecl-btn2 {
+    width: 100%;
+    border: 1px solid #f5f1ff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: 0.5s;
+    background: transparent;
+    color: white;
+  }
+  .myexecl-btn2:hover {
+    background: linear-gradient( to right, #3ab19d, #3aa9ab );
+  }
+  .myexecl-btn2:focus{
+    outline: none;
+    border: 1px solid #f5f1ff;
+  }
+  ::-webkit-input-placeholder { /* Webkit browsers */
+    color: white;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+}
+.search-icon2 {
+    color: white;
+    margin-right: 8px;
+  }

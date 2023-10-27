@@ -123,10 +123,10 @@ function Instances2() {
         };
 
         CreateInstanceApi(data)
-            .then((response) => {
-                setCreateInstance(response?.data)
-                console.log("API response:", response?.data);
-                toast.success('Instance Created successfully', {
+        .then((response) => {
+            if (response?.message === "Instance Added") {
+                setCreateInstance(response?.data);
+                toast.success(response?.message, {
                     position: 'top-center',
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -136,11 +136,31 @@ function Instances2() {
                 });
                 setTimeout(() => {
                     window.location.reload();
-                }, 3000);
-            })
-            .catch((error) => {
-                console.error("API error:", error);
+                }, 5000);
+            } else {
+                console.error("API error:", response);
+                toast.error(response?.message, {
+                    position: 'top-center',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+            }
+        })
+        .catch((error) => {
+            console.error("API error:", error);
+            toast.error(error?.message, {
+                position: 'top-center',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
             });
+        });
+    
     };
     //----Ends Create Instance
 

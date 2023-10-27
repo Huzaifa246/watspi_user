@@ -1,0 +1,57 @@
+.createbrdCast_textarea {
+    width: 100%;
+    border: 1px solid #eee;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: 0.5s;
+    background-color: transparent;
+  }
+  .createbrdCast_textarea:focus{
+    outline: none;
+  }
+  .card-stylecreatbdcast {
+    padding: 10px;
+    border: 2px solid #f5f1ff;
+    border-radius: 5px;
+    min-width: 31%;
+    margin-right: 10px;
+}
+.Add-new-btn_createbd {
+    background: transparent;
+    border: 2px solid #f5f1ff;
+}
+.Add-new-btn_createbd:hover {
+    background: linear-gradient( to right, var(--color-secondary), var(--color-primary) );;
+    border: 1px solid #3ab19d;  
+}
+.createbrdCast-input {
+    width: 100%;
+    border: 2px solid #f5f1ff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: 0.5s;
+    background-color: transparent;
+}
+.Drop-btnstyle_createbd {
+    background-color: transparent;
+    color: black;
+    width: 100%;
+    border: none;
+    letter-spacing: 5px;
+    padding: 10px 14px;
+    border: 2px solid #f5f1ff;
+  
+    /* Set the background color to transparent when in focus (dropdown open) */
+    &:focus {
+      background-color: transparent;
+      border: 2px solid #f5f1ff;
+    }
+  }
+  
+.Drop-btnstyle_createbd .btn.active .btn.show,{
+    background-color: transparent !important;
+}
+
+.color-white{
+    color: white;
+}

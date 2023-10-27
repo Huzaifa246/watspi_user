@@ -22,8 +22,8 @@ function InstancePage2() {
     console.log(selectedInstanceId, "as")
 
     const [isBasicOpen, setIsBasicOpen] = useState(true);
-    const [isSettingsOpen, setIsSettingsOpen] = useState(true);
-    const [isWebhooksOpen, setIsWebhooksOpen] = useState(true);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isWebhooksOpen, setIsWebhooksOpen] = useState(false);
     const [isInputEnabled, setInputEnabled] = useState('');
     const [inputValue, setInputValue] = useState('Smith');
     const [updateInstance, setUpdateInstance] = useState('');
@@ -76,11 +76,32 @@ function InstancePage2() {
 
         UpdateInstanceApi(data)
             .then((response) => {
-                console.log(response)
-                setUpdateInstance(response?.data)
-                console.log(response.data)
-                console.log("API response:", response?.data);
-                toast.success('Instance Updated successfully', {
+                if (response?.message === "Webhook Updated") {
+                    setUpdateInstance(response?.data)
+                    toast.success(response?.message, {
+                        position: 'top-center',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    });
+                } else {
+                    console.error("API error:", response);
+                    toast.error(response?.message, {
+                        position: 'top-center',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    });
+                }
+                // window.location.reload()
+            })
+            .catch((error) => {
+                console.error("API error:", error);
+                toast.error(error?.message, {
                     position: 'top-center',
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -88,23 +109,31 @@ function InstancePage2() {
                     pauseOnHover: true,
                     draggable: true,
                 });
-                // window.location.reload()
-            })
-            .catch((error) => {
-                console.error("API error:", error);
             });
     };
 
     //-----TOGGLING ALL CONTAINERS!!!
     const toggleBasic = () => {
         setIsBasicOpen(!isBasicOpen);
+        // Close other sections
+        setIsSettingsOpen(false);
+        setIsWebhooksOpen(false);
     };
+
     const toggleSettings = () => {
         setIsSettingsOpen(!isSettingsOpen);
+        // Close other sections
+        setIsBasicOpen(false);
+        setIsWebhooksOpen(false);
     };
+
     const toggleWebhooks = () => {
         setIsWebhooksOpen(!isWebhooksOpen);
+        // Close other sections
+        setIsBasicOpen(false);
+        setIsSettingsOpen(false);
     };
+
     //-----TOGGLING ALL CONTAINERS ENDS!!!
 
     useEffect(() => {
@@ -158,12 +187,12 @@ function InstancePage2() {
                         <Sidebar2 />
                     </Col>
                     <Col sm="12" md="7" lg="7" xl="7" xxl="7">
-                        <div className="Dashboard-Comp-card">
+                        <div className="Dashboard-Comp-card_instancePage">
                             <div className='Dashboard-display' style={{ padding: 0 }}>
                                 <Row className='row-instance'>
-                                    <Col xs={12} sm={12} md={12} lg={12}>
+                                    <Col xs={12} sm={12} md={12} lg={12} className='backdropfilter_InstancePage'>
                                         <div className='card-drop-style' onClick={toggleBasic}>
-                                            <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
+                                            <h6 style={{ padding: "20px 0px 15px 0px", fontWeight: "600" }}>
                                                 Basic Info
                                             </h6>
                                             <FontAwesomeIcon
@@ -264,9 +293,9 @@ function InstancePage2() {
                                         )}
                                     </Col>
                                     {/* Settings */}
-                                    <Col sm={12} md={12} lg={12}>
+                                    <Col sm={12} md={12} lg={12} className='backdropfilter_InstancePage'>
                                         <div className='card-drop-style' onClick={toggleSettings}>
-                                            <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
+                                            <h6 style={{ padding: "20px 0px 15px 0px", fontWeight: "600" }}>
                                                 Settings
                                             </h6>
                                             <FontAwesomeIcon
@@ -345,9 +374,9 @@ function InstancePage2() {
                                         )}
                                     </Col>
                                     {/* Webhooks */}
-                                    <Col sm={12} md={12} lg={12}>
+                                    <Col sm={12} md={12} lg={12} className='backdropfilter_InstancePage'>
                                         <div className='card-drop-style' onClick={toggleWebhooks}>
-                                            <h6 style={{ padding: "10px", paddingTop: "20px", fontWeight: "600" }}>
+                                            <h6 style={{ padding: "20px 0px 15px 0px", fontWeight: "600" }}>
                                                 Webhooks
                                             </h6>
                                             <FontAwesomeIcon

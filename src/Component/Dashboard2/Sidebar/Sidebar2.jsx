@@ -1,6 +1,8 @@
 import React from 'react';
 import "./sidebar2.css";
 import { Nav } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAddressBook, faUsers, faBroadcastTower } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar2() {
   return (
@@ -23,6 +25,22 @@ function Sidebar2() {
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
           </div>
         </Nav.Link>
+        <Nav.Link href="/myContact2" className={`mb-2 main-sidebar2 ${window.location.pathname === '/myContact2' ? 'active-link' : ''}`}>
+          <div className="Svg-Container svg-white">
+            <FontAwesomeIcon icon={faAddressBook} title='MyContacts' style={{height: "2.5vh"}}/>
+          </div>
+        </Nav.Link>
+        <Nav.Link href="/createBroadCast2" className={`mb-2 main-sidebar2 ${window.location.pathname === '/createBroadCast2' ? 'active-link' : ''}`}>
+          <div className="Svg-Container svg-white">
+            <FontAwesomeIcon icon={faBroadcastTower} title='Create BroadCast' style={{height: "2.5vh"}}/>
+          </div>
+        </Nav.Link>
+        <Nav.Link href="/Groups2" className={`mb-2 main-sidebar2 ${window.location.pathname === '/Groups2' ? 'active-link' : ''}`}>
+          <div className="Svg-Container svg-white">
+            <FontAwesomeIcon icon={faUsers} title='MyContacts' style={{height: "2.5vh"}}/>
+          </div>
+        </Nav.Link>
+
         <Nav.Link href="/settings2" className={`mb-2 main-sidebar2 ${window.location.pathname === '/settings2' ? 'active-link' : ''}`}>
           <div className="Svg-Container svg-white">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="4vh">
