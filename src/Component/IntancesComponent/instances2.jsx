@@ -232,8 +232,8 @@ function Instances2() {
                             <div className='Dashboard-display'>
                                 <Row className='pd-20 pd-10-mob'>
                                     <Col className='pd-mob-instances'>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: "10px 0" }}>
-                                            <h4 style={{ fontWeight: "600" }}>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', padding: "15px 0", alignItems: "baseline" }}>
+                                            <h4 style={{ fontWeight: "600", color: 'white', lineHeight: "0" }}>
                                                 All Instances
                                             </h4>
                                             <div style={{ display: 'flex' }}>

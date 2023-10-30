@@ -10,6 +10,10 @@ function MainInstance() {
   const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
   const userId = userDetails?._id;
 
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
   //Create Instance
   const [createInstance, setCreateInstance] = useState('');
   const [markIncomingMessagesReaded, setMarkIncomingMessagesReaded] = useState(false);
@@ -73,13 +77,24 @@ function MainInstance() {
       <ToastContainer />
       <div className="Dashboard-Comp-card">
         <div className='Profile-display'>
-          <span>
+          <span onClick={toggleUserDropdown}>
             <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
               style={{ cursor: 'pointer' }}
             />
             <span style={{ marginLeft: '5px', color: "white" }}>
               Huzaifa
             </span>
+            {isUserDropdownOpen && (
+              <div className="dropdown-menu show-on-hover">
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" onClick={() => {
+                  localStorage.removeItem("token")
+                  window.location.href = "/";
+                }}>
+                  Logout
+                </a>
+              </div>
+            )}
           </span>
           <div className='Pro-badge'>
             Pro

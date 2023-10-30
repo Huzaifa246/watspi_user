@@ -78,8 +78,8 @@ function DashboardInstances() {
 
     return (
         <>
-            <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ marginTop: "3vh" }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: "baseline" }}>
                     <h4 style={{ textAlign: 'start', color: "white" }}>
                         Instances
                     </h4>
@@ -116,12 +116,15 @@ function DashboardInstances() {
                     ))}
                 </div> */}
                 <Swiper
-                    spaceBetween={10}
                     slidesPerView={5}
+                    spaceBetween={0}
+                    style={{
+                        display: 'flex', justifyContent: 'space-between'
+                    }}
                 >
                     {instancesData?.map((instance, index) => (
                         <SwiperSlide key={index}>
-                            <div className="Dash-card-instance">
+                            <div className={`Dash-card-instance ${index === instancesData.length - 1 ? 'no-margin' : ''}`}>
                                 {instance?.keepOnlineStatus ? (
                                     <>
                                         <div className="live-badge">Live</div>

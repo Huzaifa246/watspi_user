@@ -135,7 +135,7 @@ function CreateBroadCast2() {
         setTemplates(updatedTemplates);
     };
 
-    console.log(excelData, 'asad');
+    // console.log(excelData, 'asad');
     return (
         <>
             <div style={{
@@ -175,16 +175,16 @@ function CreateBroadCast2() {
                                                     {!isInputEnabled && (
                                                         <FontAwesomeIcon
                                                             icon={faPencil}
-                                                            className='broadCast-edit'
+                                                            className='broadCast-edit2'
                                                             onClick={handleEnableInput}
                                                         />
                                                     )}
                                                     {isInputEnabled && (
                                                         <FontAwesomeIcon
                                                             icon={faCheck}
-                                                            className='broadCast-edit'
+                                                            className='broadCast-edit2'
                                                             onClick={handleSaveInput}
-                                                            style={{ color: '#3ab19d' }}
+                                                            style={{ color: 'white' }}
                                                         />
                                                     )}
                                                 </span>
@@ -227,7 +227,7 @@ function CreateBroadCast2() {
                                                         accept='.xls, .xlsx'
                                                         onChange={handleFileSelect}
                                                         className='createbrdCast-input'
-                                                        style={{ padding: "8px 14px",  backgroundColor: "transparent" }}
+                                                        style={{ padding: "8px 14px", backgroundColor: "transparent" }}
                                                     />
                                                 </span>
                                             </div>
@@ -285,34 +285,42 @@ function CreateBroadCast2() {
                                     </div>
                                 </Col>
                                 <div className='msg-btns-style'>
-                                    <Button className='Add-new-btn_createbd Sd-Sch-font' style={{marginRight: "10px"}}>Send Now</Button>
+                                    <Button className='Add-new-btn_createbd Sd-Sch-font' style={{ marginRight: "10px" }}>Send Now</Button>
                                     <Button className='Add-new-btn_createbd Sd-Sch-font'>Schedule</Button>
                                 </div>
                             </Col>
                         </Row>
-                        <Row className='row-bd-width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
+                        <Row className='row-bd-width-100' style={{ marginBottom: '10px', marginLeft: '10px', width: '99%' }}>
                             <Col>
-                                <h4 style={{color: 'white'}}>
+                                <h4 style={{ color: 'white' }}>
                                     Contact List
                                 </h4>
-                                <thead className='bdCast-head-font' style={{ tableLayout: "fixed" }}>
-                                    <tr>
-                                        <th style={{ width: '10%' }}>No</th>
-                                        <th>FirstName</th>
-                                        <th>LastName</th>
-                                        <th style={{ display: 'flex', justifyContent: 'center' }}>Phone</th>
-                                    </tr>
-                                </thead>
-                                <tbody className='bdCast-body-font'>
-                                    {excelData?.map((row, index) => (
-                                        <tr key={index}>
-                                            <td>{index + 1}</td>
-                                            <td>{row[0]}</td> {/* FirstName */}
-                                            <td>{row[1]}</td> {/* LastName */}
-                                            <td style={{ display: 'flex', justifyContent: 'center' }}>{row[6]}</td> {/* Phone */}
-                                        </tr>
-                                    ))}
-                                </tbody>
+                                <div className='main_Crte_BDCAST2'>
+                                    <table className='table' style={{ tableLayout: "fixed", marginBottom: "0" }}>
+                                        <thead className='bdCast-head-font' style={{ tableLayout: "fixed" }}>
+                                            <tr>
+                                                <th className='width_20'>No</th>
+                                                <th className='width_20'>FirstName</th>
+                                                <th className='width_20'>LastName</th>
+                                                <th className='width_20'>Phone</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                    <div className="contact-list-container">
+                                        <table className='table' style={{ tableLayout: "fixed", marginBottom: "0" }}>
+                                            <tbody className='bdCast-body-font'>
+                                                {excelData?.map((row, index) => (
+                                                    <tr key={index}>
+                                                        <td className='width_20'>{index + 1}</td>
+                                                        <td className='width_20'>{row[0]}</td> {/* FirstName */}
+                                                        <td className='width_20'>{row[1]}</td> {/* LastName */}
+                                                        <td className='width_20'>{row[6]}</td> {/* Phone */}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </Col>
                         </Row>
                     </Col>

@@ -26,12 +26,13 @@
   justify-content: space-around;
 }
 .Svg-Container {
-  padding: 0px 6px;
+  padding: 0px 3px;
   border-radius: 20px;
 }
 .Svg-Container:hover {
   background-color: #3aa9ab;
   border-radius: 20px;
+  padding: 0px 3px;
 }
 .svg-white path {
   fill: white;
@@ -40,4 +41,7 @@
 .main-sidebar2{
   padding: 8px 4px;
   border-radius: 20px;
+}
+.main-sidebar2:hover {
+  background-color: #3aa9ab;
 }

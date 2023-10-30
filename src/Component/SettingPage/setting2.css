@@ -1,6 +1,9 @@
 .backdrop-filter {
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #f5f1ff;
+  border-radius: 20px;
+  margin: 10px 0;
 }
 #label-file-upload2 {
   display: flex;
@@ -49,4 +52,10 @@
   
   .scroll-setting2::-webkit-scrollbar-thumb {
     background-color: transparent; /* Set the color of the scrollbar thumb */
+  }
+  .set_color_icon_white{
+    color: white;
+  }
+  .label_white{
+    color: white;
   }

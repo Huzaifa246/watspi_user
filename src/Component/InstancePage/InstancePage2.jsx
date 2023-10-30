@@ -192,12 +192,12 @@ function InstancePage2() {
                                 <Row className='row-instance'>
                                     <Col xs={12} sm={12} md={12} lg={12} className='backdropfilter_InstancePage'>
                                         <div className='card-drop-style' onClick={toggleBasic}>
-                                            <h6 style={{ padding: "20px 0px 15px 0px", fontWeight: "600" }}>
+                                            <h6 className='clr_white_pd'>
                                                 Basic Info
                                             </h6>
                                             <FontAwesomeIcon
                                                 icon={isBasicOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
-                                                className='arrow-icon'
+                                                className='arrow-icon clr1_white'
                                             />
                                         </div>
                                         {isBasicOpen && (
@@ -205,7 +205,7 @@ function InstancePage2() {
                                                 <Row>
                                                     <Col xs={12} md={6} lg={6}>
                                                         <div className='instance-form-input'>
-                                                            <label className='label-txt-start'> Name </label>
+                                                            <label className='label-txt-start clr1_white'> Name </label>
                                                             <span>
                                                                 <input
                                                                     type="text"
@@ -236,7 +236,7 @@ function InstancePage2() {
 
                                                     <Col xs={12} md={6} lg={6}>
                                                         <div className='instance-form-input'>
-                                                            <label className='label-txt-start'> Phone </label>
+                                                            <label className='label-txt-start clr1_white'> Phone </label>
                                                             <input type="tel" placeholder="+90123456" className='input-instance-new'
                                                                 value={phoneValue}
                                                                 onChange={(e) => setPhoneValue(e.target.value)}
@@ -245,7 +245,7 @@ function InstancePage2() {
                                                     </Col>
                                                     <Col xs={12} md={6} lg={6}>
                                                         <div className='instance-form-input'>
-                                                            <label className='label-txt-start'> API URL </label>
+                                                            <label className='label-txt-start clr1_white'> API URL </label>
                                                             <span>
                                                                 <input type="text" placeholder="Name..." className='input-instance-new'
                                                                 // defaultValue="www.afomedia.com"
@@ -257,7 +257,7 @@ function InstancePage2() {
 
                                                     <Col xs={12} md={6} lg={6}>
                                                         <div className='instance-form-input'>
-                                                            <label className='label-txt-start'> Media URL </label>
+                                                            <label className='label-txt-start clr1_white'> Media URL </label>
                                                             <span>
                                                                 <input type="text" placeholder="URL" className='input-instance-new'
                                                                     defaultValue="www.afomedia.com"
@@ -268,7 +268,7 @@ function InstancePage2() {
                                                     </Col>
                                                     <Col xs={12} md={6} lg={6}>
                                                         <div className='instance-form-input'>
-                                                            <label className='label-txt-start'> Instance ID </label>
+                                                            <label className='label-txt-start clr1_white'> Instance ID </label>
                                                             <span>
                                                                 <input type="text" placeholder="Instance ID" className='input-instance-new'
                                                                 />
@@ -279,7 +279,7 @@ function InstancePage2() {
 
                                                     <Col xs={12} md={6} lg={6}>
                                                         <div className='instance-form-input'>
-                                                            <label className='label-txt-start'> Instance Token </label>
+                                                            <label className='label-txt-start clr1_white'> Instance Token </label>
                                                             <span>
                                                                 <input type="text" placeholder="token" className='input-instance-new'
                                                                 // defaultValue="qwertyqwerty"
@@ -295,19 +295,19 @@ function InstancePage2() {
                                     {/* Settings */}
                                     <Col sm={12} md={12} lg={12} className='backdropfilter_InstancePage'>
                                         <div className='card-drop-style' onClick={toggleSettings}>
-                                            <h6 style={{ padding: "20px 0px 15px 0px", fontWeight: "600" }}>
+                                            <h6 className='clr_white_pd'>
                                                 Settings
                                             </h6>
                                             <FontAwesomeIcon
                                                 icon={isSettingsOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
-                                                className='arrow-icon'
+                                                className='arrow-icon clr1_white'
 
                                             />
                                         </div>
                                         {isSettingsOpen && (
                                             <tbody>
                                                 <tr>
-                                                    <td className="label-txt-start" style={{ width: "50%" }}>
+                                                    <td className="label-txt-start clr1_white" style={{ width: "50%" }}>
                                                         Making Incoming messages read
                                                     </td>
                                                     <td className='td-fl-end'>
@@ -320,7 +320,7 @@ function InstancePage2() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td className="label-txt-start">
+                                                    <td className="label-txt-start clr1_white">
                                                         Making Incoming messages read on replay
                                                     </td>
                                                     <td className='td-fl-end'>
@@ -334,7 +334,7 @@ function InstancePage2() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td className="label-txt-start">
+                                                    <td className="label-txt-start clr1_white">
                                                         SendMessages delay
                                                     </td>
                                                     <td className='td-fl-end'>
@@ -357,7 +357,7 @@ function InstancePage2() {
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td className="label-txt-start">
+                                                    <td className="label-txt-start clr1_white">
                                                         Keep online status
                                                     </td>
                                                     <td className='td-fl-end'>
@@ -376,12 +376,12 @@ function InstancePage2() {
                                     {/* Webhooks */}
                                     <Col sm={12} md={12} lg={12} className='backdropfilter_InstancePage'>
                                         <div className='card-drop-style' onClick={toggleWebhooks}>
-                                            <h6 style={{ padding: "20px 0px 15px 0px", fontWeight: "600" }}>
+                                            <h6 className='clr_white_pd'>
                                                 Webhooks
                                             </h6>
                                             <FontAwesomeIcon
                                                 icon={isWebhooksOpen ? faChevronUp : faChevronDown} // Arrow icon for toggle
-                                                className='arrow-icon'
+                                                className='arrow-icon clr1_white'
                                             />
                                         </div>
                                         {isWebhooksOpen && (
@@ -389,7 +389,7 @@ function InstancePage2() {
                                                 <Row>
                                                     <Col xs={12} md={12} lg={12}>
                                                         <div className='instance-form-input' style={{ padding: "5px 0" }}>
-                                                            <label className='label-txt-start'> Webhook URL </label>
+                                                            <label className='label-txt-start clr1_white'> Webhook URL </label>
                                                             <span>
                                                                 <input type="text" placeholder="Webhook URL..." className='input-instance-new'
                                                                     value={webhookUrl}
@@ -401,7 +401,7 @@ function InstancePage2() {
                                                     </Col>
                                                     <Col xs={12} md={12} lg={12}>
                                                         <div className='instance-form-input' style={{ padding: "5px 0" }}>
-                                                            <label className='label-txt-start'>Webhook Url Token </label>
+                                                            <label className='label-txt-start clr1_white'>Webhook Url Token </label>
                                                             <span>
                                                                 <input type="text" placeholder="Webhook Url Token..." className='input-instance-new'
                                                                 // value={webhookUrlToken}
@@ -413,7 +413,7 @@ function InstancePage2() {
                                                         <div>
                                                             <tbody style={{ width: "100%" }}>
                                                                 <tr>
-                                                                    <td className="label-txt-start" >
+                                                                    <td className="label-txt-start clr1_white" >
                                                                         Recieved webhooks on Incoming messages
                                                                     </td>
                                                                     <td className='td-fl-end'>
@@ -430,7 +430,7 @@ function InstancePage2() {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td className="label-txt-start">
+                                                                    <td className="label-txt-start clr1_white">
                                                                         Outgoing API Message Webhook
                                                                     </td>
                                                                     <td className='td-fl-end'>
@@ -445,7 +445,7 @@ function InstancePage2() {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td className="label-txt-start">
+                                                                    <td className="label-txt-start clr1_white">
                                                                         Outgoing Webhook
                                                                     </td>
                                                                     <td className='td-fl-end'>
@@ -458,7 +458,7 @@ function InstancePage2() {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td className="label-txt-start">
+                                                                    <td className="label-txt-start clr1_white">
                                                                         Device Webhook
                                                                     </td>
                                                                     <td className='td-fl-end'>
@@ -471,7 +471,7 @@ function InstancePage2() {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td className="label-txt-start">
+                                                                    <td className="label-txt-start clr1_white">
                                                                         State Webhook
                                                                     </td>
                                                                     <td className='td-fl-end'>

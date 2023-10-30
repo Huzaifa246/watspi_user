@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { decryption, encryption } from '../encryptionDecryption';
+import { UserHeader } from '../Userheader';
 async function CreateInstanceApi(data) {
     try {
         console.log('Request Data:', data);
         const encrypted = encryption(data)
         console.log(encrypted, "encrypted data")
         const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/users/createInstance`,
-            { data: encrypted }
-        );
+            { data: encrypted },
+            {
+              headers: UserHeader,
+            });
 
         console.log(response, "res")
         const decryptedData = await decryption(response?.data?.data);

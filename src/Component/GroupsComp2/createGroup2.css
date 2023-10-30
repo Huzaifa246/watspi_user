@@ -16,7 +16,7 @@
   padding: 10px 0;
 }
 .myexecl-btn_creategrp2 {
-  width: 100%;
+  width: 10%;
   border: 2px solid #f5f1ff;
   padding: 10px 14px;
   border-radius: 8px;
@@ -27,11 +27,17 @@
   transition: 0.5s ease-in;
 }
 .myexecl-btn_creategrp2:hover {
-    border: 2px solid #3ab19d;
-    background: linear-gradient(
-      to right,
-      var(--color-secondary),
-      var(--color-primary)
-    );
-    transition: 0.5s ease-in;
-  }
+  border: 2px solid #3ab19d;
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  transition: 0.5s ease-in;
+}
+.create_grp_filter {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid #f5f1ff;
+  border-radius: 20px;
+}

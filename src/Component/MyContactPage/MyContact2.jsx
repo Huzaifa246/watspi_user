@@ -196,15 +196,7 @@ function MyContact2() {
                                                                     setRangeValues(newValues);
                                                                     handleFilterAgeChange(newValues);
                                                                 }}
-                                                            // onClick={() => {
-                                                            //     console.log('Slider Clicked'); // Add this line
-                                                            // }}
                                                             />
-
-                                                            {/*                                                             <div className='range-values'>
-                                                                <span>{rangeValues[0]}</span> - <span>{rangeValues[1]}</span>
-                                                            </div> */}
-
                                                         </Dropdown.Menu>
                                                     </Dropdown>
                                                     <Dropdown>
@@ -288,36 +280,41 @@ function MyContact2() {
                                         </>
                                     ) : (
                                         <>
-                                            <thead style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                                <tr style={{ color: "#888" }} className='th-font-style'>
-                                                    <th style={{ width: "5%" }}>No</th>
-                                                    <th style={{ width: "15%", textAlign: 'center' }}>Date & Time</th>
-                                                    <th>Name</th>
-                                                    {/* <th>LastName</th> */}
-                                                    <th>Email</th>
-                                                    <th>Age</th>
-                                                    <th>Gender</th>
-                                                    <th>Country</th>
-                                                    <th>Phone</th>
-                                                    <th style={{ width: "15%" }}>Description</th>
-                                                </tr>
-                                            </thead>
-                                            {filteredData?.map((row, index) => (
-                                                <tbody className='tbody-font-style' style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                                    <tr key={index}>
-                                                        <td style={{ width: "4%", textAlign: 'center' }}>{index + 1}</td>
-                                                        <td style={{ width: "15%", textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
-                                                        <td style={{ textAlign: 'center' }}>{row[0]}</td>
-                                                        {/* <td style={{ textAlign: 'center' }}>{row[1]}</td> */}
-                                                        <td style={{ width: "12%" }}>{row[2]}</td>
-                                                        <td style={{ width: "5%" }}>{row[3]}</td>
-                                                        <td>{row[4]}</td>
-                                                        <td>{row[5]}</td>
-                                                        <td>{row[6]}</td>
-                                                        <td style={{ width: "15%" }}>{row[7]}</td>
+                                            <div className="MyContact_2_maincontainer">
+                                                <thead style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                                    <tr style={{ color: "#888" }} className='th-font-style'>
+                                                        <th className='td_min_sNo_width'>No</th>
+                                                        <th className='td_min_width' style={{ textAlign: 'center' }}>Date & Time</th>
+                                                        <th className='td_min_width'>Name</th>
+                                                        {/* <th>LastName</th> */}
+                                                        <th className='td_min_desc_width'>Email</th>
+                                                        <th className='td_min_width'>Age</th>
+                                                        <th className='td_min_width'>Gender</th>
+                                                        <th className='td_min_width'>Country</th>
+                                                        <th className='td_min_width'>Phone</th>
+                                                        <th className='td_min_desc_width'>Description</th>
                                                     </tr>
-                                                </tbody>
-                                            ))}
+                                                </thead>
+                                                <div className="MyContact_2_container">
+                                                    {filteredData?.map((row, index) => (
+                                                        <table>
+                                                            <tbody className='tbody-font-style' style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                                                <tr key={index}>
+                                                                    <td className='td_min_sNo_width'>{index + 1}</td>
+                                                                    <td className='td_min_width' style={{ textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
+                                                                    <td className='td_min_width'>{row[0]}</td>
+                                                                    <td className='td_min_desc_width'>{row[2]}</td>
+                                                                    <td className='td_min_width'>{row[3]}</td>
+                                                                    <td className='td_min_width'>{row[4]}</td>
+                                                                    <td className='td_min_width'>{row[5]}</td>
+                                                                    <td className='td_min_width'>{row[6]}</td>
+                                                                    <td className='td_min_desc_width'>{row[7]}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </>
                                     )}
                                 </Col>

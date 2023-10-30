@@ -29,7 +29,7 @@ function CreateGroup2() {
     };
 
     // Check if all required fields are filled if not (HIDE BTN)
-    const isSaveButtonVisible = name === '' && description === '';
+    const isSaveButtonVisible = (name !== '' && description !== '') && (selectAll || !handleCheckboxChange);
 
     return (
         <>
@@ -45,17 +45,25 @@ function CreateGroup2() {
                     <Col sm="1" lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>
-                    <Col sm="12" md="11" lg="11" xl="11" xxl="11">
+                    <Col sm="12" md="11" lg="11" xl="11" xxl="11" className='create_grp_filter'>
                         <Row className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "98.5%" }}>
                             <Col>
                                 <div className='card-drop-style'>
                                     <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600', color: 'white' }}>
                                         Create Groups
                                     </h1>
+                                    {isSaveButtonVisible && (
+                                        <button
+                                            type='button'
+                                            className='myexecl-btn_creategrp2 Save-CG-btn'
+                                        >
+                                            Save
+                                        </button>
+                                    )}
                                 </div>
                                 <Col xs={12} md={12} lg={12} className='cr-display'>
-                                    <div className='instance-form-input_grp2' style={{paddingRight: "10px"}}>
-                                        <label style={{color: 'white' }}> Name </label>
+                                    <div className='instance-form-input_grp2' style={{ paddingRight: "10px" }}>
+                                        <label style={{ color: 'white' }}> Name </label>
                                         <span>
                                             <input
                                                 type='text'
@@ -68,7 +76,7 @@ function CreateGroup2() {
                                         </span>
                                     </div>
                                     <div className='instance-form-input_grp2'>
-                                        <label style={{color: 'white' }}> Description </label>
+                                        <label style={{ color: 'white' }}> Description </label>
                                         <input
                                             type='text'
                                             placeholder='Description...'
@@ -79,14 +87,6 @@ function CreateGroup2() {
                                         />
                                     </div>
                                 </Col>
-                                {!isSaveButtonVisible && (
-                                    <button
-                                        type='button'
-                                        className='myexecl-btn_creategrp2 Save-CG-btn'
-                                    >
-                                        Save
-                                    </button>
-                                )}
                             </Col>
                         </Row>
                         <Row className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "98.5%" }}>
@@ -103,7 +103,7 @@ function CreateGroup2() {
                                         <th>FirstName</th>
                                         <th>LastName</th>
                                         <th>Contacts</th>
-                                        <th style={{ width: "30%" }}>Description</th>
+                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody style={{ marginBottom: "0", tableLayout: "fixed" }}>
@@ -114,7 +114,7 @@ function CreateGroup2() {
                                         <td>Huzaifa</td>
                                         <td>Rehman</td>
                                         <td>+920987654</td>
-                                        <td style={{ width: "30%" }}>Lorem ipsum dolor sit amet consectetur.</td>
+                                        <td>Lorem ipsum dolor sit amet consectetur.</td>
                                     </tr>
                                 </tbody>
                                 <tbody style={{ marginBottom: "0", tableLayout: "fixed" }}>
@@ -125,7 +125,7 @@ function CreateGroup2() {
                                         <td>Huzaifa</td>
                                         <td>Rehman</td>
                                         <td>+920987654</td>
-                                        <td style={{ width: "30%" }}>Lorem ipsum dolor sit amet consectetur.</td>
+                                        <td>Lorem ipsum dolor sit amet consectetur.</td>
                                     </tr>
                                 </tbody>
                                 <tbody style={{ marginBottom: "0", tableLayout: "fixed" }}>
@@ -136,7 +136,7 @@ function CreateGroup2() {
                                         <td>Huzaifa</td>
                                         <td>Rehman</td>
                                         <td>+920987654</td>
-                                        <td style={{ width: "30%" }}>Lorem ipsum dolor sit amet consectetur.</td>
+                                        <td>Lorem ipsum dolor sit amet consectetur.</td>
                                     </tr>
                                 </tbody>
                             </Col>

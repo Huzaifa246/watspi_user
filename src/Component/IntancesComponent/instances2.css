@@ -21,7 +21,7 @@
     right: 62%;
     background-color: yellow;
     color: black;
-    padding: 2px;
+    padding: 0.3vh 0.6vh;
     border-radius: 5px;
     font-size: 1.3vh;
 }
@@ -31,7 +31,7 @@
     right: 10px;
     background-color: yellow;
     color: black;
-    padding: 2px;
+    padding: 0.3vh 0.6vh;
     border-radius: 5px;
     font-size: 1.3vh;
 }

@@ -11,7 +11,7 @@ function Setting2() {
 
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
 
-    const [isCardOpen, setIsCardOpen] = useState(false);
+    const [isCardOpen, setIsCardOpen] = useState(true);
     const [isPassOpen, setIsPassOpen] = useState(false);
     const [isNotifyOpen, setIsNotifyOpen] = useState(false);
     const [isPayOpen, setIsPayOpen] = useState(false);
@@ -19,20 +19,43 @@ function Setting2() {
 
     // TOGGLES
     const toggleSubscibe = () => {
-        setIsSubscibeOpen(!isSubscibeOpen);
+        setIsSubscibeOpen(true);
+        setIsPayOpen(false);
+        setIsNotifyOpen(false);
+        setIsPassOpen(false);
+        setIsCardOpen(false);
     };
+
     const togglePayCard = () => {
-        setIsPayOpen(!isPayOpen);
+        setIsSubscibeOpen(false);
+        setIsPayOpen(true);
+        setIsNotifyOpen(false);
+        setIsPassOpen(false);
+        setIsCardOpen(false);
     };
+
     const toggleNotify = () => {
-        setIsNotifyOpen(!isNotifyOpen);
+        setIsSubscibeOpen(false);
+        setIsPayOpen(false);
+        setIsNotifyOpen(true);
+        setIsPassOpen(false);
+        setIsCardOpen(false);
     };
 
     const togglePass = () => {
-        setIsPassOpen(!isPassOpen);
+        setIsSubscibeOpen(false);
+        setIsPayOpen(false);
+        setIsNotifyOpen(false);
+        setIsPassOpen(true);
+        setIsCardOpen(false);
     };
+
     const toggleCard = () => {
-        setIsCardOpen(!isCardOpen);
+        setIsSubscibeOpen(false);
+        setIsPayOpen(false);
+        setIsNotifyOpen(false);
+        setIsPassOpen(false);
+        setIsCardOpen(true);
     };
     return (
         <>
@@ -48,10 +71,10 @@ function Setting2() {
                     <Col sm="1" lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>
-                    <Col sm="12" md="11" lg="11" xl="11" xxl="11">
+                    <Col sm="11" md="11" lg="11" xl="11" xxl="11">
                         <div>
                             <div className='set-main'>
-                                <h2 className='sett-pad-20px' style={{color: 'white'}}>
+                                <h2 className='sett-pad-20px' style={{ color: 'white' }}>
                                     General Settings
                                 </h2>
                                 <div className='sett-pad-20px scroll-setting2'>
@@ -74,7 +97,7 @@ function Setting2() {
                                                     </p>
                                                 </div>
                                                 <div className='down-icon'>
-                                                    {isCardOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                                                    {isCardOpen && <FontAwesomeIcon icon={faChevronDown} className='set_color_icon_white' />}
                                                 </div>
                                             </div>
                                             {isCardOpen && (
@@ -84,14 +107,14 @@ function Setting2() {
                                                             <Row>
                                                                 <Col xs={12} md={12} lg={6}>
                                                                     <div className='acc-form-input'>
-                                                                        <label> Name </label>
+                                                                        <label className='label_white'> Name </label>
                                                                         <input type="text" placeholder="Name..." className='input-field-setting2' />
                                                                     </div>
                                                                 </Col>
 
                                                                 <Col xs={12} md={12} lg={6}>
                                                                     <div className='acc-form-input'>
-                                                                        <label> Email </label>
+                                                                        <label className='label_white'> Email </label>
                                                                         <input type="email" placeholder="xyz@gmail.com" className='input-field-setting2' />
                                                                     </div>
                                                                 </Col>
@@ -99,14 +122,14 @@ function Setting2() {
                                                             <Row>
                                                                 <Col xs={12} md={12} lg={6}>
                                                                     <div className='acc-form-input'>
-                                                                        <label> City </label>
+                                                                        <label className='label_white'> City </label>
                                                                         <input type="text" placeholder="Karachi" className='input-field-setting2' />
                                                                     </div>
                                                                 </Col>
 
                                                                 <Col xs={12} md={12} lg={6}>
                                                                     <div className='acc-form-input'>
-                                                                        <label> Country </label>
+                                                                        <label className='label_white'> Country </label>
                                                                         <input type="email" placeholder="Pakistan" className='input-field-setting2' />
                                                                     </div>
                                                                 </Col>
@@ -141,7 +164,7 @@ function Setting2() {
                                                     </p>
                                                 </div>
                                                 <div className='down-icon'>
-                                                    {isPassOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                                                    {isPassOpen && <FontAwesomeIcon icon={faChevronDown} className='set_color_icon_white' />}
                                                 </div>
                                             </div>
                                             {isPassOpen && (
@@ -151,7 +174,7 @@ function Setting2() {
                                                             <Row>
                                                                 <Col xs={12} md={12} lg={12}>
                                                                     <div className='acc-form-input'>
-                                                                        <label> Current Password </label>
+                                                                        <label className='label_white'> Current Password </label>
                                                                         <input type="password" placeholder="Name..." className='input-field-setting2 cur-pass'
                                                                             style={{ width: "49%" }}
                                                                         />
@@ -162,14 +185,14 @@ function Setting2() {
                                                                 <div className='acc-form-main'>
                                                                     <Col xs={12} md={6} lg={6}>
                                                                         <div className='acc-form-input'>
-                                                                            <label> New Password </label>
+                                                                            <label className='label_white'> New Password </label>
                                                                             <input type="password" placeholder="Karachi" className='input-field-setting2' />
                                                                         </div>
                                                                     </Col>
 
                                                                     <Col xs={12} md={6} lg={6}>
                                                                         <div className='acc-form-input'>
-                                                                            <label> Confirm Password </label>
+                                                                            <label className='label_white'> Confirm Password </label>
                                                                             <input type="password" placeholder="Pakistan" className='input-field-setting2' />
                                                                         </div>
                                                                     </Col>
@@ -205,9 +228,18 @@ function Setting2() {
                                                     </p>
                                                 </div>
                                                 <div className='down-icon'>
-                                                    {isNotifyOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                                                    {isNotifyOpen && <FontAwesomeIcon icon={faChevronDown} className='set_color_icon_white' />}
                                                 </div>
                                             </div>
+                                            {isNotifyOpen && (
+                                                <div className='below-container'>
+                                                    <div className='card-below-body'>
+                                                        <p style={{ color: 'white' }}>
+                                                            Content here
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </Col>
                                     </Row>
 
@@ -246,7 +278,7 @@ function Setting2() {
                                                 {isPayOpen && (
                                                     <div style={{ padding: "10px" }}>
                                                         <form id='form-file-upload'>
-                                                            <label id="label-file-upload2" for="input-file-upload">
+                                                            <label id="label-file-upload2" for="input-file-upload" className='label_white'>
                                                                 <div>
                                                                     <h6>Add Card Payment</h6>
                                                                     <p style={{ padding: "10px 0" }}>You have no payments cards yet. Click on the button below to add the first one.</p>
@@ -280,14 +312,14 @@ function Setting2() {
                                                     </p>
                                                 </div>
                                                 <div className='down-icon'>
-                                                    {isSubscibeOpen && <FontAwesomeIcon icon={faChevronDown} />}
+                                                    {isSubscibeOpen && <FontAwesomeIcon icon={faChevronDown} className='set_color_icon_white' />}
                                                 </div>
                                             </div>
                                             <div>
                                                 {isSubscibeOpen && (
                                                     <div style={{ padding: "10px" }}>
                                                         <form id='form-file-upload'>
-                                                            <label id="label-file-upload2" for="input-file-upload">
+                                                            <label id="label-file-upload2" for="input-file-upload" className='label_white'>
                                                                 <div>
                                                                     <h6>Add Card Payment For Subscription</h6>
                                                                     <p style={{ padding: "10px 0" }}>You have no payments cards yet. Click on the button below to add the first one.</p>

@@ -47,3 +47,57 @@
   color: white;
   margin-right: 8px;
 }
+.group2_head_main{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.groups_2_maincontainer{
+  max-height: 30rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.groups_2_maincontainer::-webkit-scrollbar {
+  width: 1px;
+}
+
+.groups_2_maincontainer::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Scrollbar thumb color */
+  border-radius: 8px;
+}
+
+.groups_2_maincontainer::-webkit-scrollbar-track {
+  background-color: transparent; /* Scrollbar track color */
+}
+.groups_2-container {
+  max-height: 30rem; /* Adjust the height as needed */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Add this style to hide the native scrollbar */
+.groups_2-container::-webkit-scrollbar {
+  width: 1px;
+}
+
+.groups_2-container::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Scrollbar thumb color */
+  border-radius: 8px;
+}
+
+.groups_2-container::-webkit-scrollbar-track {
+  background-color: transparent; /* Scrollbar track color */
+}
+
+.groups_2_table {
+  --bs-table-bg: transparent !important;
+}
+/* .width_20_gp2{
+  min-width: 20% !important;
+}
+.width_10_gp2{
+  min-width: 10% !important;
+}
+.width_30_gp2{
+  min-width: 30% !important;
+} */

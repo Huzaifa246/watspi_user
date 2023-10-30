@@ -1,54 +1,59 @@
-.Dashboard-Comp-card_instancePage{
-    margin-right: auto;
-    margin-left: auto;
-    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
-    height: 95vh;
-    border-radius: 20px;
-    padding: 10px 32px 10px 40px;
-    text-align: center;
+.Dashboard-Comp-card_instancePage {
+  margin-right: auto;
+  margin-left: auto;
+  height: 95vh;
+  border-radius: 20px;
+  text-align: center;
 }
-.backdropfilter_InstancePage{
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    margin: 5px 0;
-    border: 2px solid #f5f1ff;
+.backdropfilter_InstancePage {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  margin: 5px 0;
+  border: 2px solid #f5f1ff;
 }
 .input-instance-new {
-    width: 100%;
-    border: 1px solid #eee;
-    padding: 6px 8px;
-    border-radius: 8px;
-    transition: 0.5s;
-    background-color: #e9ecef;
+  width: 100%;
+  border: 1px solid #eee;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: 0.5s;
+  background-color: #e9ecef;
 }
 .left-input-new-copy {
-    color: rgb(165, 165, 165);
-    position: absolute;
-    padding-top: 10px;
-    left: 42%;
+  color: rgb(165, 165, 165);
+  position: absolute;
+  padding-top: 10px;
+  left: 42%;
 }
 .right-input-new-copy {
-    color: rgb(165, 165, 165);
-    position: absolute;
-    right: 10%;
-    padding-top: 10px;
+  color: rgb(165, 165, 165);
+  position: absolute;
+  right: 10%;
+  padding-top: 10px;
 }
-.label-txt-start{
-    text-align: start;
+.label-txt-start {
+  text-align: start;
 }
 .td-fl-end {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
-td, th {
-    min-width: 300px;
+td,
+th {
+  min-width: 300px;
 }
 .transparent-background-dropdown {
-    background-color: transparent;
+  background-color: transparent;
 }
 .transparent-background-dropdown:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
-
-  
+.clr_white_pd {
+  color: white;
+  padding: 20px 0px 15px 0px;
+  font-weight: 600;
+}
+.clr1_white{
+    color: white;
+}
