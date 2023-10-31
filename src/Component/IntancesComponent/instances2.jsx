@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import CreateInstanceApi from '../../helpers/PostApis/CreateInstance';
 import { useDispatch } from "react-redux";
 import { setSelectedInstanceId } from '../../store/intanceSettingSlice';
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
 import "./instances2.css"
 import { Link } from 'react-router-dom';

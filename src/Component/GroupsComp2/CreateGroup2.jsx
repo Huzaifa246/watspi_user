@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Col, Row, Form } from 'react-bootstrap';
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 import "./createGroup2.css";
 
 function CreateGroup2() {

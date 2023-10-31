@@ -5,17 +5,12 @@ import CreateInstanceApi from '../../../helpers/PostApis/CreateInstance';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 function MainInstance() {
   const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
   const userId = userDetails?._id;
-
-  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-
-  const toggleUserDropdown = () => {
-    setIsUserDropdownOpen(!isUserDropdownOpen);
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
@@ -26,6 +21,7 @@ function MainInstance() {
   const [markIncomingMessagesReadedOnReply, setMarkIncomingMessagesReadedOnReply] = useState(false);
   const [keepOnlineStatus, setKeepOnlineStatus] = useState(true);
   const [webhookUrl, setWebhookUrl] = useState('https://mysite.com/webhook/green-api/');
+  const [webhookUrlToken, setWebhookUrlToken] = useState('qwerty');
   const [outgoingAPIMessageWebhook, setOutgoingAPIMessageWebhook] = useState(true);
   const [outgoingWebhook, setOutgoingWebhook] = useState(true);
   const [deviceWebhook, setDeviceWebhook] = useState(true);
@@ -42,6 +38,7 @@ function MainInstance() {
     const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
     const data = {
       webhookUrl,
+      webhookUrlToken,
       delaySendMessagesMilliseconds,
       markIncomingMessagesReaded: JSON.stringify(markIncomingMessagesReaded),
       markIncomingMessagesReadedOnReply: JSON.stringify(markIncomingMessagesReadedOnReply),
@@ -70,9 +67,9 @@ function MainInstance() {
           pauseOnHover: true,
           draggable: true,
         });
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 3000);
       })
       .catch((error) => {
         console.error("API error:", error);
@@ -83,7 +80,7 @@ function MainInstance() {
       <ToastContainer />
       <div className="Dashboard-Comp-card">
         <div className='Profile-display'>
-          <div onClick={toggleUserDropdown} className="profile-dropdown">
+          <div className="profile-dropdown">
             <img
               src={defaultImg}
               className="Profile-img-radius"
@@ -93,22 +90,20 @@ function MainInstance() {
             <span style={{ marginLeft: '5px', color: "white" }}>
               Huzaifa
             </span>
-            {isUserDropdownOpen && (
-              <div className="dropdown-menu">
-                <div className="dropdown-divider"></div>
-                <a
-                  className="dropdown-item"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </a>
-              </div>
-            )}
           </div>
 
-          <div className='Pro-badge'>
-            Pro
-          </div>
+          <span style={{ display: 'flex', alignItems: "baseline" }}>
+            <div className='Pro-badge'>
+              Pro
+            </div>
+            <a
+              className="dropdown-item_MainInstance"
+              onClick={handleLogout}
+              title='Logout'
+            >
+              <FontAwesomeIcon icon={faSignOutAlt} />
+            </a>
+          </span>
         </div>
         <div>
           <button className='Add-new-Dash-btn'

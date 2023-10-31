@@ -3,7 +3,7 @@ import { Card, Col, Row, Table } from 'react-bootstrap';
 import './groups2.css';
 import { FaSearch } from 'react-icons/fa';
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 
 function Groups2() {
     const data = [

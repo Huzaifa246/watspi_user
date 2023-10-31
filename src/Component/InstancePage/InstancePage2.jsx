@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import GetIndiInstance from '../../helpers/GetApis/GetIndiInstance';
 import UpdateInstanceApi from '../../helpers/PostApis/UpdateIndiIntance';
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
 
 function InstancePage2() {
@@ -43,6 +43,7 @@ function InstancePage2() {
     const [outgoingMessageWebhook, setOutgoingMessageWebhook] = useState('');
     const [incomingWebhook, setIncomingWebhook] = useState('');
     const [delaySendMessagesMilliseconds, setDelaySendMessagesMilliseconds] = useState(1000);
+    
 
     const [indiInstanceData, setIndiInstanceData] = useState(null);
 
@@ -271,8 +272,10 @@ function InstancePage2() {
                                                             <label className='label-txt-start clr1_white'> Instance ID </label>
                                                             <span>
                                                                 <input type="text" placeholder="Instance ID" className='input-instance-new'
+                                                                value={indiInstanceData?.idInstance}
+                                                                disabled
                                                                 />
-                                                                <FontAwesomeIcon icon={faCopy} className="left-input-new-copy left-copy-mob" />
+                                                                {/* <FontAwesomeIcon icon={faCopy} className="left-input-new-copy left-copy-mob" /> */}
                                                             </span>
                                                         </div>
                                                     </Col>
@@ -282,9 +285,10 @@ function InstancePage2() {
                                                             <label className='label-txt-start clr1_white'> Instance Token </label>
                                                             <span>
                                                                 <input type="text" placeholder="token" className='input-instance-new'
-                                                                // defaultValue="qwertyqwerty"
+                                                                value={indiInstanceData?.apiTokenInstance}
+                                                                disabled
                                                                 />
-                                                                <FontAwesomeIcon icon={faCopy} className="right-input-new-copy" />
+                                                                {/* <FontAwesomeIcon icon={faCopy} className="right-input-new-copy" /> */}
                                                             </span>
                                                         </div>
                                                     </Col>

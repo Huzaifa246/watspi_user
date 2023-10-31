@@ -69,16 +69,18 @@ const App = () => {
         <Route path={"/otpForm"} element={<OtpForm />} />
 
         <Route path="/dashboard2" element={<Dashboard2 />} />
-        {/* <Route element={<Header2 />}> */}
-          <Route path="/Instances2" element={<Instances2 />} />
-          <Route path="/instancePage2/:id" element={<InstancePage2 />} />
-          <Route path={"/settings2"} element={<Setting2 />} />
-          <Route path={"/myContact2"} element={<MyContact2 />} />
-          <Route path={"/groups2"} element={<Groups2 />} />
-          <Route path={"/creategroup2"} element={<CreateGroup2 />} />
-          <Route path={"/createBroadCast2"} element={<CreateBroadCast2 />} />
-          
-        {/* </Route> */}
+        <Route path="/header2" element={<Header2 />} />
+        <Route path="/Instances2" element={<Instances2 />} />
+        <Route path="/instancePage2/:id" element={<InstancePage2 />} />
+        <Route path={"/settings2"} element={<Setting2 />} />
+        <Route path={"/myContact2"} element={<MyContact2 />} />
+        <Route path={"/groups2"} element={<Groups2 />} />
+        <Route path={"/creategroup2"} element={<CreateGroup2 />} />
+        <Route path={"/createBroadCast2"} element={<CreateBroadCast2 />} />
+
+        {/* <Route element={<Header2 />}>
+        <Route path={"/settings2"} element={<Setting2 />} />
+        </Route> */}
 
         <Route element={<HeaderComponent />}>
 

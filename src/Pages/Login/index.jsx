@@ -348,7 +348,7 @@ const Login = () => {
                         onSubmit={handleLoginSubmit}>
                         <div>
                             <h2>Sign in to your Watspi Account!</h2>
-                            <input type="email" id="email_login" placeholder="Enter your email"
+                            <input type="email" id="email_login" placeholder="Enter your email" className="placeholder_class"
                                 required
                                 value={email} onChange={(e) => setEmail(e.target.value)} />
                             <input type="password" id="password_login" placeholder="Enter your password"

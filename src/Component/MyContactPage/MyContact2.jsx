@@ -8,7 +8,7 @@ import { FaSearch } from 'react-icons/fa';
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import Sidebar2 from './../Dashboard2/Sidebar/Sidebar2';
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 
 function MyContact2() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);

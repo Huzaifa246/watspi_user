@@ -3,8 +3,8 @@ import { Row, Col } from 'react-bootstrap';
 import Sidebar2 from './Sidebar/Sidebar2';
 import DashBoardComponent from './DashComponent/DashBoardComponent';
 import MainInstance from './MainInstanceComp/MainInstance';
-import bgImg from "../../../images/bg-img.jpg";
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg from "../../../images/bg2.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 
 function Dashboard2() {
     return (

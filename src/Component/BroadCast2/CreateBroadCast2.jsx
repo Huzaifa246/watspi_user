@@ -11,7 +11,7 @@ import {
 import './createBdCast.css';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
-import bgImg1 from "../../../images/bg-img1.jpg";
+import bgImg1 from "../../../images/bg1.jpg";
 import { Link, animateScroll as scroller } from 'react-scroll';
 
 function CreateBroadCast2() {
@@ -141,14 +141,6 @@ function CreateBroadCast2() {
             horizontal: true,
         });
     };
-    useEffect(() => {
-        // Scroll to the target element after rendering
-        scroller.scrollTo('mainCrteBDCAST2', {
-            duration: 800,
-            delay: 0,
-            smooth: 'easeInOutQuint',
-        });
-    }, []);
 
     const handleTemplateChange = (e, index) => {
         const updatedTemplates = [...templates];
