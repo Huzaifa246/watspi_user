@@ -13,9 +13,6 @@ const DashBoardComponent = () => {
     <div className="Dashboard-Comp-card">
       <div className='Dashboard-display'>
         <div>
-          {/* <h3 style={{ color: "white" }}>
-            Whatsapi
-          </h3> */}
           <img src={whatsapiLogo}
             alt="Profile-Image"
             style={{ cursor: 'pointer', height: "4vh" }}

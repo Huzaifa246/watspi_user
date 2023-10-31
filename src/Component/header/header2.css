@@ -1,0 +1,29 @@
+.Header_bg {
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    border: 2px solid #f5f1ff;
+}
+.Header_display {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.right_Profile_head{
+    display: flex;
+    align-items: center;
+}
+.Pro_Head_badge {
+    background-color: yellow;
+    color: black;
+    padding: 2px 15px;
+    border-radius: 7px;
+    font-weight: 600;
+    height: auto;
+    margin-right: 10px;
+}

@@ -27,6 +27,7 @@ import MyContact2 from "./Component/MyContactPage/MyContact2";
 import Groups2 from "./Component/GroupsComp2/Groups2";
 import CreateGroup2 from "./Component/GroupsComp2/CreateGroup2";
 import CreateBroadCast2 from "./Component/BroadCast2/CreateBroadCast2";
+import Header2 from './Component/header/header2';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -67,8 +68,8 @@ const App = () => {
         <Route path={"/signup"} element={<Signup />} />
         <Route path={"/otpForm"} element={<OtpForm />} />
 
-        {/* <Route element={<Sidebar2 />}> */}
-          <Route path="/dashboard2" element={<Dashboard2 />} />
+        <Route path="/dashboard2" element={<Dashboard2 />} />
+        {/* <Route element={<Header2 />}> */}
           <Route path="/Instances2" element={<Instances2 />} />
           <Route path="/instancePage2/:id" element={<InstancePage2 />} />
           <Route path={"/settings2"} element={<Setting2 />} />

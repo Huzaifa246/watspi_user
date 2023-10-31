@@ -72,6 +72,7 @@ const Login = () => {
             { data: encrypted })
             .then(async (response) => {
                 console.log(response);
+                console.log(decryption(response));
                 console.log('OTP verification successful:', response.data);
                 if (decryption(response?.data) === "OTP verified successfully") {
                     toast.success('OTP verified successfully!');
@@ -80,7 +81,7 @@ const Login = () => {
                 }
             })
             .catch((error) => {
-                console.error('OTP verification failed:', error);
+                console.error('OTP verification failed:', decryption(error));
                 toast.error('OTP verification failed. Please try again.');
                 const response = error?.response?.data;
                 console.log(response);

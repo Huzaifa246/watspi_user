@@ -69,7 +69,7 @@
   left: 30%;
 }
 .contact-list-container {
-  max-height: 20vh; /* Adjust the height as needed */
+  max-height: 30vh; /* Adjust the height as needed */
   overflow-y: scroll;
   overflow-x: hidden;
 }

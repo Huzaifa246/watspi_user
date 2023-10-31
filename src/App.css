@@ -36,4 +36,11 @@ body {
   .mob-row {
     margin-left: 0 !important;
   }
+  .mob_pad{
+    padding: 0;
+  }
+}
+
+.web_Pad{
+  padding: 3vh 4.5vh 3vh 0;
 }

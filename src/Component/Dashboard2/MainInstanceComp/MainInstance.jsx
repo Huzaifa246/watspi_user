@@ -11,8 +11,14 @@ function MainInstance() {
   const userId = userDetails?._id;
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
   };
   //Create Instance
   const [createInstance, setCreateInstance] = useState('');
@@ -77,25 +83,29 @@ function MainInstance() {
       <ToastContainer />
       <div className="Dashboard-Comp-card">
         <div className='Profile-display'>
-          <span onClick={toggleUserDropdown}>
-            <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
+          <div onClick={toggleUserDropdown} className="profile-dropdown">
+            <img
+              src={defaultImg}
+              className="Profile-img-radius"
+              alt="Profile-Image"
               style={{ cursor: 'pointer' }}
             />
             <span style={{ marginLeft: '5px', color: "white" }}>
               Huzaifa
             </span>
             {isUserDropdownOpen && (
-              <div className="dropdown-menu show-on-hover">
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" onClick={() => {
-                  localStorage.removeItem("token")
-                  window.location.href = "/";
-                }}>
+              <div className="dropdown-menu">
+                <div className="dropdown-divider"></div>
+                <a
+                  className="dropdown-item"
+                  onClick={handleLogout}
+                >
                   Logout
                 </a>
               </div>
             )}
-          </span>
+          </div>
+
           <div className='Pro-badge'>
             Pro
           </div>

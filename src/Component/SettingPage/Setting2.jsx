@@ -6,6 +6,7 @@ import { faCog, faChevronDown, faUnlock, faBell, faFileInvoiceDollar, faMobileAl
 import { useSelector } from "react-redux";
 import bgImg1 from "../../../images/bg-img1.jpg";
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
+// import Header2 from './../header/header2';
 
 function Setting2() {
 
@@ -62,12 +63,11 @@ function Setting2() {
             <div style={{
                 backgroundImage: `url(${bgImg1})`,
                 width: "100%",
-                height: "100vh",
                 overflow: 'hidden',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover'
             }}>
-                <Row style={{ padding: "3vh 4.5vh 3vh 0" }}>
+                <Row className='web_Pad mob_pad'>
                     <Col sm="1" lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>

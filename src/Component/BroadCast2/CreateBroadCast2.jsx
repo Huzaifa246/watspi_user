@@ -12,6 +12,7 @@ import './createBdCast.css';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
 import bgImg1 from "../../../images/bg-img1.jpg";
+import { Link, animateScroll as scroller } from 'react-scroll';
 
 function CreateBroadCast2() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
@@ -28,6 +29,8 @@ function CreateBroadCast2() {
         { textMessage: '' },
         { textMessage: '' },
     ]);
+
+    const templateContainerRefs = useRef(templates.map(() => React.createRef())); // Create refs for template containers
 
     // Check if the current screen width is less than or equal to 820 pixels
     const isMobileView = window.innerWidth <= 820;
@@ -118,6 +121,7 @@ function CreateBroadCast2() {
         }
     };
 
+    const mainCrteBDCAST2Ref = useRef();
     const handleAddTemplate = () => {
         // Create a new message template object or any data structure you prefer
         const newTemplate = {
@@ -127,7 +131,24 @@ function CreateBroadCast2() {
 
         // Update your state or an array that holds message templates
         setTemplates([...templates, newTemplate]);
+
+        // Scroll to the newly added template container
+        scroller.scrollTo(`template-${templates.length}`, { // Scroll to the last template
+            duration: 800,
+            delay: 0,
+            smooth: 'easeInOutQuint',
+            containerId: 'mainCrteBDCAST2',
+            horizontal: true,
+        });
     };
+    useEffect(() => {
+        // Scroll to the target element after rendering
+        scroller.scrollTo('mainCrteBDCAST2', {
+            duration: 800,
+            delay: 0,
+            smooth: 'easeInOutQuint',
+        });
+    }, []);
 
     const handleTemplateChange = (e, index) => {
         const updatedTemplates = [...templates];
@@ -241,7 +262,7 @@ function CreateBroadCast2() {
                                 <Col xs={12} md={12} lg={12}>
                                     <div className='instance-form-input'>
                                         <h5 className='color-white'> Message Templates</h5>
-                                        <div className='message-templates-container'>
+                                        <div className='message-templates-container' id='mainCrteBDCAST2' ref={mainCrteBDCAST2Ref}>
                                             {/* To add a new template */}
                                             {templates?.map((template, index) => (
                                                 <div className='card-stylecreatbdcast' key={index}>
@@ -276,11 +297,18 @@ function CreateBroadCast2() {
                                                 </div>
                                             ))}
                                             {/* To add a new template end */}
-                                            <div style={{ display: 'flex' }}>
+                                            <Link
+                                                to="mainCrteBDCAST2"
+                                                smooth={true}
+                                                duration={800}
+                                                className="w-full"
+                                                offset={-150}
+                                                style={{ display: 'flex' }}
+                                            >
                                                 <Button className='Add-new-btn_createbd' onClick={handleAddTemplate}>
                                                     <FontAwesomeIcon icon={faPlus} />
                                                 </Button>
-                                            </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 </Col>
