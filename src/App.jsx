@@ -29,6 +29,7 @@ import CreateGroup2 from "./Component/GroupsComp2/CreateGroup2";
 import CreateBroadCast2 from "./Component/BroadCast2/CreateBroadCast2";
 import Header2 from './Component/header/header2';
 import { useNavigate } from 'react-router-dom';
+import ProtectedRoutes from './ProtectedRoutes';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -61,15 +62,6 @@ const App = () => {
         });
     }
   }, [token]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        window.location.href = "/"; 
-      }
-    }
-  }, []);
   return (
     <BrowserRouter>
       <Routes>
@@ -87,6 +79,8 @@ const App = () => {
         <Route path={"/groups2"} element={<Groups2 />} />
         <Route path={"/creategroup2"} element={<CreateGroup2 />} />
         <Route path={"/createBroadCast2"} element={<CreateBroadCast2 />} />
+
+        {/* <Route element={<ProtectedRoutes />} /> */}
 
         {/* <Route element={<Header2 />}>
         <Route path={"/settings2"} element={<Setting2 />} />
