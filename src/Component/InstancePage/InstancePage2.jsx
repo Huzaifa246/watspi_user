@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
-import { Col, Row, Table, Button } from 'react-bootstrap';
+import { Col, Row, Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faChevronDown, faChevronUp, faPencil, faCheck } from '@fortawesome/free-solid-svg-icons'; // Import the copy icon
 import "./Instance2.css"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import GetIndiInstance from '../../helpers/GetApis/GetIndiInstance';
 import UpdateInstanceApi from '../../helpers/PostApis/UpdateIndiIntance';
 import bgImg1 from "../../../images/bg1.jpg";
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
+import DelIndiInstance from '../../helpers/GetApis/DelIndiInstance';
 
 function InstancePage2() {
     const { id } = useParams();
+    const navigate = useNavigate();
     console.log(id, "ss")
     const dispatch = useDispatch();
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
     const selectedInstanceId = useSelector((state) => state.userSetting.selectedInstanceId);
     console.log(selectedInstanceId, "as")
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+    };
 
     const [isBasicOpen, setIsBasicOpen] = useState(true);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -43,9 +49,11 @@ function InstancePage2() {
     const [outgoingMessageWebhook, setOutgoingMessageWebhook] = useState('');
     const [incomingWebhook, setIncomingWebhook] = useState('');
     const [delaySendMessagesMilliseconds, setDelaySendMessagesMilliseconds] = useState(1000);
-    
+
 
     const [indiInstanceData, setIndiInstanceData] = useState(null);
+    const [showDelModal, setShowDelModal] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     //----------ENABLE & DISABLE TEXT INPUT FIELD
     const handleEnableInput = () => {
@@ -171,10 +179,83 @@ function InstancePage2() {
         }
     };
 
+    //-----DELETE INSTANCE
+    const deleteInstance = async () => {
+        try {
+            await DelIndiInstance(id); // Delete the instance using DelIndiInstance function
+            // You may want to update your state or handle the deleted instance here
+            setShowDelModal(false);
+            setShowSuccessModal(true); 
+            setTimeout(() => {
+                navigate('/instances2');
+            }, 5000);
+            // toast.success('Instance deleted successfully', {
+            //     position: 'top-center',
+            //     autoClose: 3000,
+            //     hideProgressBar: false,
+            //     closeOnClick: true,
+            //     pauseOnHover: true,
+            //     draggable: true,
+            // });
+        } catch (error) {
+            console.error('Error deleting instance:', error);
+            toast.error('Instance deleted UnSuccessfully', {
+                position: 'top-center',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }
+    };
+
+    const handleCloseModal = () => {
+        setShowDelModal(false);
+    };
+    const handleCloseSuccessModal = () => {
+        setShowSuccessModal(false);
+    };
     console.log(indiInstanceData, "asd")
     return (
         <>
             <ToastContainer />
+            {/* Del Modal */}
+            <Modal show={showDelModal} onHide={handleCloseModal} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Instance</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Are you sure you want to delete the selected instance?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button
+                        variant='danger'
+                        onClick={() => {
+                            deleteInstance();
+                        }}
+                    >
+                        Delete
+                    </Button>
+                    <Button variant='light' onClick={handleCloseModal}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            {/* Success Modal */}
+            <Modal show={showSuccessModal} onHide={handleCloseSuccessModal} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>Success</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Instance deleted successfully.
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='light' onClick={handleCloseSuccessModal}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <div style={{
                 backgroundImage: `url(${bgImg1})`,
                 width: "100%",
@@ -272,8 +353,8 @@ function InstancePage2() {
                                                             <label className='label-txt-start clr1_white'> Instance ID </label>
                                                             <span>
                                                                 <input type="text" placeholder="Instance ID" className='input-instance-new'
-                                                                value={indiInstanceData?.idInstance}
-                                                                disabled
+                                                                    value={indiInstanceData?.idInstance}
+                                                                    disabled
                                                                 />
                                                                 {/* <FontAwesomeIcon icon={faCopy} className="left-input-new-copy left-copy-mob" /> */}
                                                             </span>
@@ -285,8 +366,8 @@ function InstancePage2() {
                                                             <label className='label-txt-start clr1_white'> Instance Token </label>
                                                             <span>
                                                                 <input type="text" placeholder="token" className='input-instance-new'
-                                                                value={indiInstanceData?.apiTokenInstance}
-                                                                disabled
+                                                                    value={indiInstanceData?.apiTokenInstance}
+                                                                    disabled
                                                                 />
                                                                 {/* <FontAwesomeIcon icon={faCopy} className="right-input-new-copy" /> */}
                                                             </span>
@@ -508,6 +589,26 @@ function InstancePage2() {
                     <Col sm="3" md="4" lg="4" xl="4" xxl="4">
                         <div className="Dashboard-Comp-card">
                             <div className='Dashboard-display'>
+                                <div>
+                                    <button className="btn_3"
+                                        onClick={handleLogout}
+                                    >
+                                        Logout
+                                    </button>
+                                    <button className="btn_3">
+                                        Reboot
+                                    </button>
+                                    <button className="btn_3"
+                                        onClick={() => {
+                                            setShowDelModal(true);
+                                        }}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                                <div>
+                                    10 Days Left
+                                </div>
                             </div>
                         </div>
                     </Col>

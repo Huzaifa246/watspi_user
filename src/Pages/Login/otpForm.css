@@ -127,3 +127,7 @@
     right: 19% !important;
   }
 }
+
+.placeholder_class::placeholder {
+  color: black;
+}

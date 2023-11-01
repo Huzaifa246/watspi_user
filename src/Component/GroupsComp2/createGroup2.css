@@ -41,3 +41,44 @@
   border: 2px solid #f5f1ff;
   border-radius: 20px;
 }
+
+.creategrp2_container {
+  max-height: 30rem; /* Adjust the height as needed */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Add this style to hide the native scrollbar */
+.creategrp2_container::-webkit-scrollbar {
+  width: 1px;
+}
+
+.creategrp2_container::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Scrollbar thumb color */
+  border-radius: 8px;
+}
+
+.creategrp2_container::-webkit-scrollbar-track {
+  background-color: transparent; /* Scrollbar track color */
+}
+
+.creategrp2_maincontainer{
+  max-height: 40rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.creategrp2_maincontainer::-webkit-scrollbar {
+  width: 1px;
+}
+
+.creategrp2_maincontainer::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Scrollbar thumb color */
+  border-radius: 8px;
+}
+
+.creategrp2_maincontainer::-webkit-scrollbar-track {
+  background-color: transparent; /* Scrollbar track color */
+}
+th,td{
+  min-width: 200px;
+}

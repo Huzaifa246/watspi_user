@@ -11,6 +11,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 function MainInstance() {
   const userDetails = useSelector((state) => state.userInfoStore.userDetails.userObj);
   const userId = userDetails?._id;
+  const userName = userDetails?.name;
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";
@@ -88,7 +89,7 @@ function MainInstance() {
               style={{ cursor: 'pointer' }}
             />
             <span style={{ marginLeft: '5px', color: "white" }}>
-              Huzaifa
+              {userName || "Huzaifa"}
             </span>
           </div>
 

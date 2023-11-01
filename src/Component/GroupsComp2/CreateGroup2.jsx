@@ -3,12 +3,51 @@ import { Col, Row, Form } from 'react-bootstrap';
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
 import bgImg1 from "../../../images/bg1.jpg";
 import "./createGroup2.css";
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 function CreateGroup2() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
     const [selectAll, setSelectAll] = useState(false);
+    const [data, setData] = useState([
+        { id: 1, firstName: 'Huzaifa', lastName: 'Rehman', contact: '+920987654', desc: 'Lorem ipsum dolor sit amet consectetur.' },
+        { id: 2, firstName: 'John', lastName: 'Doe', contact: '+123456789', desc: 'Another example description.' },
+        { id: 3, firstName: 'Alice', lastName: 'Johnson', contact: '+987654321', desc: 'A third description.' },
+        { id: 4, firstName: 'Mary', lastName: 'Smith', contact: '+555123456', desc: 'Description for Mary.' },
+        { id: 5, firstName: 'David', lastName: 'Brown', contact: '+111222333', desc: 'Description for David.' },
+    ]);
+
+    const [textLength, setTextLength] = useState(100);
+    useEffect(() => {
+        function handleWindowResize() {
+            const windowWidth = window.innerWidth;
+
+            if (windowWidth > 1600) {
+                setTextLength(150);
+            } else if (windowWidth < 1600 && windowWidth > 1000) {
+                setTextLength(100);
+            } else if (windowWidth > 999) {
+                setTextLength(50);
+            }
+            else if (windowWidth > 400) {
+                setTextLength(20);
+            }
+        }
+        handleWindowResize();
+        window.addEventListener('resize', handleWindowResize);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+    function truncateText(text, maxLength) {
+        if (text.length <= maxLength) {
+            return text;
+        }
+        return text.slice(0, maxLength) + '...';
+    }
     const handleSelectAllChange = () => {
         setSelectAll(!selectAll); // Toggle the "Select All" state
     };
@@ -91,54 +130,51 @@ function CreateGroup2() {
                         </Row>
                         <Row className='mob-row' style={{ marginBottom: '20px', marginLeft: '10px', width: "98.5%" }}>
                             <Col>
-                                <thead style={{ marginBottom: "0", tableLayout: "fixed", color: 'white' }}>
-                                    <tr className='tr-create-gp'>
-                                        <th className='th-checkbox'>
-                                            <input
-                                                type="checkbox"
-                                                onChange={handleSelectAllChange}
-                                                checked={selectAll}
-                                            />
-                                        </th>
-                                        <th>FirstName</th>
-                                        <th>LastName</th>
-                                        <th>Contacts</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                    <tr className='tr-font-style'>
-                                        <td className='th-checkbox'>
-                                            <input type="checkbox" onChange={handleCheckboxChange} checked={selectAll} />
-                                        </td>
-                                        <td>Huzaifa</td>
-                                        <td>Rehman</td>
-                                        <td>+920987654</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur.</td>
-                                    </tr>
-                                </tbody>
-                                <tbody style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                    <tr className='tr-font-style'>
-                                        <td className='th-checkbox'>
-                                            <input type="checkbox" onChange={handleCheckboxChange} checked={selectAll} />
-                                        </td>
-                                        <td>Huzaifa</td>
-                                        <td>Rehman</td>
-                                        <td>+920987654</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur.</td>
-                                    </tr>
-                                </tbody>
-                                <tbody style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                    <tr className='tr-font-style'>
-                                        <td className='th-checkbox'>
-                                            <input type="checkbox" onChange={handleCheckboxChange} checked={selectAll} />
-                                        </td>
-                                        <td>Huzaifa</td>
-                                        <td>Rehman</td>
-                                        <td>+920987654</td>
-                                        <td>Lorem ipsum dolor sit amet consectetur.</td>
-                                    </tr>
-                                </tbody>
+                                <div className="creategrp2_maincontainer">
+                                    <thead style={{ marginBottom: "0", tableLayout: "fixed", color: 'white' }}>
+                                        <tr className='tr-create-gp'>
+                                            <th className='th-checkbox'>
+                                                <input
+                                                    type="checkbox"
+                                                    onChange={handleSelectAllChange}
+                                                    checked={selectAll}
+                                                />
+                                            </th>
+                                            <th>FirstName</th>
+                                            <th>LastName</th>
+                                            <th>Contacts</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <div className="creategrp2_container">
+                                        <table>
+                                            {data.map((item, index) => (
+                                                <tr className='tr-font-style' key={item?.id}>
+                                                    <td className='th-checkbox'>
+                                                        <input
+                                                            type="checkbox"
+                                                            onChange={() => handleCheckboxChange(item?.id)}
+                                                            checked={item.selected}
+                                                        />
+                                                    </td>
+                                                    <td>{item?.firstName}</td>
+                                                    <td>{item?.lastName}</td>
+                                                    <td>{item?.contact}</td>
+                                                    <td style={{minWidth: "30%"}}>
+                                                        <OverlayTrigger
+                                                            placement="top"
+                                                            overlay={<Tooltip id={`tooltip${index}`}>{item?.desc}</Tooltip>}
+                                                        >
+                                                            <span data-tip={item?.desc} data-for={`tooltip${index}`}>
+                                                                {truncateText(item?.desc, textLength)}
+                                                            </span>
+                                                        </OverlayTrigger>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </table>
+                                    </div>
+                                </div>
                             </Col>
                         </Row>
                     </Col>

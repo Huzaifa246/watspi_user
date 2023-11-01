@@ -22,6 +22,7 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
     const [showOtpModal, setShowOtpModal] = useState(false);
+    console.log(showOtpModal, "showOtpModal")
 
     const [loginError, setLoginError] = useState("")
     const [signUpError, setSignUpError] = useState("")
@@ -56,7 +57,8 @@ const Login = () => {
     }, [timer]);
 
     const handleResendClick = () => {
-        setTimer(60); // Reset the timer
+        console.log("Resend button clicked");
+        setTimer(60);
         setIsTimerRunning(true);
     };
     //OTP API
@@ -65,34 +67,42 @@ const Login = () => {
             otp: otpValue,
             email: signupEmail,
         };
+        console.log(requestBody, "requestBody")
         const encrypted = encryption(requestBody)
         console.log(encrypted, "encrypted data Req Otp")
 
         axios.post(`${import.meta.env.VITE_APP_API}/api/users/verification`,
             { data: encrypted })
             .then(async (response) => {
-                console.log(response);
-                console.log(decryption(response));
+                console.log(response, "asd");
+                console.log(response?.data?.data, "asd");
+                console.log(decryption(response?.data?.data), "asd");
                 console.log('OTP verification successful:', response.data);
-                if (decryption(response?.data) === "OTP verified successfully") {
-                    toast.success('OTP verified successfully!');
-                    // Close the modal on successful OTP verification
+                const dcrytedresponse = await decryption(response?.data?.data)
+                console.log(dcrytedresponse, "dcrytedresponse")
+                if (dcrytedresponse?.message === "OTP verified successfully") {
+                    toast.success(dcrytedresponse?.message);
                     setShowOtpModal(false);
+                    setTimeout(function () {
+                        window.location.href = "/";
+                    }, 5000);
                 }
             })
             .catch((error) => {
-                console.error('OTP verification failed:', decryption(error));
-                toast.error('OTP verification failed. Please try again.');
-                const response = error?.response?.data;
+                // console.log(error, "error")
+                console.error('OTP verification failed:', decryption(error?.response?.data?.data));
+                console.log('Setting showOtpModal to true in catch block');
+                // setShowOtpModal(true);
+                const response = error?.response?.data?.data;
                 console.log(response);
 
-                if (error?.response?.data === "OTP Expired") {
+                if (response?.message === "OTP Expired") {
                     setOtpError("OTP Expired!!!");
                     toast.error(setOtpError("OTP Expired!!!"));
-                } else if (error?.response?.data === "Please enter correct OTP") {
+                } else if (response?.message === "Please enter correct OTP") {
                     setOtpError("Invalid OTP, Please enter the correct OTP.");
                     toast.error(setOtpError("Invalid OTP, Please enter the correct OTP."));
-                } else if (error?.response?.data !== "undefined") {
+                } else if (response?.message !== "undefined") {
                     setOtpError("OTP is incorrect. Please check your email.");
                     toast.error(setOtpError("OTP is incorrect. Please check your email."));
                 }
@@ -112,7 +122,6 @@ const Login = () => {
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
-        // window.location.href = "/dashboard";
 
         if (!email || !password) {
             setLoginError("Invalid Email or Password")
@@ -138,17 +147,16 @@ const Login = () => {
 
         })
             .catch((err) => {
-                console.log(err)
-                console.log(decryption(err))
+                // console.log(err?.response?.data?.data)
                 const response = decryption(err?.response?.data?.data)
                 console.log(response)
 
-                if (response?.response?.data === "User not registered") {
+                if (response?.message == "User not registered") {
                     setLoginError("Invalid Credentials, Please Check email.")
-                } else if (response?.response?.data === "Incorrect password") {
+                } else if (response?.message == "Incorrect password") {
                     setLoginError("Invalid Password, Please Check Your Password.")
                 }
-                else if (response?.response?.data !== "verified") {
+                else if (response?.message == "Email not verified") {
                     setLoginError("Email not verified")
                 }
                 else {
@@ -202,8 +210,9 @@ const Login = () => {
                 // let response = res?.data;
                 // console.log(response, "response");
                 // localStorage.setItem("token", response?.token);
-                localStorage.setItem("token", res?.data?.token)
-                setSignupEmail(res?.result?.email);
+                const main = decryption(res?.data?.data);
+                localStorage.setItem("token", decryption(res?.data?.data))
+                setSignupEmail(main?.result?.email);
                 // setSignupEmail(response?.result?.email);
                 setShowLoader(false);
                 // window.location.href = "/otpForm";
@@ -212,14 +221,15 @@ const Login = () => {
             })
             .catch((err) => {
                 console.log(err);
-                console.log(err.response.data);
+                const response = decryption(err?.response?.data?.data)
+                console.log(response, "response Signup")
 
-                if (err?.response?.data === "Email already exists") {
+                if (response?.message === "Email already exists") {
                     setSignUpError("Email already exists.")
-                } else if (err?.response?.data === "Please enter all fields") {
+                } else if (response?.message === "Please enter all fields") {
                     setSignUpError("Please enter all fields")
                 }
-                else if (err?.response?.data !== "unverified") {
+                else if (response?.message !== "unverified") {
                     setSignUpError("Please verify Using Otp sent to your email!!!")
                 }
                 else {
@@ -238,77 +248,76 @@ const Login = () => {
                     <Modal.Title>OTP Verification</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Form.Group controlId="formOTP">
-                            <h4 className="otp-head">Enter OTP</h4>
-                            <div
-                                className="otp-parent-div"
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexDirection: "column",
-                                    gap: "16px"
-                                }}
+                    <h4 className="otp-head">Enter OTP</h4>
+                    <div
+                        className="otp-parent-div"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexDirection: "column",
+                            gap: "16px"
+                        }}
+                    >
+                        <p className="txt-center-white">Please enter OTP sent on Your Email</p>
+                        <OtpInput
+                            value={otpValue}
+                            onChange={setOtpValue}
+                            numInputs={6}
+                            renderSeparator={<span>-</span>}
+                            renderInput={(props) => <input {...props} />}
+                            inputStyle={{
+                                width: "40px",
+                                height: "40px",
+                                fontSize: "24px",
+                                textAlign: "center",
+                                border: "2px solid #ccc",
+                                borderRadius: "4px",
+                                margin: "0 4px",
+                                padding: "8px",
+                                outline: "none",
+                                borderColor: "#53585e",
+                                justifyContent: "center"
+                            }}
+                            className="mob-style"
+                        />
+                        <div className="md:text-sm text-[0.7rem] text-center">
+                            Didn't recieve code?{" "}
+                            <span
+                                className={`font-bold ${isTimerRunning
+                                    ? "timer-color"
+                                    : "timer-sendNow-color"
+                                    }`}
+                                onClick={isTimerRunning ? undefined : handleResendClick}
                             >
-                                <p className="txt-center-white">Please enter OTP sent on Your Email</p>
-                                <OtpInput
-                                    value={otpValue}
-                                    onChange={setOtpValue}
-                                    numInputs={6}
-                                    renderSeparator={<span>-</span>}
-                                    renderInput={(props) => <input {...props} />}
-                                    inputStyle={{
-                                        width: "40px",
-                                        height: "40px",
-                                        fontSize: "24px",
-                                        textAlign: "center",
-                                        border: "2px solid #ccc",
-                                        borderRadius: "4px",
-                                        margin: "0 4px",
-                                        padding: "8px",
-                                        outline: "none",
-                                        borderColor: "#53585e",
-                                        justifyContent: "center"
-                                    }}
-                                    className="mob-style"
-                                />
-                                <div className="md:text-sm text-[0.7rem] text-center">
-                                    Didn't recieve code?{" "}
-                                    <span
-                                        className={`font-bold ${isTimerRunning
-                                            ? "timer-color"
-                                            : "timer-sendNow-color"
-                                            }`}
-                                        onClick={isTimerRunning ? undefined : handleResendClick}
-                                    >
-                                        {isTimerRunning ? `Resend in ${timer}s` : "Resend now"}
-                                    </span>
+                                {isTimerRunning ? `Resend in ${timer}s` : "Resend now"}
+                            </span>
 
-                                </div>
-                                <div className="  w-full flex justify-center">
-                                    <button
-                                        disabled={!isOtpComplete}
-                                        onClick={() => verifyOtp()}
-                                        className={`${isOtpComplete
-                                            ? "btn-Verify"
-                                            : "opacity-50 bg-slate-600 text-white cursor-not-allowed inactive-verify"
-                                            } p-2 md:text-xl text-base flex items-center justify-center font-semibold rounded-md 2xl:w-[426px] md:w-[360px] w-full`}
-                                    >
-                                        VERIFY
-                                    </button>
-                                </div>
-                            </div >
-                            {otpError && setShowOtpModal(true) && (
-                                <p
-                                    className="text-center"
-                                    style={{ color: "red", marginTop: "1rem" }}
-                                >
+                        </div>
+                        <div className="  w-full flex justify-center">
+                            <button
+                                disabled={!isOtpComplete}
+                                onClick={() => verifyOtp()}
+                                className={`${isOtpComplete
+                                    ? "btn-Verify"
+                                    : "opacity-50 bg-slate-600 text-white cursor-not-allowed inactive-verify"
+                                    } p-2 md:text-xl text-base flex items-center justify-center font-semibold rounded-md 2xl:w-[426px] md:w-[360px] w-full`}
+                            >
+                                VERIFY
+                            </button>
+                        </div>
+                    </div >
+                    {
+                        otpError && (
+                            <div>
+                                <p className="text-center" style={{ color: "red", marginTop: "1rem" }}>
                                     Entered wrong code, please enter the code sent on email
                                 </p>
-                            )}
-                        </Form.Group>
-                    </Form>
+                                {/* <button>Show OTP Modal</button> */}
+                            </div>
+                        )
+                    }
+
                 </Modal.Body>
             </Modal >
 
@@ -351,7 +360,7 @@ const Login = () => {
                             <input type="email" id="email_login" placeholder="Enter your email" className="placeholder_class"
                                 required
                                 value={email} onChange={(e) => setEmail(e.target.value)} />
-                            <input type="password" id="password_login" placeholder="Enter your password"
+                            <input type="password" id="password_login" placeholder="Enter your password" className="placeholder_class"
                                 required
                                 value={password} onChange={e => setPassword(e.target.value)} />
                             <div className={styles.form_links}>
@@ -383,12 +392,12 @@ const Login = () => {
                         <div>
                             <h2>Create A Watspi Account!</h2>
                             <div className={styles.input_container}>
-                                <input type="text" id="name_signup" placeholder="Enter your full name"
+                                <input type="text" id="name_signup" placeholder="Enter your full name" className="placeholder_class"
                                     value={fullName} onChange={(e) => setFullName(e.target.value)}
                                 />
                             </div>
                             <div className={styles.input_container}>
-                                <input type="email" id="email_signup" placeholder="Enter your email"
+                                <input type="email" id="email_signup" placeholder="Enter your email" className="placeholder_class"
                                     required
                                     value={email} onChange={(e) => setEmail(e.target.value)}
                                 />
@@ -400,6 +409,7 @@ const Login = () => {
                                     placeholder="Enter your password"
                                     required
                                     value={password} onChange={e => setPassword(e.target.value)}
+                                    className="placeholder_class"
                                 />
                                 <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
                                     {showPassword ? <FiEyeOff className="password-eye-icon" /> : <FiEye className="password-eye-icon" />}
@@ -409,6 +419,7 @@ const Login = () => {
                                 <input type="password" id="confirm_password_signup" placeholder="Re-enter your password"
                                     required
                                     value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
+                                    className="placeholder_class"
                                 />
                             </div>
                             {/* <a href="/otpForm"> */}

@@ -28,6 +28,7 @@ import Groups2 from "./Component/GroupsComp2/Groups2";
 import CreateGroup2 from "./Component/GroupsComp2/CreateGroup2";
 import CreateBroadCast2 from "./Component/BroadCast2/CreateBroadCast2";
 import Header2 from './Component/header/header2';
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -60,6 +61,15 @@ const App = () => {
         });
     }
   }, [token]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        window.location.href = "/"; 
+      }
+    }
+  }, []);
   return (
     <BrowserRouter>
       <Routes>

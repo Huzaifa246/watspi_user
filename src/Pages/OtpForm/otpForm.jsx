@@ -44,11 +44,11 @@ function OtpForm() {
             {isSignedUp && (
                 <div className="main-OtpForm">
                     <Card style={{ maxWidth: "450px", margin: "0 auto", width: "100%", padding: "16px 0" }}>
-                        <a href="/">
+                        {/* <a href="/"> */}
                             <button className="back-arrow-otp">
                                 <i className="fa fa-arrow-left" />
                             </button>
-                        </a>
+                        {/* </a> */}
                         <h4 className="otp-head">Enter OTP</h4>
                         <div
                             className="otp-parent-div"

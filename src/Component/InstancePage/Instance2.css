@@ -54,6 +54,19 @@ th {
   padding: 20px 0px 15px 0px;
   font-weight: 600;
 }
-.clr1_white{
-    color: white;
+.clr1_white {
+  color: white;
+}
+.btn_3{
+  border: 1px solid #f5f1ff;
+  padding: 1px 4px;
+  border-radius: 8px;
+  transition: 0.5s;
+  background: transparent;
+  color: white;
+  margin: 0 5px 0 0;
+}
+.btn_3:hover{
+  background-color: #3ab19d;
+  border: 1px solid #3ab19d;
 }
