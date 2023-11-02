@@ -32,7 +32,6 @@
     var(--color-secondary),
     var(--color-primary)
   );
-  box-shadow: rgb(159 221 219) 0px 11.9007px 8.65504px;
   color: white;
   border: none;
   border-radius: 12px;

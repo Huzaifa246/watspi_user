@@ -92,3 +92,12 @@
 .td_min_desc_width {
   min-width: 300px !important;
 }
+.btns_MyContact2{
+  width: auto;
+  border: 1px solid #f5f1ff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: 0.5s;
+  background: transparent;
+  color: white;
+}

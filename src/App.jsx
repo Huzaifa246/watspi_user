@@ -28,8 +28,6 @@ import Groups2 from "./Component/GroupsComp2/Groups2";
 import CreateGroup2 from "./Component/GroupsComp2/CreateGroup2";
 import CreateBroadCast2 from "./Component/BroadCast2/CreateBroadCast2";
 import Header2 from './Component/header/header2';
-import { useNavigate } from 'react-router-dom';
-import ProtectedRoutes from './ProtectedRoutes';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -79,8 +77,6 @@ const App = () => {
         <Route path={"/groups2"} element={<Groups2 />} />
         <Route path={"/creategroup2"} element={<CreateGroup2 />} />
         <Route path={"/createBroadCast2"} element={<CreateBroadCast2 />} />
-
-        {/* <Route element={<ProtectedRoutes />} /> */}
 
         {/* <Route element={<Header2 />}>
         <Route path={"/settings2"} element={<Setting2 />} />

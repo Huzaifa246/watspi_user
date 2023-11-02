@@ -15,7 +15,7 @@ async function GetALLInstances(userId) {
     return resData;
   } catch (error) {
     console.error('Error fetching data at Past Trade:', error);
-    return [];
+    return error;
   }
 }
 

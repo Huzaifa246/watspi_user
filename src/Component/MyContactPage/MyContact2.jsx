@@ -1,17 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { Card, Col, Row, Dropdown, Table, Form } from 'react-bootstrap';
+import { Card, Col, Row, Dropdown, Modal, Button } from 'react-bootstrap';
 import './myContact.css';
 import "./myContact2.css";
 import * as XLSX from 'xlsx';
 import { FaSearch } from 'react-icons/fa';
-import RangeSlider from "react-range-slider-input";
-import "react-range-slider-input/dist/style.css";
+// import RangeSlider from "react-range-slider-input";
+// import "react-range-slider-input/dist/style.css";
 import Sidebar2 from './../Dashboard2/Sidebar/Sidebar2';
 import bgImg1 from "../../../images/bg1.jpg";
+import CreateContactApi from '../../helpers/PostApis/createContact';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function MyContact2() {
     const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);
+    const [showModal, setShowModal] = useState(false);
+    const [successModal, setSuccessModal] = useState(false);
+    const [status, setStatus] = useState('');
+    const [errStatus, setErrStatus] = useState('');
+    const [modalData, setModalData] = useState([]);
+    const [uploading, setUploading] = useState(false);
 
     const [excelData, setExcelData] = useState([]);
     const [uploadTime, setUploadTime] = useState(null); // Store the upload time
@@ -39,7 +48,7 @@ function MyContact2() {
         fileInputRef.current.click(); // Click the hidden file input element
     };
 
-    const handleFileInputChange = (e) => {
+    const handleFileInputChange = async (e) => {
         const file = e.target.files[0];
         if (file) {
             if (
@@ -49,7 +58,7 @@ function MyContact2() {
             ) {
                 const reader = new FileReader();
 
-                reader.onload = (e) => {
+                reader.onload = async (e) => {
                     const data = e.target.result;
                     const workbook = XLSX.read(data, { type: 'binary' });
                     const sheetName = workbook.SheetNames[0];
@@ -61,15 +70,16 @@ function MyContact2() {
                     const excelData = jsonData.slice(1); // Skip the header row
 
                     // Set the upload time to the current date and time
-                    const newExcelData = excelData?.map(() => {
+                    const newExcelData = excelData.map(() => {
                         const currentTime = new Date();
                         const localTime = currentTime.toLocaleString(); // Get the local date and time
                         return { Date: currentTime, localTime }; // Add an object with Date and localTime properties
                     });
-                    setUploadTime(newExcelData)
+                    setUploadTime(newExcelData);
 
                     setExcelData(excelData);
                     setFilteredData(newExcelData);
+                    handleOpenModal(excelData);
                 };
 
                 reader.readAsBinaryString(file);
@@ -80,6 +90,7 @@ function MyContact2() {
             }
         }
     };
+
     useEffect(() => {
         // Set the initial state when the component loads
         setFilteredData(excelData);
@@ -123,10 +134,102 @@ function MyContact2() {
 
         setFilteredData(filteredData);
     };
+    const handleUploadClick = async () => {
+        try {
+            setUploading(true);
+
+            for (const entry of excelData) {
+                // Prepare the data to send to the API
+                const dataToSend = {
+                    firstName: entry[0],
+                    lastName: entry[1],
+                    number: entry[2],
+                    status: 'yes',
+                };
+
+                // Call the CreateContactApi function to send the data
+                const response = await CreateContactApi(dataToSend);
+                setStatus(response?.message);
+                if (response?.message == "Contact Saved") {
+                    setUploading(false);
+                    setShowModal(false);
+                    setSuccessModal(true);
+                }
+                // Handle the response if needed
+                console.log('API Response:', response);
+                if (response?.message === "Request failed with status code 400") {
+                    setErrStatus("Contact already exists");
+                }
+            }
+        } catch (error) {
+            // Handle any errors that occur during the API call
+            console.error('Error from CreateContactApi:', error);
+            setUploading(false);
+            setShowModal(false);
+            setErrStatus('An error occurred while uploading. Please try again.'); // Set the error status message
+        }
+    };
+
+    // const handleOpenModal = () => {
+    //     setShowModal(true);
+    //     setModalData(excelData);
+    // };
+    const handleOpenModal = (data) => {
+        setModalData(data);
+        setShowModal(true);
+    };
+
 
     console.log(excelData, 'asad');
     return (
         <>
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Excel Data</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {modalData?.map((row, index) => (
+                        // Render the data in the modal
+                        <div key={index}>
+                            {row.join(', ')}
+                        </div>
+                    ))}
+                </Modal.Body>
+                <Modal.Footer>
+                    <div>
+                        {errStatus}
+                    </div>
+                    <Button
+                        variant="secondary"
+                        onClick={() => setShowModal(false)}
+                    >
+                        Close
+                    </Button>
+                    <Button
+                        variant="primary"
+                        onClick={handleUploadClick}
+                        disabled={uploading}
+                    >
+                        Upload
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            <Modal show={successModal} onHide={() => setSuccessModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Success</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>{status}</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={() => setSuccessModal(false)}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+
             <div style={{
                 backgroundImage: `url(${bgImg1})`,
                 width: "100%",
@@ -139,9 +242,10 @@ function MyContact2() {
                     <Col sm="1" lg="1" xl="1" xxl="1">
                         <Sidebar2 />
                     </Col>
-                    <Col sm="12" md="11" lg="11" xl="11" xxl="11" className='Backdrop-myContact2'>
-                        <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
-                            <Col>
+                    <Col>
+                        <Row className='mob-row width-100' style={{ marginBottom: '20px' }}>
+                            <Col sm="1" lg="1" xl="1" xxl="1"></Col>
+                            <Col sm="12" md="12" lg="11" xl="11" xxl="11" className='Backdrop-myContact2' style={{ paddingBottom: '10px' }}>
                                 <div className='card-drop-style'>
                                     <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600', color: "white" }}>
                                         My Contacts
@@ -149,7 +253,8 @@ function MyContact2() {
                                     <span className='hide-ex-main-btn'>
                                         <button
                                             type='button'
-                                            onClick={handleFileSelect}
+                                            // onClick={handleFileSelect}
+                                            onClick={() => handleOpenModal(excelData)}
                                             className='myexecl-btn2 mycontact-btn'
                                         >
                                             Add Excel File
@@ -176,7 +281,7 @@ function MyContact2() {
                                                     >
                                                         All
                                                     </button>
-                                                    <Dropdown>
+                                                    {/* <Dropdown>
                                                         <Dropdown.Toggle
                                                             className={filteredData === 'Age' ? 'selected-btn' : 'unselected-dropdown'}
                                                             id="filterDropdown"
@@ -198,7 +303,7 @@ function MyContact2() {
                                                                 }}
                                                             />
                                                         </Dropdown.Menu>
-                                                    </Dropdown>
+                                                    </Dropdown> */}
                                                     <Dropdown>
                                                         <Dropdown.Toggle
                                                             className={filteredData === 'Gender' ? 'selected-btn' : 'unselected-dropdown'}
@@ -252,6 +357,7 @@ function MyContact2() {
                                                         <button
                                                             type='button'
                                                             onClick={handleFileSelect}
+
                                                             className='myexecl-btn2 mycontact-btn'
                                                         >
                                                             Add Excel File
@@ -271,7 +377,7 @@ function MyContact2() {
                                 </form>
                             </Col>
                         </Row>
-                        <div>
+                        {/* <div>
                             <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
                                 <Col>
                                     {filteredData?.length === 0 ? (
@@ -286,7 +392,6 @@ function MyContact2() {
                                                         <th className='td_min_sNo_width'>No</th>
                                                         <th className='td_min_width' style={{ textAlign: 'center' }}>Date & Time</th>
                                                         <th className='td_min_width'>Name</th>
-                                                        {/* <th>LastName</th> */}
                                                         <th className='td_min_desc_width'>Email</th>
                                                         <th className='td_min_width'>Age</th>
                                                         <th className='td_min_width'>Gender</th>
@@ -319,9 +424,59 @@ function MyContact2() {
                                     )}
                                 </Col>
                             </Row >
-                        </div>
+                        </div> */}
+                        <Row>
+                            <Col sm="1" lg="1" xl="1" xxl="1"></Col>
+                            <Col md={11} lg={11} className='Backdrop-myContact2' style={{ padding: "10px" }}>
+                                <div>
+                                    <div className="MyContact_2_maincontainer">
+                                        <thead style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                            <tr style={{ color: "white" }} className='th-font-style'>
+                                                <th className='td_min_sNo_width'>S.N</th>
+                                                <th className='td_min_width'>First Name</th>
+                                                <th className='td_min_width'>Last Name</th>
+                                                <th className='td_min_width'>Phone</th>
+                                                <th className='td_min_width'>Email</th>
+                                                <th className='td_min_width'>Gender</th>
+                                                <th className='td_min_width'>Country</th>
+                                                <th className='td_min_width'>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <div className="MyContact_2_container">
+                                            <table>
+                                                <tbody className='tbody-font-style' style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                                    <tr>
+                                                        <td className='td_min_sNo_width'>{1}</td>
+                                                        <td className='td_min_width'>Huzaifa</td>
+                                                        <td className='td_min_width'>Khan</td>
+                                                        <td className='td_min_width'>+92098765432</td>
+                                                        <td className='td_min_width'>huzaifa@gmail.com</td>
+                                                        <td className='td_min_width'>Male</td>
+                                                        <td className='td_min_width'>Pakistan</td>
+                                                        <td className='td_min_width'>
+                                                            <FontAwesomeIcon
+                                                                icon={faEdit}
+                                                                style={{ cursor: 'pointer', marginRight: '10px' }}
+                                                            // onClick={() => handleEdit(row)}
+                                                            />
+                                                            <FontAwesomeIcon
+                                                                icon={faTrash}
+                                                                style={{ cursor: 'pointer' }}
+                                                                onClick={() => handleDelete(row)} // Replace handleDelete with your delete function
+                                                            />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
                     </Col>
+
                 </Row>
+
             </div>
         </>
     );
