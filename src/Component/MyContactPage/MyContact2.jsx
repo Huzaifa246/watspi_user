@@ -9,7 +9,7 @@ import { FaSearch } from 'react-icons/fa';
 // import "react-range-slider-input/dist/style.css";
 import Sidebar2 from './../Dashboard2/Sidebar/Sidebar2';
 import bgImg1 from "../../../images/bg1.jpg";
-import CreateContactApi from '../../helpers/PostApis/createContact';
+import CreateContactApi from '../../helpers/PostApis/CreateContact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,6 +21,7 @@ function MyContact2() {
     const [errStatus, setErrStatus] = useState('');
     const [modalData, setModalData] = useState([]);
     const [uploading, setUploading] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
 
     const [excelData, setExcelData] = useState([]);
     const [uploadTime, setUploadTime] = useState(null); // Store the upload time
@@ -178,7 +179,9 @@ function MyContact2() {
         setModalData(data);
         setShowModal(true);
     };
-
+    const handleOptionSelect = (option) => {
+        setSelectedOption(option);
+    };
 
     console.log(excelData, 'asad');
     return (
@@ -194,6 +197,16 @@ function MyContact2() {
                             {row.join(', ')}
                         </div>
                     ))}
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                            {selectedOption || 'Select an option'}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={() => handleOptionSelect('Option 1')}>Option 1</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleOptionSelect('Option 2')}>Option 2</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleOptionSelect('Option 3')}>Option 3</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
@@ -377,54 +390,6 @@ function MyContact2() {
                                 </form>
                             </Col>
                         </Row>
-                        {/* <div>
-                            <Row className='mob-row width-100' style={{ marginBottom: '20px', marginLeft: '10px', width: '99%' }}>
-                                <Col>
-                                    {filteredData?.length === 0 ? (
-                                        <>
-                                            <p className='Not-Found-style'>No Data Found!!!</p>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <div className="MyContact_2_maincontainer">
-                                                <thead style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                                    <tr style={{ color: "#888" }} className='th-font-style'>
-                                                        <th className='td_min_sNo_width'>No</th>
-                                                        <th className='td_min_width' style={{ textAlign: 'center' }}>Date & Time</th>
-                                                        <th className='td_min_width'>Name</th>
-                                                        <th className='td_min_desc_width'>Email</th>
-                                                        <th className='td_min_width'>Age</th>
-                                                        <th className='td_min_width'>Gender</th>
-                                                        <th className='td_min_width'>Country</th>
-                                                        <th className='td_min_width'>Phone</th>
-                                                        <th className='td_min_desc_width'>Description</th>
-                                                    </tr>
-                                                </thead>
-                                                <div className="MyContact_2_container">
-                                                    {filteredData?.map((row, index) => (
-                                                        <table>
-                                                            <tbody className='tbody-font-style' style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                                                <tr key={index}>
-                                                                    <td className='td_min_sNo_width'>{index + 1}</td>
-                                                                    <td className='td_min_width' style={{ textAlign: 'center' }}>{uploadTime[index]?.Date?.toLocaleString()}</td>
-                                                                    <td className='td_min_width'>{row[0]}</td>
-                                                                    <td className='td_min_desc_width'>{row[2]}</td>
-                                                                    <td className='td_min_width'>{row[3]}</td>
-                                                                    <td className='td_min_width'>{row[4]}</td>
-                                                                    <td className='td_min_width'>{row[5]}</td>
-                                                                    <td className='td_min_width'>{row[6]}</td>
-                                                                    <td className='td_min_desc_width'>{row[7]}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </>
-                                    )}
-                                </Col>
-                            </Row >
-                        </div> */}
                         <Row>
                             <Col sm="1" lg="1" xl="1" xxl="1"></Col>
                             <Col md={11} lg={11} className='Backdrop-myContact2' style={{ padding: "10px" }}>
