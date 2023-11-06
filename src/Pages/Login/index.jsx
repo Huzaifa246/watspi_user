@@ -114,7 +114,7 @@ const Login = () => {
     useEffect(() => {
         if (typeof window !== "undefined") {
             const token = localStorage.getItem("token")
-            if (token) {
+            if (!token) {
                 navigate("/")
             }
         }
@@ -144,7 +144,6 @@ const Login = () => {
             localStorage.setItem("token", res?.data?.token)
             setShowLoader(false)
             window.location.href = "/dashboard2";
-
         })
             .catch((err) => {
                 // console.log(err?.response?.data?.data)

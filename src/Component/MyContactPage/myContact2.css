@@ -101,3 +101,15 @@
   background: transparent;
   color: white;
 }
+.MyContact_scroll{
+  max-height: 40rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+.MyContact_scroll::-webkit-scrollbar {
+  height: 1px; /* Set the width of the scrollbar */
+}
+
+.MyContact_scroll::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set the color of the scrollbar thumb */
+}

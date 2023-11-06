@@ -5,32 +5,42 @@ import './myContact.css';
 import "./myContact2.css";
 import * as XLSX from 'xlsx';
 import { FaSearch } from 'react-icons/fa';
-// import RangeSlider from "react-range-slider-input";
-// import "react-range-slider-input/dist/style.css";
 import Sidebar2 from './../Dashboard2/Sidebar/Sidebar2';
 import bgImg1 from "../../../images/bg1.jpg";
 import CreateContactApi from '../../helpers/PostApis/CreateContact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { decryption } from '../../helpers/encryptionDecryption';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import GetAllContacts from '../../helpers/GetApis/GetAllContacts';
 
 function MyContact2() {
-    const isSidebarOpen = useSelector((state) => state.sideBarStore.sideBarState);
+
     const [showModal, setShowModal] = useState(false);
     const [successModal, setSuccessModal] = useState(false);
     const [status, setStatus] = useState('');
     const [errStatus, setErrStatus] = useState('');
     const [modalData, setModalData] = useState([]);
     const [uploading, setUploading] = useState(false);
+    const [dropdownOptions, setDropdownOptions] = useState([])
+    const [selectedDropdownColumn, setSelectedDropdownColumn] = useState(false);
+    const [firstNameOptions, setFirstNameOptions] = useState([]);
+    const [lastNameOptions, setLastNameOptions] = useState([]);
+    const [numberOptions, setNumberOptions] = useState([]);
+    const [header, setHeader] = useState('');
+    const [selectedNumberOptions, setSelectedNumberOptions] = useState([]);
+    const [options, setOptions] = useState([]); // Declare the options array
     const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [selectedDropdowns, setSelectedDropdowns] = useState({});
+    const [uploadProgress, setUploadProgress] = useState(0);
+
 
     const [excelData, setExcelData] = useState([]);
     const [uploadTime, setUploadTime] = useState(null); // Store the upload time
     const [searchQuery, setSearchQuery] = useState('');
 
     const [filteredData, setFilteredData] = useState([]);
-
-    const [rangeValues, setRangeValues] = useState([0, 100]);
-    const [tooltipPosition, setTooltipPosition] = useState(null);
 
     const handleSearchInputChange = (e) => {
         setSearchQuery(e.target.value);
@@ -67,6 +77,8 @@ function MyContact2() {
                     const sheet = workbook.Sheets[sheetName];
                     const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
+                    const header = jsonData[0];
+                    setHeader(header);
                     // Assuming your Excel sheet has columns in this order: FirstName, LastName, Phone
                     const excelData = jsonData.slice(1); // Skip the header row
 
@@ -78,9 +90,28 @@ function MyContact2() {
                     });
                     setUploadTime(newExcelData);
 
+                    const dropdownOptions = excelData[0];
                     setExcelData(excelData);
                     setFilteredData(newExcelData);
                     handleOpenModal(excelData);
+                    setDropdownOptions(dropdownOptions);
+
+                    const columnsToFind = ["FirstName", "LastName", "Phone"];
+                    const headerRow = excelData[0];
+                    const columnIndices = {};
+
+                    // Loop through the header row to find the column indices
+                    headerRow.forEach((cell, index) => {
+                        if (columnsToFind.includes(cell)) {
+                            columnIndices[cell] = index;
+                        }
+                    });
+
+                    // Now, the columnIndices object contains the indices of the columns you want
+                    console.log(columnIndices);
+
+                    // Identify the "Name" column and extract options when excelData is available
+                    identifyNameColumnAndOptions(excelData);
                 };
 
                 reader.readAsBinaryString(file);
@@ -102,21 +133,6 @@ function MyContact2() {
         setFilteredData(excelData);
     };
 
-    const handleFilterAgeChange = (newValues) => {
-        console.log('New Age Values:', newValues); // Log the newValues
-        // Filter data based on age range
-        const filteredData = excelData?.filter((row) => {
-            const age = parseInt(row[3]); // Age is at index 3 according to excel file
-            if (!isNaN(age)) {
-                return age >= newValues[0] && age <= newValues[1];
-            }
-            return false; // Exclude rows with invalid age values
-        });
-
-        console.log('Filtered Data:', filteredData); // Log the filteredData
-        setFilteredData(filteredData);
-    };
-
     //FILTER BY GENDER
     const handleFilterGenderChange = (selectedGender) => {
         // Filter data based on selected gender
@@ -135,42 +151,214 @@ function MyContact2() {
 
         setFilteredData(filteredData);
     };
-    const handleUploadClick = async () => {
-        try {
-            setUploading(true);
+    // const dataToSend = {
+    //     firstName: selectedValue,
+    //     lastName: selectedValue,
+    //     number: selectedValue,
+    //     gender: selectedValue,
+    //     email: selectedValue,
+    //     country: selectedValue,
+    // };
+    // const handleUploadClick = async () => {
+    //     try {
+    //         setUploading(true);
+    //         if (selectedOptions.length === 0) {
+    //             console.log("No options selected");
+    //             return;
+    //         }
+    //         for (const entry of excelData) {
+    //             const dataToSend = {};
+    //             // selectedOptions.forEach((option) => {
+    //             //     dataToSend[option] = entry[header.indexOf(option)];
+    //             // });
+    //             // Iterate through selected options and add them to the dataToSend object
+    //             selectedOptions?.forEach((option) => {
+    //                 const optionIndex = header?.indexOf(option);
+    //                 if (optionIndex !== -1) {
+    //                     dataToSend[option] = entry[optionIndex];
+    //                 }
+    //             });
 
-            for (const entry of excelData) {
-                // Prepare the data to send to the API
-                const dataToSend = {
-                    firstName: entry[0],
-                    lastName: entry[1],
-                    number: entry[2],
-                    status: 'yes',
-                };
+    //             // Call the CreateContactApi function to send the data
+    //             // const response = await CreateContactApi(dataToSend);
+    //             // setStatus(response?.message);
+    //             // if (response?.message == "Contact Saved") {
+    //             //     setUploading(false);
+    //             //     setShowModal(false);
+    //             //     setSuccessModal(true);
+    //             // }
+    //             // // Handle the response if needed
+    //             // console.log('API Response:', response);
+    //             // // const responseCheck = response
+    //             // if (response?.message === "Request failed with status code 400") {
+    //             //     setErrStatus("Contact already exists");
+    //             // }
+    //             if (Object.keys(dataToSend).length > 0) {
+    //                 const response = await CreateContactApi(dataToSend);
+    //                 setStatus(response?.message);
+    //                 if (response?.message === "Contact Saved") {
+    //                     setUploading(false);
+    //                     setShowModal(false);
+    //                     setSuccessModal(true);
+    //                 }
+    //                 console.log('API Response:', response);
+    //                 if (response?.message === "Request failed with status code 400") {
+    //                     setErrStatus("Contact already exists");
+    //                 }
+    //             }
+    //         }
+    //     } catch (error) {
+    //         // Handle any errors that occur during the API call
+    //         console.log(error);//?.response?.data?.data;
+    //         // setUploading(false);
+    //         // setShowModal(false);
+    //         // setErrStatus('An error occurred while uploading. Please try again.'); // Set the error status message
+    //     }
+    // };
+    // const handleUploadClick = () => {
+    //     setUploadProgress(0);
+    //     setUploading(true);
+    //     if (selectedOptions.length === 0) {
+    //         console.log("No options selected");
+    //         return;
+    //     }
 
-                // Call the CreateContactApi function to send the data
-                const response = await CreateContactApi(dataToSend);
-                setStatus(response?.message);
-                if (response?.message == "Contact Saved") {
-                    setUploading(false);
-                    setShowModal(false);
-                    setSuccessModal(true);
-                }
-                // Handle the response if needed
-                console.log('API Response:', response);
-                if (response?.message === "Request failed with status code 400") {
-                    setErrStatus("Contact already exists");
-                }
-            }
-        } catch (error) {
-            // Handle any errors that occur during the API call
-            console.error('Error from CreateContactApi:', error);
-            setUploading(false);
-            setShowModal(false);
-            setErrStatus('An error occurred while uploading. Please try again.'); // Set the error status message
+    //     const promises = excelData?.map(async (entry, index) => {
+    //         console.log(entry, 'entry')
+    //         console.log(index, 'index')
+    //         const dataToSend = {};
+    //         selectedOptions?.forEach((option) => {
+    //             const optionIndex = header?.indexOf(option);
+    //             if (optionIndex !== -1) {
+    //                 dataToSend[option] = entry[optionIndex];
+    //             }
+    //             const dataToSend = {
+    //                 firstName: entry[index][0],
+    //                 lastName: entry[index][1],
+    //                 number: entry[index][2],
+    //                 gender: entry[index][3],
+    //                 email: entry[index][4],
+    //                 country: entry[index][5],
+    //             }; 
+    //         });
+    //         console.log(dataToSend, 'dataToSend')
+    //         if (Object.keys(dataToSend).length > 0) {
+    //             return CreateContactApi(dataToSend)
+    //                 .then((response) => {
+    //                     setStatus(response?.message);
+    //                     if (response?.message === "Contact Saved") {
+    //                         setSuccessModal(true);
+    //                     }
+    //                     const progress = ((index + 1) / excelData.length) * 100;
+    //                     setUploadProgress(progress);
+    //                     return response;
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('API Error:', error);
+    //                     setErrStatus('An error occurred while uploading. Please try again.');
+    //                     return error;
+    //                 });
+    //         }
+
+    //         return null;
+    //     });
+
+    //     Promise.all(promises)
+    //         .then(() => {
+    //             setUploading(false);
+    //             setShowModal(false);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Promise.all Error:', error);
+    //             setUploading(false);
+    //             setShowModal(false);
+    //         });
+    // };
+    const handleUploadClick = () => {
+        setUploadProgress(0);
+        setUploading(true);
+        if (selectedOptions.length === 0) {
+            console.log("No options selected");
+            return;
         }
+
+        const promises = excelData?.map(async (entry, index) => {
+            console.log(entry, 'entry');
+            console.log(index, 'index');
+            const dataToSend = {};
+
+            // selectedOptions?.forEach((option) => {
+            //     const optionIndex = header?.indexOf(option);
+            //     if (optionIndex !== -1) {
+            //         // Map the selected header to specific keys in dataToSend
+            //         if (option === 'First Name') {
+            //             dataToSend.firstName = entry[optionIndex];
+            //         } else if (option === 'Last Name') {
+            //             dataToSend.lastName = entry[optionIndex];
+            //         } else if (option === 'Number') {
+            //             dataToSend.number = entry[optionIndex];
+            //         } else if (option === 'Gender') {
+            //             dataToSend.gender = entry[optionIndex];
+            //         } else if (option === 'Email') {
+            //             dataToSend.email = entry[optionIndex];
+            //         } else if (option === 'Country') {
+            //             dataToSend.country = entry[optionIndex];
+            //         }
+            //         else{
+            //             dataToSend[option] = entry[optionIndex];
+            //         }
+            //     }
+            //     console.log(optionIndex, 'optionIndex')
+            // });
+            selectedOptions?.forEach((option) => {
+                const optionIndex = header?.indexOf(option);
+                if (optionIndex !== -1) {
+                    dataToSend[option] = entry[optionIndex] || ''; // Set empty string as default value if not selected
+                }
+                console.log(optionIndex, 'optionIndex');
+            });
+
+            console.log(dataToSend, 'dataToSend');
+            if (Object.keys(dataToSend).length > 0) {
+                console.log(dataToSend, 'inside dataToSend')
+                return CreateContactApi(dataToSend)
+                    .then((response) => {
+                        setStatus(response?.message);
+                        console.log(response, 'response msg')
+                        if (response?.message === "Contact Saved") {
+                            setSuccessModal(true);
+                        }
+                        const progress = ((index + 1) / excelData.length) * 100;
+                        setUploadProgress(progress);
+                        return response;
+                    })
+                    .catch((error) => {
+                        console.error('API Error:', error);
+                        setErrStatus('An error occurred while uploading. Please try again.');
+                        return error;
+                    });
+            }
+
+            return null;
+        });
+
+        Promise.all(promises)
+            .then(() => {
+                setUploading(false);
+                setShowModal(false);
+            })
+            .catch((error) => {
+                console.error('Promise.all Error:', error);
+                setUploading(false);
+                setShowModal(false);
+            });
     };
 
+
+    useEffect(() => {
+        // Update the selected options when the header changes
+        setSelectedOptions(header);
+    }, [header]);
     // const handleOpenModal = () => {
     //     setShowModal(true);
     //     setModalData(excelData);
@@ -178,9 +366,67 @@ function MyContact2() {
     const handleOpenModal = (data) => {
         setModalData(data);
         setShowModal(true);
+        setSelectedDropdownColumn(true);
+
+        const initialOptions = header.map((headerText) => headerText);
+        setOptions(initialOptions);
     };
+
+    const identifyNameColumnAndOptions = (data) => {
+        const headerRow = data[0]; // Assuming the header row is the first row
+        const nameColumnIndex = headerRow.findIndex((cell) => cell === "Name");
+
+        if (nameColumnIndex !== -1) {
+            const nameOptions = data.slice(1).map((row) => row[nameColumnIndex]);
+            setDropdownOptions(nameOptions);
+        }
+    };
+    useEffect(() => {
+        if (excelData.length > 0) {
+            // Identify the "Name" column and extract options when excelData is available
+            identifyNameColumnAndOptions(excelData);
+
+            // Assuming the columns you want to find are "FirstName," "LastName," and "Number"
+            const columnsToFind = ["FirstName", "LastName", "Number"];
+            const headerRow = excelData[0];
+            const columnIndices = {};
+
+            // Loop through the header row to find the column indices
+            headerRow.forEach((cell, index) => {
+                if (columnsToFind.includes(cell)) {
+                    columnIndices[cell] = index;
+                }
+            });
+
+            // Now, the columnIndices object contains the indices of the columns you want
+            console.log(columnIndices);
+
+            // Extract options for each column and set them in the respective state variables
+            const firstNameIndex = columnIndices["FirstName"];
+            const lastNameIndex = columnIndices["LastName"];
+            const numberIndex = columnIndices["Number"];
+
+            const firstNameOptions = excelData.slice(1).map((row) => row[firstNameIndex]);
+            setFirstNameOptions(firstNameOptions);
+
+            const lastNameOptions = excelData.slice(1).map((row) => row[lastNameIndex]);
+            setLastNameOptions(lastNameOptions);
+
+            const numberOptions = excelData.slice(1).map((row) => row[numberIndex]);
+            setNumberOptions(numberOptions);
+        }
+    }, [excelData]);
+
     const handleOptionSelect = (option) => {
-        setSelectedOption(option);
+        setSelectedOptions((prevOptions) => {
+            if (prevOptions.includes(option)) {
+                // Remove the column from selected options
+                return prevOptions.filter((opt) => opt !== option);
+            } else {
+                // Add the column to selected options
+                return [...prevOptions, option];
+            }
+        });
     };
 
     console.log(excelData, 'asad');
@@ -191,22 +437,293 @@ function MyContact2() {
                     <Modal.Title>Excel Data</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {modalData?.map((row, index) => (
-                        // Render the data in the modal
-                        <div key={index}>
-                            {row.join(', ')}
+                    {/* <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                        <div>
+                            <label>First Name:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <label>
+                                        <select>
+                                            {header?.map((option, index) => (
+                                                <option key={index} value={option}>
+                                                    {option}
+                                                </option>
+
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                            )}
                         </div>
-                    ))}
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            {selectedOption || 'Select an option'}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => handleOptionSelect('Option 1')}>Option 1</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleOptionSelect('Option 2')}>Option 2</Dropdown.Item>
-                            <Dropdown.Item onClick={() => handleOptionSelect('Option 3')}>Option 3</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                        <div>
+                            <label>Last Name:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <label>
+                                        <select
+                                        // checked={selectedOptions.includes(option)}
+                                        >
+                                            {header?.map((option, index) => (
+                                                <option key={index} value={option}>
+                                                    {option}
+                                                </option>
+
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Number:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <label>
+                                        <select
+                                        // checked={selectedOptions.includes(option)}
+                                        >
+                                            {header?.map((option, index) => (
+                                                <option key={index} value={option}>
+                                                    {option}
+                                                </option>
+
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Gender:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <label>
+                                        <select
+                                        // checked={selectedOptions.includes(option)}
+                                        >
+                                            {header?.map((option, index) => (
+                                                <option key={index} value={option}>
+                                                    {option}
+                                                </option>
+
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <label>
+                                        <select
+                                        // checked={selectedOptions.includes(option)}
+                                        >
+                                            {header?.map((option, index) => (
+                                                <option key={index} value={option}>
+                                                    {option}
+                                                </option>
+
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Country:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <label>
+                                        <select
+                                        // checked={selectedOptions.includes(option)}
+                                        >
+                                            {header?.map((option, index) => (
+                                                <option key={index} value={option}>
+                                                    {option}
+                                                </option>
+
+                                            ))}
+                                        </select>
+                                    </label>
+                                </div>
+                            )}
+                        </div>
+                    </div> */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+                        <div>
+                            <label>First Name:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <select
+                                        onChange={(e) => handleOptionSelect("First Name", e.target.value)}
+                                        value={selectedOptions.includes("First Name") ? "First Name" : ""}
+                                    >
+                                        {selectedOptions.includes("First Name") ? (
+                                            <option value="First Name">First Name</option>
+                                        ) : (
+                                            <option value="">Select FirstName</option>
+                                        )}
+                                        {header?.map((option, index) => (
+                                            <option key={index} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Last Name:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <select
+                                        onChange={(e) => handleOptionSelect("Last Name", e.target.value)}
+                                        value={selectedOptions.includes("Last Name") ? "Last Name" : ""}
+                                    >
+                                        {selectedOptions.includes("Last Name") ? (
+                                            <option value="Last Name">Last Name</option>
+                                        ) : (
+                                            <option value="">Select LastName</option>
+                                        )}
+                                        {header?.map((option, index) => (
+                                            <option key={index} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Number:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <select
+                                        onChange={(e) => handleOptionSelect("Number", e.target.value)}
+                                        value={selectedOptions.includes("Number") ? "Number" : ""}
+                                    >
+                                        {selectedOptions.includes("Number") ? (
+                                            <option value="Number">Number</option>
+                                        ) : (
+                                            <option value="">Select Number</option>
+                                        )}
+                                        {header?.map((option, index) => (
+                                            <option key={index} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Gender:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <select
+                                        onChange={(e) => handleOptionSelect("Gender", e.target.value)}
+                                        value={selectedOptions.includes("Gender") ? "Gender" : ""}
+                                    >
+                                        {selectedOptions.includes("Gender") ? (
+                                            <option value="Gender">Gender</option>
+                                        ) : (
+                                            <option value="">Select Gender</option>
+                                        )}
+                                        {header?.map((option, index) => (
+                                            <option key={index} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Email:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <select
+                                        onChange={(e) => handleOptionSelect("Email", e.target.value)}
+                                        value={selectedOptions.includes("Email") ? "Email" : ""}
+                                    >
+                                        {selectedOptions.includes("Email") ? (
+                                            <option value="Email">Email</option>
+                                        ) : (
+                                            <option value="">Select Email</option>
+                                        )}
+                                        {header?.map((option, index) => (
+                                            <option key={index} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                        <div>
+                            <label>Country:</label>
+                            {header?.length > 0 && (
+                                <div>
+                                    <select
+                                        onChange={(e) => handleOptionSelect("Country", e.target.value)}
+                                        value={selectedOptions.includes("Country") ? "Country" : ""}
+                                    >
+                                        {selectedOptions.includes("Country") ? (
+                                            <option value="Country">Country</option>
+                                        ) : (
+                                            <option value="">Select Country</option>
+                                        )}
+                                        {header?.map((option, index) => (
+                                            <option key={index} value={option}>
+                                                {option}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div>
+                        {selectedDropdownColumn && (
+                            <div>
+                                {selectedDropdownColumn && (
+                                    <div>
+                                        {uploading ? (
+                                            <ProgressBar animated now={uploadProgress} label={`${uploadProgress}%`} />
+                                        ) : (
+                                            <button onClick={handleUploadClick}>Create Contacts</button>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    <div className='MyContact_scroll'>
+                        <table className="table table-striped">
+                            {header?.length > 0 && (
+                                <thead>
+                                    <tr>
+                                        {header.map((headerText, index) => (
+                                            <th key={index}>{headerText}</th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                            )}
+                            <tbody>
+                                {modalData?.map((row, rowIndex) => (
+                                    <tr key={rowIndex}>
+                                        {row.map((cell, cellIndex) => (
+                                            <td key={cellIndex}>{cell}</td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <div>
@@ -294,29 +811,6 @@ function MyContact2() {
                                                     >
                                                         All
                                                     </button>
-                                                    {/* <Dropdown>
-                                                        <Dropdown.Toggle
-                                                            className={filteredData === 'Age' ? 'selected-btn' : 'unselected-dropdown'}
-                                                            id="filterDropdown"
-                                                        >
-                                                            Age
-                                                        </Dropdown.Toggle>
-                                                        <Dropdown.Menu className='menuAge'>
-                                                            <RangeSlider
-                                                                min={0}
-                                                                max={100}
-                                                                step={1}
-                                                                rangeValues={rangeValues}
-                                                                id="range-slider-gradient"
-                                                                className="margin-lg"
-                                                                onChange={(newValues) => {
-                                                                    console.log('RangeSlider onChange:', newValues);
-                                                                    setRangeValues(newValues);
-                                                                    handleFilterAgeChange(newValues);
-                                                                }}
-                                                            />
-                                                        </Dropdown.Menu>
-                                                    </Dropdown> */}
                                                     <Dropdown>
                                                         <Dropdown.Toggle
                                                             className={filteredData === 'Gender' ? 'selected-btn' : 'unselected-dropdown'}

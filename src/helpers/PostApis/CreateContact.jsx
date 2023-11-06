@@ -6,7 +6,7 @@ async function CreateContactApi(data) {
         console.log('Request Data:', data);
         const encrypted = encryption(data)
         console.log(encrypted, "encrypted data")
-        const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/contact/contactCreate`,
+        const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/contact/createContact`,
             { data: encrypted },
             {
               headers: UserHeader,
@@ -16,7 +16,7 @@ async function CreateContactApi(data) {
         console.log(decryptedData, "des")
         return decryptedData;
     } catch (error) {
-        console.error('Error From Create Contacts API:', error);
+        console.error('Error From Create Contacts API:', decryption(error));
         return error;
     }
 }
