@@ -319,10 +319,10 @@ function CreateBroadCast2() {
                                     <table className='table' style={{ tableLayout: "fixed", marginBottom: "0" }}>
                                         <thead className='bdCast-head-font' style={{ tableLayout: "fixed" }}>
                                             <tr>
-                                                <th className='width_20'>No</th>
-                                                <th className='width_20'>FirstName</th>
-                                                <th className='width_20'>LastName</th>
-                                                <th className='width_20'>Phone</th>
+                                                <th className='color_white'>No</th>
+                                                <th className='color_white'>FirstName</th>
+                                                <th className='color_white'>LastName</th>
+                                                <th className='color_white'>Phone</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -331,10 +331,10 @@ function CreateBroadCast2() {
                                             <tbody className='bdCast-body-font'>
                                                 {excelData?.map((row, index) => (
                                                     <tr key={index}>
-                                                        <td className='width_20'>{index + 1}</td>
-                                                        <td className='width_20'>{row[0]}</td> {/* FirstName */}
-                                                        <td className='width_20'>{row[1]}</td> {/* LastName */}
-                                                        <td className='width_20'>{row[6]}</td> {/* Phone */}
+                                                        <td className='color_white'>{index + 1}</td>
+                                                        <td className='color_white'>{row[0]}</td> {/* FirstName */}
+                                                        <td className='color_white'>{row[1]}</td> {/* LastName */}
+                                                        <td className='color_white'>{row[6]}</td> {/* Phone */}
                                                     </tr>
                                                 ))}
                                             </tbody>

@@ -113,3 +113,13 @@
 .MyContact_scroll::-webkit-scrollbar-thumb {
   background-color: transparent; /* Set the color of the scrollbar thumb */
 }
+
+.unselected-dropdown_2 {
+  background: transparent;
+  box-shadow: none;
+  color: white;
+  border: 2px solid #f5f1ff;
+  min-width: 120px;
+  padding: 7px;
+  border-radius: 12px;
+}

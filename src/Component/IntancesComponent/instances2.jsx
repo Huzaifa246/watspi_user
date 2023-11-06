@@ -123,10 +123,35 @@ function Instances2() {
         };
 
         CreateInstanceApi(data)
-        .then((response) => {
-            if (response?.message === "Instance Added") {
-                setCreateInstance(response?.data);
-                toast.success(response?.message, {
+            .then((response) => {
+                if (response?.message === "Instance Added") {
+                    setCreateInstance(response?.data);
+                    toast.success(response?.message, {
+                        position: 'top-center',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    });
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 5000);
+                } else {
+                    console.error("API error:", response);
+                    toast.error(response?.message, {
+                        position: 'top-center',
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.error("API error:", error);
+                toast.error(error?.message, {
                     position: 'top-center',
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -134,33 +159,8 @@ function Instances2() {
                     pauseOnHover: true,
                     draggable: true,
                 });
-                setTimeout(() => {
-                    window.location.reload();
-                }, 5000);
-            } else {
-                console.error("API error:", response);
-                toast.error(response?.message, {
-                    position: 'top-center',
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                });
-            }
-        })
-        .catch((error) => {
-            console.error("API error:", error);
-            toast.error(error?.message, {
-                position: 'top-center',
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
             });
-        });
-    
+
     };
     //----Ends Create Instance
 

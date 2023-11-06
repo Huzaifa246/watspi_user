@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { decryption } from '../encryptionDecryption';
 import { UserHeader } from '../Userheader';
-async function DelIndiInstance(id) {
+async function DelIndiContact(id) {
   try {
-    let url = `${import.meta.env.VITE_APP_API}/api/users/deleteInstanceAccount/${id}`;
+    let url = `${import.meta.env.VITE_APP_API}/api/contact/deleteContact/${id}`;
     console.log('API URL:', url);
 
     const response = await axios.delete(url, {
@@ -20,4 +20,4 @@ async function DelIndiInstance(id) {
   }
 }
 
-export default DelIndiInstance;
+export default DelIndiContact;

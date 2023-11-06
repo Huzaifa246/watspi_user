@@ -7,16 +7,15 @@ import "./Instance2.css"
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from "react-redux";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import GetIndiInstance from '../../helpers/GetApis/GetIndiInstance';
 import UpdateInstanceApi from '../../helpers/PostApis/UpdateIndiIntance';
 import bgImg1 from "../../../images/bg1.jpg";
 import Sidebar2 from '../Dashboard2/Sidebar/Sidebar2';
-import DelIndiInstance from '../../helpers/GetApis/DelIndiInstance';
+import DelIndiInstance from './../../helpers/GetApis/DelIndiInstance';
 
 function InstancePage2() {
     const { id } = useParams();
-    const navigate = useNavigate();
     console.log(id, "ss")
     const dispatch = useDispatch();
     const isSidebarOpen = useSelector((state) => state.sideBarStore.isSidebarOpen);
@@ -87,26 +86,15 @@ function InstancePage2() {
             .then((response) => {
                 if (response?.message === "Webhook Updated") {
                     setUpdateInstance(response?.data)
-                    toast.success(response?.message, {
-                        position: 'top-center',
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                    });
-                } else {
-                    console.error("API error:", response);
-                    toast.error(response?.message, {
-                        position: 'top-center',
-                        autoClose: 3000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                    });
                 }
-                // window.location.reload()
+                toast.success(response?.message, {
+                    position: 'top-center',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
             })
             .catch((error) => {
                 console.error("API error:", error);
@@ -182,21 +170,19 @@ function InstancePage2() {
     //-----DELETE INSTANCE
     const deleteInstance = async () => {
         try {
-            await DelIndiInstance(id); // Delete the instance using DelIndiInstance function
-            // You may want to update your state or handle the deleted instance here
+            // console.log('Before deleting the instance');
+
+            // Make the API call to delete the instance
+            await DelIndiInstance(id);
+
+            // console.log('Instance deleted successfully');
+
             setShowDelModal(false);
-            setShowSuccessModal(true); 
+            setShowSuccessModal(true);
             setTimeout(() => {
                 navigate('/instances2');
             }, 5000);
-            // toast.success('Instance deleted successfully', {
-            //     position: 'top-center',
-            //     autoClose: 3000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            // });
+
         } catch (error) {
             console.error('Error deleting instance:', error);
             toast.error('Instance deleted UnSuccessfully', {

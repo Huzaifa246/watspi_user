@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { Card, Col, Row, Dropdown, Modal, Button } from 'react-bootstrap';
+import { Col, Row, Dropdown, Modal, Button, Form } from 'react-bootstrap';
 import './myContact.css';
 import "./myContact2.css";
 import * as XLSX from 'xlsx';
@@ -10,9 +9,13 @@ import bgImg1 from "../../../images/bg1.jpg";
 import CreateContactApi from '../../helpers/PostApis/CreateContact';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { decryption } from '../../helpers/encryptionDecryption';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+
 import GetAllContacts from '../../helpers/GetApis/GetAllContacts';
+import DelIndiContact from './../../helpers/GetApis/DelIndiContact';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import EditContactApi from '../../helpers/PostApis/EditContact';
 
 function MyContact2() {
 
@@ -41,6 +44,16 @@ function MyContact2() {
     const [searchQuery, setSearchQuery] = useState('');
 
     const [filteredData, setFilteredData] = useState([]);
+    const [allContacts, setAllContacts] = useState([]);
+    const [showModalEdit, setShowModalEdit] = useState(false);
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        number: '',
+        gender: '',
+        email: '',
+        country: '',
+    });
 
     const handleSearchInputChange = (e) => {
         setSearchQuery(e.target.value);
@@ -52,6 +65,80 @@ function MyContact2() {
         { name: 'Australia', flagUrl: 'https://flagcdn.com/au.svg' },
         { name: 'China', flagUrl: 'https://flagcdn.com/cn.svg' },
     ];
+
+    //Get all contacts
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await GetAllContacts();
+                setAllContacts(data?.message);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    //del contact
+    const deleteContact = async (id) => {
+        try {
+            const data = await DelIndiContact(id);
+            console.log(data, 'del data')
+            toast.success(data?.message);
+        } catch (error) {
+            console.error('Error deleting contact:', error);
+            toast.error(error?.message);
+        }
+    };
+    const openEditModal = (data) => {
+        setFormData(data || {
+            firstName: '',
+            lastName: '',
+            number: '',
+            gender: '',
+            email: '',
+            country: '',
+        });
+        setShowModalEdit(true);
+    };
+    //edit contact
+    const handleUpdateInput = () => {
+        const data = formData;
+        // const data = {
+        //     firstName: firstName,
+        //     lastName: lastName,
+        //     number: number,
+        //     gender: gender,
+        //     email: email,
+        //     country: country,
+        // };
+
+        EditContactApi(data)
+            .then((response) => {
+                if (response?.message === "Contact updated successfully") {
+                    setUpdateInstance(response?.data)
+                }
+                toast.success(response?.message, {
+                    position: 'top-center',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+            })
+            .catch((error) => {
+                console.error("API error:", error);
+                toast.error(error?.message, {
+                    position: 'top-center',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                });
+            });
+    };
 
     const fileInputRef = useRef(null);
 
@@ -326,15 +413,16 @@ function MyContact2() {
                         setStatus(response?.message);
                         console.log(response, 'response msg')
                         if (response?.message === "Contact Saved") {
+                            const progress = ((index + 1) / excelData?.length) * 100;
+                            setUploadProgress(progress);
                             setSuccessModal(true);
+                            return response;
                         }
-                        const progress = ((index + 1) / excelData.length) * 100;
-                        setUploadProgress(progress);
-                        return response;
                     })
                     .catch((error) => {
                         console.error('API Error:', error);
                         setErrStatus('An error occurred while uploading. Please try again.');
+                        setShowModal(true);
                         return error;
                     });
             }
@@ -350,7 +438,7 @@ function MyContact2() {
             .catch((error) => {
                 console.error('Promise.all Error:', error);
                 setUploading(false);
-                setShowModal(false);
+                setShowModal(true);
             });
     };
 
@@ -368,7 +456,7 @@ function MyContact2() {
         setShowModal(true);
         setSelectedDropdownColumn(true);
 
-        const initialOptions = header.map((headerText) => headerText);
+        const initialOptions = header?.map((headerText) => headerText);
         setOptions(initialOptions);
     };
 
@@ -432,6 +520,79 @@ function MyContact2() {
     console.log(excelData, 'asad');
     return (
         <>
+            <ToastContainer />
+            <Modal show={showModalEdit} onHide={() => setShowModalEdit(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Contact</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="First Name"
+                                value={formData.firstName}
+                                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Last Name"
+                                value={formData.lastName}
+                                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Number</Form.Label>
+                            <Form.Control
+                                type="number"
+                                placeholder="First Name"
+                                value={formData.number}
+                                onChange={(e) => setFormData({ ...formData, number: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="Email"
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Gender</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="gender"
+                                value={formData.gender}
+                                onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Country</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="Country"
+                                value={formData.country}
+                                onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                            />
+                        </Form.Group>
+                        
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModalEdit(false)}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleUpdateInput}>
+                        Update
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Excel Data</Modal.Title>
@@ -774,8 +935,8 @@ function MyContact2() {
                     </Col>
                     <Col>
                         <Row className='mob-row width-100' style={{ marginBottom: '20px' }}>
-                            <Col sm="1" lg="1" xl="1" xxl="1"></Col>
-                            <Col sm="12" md="12" lg="11" xl="11" xxl="11" className='Backdrop-myContact2' style={{ paddingBottom: '10px' }}>
+                            <Col></Col>
+                            <Col sm={11} md={12} lg={12} xxl={11} xl={11} className='Backdrop-myContact2' style={{ paddingBottom: '10px' }}>
                                 <div className='card-drop-style'>
                                     <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600', color: "white" }}>
                                         My Contacts
@@ -806,14 +967,14 @@ function MyContact2() {
                                                 <div className='Contact-flex-style'>
                                                     <button
                                                         type='button'
-                                                        className={filteredData === excelData ? 'selected-btn' : 'unselected-dropdown'}
+                                                        className={filteredData === excelData ? 'selected-btn' : 'unselected-dropdown_2'}
                                                         onClick={handleFilterAllClick}
                                                     >
                                                         All
                                                     </button>
                                                     <Dropdown>
                                                         <Dropdown.Toggle
-                                                            className={filteredData === 'Gender' ? 'selected-btn' : 'unselected-dropdown'}
+                                                            className={filteredData === 'Gender' ? 'selected-btn' : 'unselected-dropdown_2'}
                                                             id="filterDropdown"
                                                         >
                                                             Gender
@@ -832,7 +993,7 @@ function MyContact2() {
                                                     </Dropdown>
                                                     <Dropdown>
                                                         <Dropdown.Toggle
-                                                            className={filteredData === 'Country' ? 'selected-btn' : 'unselected-dropdown'}
+                                                            className={filteredData === 'Country' ? 'selected-btn' : 'unselected-dropdown_2'}
                                                             id="filterDropdown"
                                                         >
                                                             Country
@@ -885,8 +1046,8 @@ function MyContact2() {
                             </Col>
                         </Row>
                         <Row>
-                            <Col sm="1" lg="1" xl="1" xxl="1"></Col>
-                            <Col md={11} lg={11} className='Backdrop-myContact2' style={{ padding: "10px" }}>
+                            <Col sm={1}></Col>
+                            <Col md={11} lg={12} xxl={11} xl={11} className='Backdrop-myContact2' style={{ padding: "10px" }}>
                                 <div>
                                     <div className="MyContact_2_maincontainer">
                                         <thead style={{ marginBottom: "0", tableLayout: "fixed" }}>
@@ -902,31 +1063,38 @@ function MyContact2() {
                                             </tr>
                                         </thead>
                                         <div className="MyContact_2_container">
-                                            <table>
-                                                <tbody className='tbody-font-style' style={{ marginBottom: "0", tableLayout: "fixed" }}>
-                                                    <tr>
-                                                        <td className='td_min_sNo_width'>{1}</td>
-                                                        <td className='td_min_width'>Huzaifa</td>
-                                                        <td className='td_min_width'>Khan</td>
-                                                        <td className='td_min_width'>+92098765432</td>
-                                                        <td className='td_min_width'>huzaifa@gmail.com</td>
-                                                        <td className='td_min_width'>Male</td>
-                                                        <td className='td_min_width'>Pakistan</td>
-                                                        <td className='td_min_width'>
-                                                            <FontAwesomeIcon
-                                                                icon={faEdit}
-                                                                style={{ cursor: 'pointer', marginRight: '10px' }}
-                                                            // onClick={() => handleEdit(row)}
-                                                            />
-                                                            <FontAwesomeIcon
-                                                                icon={faTrash}
-                                                                style={{ cursor: 'pointer' }}
-                                                                onClick={() => handleDelete(row)} // Replace handleDelete with your delete function
-                                                            />
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            {allContacts?.length === 0 ? (
+                                                <p>No data found</p>
+                                            ) : (
+                                                allContacts?.map((row, index) => (
+                                                    <table>
+                                                        <tbody className='tbody-font-style' style={{ marginBottom: "0", tableLayout: "fixed", color: "white" }}>
+                                                            <tr key={row._id}>
+                                                                <td className='td_min_sNo_width'>{index + 1}</td>
+                                                                <td className='td_min_width'>{row?.firstName}</td>
+                                                                <td className='td_min_width'>{row?.lastName || ''}</td>
+                                                                <td className='td_min_width'>{row?.number}</td>
+                                                                <td className='td_min_width'>{row?.email || ''}</td>
+                                                                <td className='td_min_width'>{row?.gender || ''}</td>
+                                                                <td className='td_min_width'>{row?.country || ''}</td>
+                                                                <td className='td_min_width'>
+                                                                    <FontAwesomeIcon
+                                                                        icon={faEdit}
+                                                                        style={{ cursor: 'pointer', marginRight: '10px' }}
+                                                                        onClick={() => openEditModal(row)}
+                                                                    />
+                                                                    <FontAwesomeIcon
+                                                                        icon={faTrash}
+                                                                        style={{ cursor: 'pointer' }}
+                                                                        onClick={() => deleteContact(row?._id)}
+                                                                    />
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    // ))
+                                                ))
+                                            )}
                                         </div>
                                     </div>
                                 </div>

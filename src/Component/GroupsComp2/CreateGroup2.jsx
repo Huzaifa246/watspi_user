@@ -146,7 +146,7 @@ function CreateGroup2() {
                                             <th>Description</th>
                                         </tr>
                                     </thead>
-                                    <div className="creategrp2_container">
+                                    <div className="creategrp2_container" style={{ color: 'white' }}>
                                         <table>
                                             {data.map((item, index) => (
                                                 <tr className='tr-font-style' key={item?.id}>
@@ -160,7 +160,7 @@ function CreateGroup2() {
                                                     <td>{item?.firstName}</td>
                                                     <td>{item?.lastName}</td>
                                                     <td>{item?.contact}</td>
-                                                    <td style={{minWidth: "30%"}}>
+                                                    <td style={{ minWidth: "30%" }}>
                                                         <OverlayTrigger
                                                             placement="top"
                                                             overlay={<Tooltip id={`tooltip${index}`}>{item?.desc}</Tooltip>}

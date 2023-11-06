@@ -97,18 +97,18 @@ function Groups2() {
                                                 <th className='td-Sno'>No</th>
                                                 <th>Name</th>
                                                 <th>Contacts</th>
-                                                <th style={{ width: "30%" }}>Description</th>
+                                                <th>Description</th>
                                             </tr>
                                         </thead>
                                         <div className="groups_2-container">
                                             <table className='groups_2_table'>
                                                 {data?.map((item, index) => (
-                                                    <tbody key={index} style={{ marginBottom: "0", tableLayout: "fixed" }}>
+                                                    <tbody key={index} style={{ marginBottom: "0", tableLayout: "fixed", color: 'white' }}>
                                                         <tr className='body-gp-tr'>
                                                             <td className='td-Sno'>{item?.sno}</td>
                                                             <td>{item?.name}</td>
                                                             <td>{item?.phone}</td>
-                                                            <td style={{ width: "30%" }}>{item?.description}</td>
+                                                            <td>{item?.description}</td>
                                                         </tr>
                                                     </tbody>
                                                 ))}

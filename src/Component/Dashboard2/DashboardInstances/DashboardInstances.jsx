@@ -46,7 +46,7 @@ function DashboardInstances() {
         }
         return text.slice(0, maxLength) + '...';
     }
-    const defaultMessages = [ 
+    const defaultMessages = [
         {
             phoneNumber: '+09876543',
             timestamp: '2 Hour',
@@ -68,7 +68,9 @@ function DashboardInstances() {
         const fetchData = async () => {
             try {
                 const data = await GetALLInstances(userId);
-                setInstancesData(data?.message);
+                if (Array.isArray(data?.message)) {
+                    setInstancesData(data.message);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -137,8 +139,8 @@ function DashboardInstances() {
                 <div className="table-wrap">
                     <div className='scroll-style'>
                         <tbody className='scrollable-body'>
-                            {defaultMessages.map((message, index) => (
-                                <tr className='msg-body-dash' key={index} style={{ verticalAlign: "baseline" }}>
+                            {defaultMessages?.map((message, index) => (
+                                <tr className='msg-body-dash' key={index} style={{ verticalAlign: "baseline", color: 'white' }}>
                                     <td style={{ textAlign: "start", minWidth: "200px" }}>
                                         <img src={defaultImg} className="Profile-img-radius" alt="Profile-Image"
                                             style={{ cursor: 'pointer' }}

@@ -92,9 +92,10 @@
 .groups_2_table {
   --bs-table-bg: transparent !important;
 }
-/* .width_20_gp2{
-  min-width: 20% !important;
+.td-Sno{
+  min-width: 150px !important;
 }
+/*
 .width_10_gp2{
   min-width: 10% !important;
 }

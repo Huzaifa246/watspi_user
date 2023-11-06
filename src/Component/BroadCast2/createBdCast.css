@@ -116,3 +116,7 @@
     max-height: 10vh;
   }
 }
+.color_white{
+  color: white !important;
+  font-weight: 300;
+}
