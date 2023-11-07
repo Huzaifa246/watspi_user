@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { decryption, encryption } from '../encryptionDecryption';
 import { UserHeader } from '../Userheader';
-async function EditContactApi(data, userId) {
+async function EditContactApi(data, id) {
     try {
         console.log('Request Data:', data);
         const encrypted = encryption(data)
         console.log(encrypted, "encrypted data")
-        const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/contact/updateContact/${userId}`,
+        const response = await axios.post(`${import.meta.env.VITE_APP_API}/api/contact/updateContact/${id}`,
             { data: encrypted },
             {
                 headers: UserHeader,
@@ -16,7 +16,7 @@ async function EditContactApi(data, userId) {
         console.log(decryptedData, "Updated res")
         return decryptedData;
     } catch (error) {
-        console.error('Error From Create Instance API:', error);
+        console.error('Error From Edit Contact API:', decryption(error?.response?.data?.data));
         return error;
     }
 }

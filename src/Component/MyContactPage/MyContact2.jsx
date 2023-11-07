@@ -46,6 +46,7 @@ function MyContact2() {
     const [filteredData, setFilteredData] = useState([]);
     const [allContacts, setAllContacts] = useState([]);
     const [showModalEdit, setShowModalEdit] = useState(false);
+    const [updateInstance, setUpdateInstance] = useState([]);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -104,20 +105,13 @@ function MyContact2() {
     //edit contact
     const handleUpdateInput = () => {
         const data = formData;
-        // const data = {
-        //     firstName: firstName,
-        //     lastName: lastName,
-        //     number: number,
-        //     gender: gender,
-        //     email: email,
-        //     country: country,
-        // };
 
-        EditContactApi(data)
+        EditContactApi(data, data?._id)
             .then((response) => {
                 if (response?.message === "Contact updated successfully") {
                     setUpdateInstance(response?.data)
                 }
+                console.log(response, 'response')
                 toast.success(response?.message, {
                     position: 'top-center',
                     autoClose: 3000,
@@ -166,7 +160,7 @@ function MyContact2() {
 
                     const header = jsonData[0];
                     setHeader(header);
-                    // Assuming your Excel sheet has columns in this order: FirstName, LastName, Phone
+                    // Assuming your Excel sheet has columns in this order: firstName, lastName, Phone
                     const excelData = jsonData.slice(1); // Skip the header row
 
                     // Set the upload time to the current date and time
@@ -183,6 +177,7 @@ function MyContact2() {
                     handleOpenModal(excelData);
                     setDropdownOptions(dropdownOptions);
 
+                    // const columnsToFind = ["firstName", "lastName", "number"];
                     const columnsToFind = ["FirstName", "LastName", "Phone"];
                     const headerRow = excelData[0];
                     const columnIndices = {};
@@ -361,6 +356,14 @@ function MyContact2() {
     //             setShowModal(false);
     //         });
     // };
+    const optionToFieldName = {
+        "First Name": "firstName",
+        "Last Name": "lastName",
+        "number": "number",
+        "Gender": "gender",
+        "Email": "email",
+        "Country": "country",
+      };
     const handleUploadClick = () => {
         setUploadProgress(0);
         setUploading(true);
@@ -378,17 +381,17 @@ function MyContact2() {
             //     const optionIndex = header?.indexOf(option);
             //     if (optionIndex !== -1) {
             //         // Map the selected header to specific keys in dataToSend
-            //         if (option === 'First Name') {
+            //         if (option === 'firstName') {
             //             dataToSend.firstName = entry[optionIndex];
-            //         } else if (option === 'Last Name') {
+            //         } else if (option === 'lastName') {
             //             dataToSend.lastName = entry[optionIndex];
-            //         } else if (option === 'Number') {
+            //         } else if (option === 'number') {
             //             dataToSend.number = entry[optionIndex];
-            //         } else if (option === 'Gender') {
+            //         } else if (option === 'gender') {
             //             dataToSend.gender = entry[optionIndex];
-            //         } else if (option === 'Email') {
+            //         } else if (option === 'email') {
             //             dataToSend.email = entry[optionIndex];
-            //         } else if (option === 'Country') {
+            //         } else if (option === 'country') {
             //             dataToSend.country = entry[optionIndex];
             //         }
             //         else{
@@ -402,6 +405,11 @@ function MyContact2() {
                 if (optionIndex !== -1) {
                     dataToSend[option] = entry[optionIndex] || ''; // Set empty string as default value if not selected
                 }
+                // if (optionIndex !== -1) {
+                //     // Map the selected header to specific keys in dataToSend
+                //     const fieldName = optionToFieldName[option];
+                //     dataToSend[fieldName] = entry[optionIndex] || ''; // Set empty string as default value if not selected
+                //   }
                 console.log(optionIndex, 'optionIndex');
             });
 
@@ -474,8 +482,8 @@ function MyContact2() {
             // Identify the "Name" column and extract options when excelData is available
             identifyNameColumnAndOptions(excelData);
 
-            // Assuming the columns you want to find are "FirstName," "LastName," and "Number"
-            const columnsToFind = ["FirstName", "LastName", "Number"];
+            // Assuming the columns you want to find are "firstName," "lastName," and "number"
+            const columnsToFind = ["firstName", "lastName", "number"];
             const headerRow = excelData[0];
             const columnIndices = {};
 
@@ -490,9 +498,9 @@ function MyContact2() {
             console.log(columnIndices);
 
             // Extract options for each column and set them in the respective state variables
-            const firstNameIndex = columnIndices["FirstName"];
-            const lastNameIndex = columnIndices["LastName"];
-            const numberIndex = columnIndices["Number"];
+            const firstNameIndex = columnIndices["firstName"];
+            const lastNameIndex = columnIndices["lastName"];
+            const numberIndex = columnIndices["number"];
 
             const firstNameOptions = excelData.slice(1).map((row) => row[firstNameIndex]);
             setFirstNameOptions(firstNameOptions);
@@ -532,7 +540,7 @@ function MyContact2() {
                             <Form.Control
                                 type="text"
                                 placeholder="First Name"
-                                value={formData.firstName}
+                                value={formData?.firstName}
                                 onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
                             />
                         </Form.Group>
@@ -541,16 +549,16 @@ function MyContact2() {
                             <Form.Control
                                 type="text"
                                 placeholder="Last Name"
-                                value={formData.lastName}
+                                value={formData?.lastName}
                                 onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Number</Form.Label>
+                            <Form.Label>number</Form.Label>
                             <Form.Control
                                 type="number"
                                 placeholder="First Name"
-                                value={formData.number}
+                                value={formData?.number}
                                 onChange={(e) => setFormData({ ...formData, number: e.target.value })}
                             />
                         </Form.Group>
@@ -559,7 +567,7 @@ function MyContact2() {
                             <Form.Control
                                 type="email"
                                 placeholder="Email"
-                                value={formData.email}
+                                value={formData?.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             />
                         </Form.Group>
@@ -568,7 +576,7 @@ function MyContact2() {
                             <Form.Control
                                 type="text"
                                 placeholder="gender"
-                                value={formData.gender}
+                                value={formData?.gender}
                                 onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                             />
                         </Form.Group>
@@ -577,7 +585,7 @@ function MyContact2() {
                             <Form.Control
                                 type="text"
                                 placeholder="Country"
-                                value={formData.country}
+                                value={formData?.country}
                                 onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                             />
                         </Form.Group>
@@ -636,7 +644,7 @@ function MyContact2() {
                             )}
                         </div>
                         <div>
-                            <label>Number:</label>
+                            <label>number:</label>
                             {header?.length > 0 && (
                                 <div>
                                     <label>
@@ -718,13 +726,13 @@ function MyContact2() {
                             {header?.length > 0 && (
                                 <div>
                                     <select
-                                        onChange={(e) => handleOptionSelect("First Name", e.target.value)}
-                                        value={selectedOptions.includes("First Name") ? "First Name" : ""}
+                                        onChange={(e) => handleOptionSelect("firstName", e.target.value)}
+                                        value={selectedOptions.includes("firstName") ? "firstName" : ""}
                                     >
-                                        {selectedOptions.includes("First Name") ? (
-                                            <option value="First Name">First Name</option>
+                                        {selectedOptions.includes("firstName") ? (
+                                            <option value="firstName">First Name</option>
                                         ) : (
-                                            <option value="">Select FirstName</option>
+                                            <option value="">firstName</option>
                                         )}
                                         {header?.map((option, index) => (
                                             <option key={index} value={option}>
@@ -740,13 +748,13 @@ function MyContact2() {
                             {header?.length > 0 && (
                                 <div>
                                     <select
-                                        onChange={(e) => handleOptionSelect("Last Name", e.target.value)}
-                                        value={selectedOptions.includes("Last Name") ? "Last Name" : ""}
+                                        onChange={(e) => handleOptionSelect("lastName", e.target.value)}
+                                        value={selectedOptions.includes("lastName") ? "lastName" : ""}
                                     >
-                                        {selectedOptions.includes("Last Name") ? (
-                                            <option value="Last Name">Last Name</option>
+                                        {selectedOptions.includes("lastName") ? (
+                                            <option value="lastName">Last Name</option>
                                         ) : (
-                                            <option value="">Select LastName</option>
+                                            <option value="">lastName</option>
                                         )}
                                         {header?.map((option, index) => (
                                             <option key={index} value={option}>
@@ -758,17 +766,17 @@ function MyContact2() {
                             )}
                         </div>
                         <div>
-                            <label>Number:</label>
+                            <label>number:</label>
                             {header?.length > 0 && (
                                 <div>
                                     <select
-                                        onChange={(e) => handleOptionSelect("Number", e.target.value)}
-                                        value={selectedOptions.includes("Number") ? "Number" : ""}
+                                        onChange={(e) => handleOptionSelect("number", e.target.value)}
+                                        value={selectedOptions.includes("number") ? "number" : ""}
                                     >
-                                        {selectedOptions.includes("Number") ? (
-                                            <option value="Number">Number</option>
+                                        {selectedOptions.includes("number") ? (
+                                            <option value="number">number</option>
                                         ) : (
-                                            <option value="">Select Number</option>
+                                            <option value="">number</option>
                                         )}
                                         {header?.map((option, index) => (
                                             <option key={index} value={option}>
@@ -784,13 +792,13 @@ function MyContact2() {
                             {header?.length > 0 && (
                                 <div>
                                     <select
-                                        onChange={(e) => handleOptionSelect("Gender", e.target.value)}
-                                        value={selectedOptions.includes("Gender") ? "Gender" : ""}
+                                        onChange={(e) => handleOptionSelect("gender", e.target.value)}
+                                        value={selectedOptions.includes("gender") ? "gender" : ""}
                                     >
-                                        {selectedOptions.includes("Gender") ? (
-                                            <option value="Gender">Gender</option>
+                                        {selectedOptions.includes("gender") ? (
+                                            <option value="gender">Gender</option>
                                         ) : (
-                                            <option value="">Select Gender</option>
+                                            <option value="">Gender</option>
                                         )}
                                         {header?.map((option, index) => (
                                             <option key={index} value={option}>
@@ -806,13 +814,13 @@ function MyContact2() {
                             {header?.length > 0 && (
                                 <div>
                                     <select
-                                        onChange={(e) => handleOptionSelect("Email", e.target.value)}
-                                        value={selectedOptions.includes("Email") ? "Email" : ""}
+                                        onChange={(e) => handleOptionSelect("email", e.target.value)}
+                                        value={selectedOptions.includes("email") ? "email" : ""}
                                     >
-                                        {selectedOptions.includes("Email") ? (
-                                            <option value="Email">Email</option>
+                                        {selectedOptions.includes("email") ? (
+                                            <option value="email">Email</option>
                                         ) : (
-                                            <option value="">Select Email</option>
+                                            <option value="">Email</option>
                                         )}
                                         {header?.map((option, index) => (
                                             <option key={index} value={option}>
@@ -828,13 +836,13 @@ function MyContact2() {
                             {header?.length > 0 && (
                                 <div>
                                     <select
-                                        onChange={(e) => handleOptionSelect("Country", e.target.value)}
-                                        value={selectedOptions.includes("Country") ? "Country" : ""}
+                                        onChange={(e) => handleOptionSelect("country", e.target.value)}
+                                        value={selectedOptions.includes("country") ? "country" : ""}
                                     >
-                                        {selectedOptions.includes("Country") ? (
-                                            <option value="Country">Country</option>
+                                        {selectedOptions.includes("country") ? (
+                                            <option value="country">Country</option>
                                         ) : (
-                                            <option value="">Select Country</option>
+                                            <option value="">Country</option>
                                         )}
                                         {header?.map((option, index) => (
                                             <option key={index} value={option}>
