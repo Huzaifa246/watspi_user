@@ -47,6 +47,8 @@ function MyContact2() {
     const [allContacts, setAllContacts] = useState([]);
     const [showModalEdit, setShowModalEdit] = useState(false);
     const [updateInstance, setUpdateInstance] = useState([]);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [contactIdToDelete, setContactIdToDelete] = useState(null);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -84,8 +86,10 @@ function MyContact2() {
     const deleteContact = async (id) => {
         try {
             const data = await DelIndiContact(id);
-            console.log(data, 'del data')
+            console.log(data, 'del data');
             toast.success(data?.message);
+            // Close the modal after successful deletion
+            setShowDeleteModal(false);
         } catch (error) {
             console.error('Error deleting contact:', error);
             toast.error(error?.message);
@@ -529,6 +533,24 @@ function MyContact2() {
     return (
         <>
             <ToastContainer />
+            {/* Del Modal */}
+            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirm Deletion</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Are you sure you want to delete this contact?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" className='Close_btn' onClick={() => setShowDeleteModal(false)}>
+                        Cancel
+                    </Button>
+                    <Button variant="danger" className='Del_btn' onClick={() => deleteContact(contactIdToDelete)}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            {/* Update Modal */}
             <Modal show={showModalEdit} onHide={() => setShowModalEdit(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit Contact</Modal.Title>
@@ -545,7 +567,7 @@ function MyContact2() {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>First Name</Form.Label>
+                            <Form.Label>Last Name</Form.Label>
                             <Form.Control
                                 type="text"
                                 placeholder="Last Name"
@@ -557,7 +579,7 @@ function MyContact2() {
                             <Form.Label>number</Form.Label>
                             <Form.Control
                                 type="number"
-                                placeholder="First Name"
+                                placeholder="number"
                                 value={formData?.number}
                                 onChange={(e) => setFormData({ ...formData, number: e.target.value })}
                             />
@@ -593,10 +615,10 @@ function MyContact2() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowModalEdit(false)}>
+                    <Button variant="secondary" className='Close_btn' onClick={() => setShowModalEdit(false)}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleUpdateInput}>
+                    <Button className='Update_btn' onClick={handleUpdateInput}>
                         Update
                     </Button>
                 </Modal.Footer>
@@ -944,7 +966,7 @@ function MyContact2() {
                     <Col>
                         <Row className='mob-row width-100' style={{ marginBottom: '20px' }}>
                             <Col></Col>
-                            <Col sm={11} md={12} lg={12} xxl={11} xl={11} className='Backdrop-myContact2' style={{ paddingBottom: '10px' }}>
+                            <Col sm={11} md={12} lg={12} xxl={12} xl={11} className='Backdrop-myContact2 width_91' style={{ paddingBottom: '10px' }}>
                                 <div className='card-drop-style'>
                                     <h1 style={{ padding: '10px', paddingTop: '20px', fontWeight: '600', color: "white" }}>
                                         My Contacts
@@ -1055,7 +1077,7 @@ function MyContact2() {
                         </Row>
                         <Row>
                             <Col sm={1}></Col>
-                            <Col md={11} lg={12} xxl={11} xl={11} className='Backdrop-myContact2' style={{ padding: "10px" }}>
+                            <Col md={11} lg={12} xxl={12} xl={11} className='Backdrop-myContact2 width_91' style={{ padding: "10px" }}>
                                 <div>
                                     <div className="MyContact_2_maincontainer">
                                         <thead style={{ marginBottom: "0", tableLayout: "fixed" }}>
@@ -1094,7 +1116,11 @@ function MyContact2() {
                                                                     <FontAwesomeIcon
                                                                         icon={faTrash}
                                                                         style={{ cursor: 'pointer' }}
-                                                                        onClick={() => deleteContact(row?._id)}
+                                                                        // onClick={() => deleteContact(row?._id)}
+                                                                        onClick={() => {
+                                                                            setContactIdToDelete(row?._id);
+                                                                            setShowDeleteModal(true);
+                                                                        }}
                                                                     />
                                                                 </td>
                                                             </tr>

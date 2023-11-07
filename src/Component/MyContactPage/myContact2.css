@@ -92,7 +92,7 @@
 .td_min_desc_width {
   min-width: 300px !important;
 }
-.btns_MyContact2{
+.btns_MyContact2 {
   width: auto;
   border: 1px solid #f5f1ff;
   padding: 4px 8px;
@@ -101,7 +101,7 @@
   background: transparent;
   color: white;
 }
-.MyContact_scroll{
+.MyContact_scroll {
   max-height: 40rem;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -123,8 +123,38 @@
   padding: 7px;
   border-radius: 12px;
 }
+.Del_btn{
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.5s;
+  background: transparent;
+  color: white;
+  color: red;
+}
+.Del_btn:hover{
+  border: 1px solid #f5f1ff;
+}
+.Close_btn{
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.5s;
+    background: transparent;
+    color: #3ab19d;
+  }
+  .Update_btn{
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.5s;
+    background: transparent;
+    color: #3ab19d;
+  }
+  .Update_btn:hover{
+    border: 2px solid #3ab19d;
+    color: #3ab19d;
+    background: transparent;
+  }
 @media screen and (min-width: 1399px) and (max-width: 1683px) {
-  .width_91{
+  .width_91 {
     width: 91.5% !important;
   }
 }
