@@ -123,3 +123,8 @@
   padding: 7px;
   border-radius: 12px;
 }
+@media screen and (min-width: 1399px) and (max-width: 1683px) {
+  .width_91{
+    width: 91.5% !important;
+  }
+}
